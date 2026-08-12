@@ -1,0 +1,107 @@
+{
+  "products": [
+    {
+      "slug": "rio",
+      "name": "Rio",
+      "tagline": "Digital twin for agriculture.",
+      "description": "An IoT box senses the field, AI understands it, and the platform recommends the right decision — irrigation, fertilizer, harvest timing.",
+      "href": "/products/rio"
+    }
+  ],
+  "solutions": [
+    {
+      "slug": "redq",
+      "name": "RedQ",
+      "description": "The national platform for managing blood donations and blood bags — from donor to hospital, with full traceability.",
+      "href": "/solutions/redq"
+    }
+  ],
+  "research": [
+    {
+      "slug": "digital-twins",
+      "title": "Digital Twins",
+      "summary": "Virtual representations of real-world systems, continuously updated by sensor data.",
+      "status": "in-progress",
+      "href": "/research/digital-twins"
+    },
+    {
+      "slug": "predictive-systems",
+      "title": "Predictive Systems",
+      "summary": "Forecasting water stress, diseases, yields and supply-chain risks.",
+      "status": "in-progress",
+      "href": "/research/predictive-systems"
+    },
+    {
+      "slug": "language-ai",
+      "title": "Language & AI",
+      "summary": "Models and systems that understand context, in African languages and beyond.",
+      "status": "published",
+      "href": "/research/language-ai"
+    }
+  ],
+  "developerResources": [
+    {
+      "slug": "api",
+      "title": "API Reference",
+      "description": "REST and GraphQL endpoints for Rio and the platform.",
+      "kind": "api",
+      "href": "/developers/api"
+    },
+    {
+      "slug": "sdks",
+      "title": "SDKs",
+      "description": "Official libraries for Python, Go, JavaScript and more.",
+      "kind": "sdk",
+      "href": "/developers/sdks"
+    },
+    {
+      "slug": "status",
+      "title": "Status",
+      "description": "Platform uptime, incidents and maintenance windows.",
+      "kind": "docs",
+      "href": "/developers/status"
+    }
+  ],
+  "blog": [
+    {
+      "slug": "intelligence-for-the-real-world",
+      "title": "Intelligence for the real world",
+      "excerpt": "Why Gytev is not building a search engine, but the layer that connects digital intelligence to reality.",
+      "date": "2026-06-01",
+      "author": "The Gytev Team",
+      "tags": ["mission"]
+    },
+    {
+      "slug": "what-a-digital-twin-tells-a-farmer",
+      "title": "What a digital twin tells a farmer",
+      "excerpt": "A maize field in flowering stage, a week without rain, and one clear recommendation.",
+      "date": "2026-07-12",
+      "author": "Rio Team",
+      "tags": ["product", "rio"]
+    }
+  ],
+  "customers": [
+    {
+      "slug": "cooperative-sahel",
+      "name": "Coopérative du Sahel",
+      "sector": "Agriculture",
+      "country": "Burkina Faso",
+      "quote": "Rio warned us about water stress three days before the first leaves wilted. We irrigated in time."
+    },
+    {
+      "slug": "banque-du-sang-dakar",
+      "name": "Banque de Sang de Dakar",
+      "sector": "Public health",
+      "country": "Senegal",
+      "quote": "RedQ gives us real-time visibility on every blood bag in the country. Shortages are predicted, not endured."
+    }
+  ],
+  "company": {
+    "about": "Gytev builds intelligent systems that understand the real world — systems that observe, understand, predict and act on farms, blood banks, cities and industries.",
+    "story": "We started from a simple observation: the physical world remains fragmented, complex and difficult for software to understand. We set out to connect digital intelligence to reality.",
+    "vision": "Our 20-year ambition is to build the intelligence layer for the real world. Data provides context, sensors provide perception, AI provides intelligence, software makes it useful.",
+    "newsroom": "Press releases, media coverage and company announcements.",
+    "careers": "Join a team building intelligent systems for the real world, from Africa.",
+    "contact": "Tell us what you want to observe, understand or act on."
+  }
+}

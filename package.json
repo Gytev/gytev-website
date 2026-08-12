@@ -1,0 +1,24 @@
+{
+  "name": "gytev",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Gytev — le prochain Google africain, pour le monde entier.",
+  "license": "UNLICENSED",
+  "packageManager": "pnpm@10.34.5",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=10.0.0"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @gytev/web dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "backend:dev": "pnpm --filter @gytev/backend dev",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3"
+  }
+}

@@ -1,0 +1,25 @@
+from fastapi import APIRouter
+
+from app.api.routes import (
+    blog,
+    company,
+    customers,
+    developers,
+    health,
+    navigation,
+    products,
+    research,
+    solutions,
+)
+
+api_router = APIRouter()
+
+api_router.include_router(health.router)
+api_router.include_router(navigation.router)
+api_router.include_router(products.router)
+api_router.include_router(solutions.router)
+api_router.include_router(research.router)
+api_router.include_router(developers.router)
+api_router.include_router(blog.router)
+api_router.include_router(customers.router)
+api_router.include_router(company.router)

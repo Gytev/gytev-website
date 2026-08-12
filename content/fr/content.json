@@ -1,0 +1,107 @@
+{
+  "products": [
+    {
+      "slug": "rio",
+      "name": "Rio",
+      "tagline": "Jumeau numérique pour l'agriculture.",
+      "description": "Une box IoT perçoit la parcelle, l'IA la comprend, et la plateforme recommande la bonne décision — irrigation, engrais, moment de la récolte.",
+      "href": "/products/rio"
+    }
+  ],
+  "solutions": [
+    {
+      "slug": "redq",
+      "name": "RedQ",
+      "description": "La plateforme nationale de gestion des dons et des poches de sang — du donneur à l'hôpital, avec traçabilité complète.",
+      "href": "/solutions/redq"
+    }
+  ],
+  "research": [
+    {
+      "slug": "digital-twins",
+      "title": "Jumeaux numériques",
+      "summary": "Représentations virtuelles de systèmes réels, continuellement mises à jour par les données des capteurs.",
+      "status": "in-progress",
+      "href": "/research/digital-twins"
+    },
+    {
+      "slug": "predictive-systems",
+      "title": "Systèmes prédictifs",
+      "summary": "Prévision du stress hydrique, des maladies, des rendements et des risques de chaîne d'approvisionnement.",
+      "status": "in-progress",
+      "href": "/research/predictive-systems"
+    },
+    {
+      "slug": "language-ai",
+      "title": "Langage & IA",
+      "summary": "Modèles et systèmes qui comprennent le contexte, dans les langues africaines et au-delà.",
+      "status": "published",
+      "href": "/research/language-ai"
+    }
+  ],
+  "developerResources": [
+    {
+      "slug": "api",
+      "title": "Référence API",
+      "description": "Endpoints REST et GraphQL pour Rio et la plateforme.",
+      "kind": "api",
+      "href": "/developers/api"
+    },
+    {
+      "slug": "sdks",
+      "title": "SDK",
+      "description": "Bibliothèques officielles pour Python, Go, JavaScript et plus.",
+      "kind": "sdk",
+      "href": "/developers/sdks"
+    },
+    {
+      "slug": "status",
+      "title": "Statut",
+      "description": "Disponibilité de la plateforme, incidents et fenêtres de maintenance.",
+      "kind": "docs",
+      "href": "/developers/status"
+    }
+  ],
+  "blog": [
+    {
+      "slug": "intelligence-for-the-real-world",
+      "title": "L'intelligence pour le monde réel",
+      "excerpt": "Pourquoi Gytev ne construit pas un moteur de recherche, mais la couche qui connecte l'intelligence numérique à la réalité.",
+      "date": "2026-06-01",
+      "author": "L'équipe Gytev",
+      "tags": ["mission"]
+    },
+    {
+      "slug": "what-a-digital-twin-tells-a-farmer",
+      "title": "Ce qu'un jumeau numérique dit à un agriculteur",
+      "excerpt": "Un champ de maïs en pleine floraison, une semaine sans pluie, et une seule recommandation claire.",
+      "date": "2026-07-12",
+      "author": "Équipe Rio",
+      "tags": ["product", "rio"]
+    }
+  ],
+  "customers": [
+    {
+      "slug": "cooperative-sahel",
+      "name": "Coopérative du Sahel",
+      "sector": "Agriculture",
+      "country": "Burkina Faso",
+      "quote": "Rio nous a alertés sur le stress hydrique trois jours avant le premier flétrissement. Nous avons irrigué à temps."
+    },
+    {
+      "slug": "banque-du-sang-dakar",
+      "name": "Banque de Sang de Dakar",
+      "sector": "Santé publique",
+      "country": "Sénégal",
+      "quote": "RedQ nous donne une visibilité en temps réel sur chaque poche de sang du pays. Les pénuries sont prédites, plus subies."
+    }
+  ],
+  "company": {
+    "about": "Gytev construit des systèmes intelligents qui comprennent le monde réel — des systèmes qui observent, comprennent, prédisent et agissent sur les exploitations, les banques de sang, les villes et les industries.",
+    "story": "Nous sommes partis d'une observation simple : le monde physique reste fragmenté, complexe et difficile à comprendre pour les logiciels. Nous nous sommes lancés pour connecter l'intelligence numérique à la réalité.",
+    "vision": "Notre ambition sur 20 ans est de construire la couche d'intelligence du monde réel. Les données fournissent le contexte, les capteurs la perception, l'IA l'intelligence, le logiciel l'utilité.",
+    "newsroom": "Communiqués de presse, couverture médiatique et annonces de l'entreprise.",
+    "careers": "Rejoignez une équipe qui construit des systèmes intelligents pour le monde réel, depuis l'Afrique.",
+    "contact": "Dites-nous ce que vous voulez observer, comprendre ou améliorer."
+  }
+}

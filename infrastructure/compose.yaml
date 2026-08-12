@@ -1,0 +1,33 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: gytev
+      POSTGRES_PASSWORD: gytev
+      POSTGRES_DB: gytev
+    ports:
+      - "5432:5432"
+    volumes:
+      - gytev_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gytev"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ../backend
+    env_file:
+      - ../backend/.env.example
+    environment:
+      GYTEV_DATABASE_URL: postgresql+psycopg://gytev:gytev@db:5432/gytev
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+
+volumes:
+  gytev_pgdata:

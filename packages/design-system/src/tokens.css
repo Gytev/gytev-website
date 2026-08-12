@@ -1,0 +1,29 @@
+:root {
+  --color-primary-50: #fff7ed;
+  --color-primary-100: #ffedd5;
+  --color-primary-500: #f97316;
+  --color-primary-600: #ea580c;
+  --color-primary-700: #c2410c;
+
+  --color-accent-400: #34d399;
+  --color-accent-500: #10b981;
+
+  --color-ink-900: #18181b;
+  --color-ink-700: #3f3f46;
+  --color-ink-500: #71717a;
+  --color-ink-400: #a1a1aa;
+  --color-ink-100: #f4f4f5;
+
+  --color-surface: #ffffff;
+  --color-background: #ffffff;
+
+  --font-sans: "GT Walsheim Pro", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, monospace;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.25rem;
+  --radius-full: 9999px;
+
+  --container-max: 72rem;
+}
