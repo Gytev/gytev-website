@@ -1,6 +1,6 @@
 import type { Dictionary, Locale } from "@gytev/i18n";
 import { localizedHref } from "@gytev/i18n";
-import { footerSections } from "@gytev/config";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 type FooterProps = {
   locale: Locale;
@@ -9,31 +9,40 @@ type FooterProps = {
 
 export function Footer({ locale, dictionary }: FooterProps) {
   const year = new Date().getFullYear();
+  const dict = dictionary as Dictionary;
 
   return (
-    <footer className="border-t border-zinc-200 bg-zinc-50">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-8 px-6 py-12 lg:grid-cols-4 lg:px-8">
-        <div className="lg:col-span-1">
-          <div className="flex items-center gap-2">
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-orange-600 font-bold text-white">
-              G
-            </span>
-            <span className="text-lg font-bold tracking-tight text-zinc-900">Gytev</span>
-          </div>
-          <p className="mt-4 text-sm leading-6 text-zinc-600">{dictionary.footer.tagline}</p>
-        </div>
-
-        {footerSections.map((section) => (
-          <div key={section.title}>
-            <h3 className="text-sm font-semibold text-zinc-900">{section.title}</h3>
-            <ul className="mt-4 space-y-3">
-              {section.links.map((link) => (
+    <footer className="bg-white">
+      <div className="grid grid-cols-2 gap-x-8 gap-y-12 px-6 py-16 sm:grid-cols-3 lg:grid-cols-5 lg:px-8">
+        {dict.footer.columns.map((column) => (
+          <div key={column.title}>
+            <h3 className="text-sm font-semibold text-zinc-900">{column.title}</h3>
+            <ul className="mt-4 space-y-2.5">
+              {column.links.map((link) => (
                 <li key={link.label}>
                   <a
                     href={localizedHref(locale, link.href)}
-                    className="text-sm text-zinc-600 hover:text-zinc-900"
+                    target={link.external ? "_blank" : undefined}
+                    rel={link.external ? "noreferrer" : undefined}
+                    className="inline-flex items-center gap-1 text-sm text-zinc-500 transition-colors hover:text-zinc-900"
                   >
                     {link.label}
+                    {link.external ? (
+                      <svg
+                        className="h-3 w-3 shrink-0 text-zinc-400"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        aria-hidden
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M14 5h5v5M19 5l-9 9M19 14v5H5V5h6"
+                        />
+                      </svg>
+                    ) : null}
                   </a>
                 </li>
               ))}
@@ -43,23 +52,22 @@ export function Footer({ locale, dictionary }: FooterProps) {
       </div>
 
       <div className="border-t border-zinc-200">
-        <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-4 px-6 py-6 sm:flex-row lg:px-8">
-          <p className="text-sm text-zinc-500">
-            © {year} Gytev. {dictionary.footer.rights}
-          </p>
-          <div className="flex gap-6">
-            <a
-              href={localizedHref(locale, "/legal/privacy")}
-              className="text-sm text-zinc-500 hover:text-zinc-900"
-            >
-              Privacy
-            </a>
-            <a
-              href={localizedHref(locale, "/legal/terms")}
-              className="text-sm text-zinc-500 hover:text-zinc-900"
-            >
-              Terms
-            </a>
+        <div className="flex w-full flex-col items-center justify-between gap-6 px-6 py-6 lg:flex-row lg:px-8">
+          <div className="flex w-full flex-col items-center justify-between gap-4 sm:flex-row">
+            <p className="text-sm text-zinc-500">
+              © {year} Gytev ·{" "}
+              <button type="button" className="text-zinc-500 underline-offset-2 hover:underline">
+                {dict.footer.manageCookies}
+              </button>
+            </p>
+            <LanguageSwitcher locale={locale} />
+          </div>
+
+          <div className="w-full overflow-hidden">
+            <p className="select-none whitespace-nowrap text-center text-[18vw] font-black leading-[0.9] tracking-tight text-zinc-900">
+              {dict.footer.big}
+              <span className="text-orange-500">{dict.footer.bigAccent}</span>
+            </p>
           </div>
         </div>
       </div>

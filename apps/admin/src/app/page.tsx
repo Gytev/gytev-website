@@ -7,8 +7,8 @@ export default function AdminHome() {
         </div>
         <h1 className="mt-4 text-2xl font-bold text-zinc-900">Gytev Admin</h1>
         <p className="mt-2 text-sm text-zinc-600">
-          Console d'administration. Le tableau de bord de contenu arrive avec le
-          headless CMS (Sanity) et l'authentification.
+          Console d&apos;administration. Le tableau de bord de contenu arrive avec le
+          headless CMS (Sanity) et l&apos;authentification.
         </p>
         <a
           href="/api/health"

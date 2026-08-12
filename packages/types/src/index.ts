@@ -3,9 +3,16 @@ export type Locale = "en" | "fr";
 export type NavLink = {
   label: string;
   href: string;
+  arrow?: boolean;
 };
 
-export type MegaMenuItem = {
+export type NavColumn = {
+  title: string;
+  links: NavLink[];
+};
+
+export type NavVisual = {
+  eyebrow: string;
   title: string;
   description: string;
   href: string;
@@ -15,7 +22,6 @@ export type NavItem = {
   key: string;
   label: string;
   href: string;
-  items?: MegaMenuItem[];
 };
 
 export type Product = {
@@ -65,9 +71,4 @@ export type Customer = {
   sector: string;
   country: string;
   quote: string;
-};
-
-export type FooterSection = {
-  title: string;
-  links: NavLink[];
 };

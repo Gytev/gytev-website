@@ -1,14 +1,13 @@
 "use client";
 
-import { useState } from "react";
-
 type MobileMenuProps = {
   items: { label: string; href: string }[];
   open: boolean;
   onClose: () => void;
+  closeLabel?: string;
 };
 
-export function MobileMenu({ items, open, onClose }: MobileMenuProps) {
+export function MobileMenu({ items, open, onClose, closeLabel = "Close menu" }: MobileMenuProps) {
   return (
     <div
       className={
@@ -24,7 +23,7 @@ export function MobileMenu({ items, open, onClose }: MobileMenuProps) {
           <button
             onClick={onClose}
             className="rounded-md p-2 text-zinc-500 hover:bg-zinc-100"
-            aria-label="Close menu"
+            aria-label={closeLabel}
           >
             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

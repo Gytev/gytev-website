@@ -10,3 +10,19 @@ body {
   background-color: #ffffff;
   color: #18181b;
 }
+
+@keyframes gytev-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.logo-letter {
+  display: inline-block;
+  animation: gytev-float 2.4s ease-in-out infinite;
+}
+
