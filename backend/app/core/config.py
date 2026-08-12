@@ -14,6 +14,9 @@ class Settings(BaseSettings):
 
     cors_origins: list[str] = ["http://localhost:3000", "http://localhost:3001"]
 
+    # Clé API pour les mutations admin (X-API-Key). Vide = auth désactivée (dev).
+    admin_api_key: str = ""
+
 
 @lru_cache
 def get_settings() -> Settings:

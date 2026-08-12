@@ -9,7 +9,7 @@ type Props = {
 
 export default async function CompanyPage({ params }: Props) {
   const { locale } = await params;
-  const content = getContent(locale);
+  const content = await getContent(locale);
   const l = locale as Locale;
 
   const sections = [

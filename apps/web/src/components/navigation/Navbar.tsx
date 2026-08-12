@@ -6,6 +6,7 @@ import { localizedHref } from "@gytev/i18n";
 import { navItems } from "@gytev/config";
 import { MegaMenu } from "./MegaMenu";
 import { MobileMenu } from "./MobileMenu";
+import { SearchOverlay } from "./SearchOverlay";
 
 type NavbarProps = {
   locale: Locale;
@@ -15,6 +16,7 @@ type NavbarProps = {
 export function Navbar({ locale, dictionary }: NavbarProps) {
   const [active, setActive] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const dict = dictionary as Dictionary;
 
@@ -44,51 +46,54 @@ export function Navbar({ locale, dictionary }: NavbarProps) {
       className="sticky top-0 z-40 border-b border-zinc-200 bg-white"
     >
       <nav className="flex h-14 w-full items-center justify-between px-6 lg:px-8">
-        <a href={localizedHref(locale, "/")} className="shrink-0">
-          <span className="text-xl font-black tracking-tight text-zinc-900">
-            {"G⅄TƎV".split("").map((letter, index) => (
-              <span
-                key={index}
-                className="logo-letter"
-                style={{ animationDelay: `${index * 0.15}s` }}
-              >
-                {letter}
-              </span>
-            ))}
-          </span>
-        </a>
-
-        <div className="hidden items-center gap-1 lg:flex lg:pl-8">
-          {navItems.map((item) => {
-            const nav = dict.nav[item.key];
-            const label = nav?.label ?? item.label;
-
-            return (
-              <button
-                key={item.key}
-                type="button"
-                onMouseEnter={() => setActive(item.key)}
-                onClick={() => setActive(item.key)}
-                className="rounded-full px-4 py-2 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900"
-              >
-                {label}
-              </button>
-            );
-          })}
-          <a
-            href={localizedHref(locale, "/blog")}
-            className="p-2 text-zinc-500 transition-colors hover:text-zinc-900"
-            aria-label={dict.header.search}
-          >
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"
-              />
-            </svg>
+        <div className="flex items-center gap-8">
+          <a href={localizedHref(locale, "/")} className="shrink-0">
+            <span className="text-xl font-black tracking-tight text-zinc-900">
+              {"G⅄TƎV".split("").map((letter, index) => (
+                <span
+                  key={index}
+                  className="logo-letter"
+                  style={{ animationDelay: `${index * 0.15}s` }}
+                >
+                  {letter}
+                </span>
+              ))}
+            </span>
           </a>
+
+          <div className="hidden items-center gap-1 lg:flex">
+            {navItems.map((item) => {
+              const nav = dict.nav[item.key];
+              const label = nav?.label ?? item.label;
+
+              return (
+                <button
+                  key={item.key}
+                  type="button"
+                  onMouseEnter={() => setActive(item.key)}
+                  onClick={() => setActive(item.key)}
+                  className="rounded-full px-4 py-2 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900"
+                >
+                  {label}
+                </button>
+              );
+            })}
+            <button
+              type="button"
+              onClick={() => setSearchOpen(true)}
+              className="p-2 text-zinc-500 transition-colors hover:text-zinc-900"
+              aria-label={dict.header.search}
+            >
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
 
         <div className="flex items-center gap-2">
@@ -133,6 +138,12 @@ export function Navbar({ locale, dictionary }: NavbarProps) {
           label: (dict.nav[item.key]?.label ?? item.label) as string,
           href: localizedHref(locale, item.href),
         }))}
+      />
+
+      <SearchOverlay
+        locale={locale}
+        open={searchOpen}
+        onClose={() => setSearchOpen(false)}
       />
     </header>
   );

@@ -1,8 +1,12 @@
-from fastapi import APIRouter
+from app.api.crud import content_router
+from app.models import Solution
+from app.schemas import SolutionCreate, SolutionRead, SolutionUpdate
 
-router = APIRouter(prefix="/solutions", tags=["solutions"])
-
-
-@router.get("")
-async def solutions() -> dict[str, list[str]]:
-    return {"items": ["business", "government", "education", "developers"]}
+router = content_router(
+    model=Solution,
+    prefix="/solutions",
+    tags=["solutions"],
+    read_schema=SolutionRead,
+    create_schema=SolutionCreate,
+    update_schema=SolutionUpdate,
+)

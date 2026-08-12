@@ -10,6 +10,9 @@ case "${1:-}" in
   backend)
     cd backend && uv run uvicorn app.main:app --reload --port 8000
     ;;
+  seed)
+    cd backend && uv run python -m app.seed
+    ;;
   web)
     pnpm --filter @gytev/web dev
     ;;
@@ -17,7 +20,7 @@ case "${1:-}" in
     pnpm --filter @gytev/admin dev
     ;;
   *)
-    echo "Usage: ./scripts/dev.sh [db|backend|web|admin]"
+    echo "Usage: ./scripts/dev.sh [db|backend|seed|web|admin]"
     exit 1
     ;;
 esac

@@ -1,4 +1,3 @@
-import type { Locale } from "@gytev/types";
 import { SectionPage } from "@/components/SectionPage";
 import { getContent } from "@/lib/content";
 
@@ -8,7 +7,7 @@ type Props = {
 
 export default async function CustomersPage({ params }: Props) {
   const { locale } = await params;
-  const content = getContent(locale);
+  const content = await getContent(locale);
 
   return (
     <SectionPage

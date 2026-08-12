@@ -1,21 +1,111 @@
-export default function AdminHome() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50">
-      <div className="max-w-md rounded-2xl border border-zinc-200 bg-white p-8 text-center shadow-sm">
-        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-600 text-xl font-bold text-white">
-          G
-        </div>
-        <h1 className="mt-4 text-2xl font-bold text-zinc-900">Gytev Admin</h1>
-        <p className="mt-2 text-sm text-zinc-600">
-          Console d&apos;administration. Le tableau de bord de contenu arrive avec le
-          headless CMS (Sanity) et l&apos;authentification.
+import Link from "next/link";
+
+import { apiFetch } from "@/lib/api";
+import { entities } from "@/lib/entities";
+import { Card, EntityIcon, PageHeader, buttonPrimary } from "@/components/ui";
+
+type Overview = {
+  products: number;
+  solutions: number;
+  research: number;
+  developers: number;
+  blog: number;
+  customers: number;
+  company: number;
+  navigation: number;
+};
+
+export default async function AdminDashboard() {
+  let overview: Overview | null = null;
+  let error: string | null = null;
+
+  try {
+    overview = await apiFetch<Overview>("/admin/overview");
+  } catch (cause) {
+    error = cause instanceof Error ? cause.message : "Impossible de joindre l'API.";
+  }
+
+  if (error || !overview) {
+    return (
+      <div className="mx-auto max-w-2xl rounded-2xl border border-red-200 bg-red-50 p-6">
+        <h2 className="text-lg font-semibold text-red-800">API injoignable</h2>
+        <p className="mt-1 text-sm text-red-700">{error}</p>
+        <p className="mt-4 text-sm text-red-700">
+          Vérifie que le backend tourne (./scripts/dev.sh backend) et que
+          GYTEV_API_URL/GYTEV_API_KEY sont configurés dans apps/admin/.env.local.
         </p>
-        <a
-          href="/api/health"
-          className="mt-6 inline-flex rounded-full bg-zinc-900 px-5 py-2 text-sm font-medium text-white hover:bg-zinc-700"
-        >
-          Health check
-        </a>
+      </div>
+    );
+  }
+
+  const total = entities.reduce(
+    (sum, entity) => sum + (overview[entity.slug as keyof Overview] ?? 0),
+    0
+  );
+
+  return (
+    <div>
+      <PageHeader
+        eyebrow="Gytev · Console"
+        title="Dashboard"
+        description="Vue d'ensemble du contenu en base."
+        action={
+          <Link href="/products/new" className={buttonPrimary}>
+            + Nouveau contenu
+          </Link>
+        }
+      />
+
+      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+        {[
+          { label: "Total contenu", value: total },
+          {
+            label: "Entités",
+            value: entities.length,
+          },
+          {
+            label: "Langues",
+            value: 2,
+          },
+        ].map((stat) => (
+          <Card
+            key={stat.label}
+            className="flex items-center justify-between gap-3 p-5"
+          >
+            <div>
+              <p className="text-3xl font-semibold tracking-tight text-zinc-900">
+                {stat.value}
+              </p>
+              <p className="mt-1 text-xs font-medium uppercase tracking-widest text-zinc-400">
+                {stat.label}
+              </p>
+            </div>
+          </Card>
+        ))}
+      </div>
+
+      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {entities.map((entity) => {
+          const count = overview[entity.slug as keyof Overview] ?? 0;
+          return (
+            <Link
+              key={entity.slug}
+              href={`/${entity.slug}`}
+              className="group rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:border-orange-200 hover:shadow-md"
+            >
+              <div className="flex items-center gap-3">
+                <EntityIcon slug={entity.slug} label={entity.plural} />
+                <p className="text-sm font-medium text-zinc-600">{entity.plural}</p>
+              </div>
+              <p className="mt-5 text-4xl font-semibold tracking-tight text-zinc-900">
+                {count}
+              </p>
+              <p className="mt-4 text-sm font-medium text-zinc-400 transition-colors group-hover:text-orange-600">
+                Gérer →
+              </p>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

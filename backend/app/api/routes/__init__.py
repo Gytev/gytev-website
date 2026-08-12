@@ -1,8 +1,10 @@
 from fastapi import APIRouter
 
 from app.api.routes import (
+    admin,
     blog,
     company,
+    content,
     customers,
     developers,
     health,
@@ -15,6 +17,8 @@ from app.api.routes import (
 api_router = APIRouter()
 
 api_router.include_router(health.router)
+api_router.include_router(content.router)
+api_router.include_router(admin.router)
 api_router.include_router(navigation.router)
 api_router.include_router(products.router)
 api_router.include_router(solutions.router)

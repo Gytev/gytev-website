@@ -1,5 +1,33 @@
 @import "tailwindcss";
 
 body {
-  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-walsheim), ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+  background-color: #fafafa;
+  color: #18181b;
+}
+
+::selection {
+  background-color: #ffedd5;
+  color: #c2410c;
+}
+
+:focus-visible {
+  outline: 2px solid #f97316;
+  outline-offset: 2px;
+}
+
+@keyframes gytev-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.logo-letter {
+  display: inline-block;
+  animation: gytev-float 2.4s ease-in-out infinite;
 }

@@ -1,27 +1,19 @@
-import pytest
-from fastapi.testclient import TestClient
-
-from app.main import app
+from httpx import AsyncClient
 
 
-@pytest.fixture()
-def client() -> TestClient:
-    return TestClient(app)
-
-
-def test_health(client: TestClient) -> None:
-    response = client.get("/api/health")
+async def test_health(client: AsyncClient) -> None:
+    response = await client.get("/api/health")
     assert response.status_code == 200
     assert response.json() == {"status": "ok", "service": "gytev-backend"}
 
 
-def test_navigation(client: TestClient) -> None:
-    response = client.get("/api/navigation")
+async def test_navigation_empty(client: AsyncClient) -> None:
+    response = await client.get("/api/navigation")
     assert response.status_code == 200
-    assert "items" in response.json()
+    assert response.json() == []
 
 
-def test_root(client: TestClient) -> None:
-    response = client.get("/")
+async def test_root(client: AsyncClient) -> None:
+    response = await client.get("/")
     assert response.status_code == 200
     assert response.json()["name"] == "Gytev API"

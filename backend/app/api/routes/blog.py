@@ -1,16 +1,12 @@
-from typing import Annotated
+from app.api.crud import content_router
+from app.models import BlogPost
+from app.schemas import BlogPostCreate, BlogPostRead, BlogPostUpdate
 
-from fastapi import APIRouter, Depends
-from sqlalchemy.ext.asyncio import AsyncSession
-
-from app.core.database import get_db
-from app.schemas import BlogPostRead
-from app.services.content import list_blog_posts
-
-router = APIRouter(prefix="/blog", tags=["blog"])
-Db = Annotated[AsyncSession, Depends(get_db)]
-
-
-@router.get("", response_model=list[BlogPostRead])
-async def blog(db: Db) -> list[BlogPostRead]:
-    return await list_blog_posts(db)
+router = content_router(
+    model=BlogPost,
+    prefix="/blog",
+    tags=["blog"],
+    read_schema=BlogPostRead,
+    create_schema=BlogPostCreate,
+    update_schema=BlogPostUpdate,
+)

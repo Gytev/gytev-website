@@ -1,8 +1,12 @@
-from fastapi import APIRouter
+from app.api.crud import content_router
+from app.models import ResearchTopic
+from app.schemas import ResearchTopicCreate, ResearchTopicRead, ResearchTopicUpdate
 
-router = APIRouter(prefix="/research", tags=["research"])
-
-
-@router.get("")
-async def research() -> dict[str, list[str]]:
-    return {"topics": ["language-models", "speech-audio", "information-retrieval"]}
+router = content_router(
+    model=ResearchTopic,
+    prefix="/research",
+    tags=["research"],
+    read_schema=ResearchTopicRead,
+    create_schema=ResearchTopicCreate,
+    update_schema=ResearchTopicUpdate,
+)

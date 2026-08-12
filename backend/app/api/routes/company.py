@@ -1,8 +1,12 @@
-from fastapi import APIRouter
+from app.api.crud import content_router
+from app.models import CompanySection
+from app.schemas import CompanySectionCreate, CompanySectionRead, CompanySectionUpdate
 
-router = APIRouter(prefix="/company", tags=["company"])
-
-
-@router.get("")
-async def company() -> dict[str, list[str]]:
-    return {"sections": ["about", "story", "newsroom", "careers", "contact"]}
+router = content_router(
+    model=CompanySection,
+    prefix="/company",
+    tags=["company"],
+    read_schema=CompanySectionRead,
+    create_schema=CompanySectionCreate,
+    update_schema=CompanySectionUpdate,
+)

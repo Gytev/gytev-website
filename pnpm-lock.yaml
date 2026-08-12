@@ -17,6 +17,9 @@ importers:
       '@gytev/config':
         specifier: workspace:*
         version: link:../../packages/config
+      '@gytev/design-system':
+        specifier: workspace:*
+        version: link:../../packages/design-system
       '@gytev/types':
         specifier: workspace:*
         version: link:../../packages/types

@@ -35,9 +35,10 @@ GYTEV/
 
 ```bash
 ./scripts/bootstrap.sh   # installe toutes les dépendances
+./scripts/dev.sh db      # PostgreSQL + pgvector via Docker
+./scripts/dev.sh seed    # charge content/en|fr/content.json vers PostgreSQL
 ./scripts/dev.sh web     # site vitrine → http://localhost:3000
 ./scripts/dev.sh backend # API → http://localhost:8000/docs
-./scripts/dev.sh db      # PostgreSQL + pgvector via Docker
 ./scripts/dev.sh admin   # admin → http://localhost:3001
 ```
 
@@ -56,8 +57,28 @@ GYTEV/
 ## API backend
 
 - `GET /api/health` — santé du service
+- `GET /api/content/{locale}` — contenu assemblé (`en`/`fr`), utilisé par le site
 - `GET /api/navigation` — structure de navigation
 - `GET /api/products`, `/api/solutions`, `/api/research`, `/api/developers`,
-  `/api/blog`, `/api/customers`, `/api/company`
+  `/api/blog`, `/api/customers`, `/api/company` — lecture publique
+- `POST/PATCH/DELETE` sur les mêmes routes — **écritures protégées par clé API**
+  (`X-API-Key: <GYTEV_ADMIN_API_KEY>`), pour l'admin et les agents
+- `GET /api/admin/overview` — compteurs du dashboard (protégé)
 
 Docs interactives : `http://localhost:8000/docs`
+
+## Console d'administration (`apps/admin`)
+
+Gère tout le contenu (produits, solutions, research, developers, blog, clients,
+company, navigation) avec un CRUD complet en base.
+
+```bash
+cp backend/.env.example backend/.env       # fixe GYTEV_ADMIN_API_KEY
+cp apps/admin/.env.example apps/admin/.env.local
+./scripts/dev.sh db && ./scripts/dev.sh seed
+./scripts/dev.sh backend && ./scripts/dev.sh admin
+# → http://localhost:3001
+```
+
+En production, définissez une `GYTEV_ADMIN_API_KEY` forte côté backend et la même
+clé côté admin. Sans clé configurée, les écritures restent ouvertes (mode dev).
