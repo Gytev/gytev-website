@@ -12,22 +12,15 @@ export default async function VisionPage({ params }: Props) {
   const dict = await getDictionary(locale);
   const l = locale as Locale;
 
-  const loop = [
-    { step: "Observe", text: "Sensors, IoT, cameras, satellites, machines, human inputs." },
-    { step: "Understand", text: "Patterns, relationships, anomalies, trends, risks, context." },
-    { step: "Predict", text: "What is likely to happen, when, and what could cause it." },
-    { step: "Optimize", text: "Which action is most efficient, how to allocate resources." },
-    { step: "Decide", text: "Given what we know, what should we do next?" },
-    { step: "Act", text: "Recommendations, automation, alerts, resource allocation." },
-    { step: "Learn", text: "Outcomes generate new data; new data improves the model." },
-  ];
+  const vision = dict.pages.vision;
+  const loop = vision.loop;
 
   return (
     <>
       <section className="border-b border-zinc-200 bg-white">
         <Container className="py-20">
           <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-zinc-900 sm:text-5xl">
-            We build intelligence for the real world.
+            {vision.heading}
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-600">{dict.hero.description}</p>
           <div className="mt-10">
@@ -35,7 +28,7 @@ export default async function VisionPage({ params }: Props) {
               href={localizedHref(l, "/products/rio")}
               className="rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white hover:bg-zinc-700"
             >
-              Discover Rio <span aria-hidden>→</span>
+              {vision.discover} <span aria-hidden>→</span>
             </a>
           </div>
         </Container>
@@ -44,7 +37,7 @@ export default async function VisionPage({ params }: Props) {
       <section className="bg-white">
         <Container className="py-20">
           <p className="text-sm font-medium uppercase tracking-widest text-orange-600">
-            The Gytev intelligence loop
+            {vision.eyebrow}
           </p>
           <div className="mt-12 space-y-4">
             {loop.map((item, index) => (

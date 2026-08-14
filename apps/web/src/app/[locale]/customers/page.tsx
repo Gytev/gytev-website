@@ -1,5 +1,6 @@
 import { SectionPage } from "@/components/SectionPage";
 import { getContent } from "@/lib/content";
+import { getDictionary } from "@/lib/i18n";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -7,12 +8,12 @@ type Props = {
 
 export default async function CustomersPage({ params }: Props) {
   const { locale } = await params;
-  const content = await getContent(locale);
+  const [content, dict] = await Promise.all([getContent(locale), getDictionary(locale)]);
 
   return (
     <SectionPage
-      title="Customers"
-      description="Organizations across Africa building on Gytev every day."
+      title={dict.pages.customers.title}
+      description={dict.pages.customers.description}
     >
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         {content.customers.map((customer) => (

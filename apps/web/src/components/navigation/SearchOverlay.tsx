@@ -1,17 +1,18 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { Locale } from "@gytev/types";
+import type { Dictionary, Locale } from "@gytev/i18n";
 import { localizedHref } from "@gytev/i18n";
 import { searchEntries } from "@/lib/search";
 
 type SearchOverlayProps = {
   locale: Locale;
+  dict: Dictionary;
   open: boolean;
   onClose: () => void;
 };
 
-export function SearchOverlay({ locale, open, onClose }: SearchOverlayProps) {
+export function SearchOverlay({ locale, dict, open, onClose }: SearchOverlayProps) {
   const [query, setQuery] = useState("");
   const [wasOpen, setWasOpen] = useState(open);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -67,14 +68,14 @@ export function SearchOverlay({ locale, open, onClose }: SearchOverlayProps) {
             ref={inputRef}
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search the site…"
+            placeholder={dict.search.placeholder}
             className="h-14 w-full bg-transparent text-base text-zinc-900 outline-none placeholder:text-zinc-400"
           />
           <button
             type="button"
             onClick={onClose}
             className="rounded-md p-1.5 text-zinc-400 transition-colors hover:text-zinc-900"
-            aria-label="Close search"
+            aria-label={dict.search.close}
           >
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -85,11 +86,11 @@ export function SearchOverlay({ locale, open, onClose }: SearchOverlayProps) {
         <ul className="max-h-96 overflow-y-auto p-2">
           {query.trim() === "" ? (
             <li className="px-3 py-8 text-center text-sm text-zinc-500">
-              Type to search the site.
+              {dict.search.empty}
             </li>
           ) : results.length === 0 ? (
             <li className="px-3 py-8 text-center text-sm text-zinc-500">
-              No results for “{query}”.
+              {dict.search.noResults.replace("{query}", query)}
             </li>
           ) : (
             results.slice(0, 8).map((result) => (

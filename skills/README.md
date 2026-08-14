@@ -16,6 +16,7 @@ nouveaux produits, etc.).
 | `packages.md`                 | Packages partagés : types, ui, design-system, i18n   |
 | `content.md`                  | Contenu éditorial, docs produits, vision             |
 | `tooling-workflows.md`        | Scripts, CI, commandes, conventions de code          |
+| `master-prompt.md`            | Spécification de la refonte premium du site vitrine  |
 
 ## Règles d'or du projet
 

@@ -4,12 +4,18 @@ import { defaultLocale, locales } from "@gytev/i18n";
 const paths = [
   "",
   "/products",
+  "/products/rio",
   "/solutions",
+  "/solutions/redq",
   "/research",
   "/developers",
   "/blog",
   "/customers",
   "/company",
+  "/company/about",
+  "/company/vision",
+  "/company/careers",
+  "/company/contact",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

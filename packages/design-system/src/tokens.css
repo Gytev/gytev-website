@@ -5,14 +5,26 @@
   --color-primary-600: #ea580c;
   --color-primary-700: #c2410c;
 
+  --color-signal-300: #ff8a5c;
+  --color-signal-400: #ff6b3d;
+  --color-signal-500: #ff4b18;
+  --color-signal-600: #e64000;
+  --color-signal-700: #c73500;
+
   --color-accent-400: #34d399;
   --color-accent-500: #10b981;
 
+  --color-ink-950: #0a0a0b;
   --color-ink-900: #18181b;
   --color-ink-700: #3f3f46;
   --color-ink-500: #71717a;
   --color-ink-400: #a1a1aa;
   --color-ink-100: #f4f4f5;
+
+  --color-paper: #f4f2ec;
+  --color-ink: #0a0a0b;
+  --color-line: rgba(10, 10, 11, 0.08);
+  --color-line-strong: rgba(10, 10, 11, 0.16);
 
   --color-surface: #ffffff;
   --color-background: #ffffff;

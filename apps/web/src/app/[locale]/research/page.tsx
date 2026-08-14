@@ -2,6 +2,7 @@ import type { Locale } from "@gytev/types";
 import { localizedHref } from "@gytev/i18n";
 import { SectionPage } from "@/components/SectionPage";
 import { getContent } from "@/lib/content";
+import { getDictionary } from "@/lib/i18n";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -9,13 +10,13 @@ type Props = {
 
 export default async function ResearchPage({ params }: Props) {
   const { locale } = await params;
-  const content = await getContent(locale);
+  const [content, dict] = await Promise.all([getContent(locale), getDictionary(locale)]);
   const l = locale as Locale;
 
   return (
     <SectionPage
-      title="Research"
-      description="The science behind Gytev. We publish openly and build for everyone."
+      title={dict.pages.research.title}
+      description={dict.pages.research.description}
     >
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {content.research.map((topic) => (
