@@ -18,7 +18,23 @@ export function Navbar({ locale, dictionary }: NavbarProps) {
   const [open, setOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
+  const logoRef = useRef<HTMLImageElement>(null);
   const dict = dictionary as Dictionary;
+
+  useEffect(() => {
+    function restartLogo() {
+      const img = logoRef.current;
+      if (!img || window.scrollY !== 0) return;
+      const clone = img.cloneNode(true) as HTMLImageElement;
+      img.replaceWith(clone);
+      logoRef.current = clone;
+    }
+    function onScroll() {
+      if (window.scrollY === 0) restartLogo();
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     function onMouseDown(event: MouseEvent) {
@@ -48,7 +64,12 @@ export function Navbar({ locale, dictionary }: NavbarProps) {
       <nav className="mx-auto flex h-16 w-full max-w-[1440px] items-center justify-between px-4 sm:px-10">
         <div className="flex items-center gap-6 lg:gap-8">
           <a href={localizedHref(locale, "/")} className="shrink-0">
-            <span className="text-[22px] font-bold tracking-[-.055em] text-white">Gytev</span>
+            <img
+              ref={logoRef}
+              src="/Logo%20G%E2%85%84T%C6%8EV.gif"
+              alt="Gytev"
+              className="h-25 w-25 rounded-full object-cover"
+            />
           </a>
 
           <div className="hidden items-center gap-4 lg:flex xl:gap-6">
@@ -63,7 +84,7 @@ export function Navbar({ locale, dictionary }: NavbarProps) {
                   onMouseEnter={() => setActive(item.key)}
                   onClick={() => setActive(item.key)}
                   aria-expanded={active === item.key}
-                  className={`px-0 py-2 text-[13px] font-medium transition-colors ${active === item.key ? "text-white" : "text-[#c8c6c5] hover:text-white"}`}
+                  className={`px-0 py-2 text-[14px] font-medium transition-colors ${active === item.key ? "text-white" : "text-[#c8c6c5] hover:text-white"}`}
                 >
                   {label}
                 </button>
@@ -90,13 +111,13 @@ export function Navbar({ locale, dictionary }: NavbarProps) {
         <div className="flex items-center gap-2">
           <a
             href={localizedHref(locale, "/company/contact")}
-            className="hidden rounded-full px-3 py-2 text-[13px] font-medium text-[#c8c6c5] transition-colors hover:text-white lg:inline-flex"
+            className="hidden rounded-full px-3 py-2 text-[14px] font-medium text-[#c8c6c5] transition-colors hover:text-white lg:inline-flex"
           >
             {dict.header.login}
           </a>
           <a
             href={localizedHref(locale, "/products/rio")}
-            className="hidden rounded-full bg-white px-4 py-2 text-[13px] font-semibold text-[#1a1c1c] transition-colors hover:bg-zinc-200 lg:inline-flex"
+            className="hidden rounded-full bg-white px-4 py-2 text-[14px] font-semibold text-[#1a1c1c] transition-colors hover:bg-zinc-200 lg:inline-flex"
           >
             {dict.header.cta} <span aria-hidden className="ml-1">→</span>
           </a>
