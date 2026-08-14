@@ -1,14 +1,23 @@
 "use client";
 
 import Link from "next/link";
+import type { Dictionary } from "@gytev/i18n";
+import type { Locale } from "@gytev/types";
+import { localizedHref } from "@gytev/i18n";
 import { useEffect, useRef } from "react";
+
+type HeroProps = {
+  dict: Dictionary;
+  locale: Locale;
+};
 
 /**
  * The cursor effect writes CSS custom properties directly to the visual layer.
  * It intentionally avoids state updates, keeping pointer movement off React's render path.
  */
-export function Hero() {
+export function Hero({ dict, locale }: HeroProps) {
   const visualRef = useRef<HTMLDivElement>(null);
+  const hero = dict.hero;
 
   useEffect(() => {
     const visual = visualRef.current;
@@ -49,24 +58,36 @@ export function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
       <div className="hero__visual" ref={visualRef} aria-hidden="true">
-        <div className="hero__halo hero__halo--one" />
-        <div className="hero__halo hero__halo--two" />
-        <div className="hero__field" />
-        <div className="hero__ribbon hero__ribbon--one" />
-        <div className="hero__ribbon hero__ribbon--two" />
+        <div className="hero__rings">
+          <div className="hero__halo hero__halo--one" />
+          <div className="hero__halo hero__halo--two" />
+          <div className="hero__field" />
+          <div className="hero__ribbon hero__ribbon--one" />
+          <div className="hero__ribbon hero__ribbon--two" />
+        </div>
         <div className="hero__signal" />
         <div className="hero__grain" />
       </div>
       <div className="hero__content">
-        <p className="hero__eyebrow">GYTEV · INTELLIGENCE SYSTEMS</p>
-        <h1 id="hero-title">Intelligence that<br /><span>moves the world forward.</span></h1>
-        <p className="hero__lede">Gytev turns complex knowledge into autonomous systems that see clearly, reason precisely, and create momentum.</p>
+        <p className="hero__eyebrow">{hero.eyebrow}</p>
+        <h1 id="hero-title">
+          {hero.title}
+          <br />
+          <span>{hero.highlight}</span>
+        </h1>
+        <p className="hero__lede">{hero.description}</p>
         <div className="hero__actions">
-          <Link href="/en/products/rio" className="hero__primary">Explore Rio <span aria-hidden>↗</span></Link>
-          <Link href="/en/company/vision" className="hero__secondary">Discover our vision <span aria-hidden>→</span></Link>
+          <Link href={localizedHref(locale, "/products/rio")} className="hero__primary">
+            {hero.ctaPrimary} <span aria-hidden>↗</span>
+          </Link>
+          <Link href={localizedHref(locale, "/company/vision")} className="hero__secondary">
+            {hero.ctaSecondary} <span aria-hidden>→</span>
+          </Link>
         </div>
       </div>
-      <p className="hero__caption" aria-hidden="true"><i /> Adaptive reasoning, in motion</p>
+      <p className="hero__caption" aria-hidden="true">
+        <i /> {hero.caption}
+      </p>
     </section>
   );
 }

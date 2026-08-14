@@ -2,6 +2,7 @@ import type { Locale } from "@gytev/types";
 import { localizedHref } from "@gytev/i18n";
 import { SectionPage } from "@/components/SectionPage";
 import { getContent } from "@/lib/content";
+import { getDictionary } from "@/lib/i18n";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -9,13 +10,13 @@ type Props = {
 
 export default async function SolutionsPage({ params }: Props) {
   const { locale } = await params;
-  const content = await getContent(locale);
+  const [content, dict] = await Promise.all([getContent(locale), getDictionary(locale)]);
   const l = locale as Locale;
 
   return (
     <SectionPage
-      title="Solutions"
-      description="Real-world systems that matter: agriculture and public health first."
+      title={dict.pages.solutions.title}
+      description={dict.pages.solutions.description}
     >
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         {content.solutions.map((solution) => (
@@ -31,7 +32,7 @@ export default async function SolutionsPage({ params }: Props) {
               <p className="mt-3 text-base leading-7 text-zinc-600">{solution.description}</p>
             </div>
             <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-orange-600">
-              Learn more <span aria-hidden>→</span>
+              {dict.pages.solutions.cta} <span aria-hidden>→</span>
             </span>
           </a>
         ))}

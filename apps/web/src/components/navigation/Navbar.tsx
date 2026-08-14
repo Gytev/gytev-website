@@ -64,10 +64,13 @@ export function Navbar({ locale, dictionary }: NavbarProps) {
       <nav className="mx-auto flex h-16 w-full max-w-[1440px] items-center justify-between px-4 sm:px-10">
         <div className="flex items-center gap-6 lg:gap-8">
           <a href={localizedHref(locale, "/")} className="shrink-0">
+            {/* eslint-disable-next-line @next/next/no-img-element -- animated GIF, cannot use next/image */}
             <img
               ref={logoRef}
               src="/Logo%20G%E2%85%84T%C6%8EV.gif"
               alt="Gytev"
+              width={100}
+              height={100}
               className="h-25 w-25 rounded-full object-cover"
             />
           </a>
@@ -154,6 +157,7 @@ export function Navbar({ locale, dictionary }: NavbarProps) {
 
       <SearchOverlay
         locale={locale}
+        dict={dict}
         open={searchOpen}
         onClose={() => setSearchOpen(false)}
       />

@@ -51,6 +51,13 @@ export function Footer({ locale, dictionary }: FooterProps) {
         ))}
       </div>
 
+      <div className="px-2 pt-12" aria-hidden="true">
+        <p className="mx-auto max-w-[1440px] select-none overflow-hidden whitespace-nowrap text-center font-black leading-[0.82] tracking-[-0.055em] text-white">
+          <span className="text-[clamp(80px,18vw,320px)]">{dict.footer.big}</span>
+          <span className="text-[clamp(80px,18vw,320px)] text-[#ff4b18]">{dict.footer.bigAccent}</span>
+        </p>
+      </div>
+
       <div className="border-t border-[#333]">
         <div className="mx-auto flex max-w-[1280px] w-full flex-col items-center justify-between gap-6 px-6 py-8 lg:flex-row lg:px-8">
           <div className="flex w-full flex-col items-center justify-between gap-4 sm:flex-row">
@@ -62,8 +69,6 @@ export function Footer({ locale, dictionary }: FooterProps) {
             </p>
             <LanguageSwitcher locale={locale} />
           </div>
-
-          <div className="hidden" aria-hidden>{dict.footer.big}{dict.footer.bigAccent}</div>
         </div>
       </div>
     </footer>

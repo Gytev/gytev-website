@@ -59,6 +59,7 @@ export type Dictionary = {
     description: string;
     ctaPrimary: string;
     ctaSecondary: string;
+    caption: string;
   };
   centralQuestion: {
     title: string;
@@ -87,6 +88,85 @@ export type Dictionary = {
     title: string;
     ctaPrimary: string;
     ctaSecondary: string;
+  };
+  search: {
+    placeholder: string;
+    close: string;
+    empty: string;
+    noResults: string;
+  };
+  home: {
+    cases: {
+      heading: string;
+      badge: string;
+      learnMore: string;
+      viewAll: string;
+      prev: string;
+      next: string;
+    };
+    trusted: {
+      title: string;
+      subtitle: string;
+      label: string;
+      companies: { name: string; sector: string }[];
+    };
+    why: {
+      eyebrow: string;
+      heading: string;
+      description: string;
+      action: string;
+      railLabel: string;
+      switcherLabel: string;
+      items: {
+        title: string;
+        tagline: string;
+        description: string;
+        tags: string[];
+        panelType: "observe" | "understand" | "predict" | "act";
+        panel: { label: string; lines: string[] };
+      }[];
+    };
+    products: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      tabs: {
+        id: string;
+        label: string;
+        heading: string;
+        description: string;
+        features: { title: string; description: string }[];
+        preview: { label: string; heading: string; alert: string; lines: string[] };
+      }[];
+    };
+    journey: {
+      eyebrow: string;
+    };
+  };
+  pages: {
+    products: { title: string; description: string; cta: string };
+    solutions: { title: string; description: string; cta: string };
+    research: { title: string; description: string };
+    developers: { title: string; description: string };
+    blog: { title: string; description: string };
+    customers: { title: string; description: string };
+    company: { title: string; description: string };
+    rio: { contactSales: string; devDocs: string };
+    redq: { contactUs: string; pillars: { title: string; description: string }[] };
+    vision: { eyebrow: string; heading: string; discover: string; loop: { step: string; text: string }[] };
+    companySections: {
+      about: string;
+      story: string;
+      vision: string;
+      newsroom: string;
+      careers: string;
+      contact: string;
+    };
+    companyDetail: {
+      about: { kicker: string; title: string; body: string };
+      careers: { kicker: string; title: string; body: string };
+      contact: { kicker: string; title: string; note: string; cta: string };
+    };
   };
   footer: {
     tagline: string;
@@ -128,7 +208,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
           {
             title: "Featured",
             links: [
-              { label: "Rio AI", href: "/products/rio/ai" },
+              { label: "Rio", href: "/products/rio" },
               { label: "RedQ", href: "/solutions/redq" },
               { label: "Customers", href: "/customers" },
             ],
@@ -148,16 +228,15 @@ export const dictionaries: Record<Locale, Dictionary> = {
             title: "Explore products",
             links: [
               { label: "Rio", href: "/products/rio" },
-              { label: "Rio Box", href: "/products/rio/box" },
-              { label: "Rio AI", href: "/products/rio/ai" },
-              { label: "Platform", href: "/products/rio/platform" },
+              { label: "RedQ", href: "/solutions/redq" },
+              { label: "All products", href: "/products" },
             ],
           },
           {
             title: "Platform",
             links: [
-              { label: "Web apps", href: "/products/rio/platform" },
-              { label: "Mobile", href: "/products/rio/platform" },
+              { label: "Web apps", href: "/products" },
+              { label: "Mobile", href: "/products" },
               { label: "APIs & SDKs", href: "/developers" },
             ],
           },
@@ -184,9 +263,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
             title: "Explore solutions",
             links: [
               { label: "RedQ", href: "/solutions/redq" },
-              { label: "For Agriculture", href: "/solutions/agriculture" },
-              { label: "For Public Health", href: "/solutions/public-health" },
-              { label: "For Government", href: "/solutions/government" },
+              { label: "Agriculture", href: "/solutions" },
+              { label: "Public health", href: "/solutions" },
+              { label: "Customers", href: "/customers" },
             ],
           },
           {
@@ -199,9 +278,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
           {
             title: "Industries",
             links: [
-              { label: "Farming", href: "/solutions/agriculture" },
-              { label: "Healthcare", href: "/solutions/public-health" },
-              { label: "Civil service", href: "/solutions/government" },
+              { label: "Farming", href: "/solutions" },
+              { label: "Healthcare", href: "/solutions" },
+              { label: "Civil service", href: "/solutions" },
               { label: "Customers", href: "/customers" },
             ],
           },
@@ -221,7 +300,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
             links: [
               { label: "API reference", href: "/developers" },
               { label: "SDKs", href: "/developers" },
-              { label: "Status", href: "/developers/status" },
               { label: "Open source", href: "/developers" },
             ],
           },
@@ -294,13 +372,14 @@ export const dictionaries: Record<Locale, Dictionary> = {
       search: "Search",
     },
     hero: {
-      eyebrow: "Gytev",
+      eyebrow: "GYTEV · INTELLIGENCE SYSTEMS",
       title: "Intelligent systems that understand",
       highlight: "the real world.",
       description:
         "We combine sensors, data, artificial intelligence and domain knowledge to observe, understand, predict and act on the systems that surround us — farms, blood banks, cities, industries.",
       ctaPrimary: "Discover Rio",
       ctaSecondary: "Read the vision",
+      caption: "Adaptive reasoning, in motion",
     },
     centralQuestion: {
       title: "Gytev is built on hard questions.",
@@ -362,100 +441,299 @@ export const dictionaries: Record<Locale, Dictionary> = {
       ctaPrimary: "Start building",
       ctaSecondary: "Contact sales",
     },
+    search: {
+      placeholder: "Search the site…",
+      close: "Close search",
+      empty: "Type to search the site.",
+      noResults: "No results for “{query}”.",
+    },
+    home: {
+      cases: {
+        heading: "Built with our customers",
+        badge: "CUSTOMER STORY",
+        learnMore: "Read the story",
+        viewAll: "All customers",
+        prev: "Previous story",
+        next: "Next story",
+      },
+      trusted: {
+        title: "Built for Africa.",
+        subtitle: "Built for the world.",
+        label: "Trusted by teams across the continent",
+        companies: [
+          { name: "Coopérative du Sahel", sector: "Agritech" },
+          { name: "Banque de Sang de Dakar", sector: "Health" },
+          { name: "Mwamba Telecom", sector: "Telecom" },
+          { name: "Nyota Logistics", sector: "Logistics" },
+          { name: "Umoja Bank", sector: "Banking" },
+          { name: "Casamance Foods", sector: "Agro-food" },
+          { name: "Kudu Energy", sector: "Energy" },
+          { name: "Zahra Health", sector: "Telemedicine" },
+        ],
+      },
+      why: {
+        eyebrow: "Why Gytev",
+        heading: "One intelligence loop.",
+        description:
+          "Every Gytev system follows the same loop: observe the field, understand it, predict what happens next, and act on a clear recommendation.",
+        action: "Explore Rio",
+        railLabel: "Capabilities",
+        switcherLabel: "Switch capability",
+        items: [
+          {
+            title: "Observe.",
+            tagline: "Sense the field",
+            description:
+              "The Rio Box collects soil moisture, temperature, humidity, light and rainfall, continuously.",
+            tags: ["SOIL MOISTURE", "TEMPERATURE", "AIR HUMIDITY", "RAINFALL", "LIGHT"],
+            panelType: "observe",
+            panel: {
+              label: "Rio Box · live readout",
+              lines: ["Soil moisture · 22%", "Air temperature · 31°C", "Rainfall today · 0 mm", "Light · 84 klx"],
+            },
+          },
+          {
+            title: "Understand.",
+            tagline: "Turn data into insight",
+            description:
+              "AI combines field history, weather, satellite data and agronomic knowledge to explain what is happening and why.",
+            tags: ["ANOMALY DETECTION", "CROP STAGES", "AGROCLIMATIC ANALYSIS"],
+            panelType: "understand",
+            panel: {
+              label: "AI analysis",
+              lines: ["Maize · flowering stage", "Soil moisture dropping 5 days", "Cause · no rain + heat", "Confidence · 91%"],
+            },
+          },
+          {
+            title: "Predict.",
+            tagline: "Anticipate risks",
+            description:
+              "Water stress, diseases, yield loss. Rio forecasts risks days and weeks ahead, crop by crop.",
+            tags: ["WATER-STRESS RISK", "YIELD PREDICTION", "WEATHER FUSION"],
+            panelType: "predict",
+            panel: {
+              label: "7-day forecast",
+              lines: ["Water stress · high", "Disease pressure · low", "Yield impact · ~18%", "Next rain · in 7 days"],
+            },
+          },
+          {
+            title: "Act.",
+            tagline: "Recommend the right decision",
+            description:
+              "Irrigation within 24 hours, fertilizer adjustment, harvest timing. Clear recommendations, in your language.",
+            tags: ["IRRIGATION ALERTS", "DECISION SUPPORT", "WEB & MOBILE"],
+            panelType: "act",
+            panel: {
+              label: "Recommended action",
+              lines: ["Irrigate within 24h", "Apply 20 mm over 2 passes", "Re-check soil in 3 days"],
+            },
+          },
+        ],
+      },
+      products: {
+        eyebrow: "Products & platform",
+        title: "Intelligence that acts on the real world.",
+        description:
+          "From the Rio Box on the field to a national blood platform — Gytev turns complex real-world systems into systems you can understand, predict and act on.",
+        tabs: [
+          {
+            id: "rio",
+            label: "Rio",
+            heading: "A digital twin of your farm.",
+            description:
+              "An IoT box senses the field, AI understands it, and the platform recommends the right decision — irrigation, fertilizer, harvest timing.",
+            features: [
+              { title: "Sense continuously", description: "Soil moisture, temperature, humidity, light and rainfall, sent automatically." },
+              { title: "Understand with AI", description: "Field history, weather and satellite data, fused into one clear picture." },
+              { title: "Act with confidence", description: "A clear recommendation for every question, in your language." },
+            ],
+            preview: {
+              label: "Rio · Digital twin",
+              heading: "Maize field — flowering stage",
+              alert: "Irrigate within 24h",
+              lines: ["Soil moisture dropping for 5 days", "No rain expected for 7 days", "Water-stress risk · high", "Yield impact if ignored · ~18%"],
+            },
+          },
+          {
+            id: "redq",
+            label: "RedQ",
+            heading: "A national blood network, in real time.",
+            description:
+              "From donor to hospital, every blood bag tracked — type, group, status and expiry — with shortages predicted, not endured.",
+            features: [
+              { title: "Trace every bag", description: "Donor, collection center, lab, bank and hospital in one system." },
+              { title: "See the national stock", description: "Real-time visibility of available bags across the whole network." },
+              { title: "Anticipate shortages", description: "Demand forecasting and redistribution before expiry." },
+            ],
+            preview: {
+              label: "RedQ · National network",
+              heading: "National stock overview",
+              alert: "O+ shortage predicted in 12 days",
+              lines: ["2 418 bags tracked", "14 hospitals connected", "3 short-expiry alerts"],
+            },
+          },
+          {
+            id: "platform",
+            label: "Platform",
+            heading: "Build intelligence for your world.",
+            description:
+              "The Gytev platform combines IoT, AI and domain knowledge so you can observe, understand, predict and act on any real-world system.",
+            features: [
+              { title: "Observe", description: "Connect sensors, machines, cameras, satellites and enterprise systems." },
+              { title: "Reason", description: "Models trained to understand your context, in your language." },
+              { title: "Act", description: "Alerts, dashboards and recommendations that reach the right people." },
+            ],
+            preview: {
+              label: "Gytev platform",
+              heading: "From sensing to action",
+              alert: "Digital twin updated",
+              lines: ["IoT + AI + domain knowledge", "Predict, optimize, decide", "Works in your language"],
+            },
+          },
+        ],
+      },
+      journey: {
+        eyebrow: "We are just getting started",
+      },
+    },
+    pages: {
+      products: {
+        title: "Products",
+        description: "Intelligent systems for the real world, starting with agriculture.",
+        cta: "Explore",
+      },
+      solutions: {
+        title: "Solutions",
+        description: "Real-world systems that matter: agriculture and public health first.",
+        cta: "Learn more",
+      },
+      research: {
+        title: "Research",
+        description: "The science behind Gytev. We publish openly and build for everyone.",
+      },
+      developers: {
+        title: "Developers",
+        description: "Build on Gytev with clean APIs, official SDKs and real documentation.",
+      },
+      blog: {
+        title: "Blog",
+        description: "News, engineering deep-dives and stories from the Gytev team.",
+      },
+      customers: {
+        title: "Customers",
+        description: "Organizations across Africa building on Gytev every day.",
+      },
+      company: {
+        title: "Company",
+        description: "Who we are, where we're going, and why.",
+      },
+      rio: {
+        contactSales: "Contact sales",
+        devDocs: "Developer docs",
+      },
+      redq: {
+        contactUs: "Contact us",
+        pillars: [
+          { title: "Donors & donations", description: "Register donors, record every donation, from collection center to lab." },
+          { title: "Traceability", description: "Every blood bag tracked: type, group, status, expiry, location." },
+          { title: "National stock", description: "Real-time visibility of available bags across the whole network." },
+          { title: "Demand & distribution", description: "Match hospital demand to supply, and redistribute before expiry." },
+        ],
+      },
+      vision: {
+        eyebrow: "The Gytev intelligence loop",
+        heading: "We build intelligence for the real world.",
+        discover: "Discover Rio",
+        loop: [
+          { step: "Observe", text: "Sensors, IoT, cameras, satellites, machines, human inputs." },
+          { step: "Understand", text: "Patterns, relationships, anomalies, trends, risks, context." },
+          { step: "Predict", text: "What is likely to happen, when, and what could cause it." },
+          { step: "Optimize", text: "Which action is most efficient, how to allocate resources." },
+          { step: "Decide", text: "Given what we know, what should we do next?" },
+          { step: "Act", text: "Recommendations, automation, alerts, resource allocation." },
+          { step: "Learn", text: "Outcomes generate new data; new data improves the model." },
+        ],
+      },
+      companySections: {
+        about: "About",
+        story: "Our story",
+        vision: "Vision",
+        newsroom: "Newsroom",
+        careers: "Careers",
+        contact: "Contact",
+      },
+      companyDetail: {
+        about: {
+          kicker: "Who we are",
+          title: "About Gytev",
+          body: "The story of a company building intelligence for the real world, from Africa.",
+        },
+        careers: {
+          kicker: "Join us",
+          title: "Careers at Gytev",
+          body: "We're hiring engineers, researchers and operators who want to understand the real world.",
+        },
+        contact: {
+          kicker: "Talk to us",
+          title: "Contact Gytev",
+          note: "Tell us what you want to observe, understand or act on.",
+          cta: "Get in touch",
+        },
+      },
+    },
     footer: {
       tagline: "We build intelligence for the real world.",
       rights: "All rights reserved.",
       manageCookies: "Manage Cookies",
       big: "Gytev",
-      bigAccent: "Home",
+      bigAccent: "®",
       columns: [
         {
-          title: "Research",
+          title: "Company",
           links: [
-            { label: "Research Index", href: "/research" },
-            { label: "Research Overview", href: "/research" },
-            { label: "Economic Research", href: "/research" },
-            { label: "Latest Advancements", href: "/research" },
-            { label: "Open Models", href: "/research" },
-          ],
-        },
-        {
-          title: "Safety",
-          links: [
-            { label: "Safety Approach", href: "/research" },
-            { label: "Deployment Safety", href: "/research", external: true },
-            { label: "Security & Privacy", href: "/research" },
-            { label: "Trust & Transparency", href: "/research" },
+            { label: "About Us", href: "/company/about" },
+            { label: "Our Vision", href: "/company/vision" },
+            { label: "Careers", href: "/company/careers" },
+            { label: "Contact", href: "/company/contact" },
           ],
         },
         {
           title: "Products",
           links: [
             { label: "Rio", href: "/products/rio" },
-            { label: "Release Notes", href: "/products/rio" },
+            { label: "RedQ", href: "/solutions/redq" },
+            { label: "All products", href: "/products" },
           ],
         },
         {
-          title: "API Platform",
+          title: "Solutions",
           links: [
-            { label: "Overview", href: "/developers" },
-            { label: "API Log In", href: "/developers", external: true },
-            { label: "Docs", href: "/developers", external: true },
-            { label: "SDKs", href: "/developers" },
+            { label: "Agriculture", href: "/solutions" },
+            { label: "Public health", href: "/solutions" },
+            { label: "Customers", href: "/customers" },
           ],
         },
         {
-          title: "Business",
+          title: "Research",
           links: [
-            { label: "Overview", href: "/solutions" },
-            { label: "Solutions", href: "/solutions" },
-            { label: "Resources", href: "/solutions" },
-            { label: "Customer Stories", href: "/customers" },
-            { label: "Partner Network", href: "/company" },
-            { label: "Contact Sales", href: "/company/contact" },
+            { label: "Publications", href: "/research" },
+            { label: "Open source", href: "/developers" },
+            { label: "Research news", href: "/blog" },
           ],
         },
         {
           title: "Developers",
           links: [
-            { label: "Apps SDK", href: "/developers" },
-            { label: "Open Models", href: "/developers" },
-            { label: "Docs", href: "/developers", external: true },
-            { label: "Resources", href: "/developers", external: true },
-            { label: "Developer Forum", href: "https://github.com/gytev", external: true },
-          ],
-        },
-        {
-          title: "Company",
-          links: [
-            { label: "About Us", href: "/company/about" },
-            { label: "Our Charter", href: "/company/vision" },
-            { label: "Careers", href: "/company/careers" },
-            { label: "News", href: "/blog" },
+            { label: "Overview", href: "/developers" },
+            { label: "SDKs", href: "/developers" },
+            { label: "GitHub", href: "https://github.com/gytev", external: true },
           ],
         },
         {
           title: "Support",
           links: [
             { label: "Help Center", href: "/developers" },
-            { label: "Status", href: "/developers/status" },
-          ],
-        },
-        {
-          title: "More",
-          links: [
-            { label: "Stories", href: "/blog" },
-            { label: "Academy", href: "/blog" },
-            { label: "Podcast", href: "https://youtube.com/@gytev", external: true },
-            { label: "RSS", href: "https://x.com/gytev", external: true },
-          ],
-        },
-        {
-          title: "Terms & Policies",
-          links: [
-            { label: "Terms of Use", href: "/legal/terms" },
-            { label: "Privacy Policy", href: "/legal/privacy" },
-            { label: "Other Policies", href: "/legal/privacy" },
+            { label: "Contact", href: "/company/contact" },
           ],
         },
       ],
@@ -490,7 +768,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
           {
             title: "À la une",
             links: [
-              { label: "IA Rio", href: "/products/rio/ai" },
+              { label: "IA Rio", href: "/products/rio" },
               { label: "RedQ", href: "/solutions/redq" },
               { label: "Clients", href: "/customers" },
             ],
@@ -510,16 +788,15 @@ export const dictionaries: Record<Locale, Dictionary> = {
             title: "Explorer les produits",
             links: [
               { label: "Rio", href: "/products/rio" },
-              { label: "Box Rio", href: "/products/rio/box" },
-              { label: "IA Rio", href: "/products/rio/ai" },
-              { label: "Plateforme", href: "/products/rio/platform" },
+              { label: "RedQ", href: "/solutions/redq" },
+              { label: "Tous les produits", href: "/products" },
             ],
           },
           {
             title: "Plateforme",
             links: [
-              { label: "Applications web", href: "/products/rio/platform" },
-              { label: "Applications mobiles", href: "/products/rio/platform" },
+              { label: "Applications web", href: "/products" },
+              { label: "Applications mobiles", href: "/products" },
               { label: "API & SDK", href: "/developers" },
             ],
           },
@@ -546,9 +823,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
             title: "Explorer les solutions",
             links: [
               { label: "RedQ", href: "/solutions/redq" },
-              { label: "Pour l'agriculture", href: "/solutions/agriculture" },
-              { label: "Pour la santé publique", href: "/solutions/public-health" },
-              { label: "Pour les gouvernements", href: "/solutions/government" },
+              { label: "Agriculture", href: "/solutions" },
+              { label: "Santé publique", href: "/solutions" },
+              { label: "Clients", href: "/customers" },
             ],
           },
           {
@@ -561,9 +838,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
           {
             title: "Secteurs",
             links: [
-              { label: "Agriculture", href: "/solutions/agriculture" },
-              { label: "Santé", href: "/solutions/public-health" },
-              { label: "Services publics", href: "/solutions/government" },
+              { label: "Agriculture", href: "/solutions" },
+              { label: "Santé", href: "/solutions" },
+              { label: "Services publics", href: "/solutions" },
               { label: "Clients", href: "/customers" },
             ],
           },
@@ -583,7 +860,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
             links: [
               { label: "Référence API", href: "/developers" },
               { label: "SDK", href: "/developers" },
-              { label: "Statut", href: "/developers/status" },
               { label: "Open source", href: "/developers" },
             ],
           },
@@ -656,13 +932,14 @@ export const dictionaries: Record<Locale, Dictionary> = {
       search: "Rechercher",
     },
     hero: {
-      eyebrow: "Gytev",
+      eyebrow: "GYTEV · SYSTÈMES D'INTELLIGENCE",
       title: "Des systèmes intelligents qui comprennent",
       highlight: "le monde réel.",
       description:
         "Nous combinons capteurs, données, intelligence artificielle et connaissance des métiers pour observer, comprendre, prédire et agir sur les systèmes qui nous entourent — exploitations, banques de sang, villes, industries.",
       ctaPrimary: "Découvrir Rio",
       ctaSecondary: "Lire la vision",
+      caption: "Un raisonnement adaptatif, en mouvement",
     },
     centralQuestion: {
       title: "Gytev est fondé sur des questions difficiles.",
@@ -724,100 +1001,299 @@ export const dictionaries: Record<Locale, Dictionary> = {
       ctaPrimary: "Commencer",
       ctaSecondary: "Contacter les ventes",
     },
+    search: {
+      placeholder: "Rechercher sur le site…",
+      close: "Fermer la recherche",
+      empty: "Saisissez du texte pour rechercher sur le site.",
+      noResults: "Aucun résultat pour « {query} ».",
+    },
+    home: {
+      cases: {
+        heading: "Construit avec nos clients",
+        badge: "RÉCIT CLIENT",
+        learnMore: "Lire le récit",
+        viewAll: "Tous les clients",
+        prev: "Récit précédent",
+        next: "Récit suivant",
+      },
+      trusted: {
+        title: "Conçu pour l'Afrique.",
+        subtitle: "Conçu pour le monde.",
+        label: "Ils nous font confiance sur tout le continent",
+        companies: [
+          { name: "Coopérative du Sahel", sector: "Agritech" },
+          { name: "Banque de Sang de Dakar", sector: "Santé" },
+          { name: "Mwamba Telecom", sector: "Télécom" },
+          { name: "Nyota Logistics", sector: "Logistique" },
+          { name: "Umoja Bank", sector: "Banque" },
+          { name: "Casamance Foods", sector: "Agroalimentaire" },
+          { name: "Kudu Energy", sector: "Énergie" },
+          { name: "Zahra Health", sector: "Télémédecine" },
+        ],
+      },
+      why: {
+        eyebrow: "Pourquoi Gytev",
+        heading: "Une seule boucle d'intelligence.",
+        description:
+          "Chaque système Gytev suit la même boucle : observer le terrain, le comprendre, prédire la suite, puis agir sur une recommandation claire.",
+        action: "Explorer Rio",
+        railLabel: "Capacités",
+        switcherLabel: "Changer de capacité",
+        items: [
+          {
+            title: "Observer.",
+            tagline: "Capter le terrain",
+            description:
+              "Le Rio Box collecte en continu l'humidité du sol, la température, l'humidité de l'air, la lumière et les pluies.",
+            tags: ["HUMIDITÉ DU SOL", "TEMPÉRATURE", "HUMIDITÉ DE L'AIR", "PLUIES", "LUMIÈRE"],
+            panelType: "observe",
+            panel: {
+              label: "Rio Box · lecture en direct",
+              lines: ["Humidité du sol · 22 %", "Température de l'air · 31 °C", "Pluie aujourd'hui · 0 mm", "Lumière · 84 klx"],
+            },
+          },
+          {
+            title: "Comprendre.",
+            tagline: "Transformer les données en insights",
+            description:
+              "L'IA combine l'historique de la parcelle, la météo, les données satellite et la connaissance agronomique pour expliquer ce qui se passe et pourquoi.",
+            tags: ["DÉTECTION D'ANOMALIES", "STADES DE CULTURE", "ANALYSE AGROCLIMATIQUE"],
+            panelType: "understand",
+            panel: {
+              label: "Analyse IA",
+              lines: ["Maïs · stade floraison", "Humidité du sol en baisse 5 jours", "Cause · pas de pluie + chaleur", "Confiance · 91 %"],
+            },
+          },
+          {
+            title: "Prédire.",
+            tagline: "Anticiper les risques",
+            description:
+              "Stress hydrique, maladies, perte de rendement. Rio prévoit les risques des jours et des semaines à l'avance, culture par culture.",
+            tags: ["RISQUE DE STRESS HYDRIQUE", "PRÉVISION DE RENDEMENT", "FUSION MÉTÉO"],
+            panelType: "predict",
+            panel: {
+              label: "Prévision à 7 jours",
+              lines: ["Stress hydrique · élevé", "Pression des maladies · faible", "Impact sur le rendement · ~18 %", "Prochaine pluie · dans 7 jours"],
+            },
+          },
+          {
+            title: "Agir.",
+            tagline: "Recommander la bonne décision",
+            description:
+              "Irriguer sous 24 heures, ajuster l'engrais, choisir le moment de la récolte. Des recommandations claires, dans votre langue.",
+            tags: ["ALERTES D'IRRIGATION", "AIDE À LA DÉCISION", "WEB & MOBILE"],
+            panelType: "act",
+            panel: {
+              label: "Action recommandée",
+              lines: ["Irriguer sous 24 h", "Apporter 20 mm en 2 passages", "Re-vérifier le sol dans 3 jours"],
+            },
+          },
+        ],
+      },
+      products: {
+        eyebrow: "Produits & plateforme",
+        title: "Une intelligence qui agit sur le monde réel.",
+        description:
+          "Du Rio Box au champ jusqu'à une plateforme sanguine nationale — Gytev transforme les systèmes complexes du monde réel en systèmes que l'on peut comprendre, prédire et piloter.",
+        tabs: [
+          {
+            id: "rio",
+            label: "Rio",
+            heading: "Un jumeau numérique de votre exploitation.",
+            description:
+              "Un boîtier IoT capte le champ, l'IA le comprend, et la plateforme recommande la bonne décision — irrigation, engrais, moment de la récolte.",
+            features: [
+              { title: "Capter en continu", description: "Humidité du sol, température, humidité de l'air, lumière et pluies, envoyées automatiquement." },
+              { title: "Comprendre avec l'IA", description: "Historique de la parcelle, météo et données satellite, fusionnés en une image claire." },
+              { title: "Agir avec confiance", description: "Une recommandation claire pour chaque question, dans votre langue." },
+            ],
+            preview: {
+              label: "Rio · Jumeau numérique",
+              heading: "Parcelle de maïs — stade floraison",
+              alert: "Irriguer sous 24 h",
+              lines: ["Humidité du sol en baisse depuis 5 jours", "Aucune pluie attendue dans 7 jours", "Risque de stress hydrique · élevé", "Impact sur le rendement si ignoré · ~18 %"],
+            },
+          },
+          {
+            id: "redq",
+            label: "RedQ",
+            heading: "Un réseau sanguin national, en temps réel.",
+            description:
+              "Du donneur à l'hôpital, chaque poche de sang est tracée — type, groupe, statut et péremption — avec des pénuries prédites, pas subies.",
+            features: [
+              { title: "Tracer chaque poche", description: "Donneur, centre de collecte, laboratoire, banque et hôpital dans un seul système." },
+              { title: "Voir le stock national", description: "Visibilité en temps réel des poches disponibles sur tout le réseau." },
+              { title: "Anticiper les pénuries", description: "Prévision de la demande et redistribution avant la péremption." },
+            ],
+            preview: {
+              label: "RedQ · Réseau national",
+              heading: "Vue du stock national",
+              alert: "Pénurie O+ prévue dans 12 jours",
+              lines: ["2 418 poches tracées", "14 hôpitaux connectés", "3 alertes de péremption proche"],
+            },
+          },
+          {
+            id: "platform",
+            label: "Plateforme",
+            heading: "Construisez l'intelligence de votre monde.",
+            description:
+              "La plateforme Gytev combine IoT, IA et connaissance des métiers pour observer, comprendre, prédire et agir sur n'importe quel système réel.",
+            features: [
+              { title: "Observer", description: "Connectez capteurs, machines, caméras, satellites et systèmes d'entreprise." },
+              { title: "Raisonner", description: "Des modèles entraînés pour comprendre votre contexte, dans votre langue." },
+              { title: "Agir", description: "Alertes, tableaux de bord et recommandations qui atteignent les bonnes personnes." },
+            ],
+            preview: {
+              label: "Plateforme Gytev",
+              heading: "De la détection à l'action",
+              alert: "Jumeau numérique mis à jour",
+              lines: ["IoT + IA + connaissance métier", "Prédire, optimiser, décider", "Fonctionne dans votre langue"],
+            },
+          },
+        ],
+      },
+      journey: {
+        eyebrow: "Nous ne faisons que commencer",
+      },
+    },
+    pages: {
+      products: {
+        title: "Produits",
+        description: "Des systèmes intelligents pour le monde réel, à commencer par l'agriculture.",
+        cta: "Explorer",
+      },
+      solutions: {
+        title: "Solutions",
+        description: "Des systèmes réels qui comptent : l'agriculture et la santé publique d'abord.",
+        cta: "En savoir plus",
+      },
+      research: {
+        title: "Recherche",
+        description: "La science derrière Gytev. Nous publions ouvertement et construisons pour tous.",
+      },
+      developers: {
+        title: "Développeurs",
+        description: "Construisez sur Gytev avec des API propres, des SDK officiels et une vraie documentation.",
+      },
+      blog: {
+        title: "Blog",
+        description: "Actualités, plongées techniques et récits de l'équipe Gytev.",
+      },
+      customers: {
+        title: "Clients",
+        description: "Des organisations à travers l'Afrique qui construisent chaque jour sur Gytev.",
+      },
+      company: {
+        title: "Entreprise",
+        description: "Qui nous sommes, où nous allons, et pourquoi.",
+      },
+      rio: {
+        contactSales: "Contacter les ventes",
+        devDocs: "Documentation développeurs",
+      },
+      redq: {
+        contactUs: "Nous contacter",
+        pillars: [
+          { title: "Donneurs & dons", description: "Enregistrez les donneurs, tracez chaque don, du centre de collecte au laboratoire." },
+          { title: "Traçabilité", description: "Chaque poche de sang est tracée : type, groupe, statut, péremption, lieu." },
+          { title: "Stock national", description: "Visibilité en temps réel des poches disponibles sur tout le réseau." },
+          { title: "Demande & distribution", description: "Faire correspondre la demande hospitalière à l'offre, et redistribuer avant péremption." },
+        ],
+      },
+      vision: {
+        eyebrow: "La boucle d'intelligence Gytev",
+        heading: "Nous construisons l'intelligence pour le monde réel.",
+        discover: "Découvrir Rio",
+        loop: [
+          { step: "Observer", text: "Capteurs, IoT, caméras, satellites, machines, saisies humaines." },
+          { step: "Comprendre", text: "Motifs, relations, anomalies, tendances, risques, contexte." },
+          { step: "Prédire", text: "Ce qui va probablement se passer, quand, et ce qui pourrait en être la cause." },
+          { step: "Optimiser", text: "Quelle action est la plus efficace, comment allouer les ressources." },
+          { step: "Décider", text: "Au vu de ce que nous savons, que devons-nous faire ensuite ?" },
+          { step: "Agir", text: "Recommandations, automatisation, alertes, allocation des ressources." },
+          { step: "Apprendre", text: "Les résultats génèrent des données ; les données améliorent le modèle." },
+        ],
+      },
+      companySections: {
+        about: "À propos",
+        story: "Notre histoire",
+        vision: "Vision",
+        newsroom: "Salle de presse",
+        careers: "Carrières",
+        contact: "Contact",
+      },
+      companyDetail: {
+        about: {
+          kicker: "Qui nous sommes",
+          title: "À propos de Gytev",
+          body: "L'histoire d'une entreprise qui construit l'intelligence pour le monde réel, depuis l'Afrique.",
+        },
+        careers: {
+          kicker: "Rejoignez-nous",
+          title: "Carrières chez Gytev",
+          body: "Nous recrutons des ingénieurs, des chercheurs et des opérateurs qui veulent comprendre le monde réel.",
+        },
+        contact: {
+          kicker: "Parlons-en",
+          title: "Contacter Gytev",
+          note: "Dites-nous ce que vous voulez observer, comprendre ou piloter.",
+          cta: "Prendre contact",
+        },
+      },
+    },
     footer: {
       tagline: "Nous construisons l'intelligence pour le monde réel.",
       rights: "Tous droits réservés.",
       manageCookies: "Gérer les cookies",
       big: "Gytev",
-      bigAccent: "Home",
+      bigAccent: "®",
       columns: [
         {
-          title: "Recherche",
+          title: "Entreprise",
           links: [
-            { label: "Index de la recherche", href: "/research" },
-            { label: "Vue d'ensemble", href: "/research" },
-            { label: "Recherche économique", href: "/research" },
-            { label: "Dernières avancées", href: "/research" },
-            { label: "Modèles ouverts", href: "/research" },
-          ],
-        },
-        {
-          title: "Sécurité",
-          links: [
-            { label: "Approche de la sécurité", href: "/research" },
-            { label: "Sécurité du déploiement", href: "/research", external: true },
-            { label: "Sécurité & confidentialité", href: "/research" },
-            { label: "Confiance & transparence", href: "/research" },
+            { label: "À propos", href: "/company/about" },
+            { label: "Notre vision", href: "/company/vision" },
+            { label: "Carrières", href: "/company/careers" },
+            { label: "Contact", href: "/company/contact" },
           ],
         },
         {
           title: "Produits",
           links: [
             { label: "Rio", href: "/products/rio" },
-            { label: "Notes de version", href: "/products/rio" },
+            { label: "RedQ", href: "/solutions/redq" },
+            { label: "Tous les produits", href: "/products" },
           ],
         },
         {
-          title: "Plateforme API",
+          title: "Solutions",
           links: [
-            { label: "Vue d'ensemble", href: "/developers" },
-            { label: "Connexion API", href: "/developers", external: true },
-            { label: "Docs", href: "/developers", external: true },
-            { label: "SDK", href: "/developers" },
+            { label: "Agriculture", href: "/solutions" },
+            { label: "Santé publique", href: "/solutions" },
+            { label: "Clients", href: "/customers" },
           ],
         },
         {
-          title: "Entreprises",
+          title: "Recherche",
           links: [
-            { label: "Vue d'ensemble", href: "/solutions" },
-            { label: "Solutions", href: "/solutions" },
-            { label: "Ressources", href: "/solutions" },
-            { label: "Témoignages clients", href: "/customers" },
-            { label: "Réseau de partenaires", href: "/company" },
-            { label: "Contacter les ventes", href: "/company/contact" },
+            { label: "Publications", href: "/research" },
+            { label: "Open source", href: "/developers" },
+            { label: "Actualités recherche", href: "/blog" },
           ],
         },
         {
           title: "Développeurs",
           links: [
-            { label: "SDK applicatifs", href: "/developers" },
-            { label: "Modèles ouverts", href: "/developers" },
-            { label: "Docs", href: "/developers", external: true },
-            { label: "Ressources", href: "/developers", external: true },
-            { label: "Forum développeurs", href: "https://github.com/gytev", external: true },
-          ],
-        },
-        {
-          title: "Entreprise",
-          links: [
-            { label: "À propos", href: "/company/about" },
-            { label: "Notre charte", href: "/company/vision" },
-            { label: "Carrières", href: "/company/careers" },
-            { label: "Actualités", href: "/blog" },
+            { label: "Vue d'ensemble", href: "/developers" },
+            { label: "SDK", href: "/developers" },
+            { label: "GitHub", href: "https://github.com/gytev", external: true },
           ],
         },
         {
           title: "Support",
           links: [
             { label: "Centre d'aide", href: "/developers" },
-            { label: "Statut", href: "/developers/status" },
-          ],
-        },
-        {
-          title: "Plus",
-          links: [
-            { label: "Histoires", href: "/blog" },
-            { label: "Académie", href: "/blog" },
-            { label: "Podcast", href: "https://youtube.com/@gytev", external: true },
-            { label: "RSS", href: "https://x.com/gytev", external: true },
-          ],
-        },
-        {
-          title: "Conditions & politiques",
-          links: [
-            { label: "Conditions d'utilisation", href: "/legal/terms" },
-            { label: "Politique de confidentialité", href: "/legal/privacy" },
-            { label: "Autres politiques", href: "/legal/privacy" },
+            { label: "Contact", href: "/company/contact" },
           ],
         },
       ],

@@ -2,7 +2,17 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import type { Dictionary } from "@gytev/i18n";
+import type { Locale } from "@gytev/types";
+import { localizedHref } from "@gytev/i18n";
 import { Hero } from "./Hero";
+import type { Content } from "@/lib/content";
+
+type HomeExperienceProps = {
+  dict: Dictionary;
+  locale: Locale;
+  customers: Content["customers"];
+};
 
 const caseStudies = [
   { company: "HSBC", badge: "CUSTOMER STORY", title: "HSBC boosts productivity with Mistral", image: "/images/figma/raw-3.jpeg" },
@@ -17,34 +27,35 @@ const capabilities = [
   { title: "Custom model development.", description: "Turn proprietary knowledge into model intelligence by training and aligning your own models.", action: "Discover Forge", type: "red", tags: ["ENTERPRISE", "MODEL ADAPTATION", "TRAINING", "EVALUATION", "SECURE"] },
 ];
 
-const productTabs = ["ChatGPT Work", "Use cases", "GPT-4o"];
-const productFeatures = [
-  ["Create share-ready work", "ChatGPT can turn context from your tools and files into polished documents, presentations, and analyses that better follow your templates and preferred formats."],
-  ["Make your work interactive—and keep it current", "Build living views that bring trusted information together and make each decision easy to explain."],
-  ["Connect your tools and workflows", "Access the systems your teams already use while keeping control over your organization’s data."],
-  ["Keep projects moving on your schedule", "Delegate routine coordination and return to a clear, reviewable output."],
-];
+function Arrow() { return <span aria-hidden>→</span>; }
 
-function Arrow() { return <span aria-hidden className="ml-2 text-lg">→</span>; }
-
-export function HomeExperience() {
+export function HomeExperience({ dict, locale }: HomeExperienceProps) {
   const [caseIndex, setCaseIndex] = useState(0);
   const [capability, setCapability] = useState(0);
   const [tab, setTab] = useState(0);
   const [feature, setFeature] = useState(0);
+
+  const products = dict.home.products;
+  const cta = dict.cta;
   const study = caseStudies[caseIndex];
   const selectedCapability = capabilities[capability];
+  const selectedTab = products.tabs[tab];
 
   return (
     <div className="home-page">
-      <Hero />
+      <Hero dict={dict} locale={locale} />
+
+      <section className="trusted" aria-label="Companies trusted">
+        <p>Trusted by scale-ups and<br />Fortune 500 companies</p>
+        {["REDWOOD", "Commonwealth", "CSX", "HADRIAN", "Symbotic"].map((logo) => <strong key={logo}>{logo}</strong>)}
+      </section>
 
       <section className="case-section" aria-label="Featured case studies">
         <div className="case-track">
           <article className="case-card" style={{ backgroundImage: `linear-gradient(0deg, rgba(0,0,0,.76), rgba(0,0,0,.06) 70%), url(${study.image})` }}>
             <div><strong className="case-logo">{study.company}</strong><span className="case-badge">{study.badge}</span></div>
             <h2>{study.title}</h2>
-            <Link className="button button--light" href="/en/customers">En savoir plus <Arrow /></Link>
+            <Link className="button button--light" href={localizedHref(locale, "/customers")}>En savoir plus <Arrow /></Link>
           </article>
           <article className="case-card case-card--next" style={{ backgroundImage: `linear-gradient(0deg, rgba(0,0,0,.76), rgba(0,0,0,.06) 70%), url(${caseStudies[(caseIndex + 1) % caseStudies.length].image})` }} aria-hidden="true">
             <strong className="case-logo">{caseStudies[(caseIndex + 1) % caseStudies.length].company}</strong>
@@ -56,16 +67,11 @@ export function HomeExperience() {
         </div>
       </section>
 
-      <section className="trusted" aria-label="Companies trusted">
-        <p>Trusted by scale-ups and<br />Fortune 500 companies</p>
-        {["REDWOOD", "Commonwealth", "CSX", "HADRIAN", "Symbotic"].map((logo) => <strong key={logo}>{logo}</strong>)}
-      </section>
-
       <section className="why-section" aria-labelledby="why-title">
         <aside aria-label="Sections Gytev">{capabilities.map((item, index) => <button type="button" key={item.title} onClick={() => setCapability(index)} aria-label={item.title} className={capability === index ? "rail-button rail-button--active" : "rail-button"}>{index + 1}</button>)}</aside>
         <div className="why-content">
           <p className="eyebrow">WHY GYTEV</p>
-          <div className="capability-heading"><div><h2 id="why-title">{selectedCapability.title}</h2><p>{selectedCapability.description}</p></div><Link href="/en/products/rio" className="button button--outline">{selectedCapability.action}<Arrow /></Link></div>
+          <div className="capability-heading"><div><h2 id="why-title">{selectedCapability.title}</h2><p>{selectedCapability.description}</p></div><Link href={localizedHref(locale, "/products/rio")} className="button button--outline">{selectedCapability.action}<Arrow /></Link></div>
           <div className={`capability-visual capability-visual--${selectedCapability.type}`}>
             <div className="visual-grid" aria-hidden />
             {selectedCapability.type === "orange" && <div className="agent-card">✦ <span>What would you like to do today?</span><small>Summarize my unread emails<br />Build me a sales model with usage-based pricing<br />Scan for fraud in the past 30 days</small></div>}
@@ -79,15 +85,62 @@ export function HomeExperience() {
       </section>
 
       <section className="products-section" aria-labelledby="products-title">
-        <div className="product-tabs" role="tablist">{productTabs.map((label, index) => <button key={label} role="tab" type="button" aria-selected={tab === index} onClick={() => { setTab(index); setFeature(0); }} className={tab === index ? "active" : ""}>{label}</button>)}</div>
-        <div className="products-header"><h2 id="products-title">{tab === 0 ? "Turn ideas into action" : tab === 1 ? "Work that moves with you" : "Intelligence for every team"}</h2><p>ChatGPT Work gathers context, plans the approach, and takes action across your tools, files, and desktop apps to create polished spreadsheets, docs, and slides.</p></div>
-        <div className="products-grid"><div className="feature-list">{productFeatures.map(([title, description], index) => <button type="button" key={title} onClick={() => setFeature(index)} className={feature === index ? "active" : ""}><strong>{title}</strong>{feature === index && <span>{description}</span>}</button>)}</div>
-          <div className="product-preview" aria-label="Aperçu interactif du produit">
-            <div className="stars" aria-hidden>✦　　·　　✧　　·　　✦</div><div className="chat-card">I have 20 minutes before my Solara Health review. Update my existing deck with one executive-ready slide using the data room and <b>Slack</b> context.<div><button aria-label="Ajouter">＋</button><button aria-label="Envoyer">↑</button></div></div><div className="deck"><header>Solara Health <small>pptx</small><span>1 / 8　100%</span></header><div className="slide"><small>SOLARA SYSTEMS</small><h3>Solara Health<br />Strategic Account Plan</h3><em>Prepared by Rebecca Ryall et al.<br />Q3 2024</em></div><div className="floating-deck"><b>Account Planning View</b><h4>{feature === 0 ? "$1.2M Incremental ARR opportunity" : "Focused work, ready to share"}</h4><div className="bars"><i /><i /></div></div></div>
-          </div></div>
+        <div className="product-tabs" role="group" aria-label={products.eyebrow}>
+          {products.tabs.map((item, index) => (
+            <button
+              key={item.id}
+              type="button"
+              aria-pressed={tab === index}
+              onClick={() => { setTab(index); setFeature(0); }}
+              className={tab === index ? "active" : ""}
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
+        <div className="products-header">
+          <p className="eyebrow">{products.eyebrow}</p>
+          <h2 id="products-title">{selectedTab.heading}</h2>
+          <p>{selectedTab.description}</p>
+        </div>
+        <div className="products-grid">
+          <div className="feature-list">
+            {selectedTab.features.map((item, index) => (
+              <button
+                type="button"
+                key={item.title}
+                onClick={() => setFeature(index)}
+                aria-pressed={feature === index}
+                className={feature === index ? "active" : ""}
+              >
+                <strong>{item.title}</strong>
+                {feature === index && <span>{item.description}</span>}
+              </button>
+            ))}
+          </div>
+          <div className="product-preview" aria-label={products.tabs[tab].label}>
+            <span className="product-preview__label">{selectedTab.preview.label}</span>
+            <h3 className="product-preview__heading">{selectedTab.preview.heading}</h3>
+            <span className="product-preview__alert">{selectedTab.preview.alert}</span>
+            <div className="product-preview__lines">
+              {selectedTab.preview.lines.map((line) => <div key={line}>{line}</div>)}
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section className="journey-section"><p>WE ARE JUST GETTING STARTED</p><h2>Build, customize, and deploy<br />tailored AI solutions with complete<br />control.</h2><div><Link className="button button--light" href="/en/products">Start building <Arrow /></Link><Link className="button button--dark" href="/en/company/contact">Contact sales <Arrow /></Link></div></section>
+      <section className="journey-section" aria-labelledby="journey-title">
+        <p>{cta.eyebrow}</p>
+        <h2 id="journey-title">{cta.title}</h2>
+        <div className="journey-section__actions">
+          <Link href={localizedHref(locale, "/products")} className="button button--light">
+            {cta.ctaPrimary} <Arrow />
+          </Link>
+          <Link href={localizedHref(locale, "/company/contact")} className="button button--dark">
+            {cta.ctaSecondary} <Arrow />
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }

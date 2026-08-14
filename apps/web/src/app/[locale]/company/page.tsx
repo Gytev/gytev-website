@@ -2,6 +2,7 @@ import type { Locale } from "@gytev/types";
 import { localizedHref } from "@gytev/i18n";
 import { SectionPage } from "@/components/SectionPage";
 import { getContent } from "@/lib/content";
+import { getDictionary } from "@/lib/i18n";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -9,22 +10,21 @@ type Props = {
 
 export default async function CompanyPage({ params }: Props) {
   const { locale } = await params;
-  const content = await getContent(locale);
+  const [content, dict] = await Promise.all([getContent(locale), getDictionary(locale)]);
   const l = locale as Locale;
+  const labels = dict.pages.companySections;
 
   const sections = [
-    { slug: "about", title: "About", body: content.company.about },
-    { slug: "vision", title: "Vision", body: content.company.vision },
-    { slug: "story", title: "Our Story", body: content.company.story },
-    { slug: "newsroom", title: "Newsroom", body: content.company.newsroom },
-    { slug: "careers", title: "Careers", body: content.company.careers },
-    { slug: "contact", title: "Contact", body: content.company.contact },
+    { slug: "about", title: labels.about, body: content.company.about },
+    { slug: "vision", title: labels.vision, body: content.company.vision },
+    { slug: "careers", title: labels.careers, body: content.company.careers },
+    { slug: "contact", title: labels.contact, body: content.company.contact },
   ];
 
   return (
     <SectionPage
-      title="Company"
-      description="Who we are, where we're going, and why."
+      title={dict.pages.company.title}
+      description={dict.pages.company.description}
     >
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         {sections.map((section) => (

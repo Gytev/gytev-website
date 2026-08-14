@@ -2,6 +2,7 @@ import type { Locale } from "@gytev/types";
 import { localizedHref } from "@gytev/i18n";
 import { SectionPage } from "@/components/SectionPage";
 import { getContent } from "@/lib/content";
+import { getDictionary } from "@/lib/i18n";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -9,13 +10,13 @@ type Props = {
 
 export default async function ProductsPage({ params }: Props) {
   const { locale } = await params;
-  const content = await getContent(locale);
+  const [content, dict] = await Promise.all([getContent(locale), getDictionary(locale)]);
   const l = locale as Locale;
 
   return (
     <SectionPage
-      title="Products"
-      description="Intelligent systems for the real world, starting with agriculture."
+      title={dict.pages.products.title}
+      description={dict.pages.products.description}
     >
       <div className="grid grid-cols-1 gap-6">
         {content.products.map((product) => (
@@ -34,7 +35,7 @@ export default async function ProductsPage({ params }: Props) {
               </p>
             </div>
             <span className="shrink-0 rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition group-hover:bg-orange-600">
-              Explore <span aria-hidden>→</span>
+              {dict.pages.products.cta} <span aria-hidden>→</span>
             </span>
           </a>
         ))}

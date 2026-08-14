@@ -13,12 +13,7 @@ export default async function RedQPage({ params }: Props) {
   const l = locale as Locale;
   const solution = dict.solution;
 
-  const pillars = [
-    { title: "Donors & donations", description: "Register donors, record every donation, from collection center to lab." },
-    { title: "Traceability", description: "Every blood bag tracked: type, group, status, expiry, location." },
-    { title: "National stock", description: "Real-time visibility of available bags across the whole network." },
-    { title: "Demand & distribution", description: "Match hospital demand to supply, and redistribute before expiry." },
-  ];
+  const pillars = dict.pages.redq.pillars;
 
   return (
     <>
@@ -36,9 +31,8 @@ export default async function RedQPage({ params }: Props) {
               href={localizedHref(l, "/company/contact")}
               className="rounded-full bg-red-600 px-6 py-3 text-sm font-medium text-white hover:bg-red-500"
             >
-              Contact us
-            </a>
-          </div>
+              {dict.pages.redq.contactUs}
+            </a>          </div>
         </Container>
       </section>
 

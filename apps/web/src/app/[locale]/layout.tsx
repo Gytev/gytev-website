@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { Locale } from "@gytev/i18n";
+import { siteConfig } from "@gytev/config";
 import { generateStaticParams } from "@/lib/i18n";
 import { Navbar } from "@/components/navigation/Navbar";
 import { Footer } from "@/components/navigation/Footer";
@@ -15,9 +16,25 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const dict = await getDictionary(locale);
+  const url = locale === "en" ? "/" : `/${locale}`;
   return {
     title: dict.meta.title,
     description: dict.meta.description,
+    openGraph: {
+      type: "website",
+      locale: locale === "fr" ? "fr_FR" : "en_US",
+      url: `${siteConfig.url}${url}`,
+      siteName: siteConfig.name,
+      title: dict.meta.title,
+      description: dict.meta.description,
+      images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: siteConfig.name }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: dict.meta.title,
+      description: dict.meta.description,
+      images: [siteConfig.ogImage],
+    },
   };
 }
 

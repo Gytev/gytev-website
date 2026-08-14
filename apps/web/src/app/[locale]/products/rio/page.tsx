@@ -29,15 +29,14 @@ export default async function RioPage({ params }: Props) {
               href={localizedHref(l, "/company/contact")}
               className="rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white hover:bg-zinc-700"
             >
-              Contact sales
+              {dict.pages.rio.contactSales}
             </a>
             <a
               href={localizedHref(l, "/developers")}
               className="rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-900 hover:bg-zinc-50"
             >
-              Developer docs
-            </a>
-          </div>
+              {dict.pages.rio.devDocs}
+            </a>          </div>
         </Container>
       </section>
 
