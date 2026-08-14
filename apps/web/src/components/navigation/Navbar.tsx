@@ -43,25 +43,15 @@ export function Navbar({ locale, dictionary }: NavbarProps) {
     <header
       ref={headerRef}
       onMouseLeave={() => setActive(null)}
-      className="sticky top-0 z-40 border-b border-zinc-200 bg-white"
+      className="sticky top-0 z-40 bg-[#131313] text-white"
     >
-      <nav className="flex h-14 w-full items-center justify-between px-6 lg:px-8">
-        <div className="flex items-center gap-8">
+      <nav className="mx-auto flex h-16 w-full max-w-[1440px] items-center justify-between px-4 sm:px-10">
+        <div className="flex items-center gap-6 lg:gap-8">
           <a href={localizedHref(locale, "/")} className="shrink-0">
-            <span className="text-xl font-black tracking-tight text-zinc-900">
-              {"G⅄TƎV".split("").map((letter, index) => (
-                <span
-                  key={index}
-                  className="logo-letter"
-                  style={{ animationDelay: `${index * 0.15}s` }}
-                >
-                  {letter}
-                </span>
-              ))}
-            </span>
+            <span className="text-[22px] font-bold tracking-[-.055em] text-white">Gytev</span>
           </a>
 
-          <div className="hidden items-center gap-1 lg:flex">
+          <div className="hidden items-center gap-4 lg:flex xl:gap-6">
             {navItems.map((item) => {
               const nav = dict.nav[item.key];
               const label = nav?.label ?? item.label;
@@ -72,7 +62,8 @@ export function Navbar({ locale, dictionary }: NavbarProps) {
                   type="button"
                   onMouseEnter={() => setActive(item.key)}
                   onClick={() => setActive(item.key)}
-                  className="rounded-full px-4 py-2 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900"
+                  aria-expanded={active === item.key}
+                  className={`px-0 py-2 text-[13px] font-medium transition-colors ${active === item.key ? "text-white" : "text-[#c8c6c5] hover:text-white"}`}
                 >
                   {label}
                 </button>
@@ -81,7 +72,7 @@ export function Navbar({ locale, dictionary }: NavbarProps) {
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
-              className="p-2 text-zinc-500 transition-colors hover:text-zinc-900"
+              className="p-2 text-[#c8c6c5] transition-colors hover:text-white"
               aria-label={dict.header.search}
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -99,19 +90,19 @@ export function Navbar({ locale, dictionary }: NavbarProps) {
         <div className="flex items-center gap-2">
           <a
             href={localizedHref(locale, "/company/contact")}
-            className="hidden text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 lg:inline-flex"
+            className="hidden rounded-full px-3 py-2 text-[13px] font-medium text-[#c8c6c5] transition-colors hover:text-white lg:inline-flex"
           >
             {dict.header.login}
           </a>
           <a
             href={localizedHref(locale, "/products/rio")}
-            className="hidden rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-700 lg:inline-flex"
+            className="hidden rounded-full bg-white px-4 py-2 text-[13px] font-semibold text-[#1a1c1c] transition-colors hover:bg-zinc-200 lg:inline-flex"
           >
             {dict.header.cta} <span aria-hidden className="ml-1">→</span>
           </a>
           <button
             onClick={() => setOpen(true)}
-            className="rounded-md p-2 text-zinc-700 hover:bg-zinc-100 lg:hidden"
+            className="rounded-md p-2 text-white hover:bg-white/10 lg:hidden"
             aria-label={dict.header.menu}
           >
             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
