@@ -63,9 +63,9 @@ export type Dictionary = {
   };
   centralQuestion: {
     title: string;
-    description: string;
+    subtitle: string;
     cta: string;
-    nodes: { title: string }[];
+    nodes: { first: string; second: string }[];
   };
   product: {
     eyebrow: string;
@@ -382,15 +382,16 @@ export const dictionaries: Record<Locale, Dictionary> = {
       caption: "Adaptive reasoning, in motion",
     },
     centralQuestion: {
-      title: "Gytev is built on hard questions.",
-      description:
-        "What parts of the real world remain poorly understood by software? That question guides our research, our products and our people.",
+      title: "How AI can break the global economy?",
+      subtitle:
+        "See how intelligent systems are rewiring every sector at once — from the farm to the factory floor.",
       cta: "Read the vision",
       nodes: [
-        { title: "What is happening?" },
-        { title: "Why is it happening?" },
-        { title: "What could happen next?" },
-        { title: "What should we do?" },
+        { first: "How will AI", second: "feed the world?" },
+        { first: "How will AI", second: "move the world?" },
+        { first: "How will AI", second: "heal the world?" },
+        { first: "How will AI", second: "move money?" },
+        { first: "How will AI", second: "power the world?" },
       ],
     },
     product: {
@@ -1005,15 +1006,16 @@ export const dictionaries: Record<Locale, Dictionary> = {
       caption: "Un raisonnement adaptatif, en mouvement",
     },
     centralQuestion: {
-      title: "Gytev est fondé sur des questions difficiles.",
-      description:
-        "Quelles parties du monde réel restent mal comprises par les logiciels ? Cette question guide notre recherche, nos produits et nos équipes.",
+      title: "Comment l'IA peut bouleverser l'économie mondiale ?",
+      subtitle:
+        "Voyez comment les systèmes intelligents reconnectent chaque secteur à la fois — du champ à l'usine.",
       cta: "Lire la vision",
       nodes: [
-        { title: "Que se passe-t-il ?" },
-        { title: "Pourquoi cela se produit-il ?" },
-        { title: "Que risque-t-il de se passer ?" },
-        { title: "Que devons-nous faire ?" },
+        { first: "Comment l'IA", second: "nourrira le monde ?" },
+        { first: "Comment l'IA", second: "déplacera le monde ?" },
+        { first: "Comment l'IA", second: "soignera le monde ?" },
+        { first: "Comment l'IA", second: "déplacera l'argent ?" },
+        { first: "Comment l'IA", second: "alimentera le monde ?" },
       ],
     },
     product: {

@@ -6,6 +6,7 @@ import type { Dictionary } from "@gytev/i18n";
 import type { Locale } from "@gytev/types";
 import { localizedHref } from "@gytev/i18n";
 import { Hero } from "./Hero";
+import { HardQuestions } from "./HardQuestions";
 import type { Content } from "@/lib/content";
 
 type HomeExperienceProps = {
@@ -43,7 +44,10 @@ export function HomeExperience({ dict, locale }: HomeExperienceProps) {
 
   return (
     <div className="home-page">
-      <Hero dict={dict} locale={locale} />
+      <div className="hero-takeover">
+        <Hero dict={dict} locale={locale} />
+        <HardQuestions dict={dict} locale={locale} />
+      </div>
 
       <section className="trusted" aria-label="Companies trusted">
         <p>Trusted by scale-ups and<br />Fortune 500 companies</p>
