@@ -80,8 +80,8 @@ developerResources, blog, customers). `searchEntries(locale, query)`
   `dict.nav[key]` (mega menu) avec fallback.
 - **MegaMenu** : grid 12 colonnes (7 = 3 colonnes de liens, 5 = visuel),
   liens via `localizedHref`.
-- **Footer** : `dict.footer.columns` (10 colonnes en anglais), grand texte
-  « Gytev » en `18vw`, `LanguageSwitcher`.
+- **Footer** : `dict.footer.groups` (5 groupes de colonnes, façon OpenAI),
+  barre du bas avec copyright + `LanguageSwitcher`.
 - **SearchOverlay** : overlay centré, input auto-focus, Escape/overlay pour
   fermer, body scroll lock.
 
@@ -101,8 +101,8 @@ developerResources, blog, customers). `searchEntries(locale, query)`
 
 ## Style
 
-- `globals.css` : `@import "tailwindcss"`, variable `--font-walsheim`, couleur
-  de fond/texte, animation du logo.
+- `globals.css` : `@import "tailwindcss"`, `@font-face` « Gytev Sans » (Regular
+  + Oblique), couleur de fond/texte, animation du logo.
 - `@gytev/design-system/tokens.css` importé dans le layout racine (tokens :
   primaire orange `#f97316/#ea580c`, accent vert, encres zinc, radius, fonts).
 - Palette dominante : **zinc** (neutres) + **orange** (accent) + **red**

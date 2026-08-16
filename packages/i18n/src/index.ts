@@ -172,9 +172,9 @@ export type Dictionary = {
     tagline: string;
     rights: string;
     manageCookies: string;
-    big: string;
-    bigAccent: string;
-    columns: { title: string; links: { label: string; href: string; external?: boolean }[] }[];
+    groups: {
+      columns: { title: string; links: { label: string; href: string; external?: boolean }[] }[];
+    }[];
   };
 };
 
@@ -685,55 +685,118 @@ export const dictionaries: Record<Locale, Dictionary> = {
       tagline: "We build intelligence for the real world.",
       rights: "All rights reserved.",
       manageCookies: "Manage Cookies",
-      big: "Gytev",
-      bigAccent: "®",
-      columns: [
+      groups: [
         {
-          title: "Company",
-          links: [
-            { label: "About Us", href: "/company/about" },
-            { label: "Our Vision", href: "/company/vision" },
-            { label: "Careers", href: "/company/careers" },
-            { label: "Contact", href: "/company/contact" },
+          columns: [
+            {
+              title: "Research",
+              links: [
+                { label: "Research Overview", href: "/research" },
+                { label: "Publications", href: "/research" },
+                { label: "Open source", href: "/developers" },
+                { label: "Research news", href: "/blog" },
+              ],
+            },
+            {
+              title: "Latest Advancements",
+              links: [
+                { label: "Rio", href: "/products/rio" },
+                { label: "RedQ", href: "/solutions/redq" },
+                { label: "Predictive Systems", href: "/research" },
+                { label: "Digital Twins", href: "/research" },
+              ],
+            },
+            {
+              title: "Safety",
+              links: [
+                { label: "Safety Approach", href: "/research" },
+                { label: "Deployment Safety", href: "/research" },
+                { label: "Security & Privacy", href: "/company/vision" },
+                { label: "Trust & Transparency", href: "/company/vision" },
+              ],
+            },
           ],
         },
         {
-          title: "Products",
-          links: [
-            { label: "Rio", href: "/products/rio" },
-            { label: "RedQ", href: "/solutions/redq" },
-            { label: "All products", href: "/products" },
+          columns: [
+            {
+              title: "Products",
+              links: [
+                { label: "Rio", href: "/products/rio" },
+                { label: "RedQ", href: "/solutions/redq" },
+                { label: "All products", href: "/products" },
+              ],
+            },
+            {
+              title: "API Platform",
+              links: [
+                { label: "Overview", href: "/developers" },
+                { label: "APIs & SDKs", href: "/developers" },
+                { label: "API keys", href: "/developers" },
+              ],
+            },
           ],
         },
         {
-          title: "Solutions",
-          links: [
-            { label: "Agriculture", href: "/solutions" },
-            { label: "Public health", href: "/solutions" },
-            { label: "Customers", href: "/customers" },
+          columns: [
+            {
+              title: "Business",
+              links: [
+                { label: "Solutions", href: "/solutions" },
+                { label: "Agriculture", href: "/solutions" },
+                { label: "Public health", href: "/solutions" },
+                { label: "Customer Stories", href: "/customers" },
+                { label: "Contact Sales", href: "/company/contact" },
+              ],
+            },
+            {
+              title: "Developers",
+              links: [
+                { label: "Overview", href: "/developers" },
+                { label: "SDKs", href: "/developers" },
+                { label: "GitHub", href: "https://github.com/gytev", external: true },
+              ],
+            },
           ],
         },
         {
-          title: "Research",
-          links: [
-            { label: "Publications", href: "/research" },
-            { label: "Open source", href: "/developers" },
-            { label: "Research news", href: "/blog" },
+          columns: [
+            {
+              title: "Company",
+              links: [
+                { label: "About Us", href: "/company/about" },
+                { label: "Our Vision", href: "/company/vision" },
+                { label: "Careers", href: "/company/careers" },
+                { label: "News", href: "/blog" },
+                { label: "Contact", href: "/company/contact" },
+              ],
+            },
+            {
+              title: "Support",
+              links: [
+                { label: "Help Center", href: "/developers" },
+                { label: "Contact", href: "/company/contact" },
+              ],
+            },
           ],
         },
         {
-          title: "Developers",
-          links: [
-            { label: "Overview", href: "/developers" },
-            { label: "SDKs", href: "/developers" },
-            { label: "GitHub", href: "https://github.com/gytev", external: true },
-          ],
-        },
-        {
-          title: "Support",
-          links: [
-            { label: "Help Center", href: "/developers" },
-            { label: "Contact", href: "/company/contact" },
+          columns: [
+            {
+              title: "More",
+              links: [
+                { label: "Blog", href: "/blog" },
+                { label: "Careers", href: "/company/careers" },
+                { label: "Developers", href: "/developers" },
+              ],
+            },
+            {
+              title: "Terms & Policies",
+              links: [
+                { label: "Terms of Use", href: "/company/vision" },
+                { label: "Privacy Policy", href: "/company/vision" },
+              ],
+            },
           ],
         },
       ],
@@ -1245,55 +1308,118 @@ export const dictionaries: Record<Locale, Dictionary> = {
       tagline: "Nous construisons l'intelligence pour le monde réel.",
       rights: "Tous droits réservés.",
       manageCookies: "Gérer les cookies",
-      big: "Gytev",
-      bigAccent: "®",
-      columns: [
+      groups: [
         {
-          title: "Entreprise",
-          links: [
-            { label: "À propos", href: "/company/about" },
-            { label: "Notre vision", href: "/company/vision" },
-            { label: "Carrières", href: "/company/careers" },
-            { label: "Contact", href: "/company/contact" },
+          columns: [
+            {
+              title: "Recherche",
+              links: [
+                { label: "Vue d'ensemble", href: "/research" },
+                { label: "Publications", href: "/research" },
+                { label: "Open source", href: "/developers" },
+                { label: "Actualités recherche", href: "/blog" },
+              ],
+            },
+            {
+              title: "Dernières avancées",
+              links: [
+                { label: "Rio", href: "/products/rio" },
+                { label: "RedQ", href: "/solutions/redq" },
+                { label: "Systèmes prédictifs", href: "/research" },
+                { label: "Jumeaux numériques", href: "/research" },
+              ],
+            },
+            {
+              title: "Sécurité",
+              links: [
+                { label: "Approche sécurité", href: "/research" },
+                { label: "Sécurité de déploiement", href: "/research" },
+                { label: "Sécurité & confidentialité", href: "/company/vision" },
+                { label: "Confiance & transparence", href: "/company/vision" },
+              ],
+            },
           ],
         },
         {
-          title: "Produits",
-          links: [
-            { label: "Rio", href: "/products/rio" },
-            { label: "RedQ", href: "/solutions/redq" },
-            { label: "Tous les produits", href: "/products" },
+          columns: [
+            {
+              title: "Produits",
+              links: [
+                { label: "Rio", href: "/products/rio" },
+                { label: "RedQ", href: "/solutions/redq" },
+                { label: "Tous les produits", href: "/products" },
+              ],
+            },
+            {
+              title: "Plateforme API",
+              links: [
+                { label: "Vue d'ensemble", href: "/developers" },
+                { label: "APIs & SDK", href: "/developers" },
+                { label: "Clés API", href: "/developers" },
+              ],
+            },
           ],
         },
         {
-          title: "Solutions",
-          links: [
-            { label: "Agriculture", href: "/solutions" },
-            { label: "Santé publique", href: "/solutions" },
-            { label: "Clients", href: "/customers" },
+          columns: [
+            {
+              title: "Business",
+              links: [
+                { label: "Solutions", href: "/solutions" },
+                { label: "Agriculture", href: "/solutions" },
+                { label: "Santé publique", href: "/solutions" },
+                { label: "Témoignages clients", href: "/customers" },
+                { label: "Contacter les ventes", href: "/company/contact" },
+              ],
+            },
+            {
+              title: "Développeurs",
+              links: [
+                { label: "Vue d'ensemble", href: "/developers" },
+                { label: "SDK", href: "/developers" },
+                { label: "GitHub", href: "https://github.com/gytev", external: true },
+              ],
+            },
           ],
         },
         {
-          title: "Recherche",
-          links: [
-            { label: "Publications", href: "/research" },
-            { label: "Open source", href: "/developers" },
-            { label: "Actualités recherche", href: "/blog" },
+          columns: [
+            {
+              title: "Entreprise",
+              links: [
+                { label: "À propos", href: "/company/about" },
+                { label: "Notre vision", href: "/company/vision" },
+                { label: "Carrières", href: "/company/careers" },
+                { label: "Actualités", href: "/blog" },
+                { label: "Contact", href: "/company/contact" },
+              ],
+            },
+            {
+              title: "Support",
+              links: [
+                { label: "Centre d'aide", href: "/developers" },
+                { label: "Contact", href: "/company/contact" },
+              ],
+            },
           ],
         },
         {
-          title: "Développeurs",
-          links: [
-            { label: "Vue d'ensemble", href: "/developers" },
-            { label: "SDK", href: "/developers" },
-            { label: "GitHub", href: "https://github.com/gytev", external: true },
-          ],
-        },
-        {
-          title: "Support",
-          links: [
-            { label: "Centre d'aide", href: "/developers" },
-            { label: "Contact", href: "/company/contact" },
+          columns: [
+            {
+              title: "Plus",
+              links: [
+                { label: "Blog", href: "/blog" },
+                { label: "Carrières", href: "/company/careers" },
+                { label: "Développeurs", href: "/developers" },
+              ],
+            },
+            {
+              title: "Conditions & politiques",
+              links: [
+                { label: "Conditions d'utilisation", href: "/company/vision" },
+                { label: "Politique de confidentialité", href: "/company/vision" },
+              ],
+            },
           ],
         },
       ],

@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Gytev Sans";
+  src: url("../fonts/Gytev-Sans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gytev Sans";
+  src: url("../fonts/Gytev-Sans-Regular-Oblique.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
   color-scheme: light;
   --ink: #131313;
@@ -9,7 +25,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; font-family: var(--font-walsheim), ui-sans-serif, system-ui, sans-serif; color: var(--ink); background: var(--paper); }
+body { margin: 0; font-family: "Gytev Sans", ui-sans-serif, system-ui, sans-serif; color: var(--ink); background: var(--paper); }
 a { color: inherit; text-decoration: none; }
 button, a { -webkit-tap-highlight-color: transparent; }
 button:focus-visible, a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
