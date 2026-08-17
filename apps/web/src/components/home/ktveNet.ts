@@ -1711,8 +1711,9 @@ export class KtveController {
     const now = performance.now();
     const dt = Math.min(64, now - (this.lastPanel || now));
     this.lastPanel = now;
-    const k = 1 - Math.exp(-dt / 800);
+    const k = 1 - Math.exp(-dt / 120);
     this.panelProgress += (target - this.panelProgress) * k;
+    if (this.panelProgress > 0.99) this.panelProgress = 1;
     this.section.style.setProperty("--hq-progress", this.panelProgress.toFixed(4));
     this.panelRaf = requestAnimationFrame(this.panelFrame);
   };

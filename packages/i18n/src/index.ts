@@ -95,15 +95,16 @@ export type Dictionary = {
     empty: string;
     noResults: string;
   };
-  home: {
-    cases: {
-      heading: string;
-      badge: string;
-      learnMore: string;
-      viewAll: string;
-      prev: string;
-      next: string;
-    };
+    home: {
+      cases: {
+        heading: string;
+        badge: string;
+        learnMore: string;
+        viewAll: string;
+        prev: string;
+        next: string;
+        items: { company: string; badge: string; title: string; image: string }[];
+      };
     trusted: {
       title: string;
       subtitle: string;
@@ -181,9 +182,9 @@ export type Dictionary = {
 export const dictionaries: Record<Locale, Dictionary> = {
   en: {
     meta: {
-      title: "Gytev — Intelligent systems that understand the real world.",
+      title: "Gytev | Intelligent systems that understand the real world.",
       description:
-        "Gytev builds intelligent systems that observe, understand, predict and act on the real world — starting with agriculture and public health in Africa.",
+        "Gytev builds intelligent systems that observe, understand, predict and act on the real world. From farms to blood banks, we combine sensors, data, AI and domain knowledge to make complex systems understandable and actionable.",
     },
     nav: {
       research: {
@@ -376,7 +377,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       title: "Intelligent systems that understand",
       highlight: "the real world.",
       description:
-        "We combine sensors, data, artificial intelligence and domain knowledge to observe, understand, predict and act on the systems that surround us — farms, blood banks, cities, industries.",
+        "We combine sensors, data, artificial intelligence and domain knowledge to observe, understand, predict and act on the systems that surround us  farms, blood banks, cities, industries.",
       ctaPrimary: "Discover Rio",
       ctaSecondary: "Read the vision",
       caption: "Adaptive reasoning, in motion",
@@ -384,7 +385,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     centralQuestion: {
       title: "How AI can break the global economy?",
       subtitle:
-        "See how intelligent systems are rewiring every sector at once — from the farm to the factory floor.",
+        "See how intelligent systems are rewiring every sector at once from the farm to the factory floor.",
       cta: "Read the vision",
       nodes: [
         { first: "How will AI", second: "feed the world?" },
@@ -456,6 +457,11 @@ export const dictionaries: Record<Locale, Dictionary> = {
         viewAll: "All customers",
         prev: "Previous story",
         next: "Next story",
+        items: [
+          { company: "Green Ground", badge: "AGRICULTURE", title: "Farmers boots productivity with Gytev.", image: "/images/figma/agri.jpg" },
+          { company: "Hospitality Corp", badge: "PUBLIC HEALTH", title: "Hospitality Corp improves patient outcomes with Gytev.", image: "/images/figma/blood.jpg" },
+          { company: "Corporates", badge: "ENTERPRISE", title: "Intelligence that moves critical teams forward.", image: "/images/figma/projecttrack.webp" },
+        ],
       },
       trusted: {
         title: "Built for Africa.",
@@ -535,7 +541,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
         eyebrow: "Products & platform",
         title: "Intelligence that acts on the real world.",
         description:
-          "From the Rio Box on the field to a national blood platform — Gytev turns complex real-world systems into systems you can understand, predict and act on.",
+          "From the Rio Box on the field to a national blood platform. Gytev turns complex real-world systems into systems you can understand, predict and act on.",
         tabs: [
           {
             id: "rio",
@@ -560,7 +566,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             label: "RedQ",
             heading: "A national blood network, in real time.",
             description:
-              "From donor to hospital, every blood bag tracked — type, group, status and expiry — with shortages predicted, not endured.",
+              "From donor to hospital, every blood bag tracked type, group, status and expiry with shortages predicted, not endured.",
             features: [
               { title: "Trace every bag", description: "Donor, collection center, lab, bank and hospital in one system." },
               { title: "See the national stock", description: "Real-time visibility of available bags across the whole network." },
@@ -1008,7 +1014,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     centralQuestion: {
       title: "Comment l'IA peut bouleverser l'économie mondiale ?",
       subtitle:
-        "Voyez comment les systèmes intelligents reconnectent chaque secteur à la fois — du champ à l'usine.",
+        "Découvrez comment les systèmes intelligents transforment simultanément tous les secteurs, de la ferme à l'usine.",
       cta: "Lire la vision",
       nodes: [
         { first: "Comment l'IA", second: "nourrira le monde ?" },
@@ -1080,6 +1086,11 @@ export const dictionaries: Record<Locale, Dictionary> = {
         viewAll: "Tous les clients",
         prev: "Récit précédent",
         next: "Récit suivant",
+        items: [
+          { company: "Green Ground", badge: "AGRICULTURE", title: "Les agriculteurs augmentent leur productivité avec Gytev.", image: "/images/figma/agri.jpg" },
+          { company: "Hospitality Corp", badge: "SANTÉ PUBLIQUE", title: "Hospitality Corp améliore les résultats patients avec Gytev.", image: "/images/figma/blood.jpg" },
+          { company: "Corporates", badge: "ENTREPRISE", title: "L'intelligence qui fait avancer les équipes clés.", image: "/images/figma/projecttrack.webp" },
+        ],
       },
       trusted: {
         title: "Conçu pour l'Afrique.",

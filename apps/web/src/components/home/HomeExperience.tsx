@@ -15,12 +15,6 @@ type HomeExperienceProps = {
   customers: Content["customers"];
 };
 
-const caseStudies = [
-  { company: "HSBC", badge: "CUSTOMER STORY", title: "HSBC boosts productivity with Mistral", image: "/images/figma/raw-3.jpeg" },
-  { company: "ASML", badge: "CUSTOMER STORY", title: "ASML accelerates a semiconductor lithography process with Mistral.", image: "/images/figma/raw-4.jpeg" },
-  { company: "SYNTHOC", badge: "CUSTOMER STORY", title: "Intelligence that moves critical teams forward.", image: "/images/figma/raw-6.jpeg" },
-];
-
 const capabilities = [
   { title: "Autonomous work.", description: "AI agent for long-horizon tasks. Fluent in your knowledge and tools.", action: "Discover Viz", type: "orange", tags: ["INTERACTIVE", "REAL-TIME", "SECURE", "TASKS", "MULTI-AGENT", "MULTIMODAL"] },
   { title: "Autonomous coding.", description: "Ship faster with a stack that meets devs where they work.", action: "Discover Viz for code", type: "code", tags: ["AGENT", "CODE GENERATION", "AUTOMATION", "LOCAL", "OPEN", "RELIABLE"] },
@@ -33,12 +27,15 @@ function Arrow() { return <span aria-hidden>→</span>; }
 export function HomeExperience({ dict, locale }: HomeExperienceProps) {
   const [caseIndex, setCaseIndex] = useState(0);
   const [capability, setCapability] = useState(0);
+  const caseStudies = dict.home.cases.items;
   const [tab, setTab] = useState(0);
   const [feature, setFeature] = useState(0);
 
   const products = dict.home.products;
   const cta = dict.cta;
-  const study = caseStudies[caseIndex];
+
+  const selectedCase = caseStudies[caseIndex % caseStudies.length];
+  const nextCase = caseStudies[(caseIndex + 1) % caseStudies.length];
   const selectedCapability = capabilities[capability];
   const selectedTab = products.tabs[tab];
 
@@ -50,24 +47,77 @@ export function HomeExperience({ dict, locale }: HomeExperienceProps) {
       </div>
 
       <section className="trusted" aria-label="Companies trusted">
-        <p>Trusted by scale-ups and<br />Fortune 500 companies</p>
-        {["REDWOOD", "Commonwealth", "CSX", "HADRIAN", "Symbotic"].map((logo) => <strong key={logo}>{logo}</strong>)}
+        <div className="trusted__track">
+          <div className="trusted__slide">
+            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="Google" className="trusted__logo" /></div>
+            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="Google" className="trusted__logo" /></div>
+            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="Google" className="trusted__logo" /></div>
+            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="Google" className="trusted__logo" /></div>
+            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="Google" className="trusted__logo" /></div>
+          </div>
+          <div className="trusted__slide" aria-hidden="true">
+            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="" className="trusted__logo" /></div>
+            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="" className="trusted__logo" /></div>
+            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="" className="trusted__logo" /></div>
+            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="" className="trusted__logo" /></div>
+            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="" className="trusted__logo" /></div>
+          </div>
+          <div className="trusted__slide" aria-hidden="true">
+            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="" className="trusted__logo" /></div>
+            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="" className="trusted__logo" /></div>
+            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="" className="trusted__logo" /></div>
+            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="" className="trusted__logo" /></div>
+            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="" className="trusted__logo" /></div>
+          </div>
+        </div>
       </section>
 
-      <section className="case-section" aria-label="Featured case studies">
-        <div className="case-track">
-          <article className="case-card" style={{ backgroundImage: `linear-gradient(0deg, rgba(0,0,0,.76), rgba(0,0,0,.06) 70%), url(${study.image})` }}>
-            <div><strong className="case-logo">{study.company}</strong><span className="case-badge">{study.badge}</span></div>
-            <h2>{study.title}</h2>
-            <Link className="button button--light" href={localizedHref(locale, "/customers")}>En savoir plus <Arrow /></Link>
-          </article>
-          <article className="case-card case-card--next" style={{ backgroundImage: `linear-gradient(0deg, rgba(0,0,0,.76), rgba(0,0,0,.06) 70%), url(${caseStudies[(caseIndex + 1) % caseStudies.length].image})` }} aria-hidden="true">
-            <strong className="case-logo">{caseStudies[(caseIndex + 1) % caseStudies.length].company}</strong>
-          </article>
+      <section className="case-section" aria-label={dict.home.cases.heading} onWheel={(e) => { if (e.deltaY > 30) setCaseIndex((caseIndex + 1) % caseStudies.length); else if (e.deltaY < -30) setCaseIndex((caseIndex - 1 + caseStudies.length) % caseStudies.length); }}>
+        <div className="case-grid">
+          <Link key={`${selectedCase.badge}-${caseIndex}`} href={localizedHref(locale, "/customers")} className="case-card">
+            <img src={selectedCase.image} alt="" className="case-card__bg" />
+            <div className="case-card__overlay">
+              <div className="case-card__content">
+                <div className="case-card__logo">
+                  <span className="case-card__logo-text">{selectedCase.company}</span>
+                </div>
+                <span className="case-card__tag">{selectedCase.badge}</span>
+                <h2 className="case-card__title">{selectedCase.title}</h2>
+              </div>
+              <div className="case-card__btn">
+                <span>{dict.home.cases.learnMore}</span>
+                <span className="case-card__btn-arrow" aria-hidden>→</span>
+              </div>
+            </div>
+          </Link>
+          <Link key={`${nextCase.badge}-${caseIndex + 1}`} href={localizedHref(locale, "/customers")} className="case-card case-card--next">
+            <img src={nextCase.image} alt="" className="case-card__bg" />
+            <div className="case-card__overlay">
+              <div className="case-card__content">
+                <div className="case-card__logo">
+                  <span className="case-card__logo-text">{nextCase.company}</span>
+                </div>
+                <span className="case-card__tag">{nextCase.badge}</span>
+                <h2 className="case-card__title">{nextCase.title}</h2>
+              </div>
+              <div className="case-card__btn">
+                <span>{dict.home.cases.learnMore}</span>
+                <span className="case-card__btn-arrow" aria-hidden>→</span>
+              </div>
+            </div>
+          </Link>
         </div>
-        <div className="carousel-controls">
-          <div role="tablist" aria-label="Case studies">{caseStudies.map((item, index) => <button key={item.company} role="tab" type="button" aria-label={`Afficher ${item.company}`} aria-selected={caseIndex === index} onClick={() => setCaseIndex(index)} className={caseIndex === index ? "dot dot--active" : "dot"} />)}</div>
-          <div><button type="button" onClick={() => setCaseIndex((caseIndex + caseStudies.length - 1) % caseStudies.length)} aria-label="Étude précédente">←</button><button type="button" onClick={() => setCaseIndex((caseIndex + 1) % caseStudies.length)} aria-label="Étude suivante">→</button></div>
+        <div className="case-nav">
+          <div className="case-nav__progress">
+            <span className="case-nav__bar" />
+            {caseStudies.map((_, i) => (
+              <button key={i} type="button" className={`case-nav__dot ${i === caseIndex ? "case-nav__dot--active" : ""}`} onClick={() => setCaseIndex(i)} aria-label={`Story ${i + 1}`} />
+            ))}
+          </div>
+          <div className="case-nav__arrows">
+            <button type="button" onClick={() => setCaseIndex((caseIndex - 1 + caseStudies.length) % caseStudies.length)} aria-label={dict.home.cases.prev}>←</button>
+            <button type="button" onClick={() => setCaseIndex((caseIndex + 1) % caseStudies.length)} aria-label={dict.home.cases.next}>→</button>
+          </div>
         </div>
       </section>
 
