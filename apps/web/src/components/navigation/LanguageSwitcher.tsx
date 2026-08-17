@@ -31,15 +31,15 @@ export function LanguageSwitcher({ locale }: { locale: Locale }) {
   }, []);
 
   return (
-    <div ref={ref} className="relative">
+    <div ref={ref} className="relative flex items-center gap-2">
+      <span className="text-sm text-[#a3a3a3]">{locale === "fr" ? "Langue :" : "Language :"}</span>
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className="flex items-center gap-2 rounded-full border border-zinc-200 px-3 py-1.5 text-sm text-zinc-700 transition-colors hover:bg-zinc-50"
+        className="flex items-center gap-2 rounded-full border border-[#333] px-3 py-1.5 text-sm text-white transition-colors hover:border-[#555]"
       >
-        <span aria-hidden>{flags[locale]}</span>
         {localeNames[locale]}
         <svg
           className={`h-3.5 w-3.5 transition-transform ${open ? "rotate-180" : ""}`}
@@ -54,7 +54,7 @@ export function LanguageSwitcher({ locale }: { locale: Locale }) {
       {open ? (
         <ul
           role="listbox"
-          className="absolute bottom-full right-0 z-20 mb-2 w-52 overflow-hidden rounded-xl border border-zinc-200 bg-white py-1 shadow-lg"
+          className="absolute bottom-full right-0 z-20 mb-2 w-52 overflow-hidden rounded-xl border border-[#333] bg-[#131313] py-1 shadow-lg"
         >
           {locales.map((code) => {
             const isActive = code === locale;
@@ -67,16 +67,15 @@ export function LanguageSwitcher({ locale }: { locale: Locale }) {
                   onClick={() => setOpen(false)}
                   className={
                     isActive
-                      ? "flex items-center justify-between gap-2 bg-zinc-50 px-4 py-2 text-sm font-medium text-zinc-900"
-                      : "flex items-center justify-between gap-2 px-4 py-2 text-sm text-zinc-700 transition-colors hover:bg-zinc-50 hover:text-zinc-900"
+                      ? "flex items-center justify-between gap-2 bg-[#222] px-4 py-2 text-sm font-medium text-white"
+                      : "flex items-center justify-between gap-2 px-4 py-2 text-sm text-[#a3a3a3] transition-colors hover:bg-[#1a1a1a] hover:text-white"
                   }
                 >
                   <span className="flex items-center gap-2">
-                    <span aria-hidden>{flags[code]}</span>
                     {localeNames[code]}
                   </span>
                   {isActive ? (
-                    <svg className="h-4 w-4 text-zinc-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   ) : null}
