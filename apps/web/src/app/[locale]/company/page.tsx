@@ -16,12 +16,17 @@ export default async function CompanyHubPage({ params }: Props) {
 
   return (
     <main className="min-h-screen bg-[var(--paper)] text-[var(--ink)]">
-      {/* HERO SECTION - Minimal & Assertive */}
-      <section className="relative overflow-hidden pt-32 pb-24 lg:pt-48 lg:pb-32">
+      {/* HERO SECTION - Bilingual */}
+      <section className="relative overflow-hidden pt-32 pb-24 lg:pt-48 lg:pb-32 border-b border-[var(--line)] bg-[var(--color-surface)]">
         <Container>
           <div className="mx-auto max-w-4xl">
-            <h1 className="text-5xl font-medium tracking-tight sm:text-6xl lg:text-7xl" style={{ textWrap: 'balance' }}>
-              Connecter l'intelligence numérique à la réalité physique.
+            <h1
+              className="text-5xl font-medium tracking-tight sm:text-6xl lg:text-7xl"
+              style={{ textWrap: "balance" }}
+            >
+              {locale === "fr"
+                ? "Connecter l'intelligence numérique à la réalité physique."
+                : "Connecting digital intelligence to the physical world."}
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-zinc-600 sm:text-xl">
               {content.company.story}
@@ -30,12 +35,11 @@ export default async function CompanyHubPage({ params }: Props) {
         </Container>
       </section>
 
-      {/* NAVIGATION ARCHITECTURE - Asymmetric Bento Grid */}
+      {/* NAVIGATION ARCHITECTURE - Bento Grid */}
       <section className="border-t border-[var(--line)]">
         <Container className="py-24">
           <div className="grid grid-cols-1 gap-px bg-[var(--line)] sm:grid-cols-2 lg:grid-cols-3 border border-[var(--line)]">
-            
-            {/* ABOUT CARD - Span 2 columns on large screens */}
+            {/* ABOUT CARD - Span 2 columns */}
             <a
               href={localizedHref(l, "/company/about")}
               className="group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)] lg:col-span-2"
@@ -48,7 +52,9 @@ export default async function CompanyHubPage({ params }: Props) {
                   </h2>
                 </div>
                 <p className="mt-6 max-w-lg text-2xl font-medium leading-snug tracking-tight text-[var(--ink)] sm:text-3xl">
-                  L'histoire, les fondateurs et notre empreinte dans le monde réel.
+                  {locale === "fr"
+                    ? "L'histoire, les fondateurs et notre empreinte dans le monde réel."
+                    : "Our story, our founders, and our footprint in the real world."}
                 </p>
               </div>
               <div className="mt-12 flex justify-end">
@@ -73,7 +79,49 @@ export default async function CompanyHubPage({ params }: Props) {
               </div>
               <div className="mt-12 flex justify-end">
                 <span className="text-sm font-medium text-zinc-500 group-hover:text-[var(--color-signal-500)]">
-                  Découvrir la thèse →
+                  {locale === "fr" ? "Découvrir la thèse →" : "Read the thesis →"}
+                </span>
+              </div>
+            </a>
+
+            {/* BLOG CARD */}
+            <a
+              href={localizedHref(l, "/company/blog")}
+              className="group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)]"
+            >
+              <div>
+                <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-500 group-hover:text-[var(--ink)]">
+                  {locale === "fr" ? "Blog" : "Blog"}
+                </h2>
+                <p className="mt-6 text-xl font-medium leading-snug text-zinc-700">
+                  {locale === "fr"
+                    ? "Actualités, plongées techniques et récits de l'équipe."
+                    : "News, engineering deep-dives and stories from the team."}
+                </p>
+              </div>
+              <div className="mt-12 flex justify-end">
+                <span className="text-sm font-medium text-zinc-500 group-hover:text-[var(--color-signal-500)]">
+                  {locale === "fr" ? "Lire →" : "Read →"}
+                </span>
+              </div>
+            </a>
+
+            {/* CUSTOMERS CARD */}
+            <a
+              href={localizedHref(l, "/company/customers")}
+              className="group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)]"
+            >
+              <div>
+                <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-500 group-hover:text-[var(--ink)]">
+                  {locale === "fr" ? "Clients" : "Customers"}
+                </h2>
+                <p className="mt-6 text-xl font-medium leading-snug text-zinc-700">
+                  {content.company.newsroom}
+                </p>
+              </div>
+              <div className="mt-12 flex justify-end">
+                <span className="text-sm font-medium text-zinc-500 group-hover:text-[var(--color-signal-500)]">
+                  {locale === "fr" ? "Voir →" : "View →"}
                 </span>
               </div>
             </a>
@@ -93,7 +141,71 @@ export default async function CompanyHubPage({ params }: Props) {
               </div>
               <div className="mt-12 flex justify-end">
                 <span className="text-sm font-medium text-zinc-500 group-hover:text-[var(--color-signal-500)]">
-                  Rejoindre l'équipe →
+                  {locale === "fr" ? "Rejoindre l'équipe →" : "Join the team →"}
+                </span>
+              </div>
+            </a>
+
+            {/* PRESS CARD */}
+            <a
+              href={localizedHref(l, "/company/press")}
+              className="group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)]"
+            >
+              <div>
+                <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-500 group-hover:text-[var(--ink)]">
+                  {locale === "fr" ? "Presse" : "Press"}
+                </h2>
+                <p className="mt-6 text-xl font-medium leading-snug text-zinc-700">
+                  {content.company.newsroom}
+                </p>
+              </div>
+              <div className="mt-12 flex justify-end">
+                <span className="text-sm font-medium text-zinc-500 group-hover:text-[var(--color-signal-500)]">
+                  {locale === "fr" ? "Consulter →" : "Explore →"}
+                </span>
+              </div>
+            </a>
+
+            {/* INTERNSHIPS CARD */}
+            <a
+              href={localizedHref(l, "/company/internships")}
+              className="group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)]"
+            >
+              <div>
+                <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-500 group-hover:text-[var(--ink)]">
+                  {locale === "fr" ? "Stages" : "Internships"}
+                </h2>
+                <p className="mt-6 text-xl font-medium leading-snug text-zinc-700">
+                  {locale === "fr"
+                    ? "Démarrez votre carrière en deeptech."
+                    : "Start your career in deeptech."}
+                </p>
+              </div>
+              <div className="mt-12 flex justify-end">
+                <span className="text-sm font-medium text-zinc-500 group-hover:text-[var(--color-signal-500)]">
+                  {locale === "fr" ? "Découvrir →" : "Explore →"}
+                </span>
+              </div>
+            </a>
+
+            {/* BENEFITS CARD - Span 2 columns */}
+            <a
+              href={localizedHref(l, "/company/benefits")}
+              className="group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)] lg:col-span-2"
+            >
+              <div>
+                <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-500 group-hover:text-[var(--ink)]">
+                  {locale === "fr" ? "Avantages" : "Benefits"}
+                </h2>
+                <p className="mt-6 text-xl font-medium leading-snug text-zinc-700 max-w-lg">
+                  {locale === "fr"
+                    ? "Ce que nous offrons à chaque membre de l'équipe."
+                    : "What we offer every member of the team."}
+                </p>
+              </div>
+              <div className="mt-12 flex justify-end">
+                <span className="text-sm font-medium text-zinc-500 group-hover:text-[var(--color-signal-500)]">
+                  {locale === "fr" ? "Voir les avantages →" : "See benefits →"}
                 </span>
               </div>
             </a>
@@ -101,7 +213,7 @@ export default async function CompanyHubPage({ params }: Props) {
             {/* CONTACT CARD */}
             <a
               href={localizedHref(l, "/company/contact")}
-              className="group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)] lg:col-span-2"
+              className="group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)]"
             >
               <div className="flex items-center justify-between">
                 <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-500 group-hover:text-[var(--ink)]">

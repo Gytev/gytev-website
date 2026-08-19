@@ -223,6 +223,30 @@ export type Dictionary = {
           submit: string;
         };
       };
+      press: {
+        kicker: string;
+        title: string;
+        heroTitle: string;
+        body: string;
+        articles: { title: string; source: string; date: string; excerpt: string; tag: string }[];
+      };
+      internships: {
+        kicker: string;
+        title: string;
+        heroTitle: string;
+        body: string;
+        departments: {
+          name: string;
+          openings: { title: string; location: string; type: string; description: string }[];
+        }[];
+      };
+      benefits: {
+        kicker: string;
+        title: string;
+        heroTitle: string;
+        body: string;
+        benefits: { title: string; description: string }[];
+      };
     };
   };
   footer: {
@@ -251,7 +275,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             links: [
               { label: "Publications", href: "/research" },
               { label: "Open source", href: "/developers" },
-              { label: "Research news", href: "/blog" },
+              { label: "Research news", href: "/company/blog" },
             ],
           },
           {
@@ -267,7 +291,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             links: [
               { label: "Rio", href: "/products/rio" },
               { label: "RedQ", href: "/solutions/redq" },
-              { label: "Customers", href: "/customers" },
+              { label: "Customers", href: "/company/customers" },
             ],
           },
         ],
@@ -322,7 +346,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
               { label: "RedQ", href: "/solutions/redq" },
               { label: "Agriculture", href: "/solutions" },
               { label: "Public health", href: "/solutions" },
-              { label: "Customers", href: "/customers" },
+              { label: "Customers", href: "/company/customers" },
             ],
           },
           {
@@ -338,7 +362,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
               { label: "Farming", href: "/solutions" },
               { label: "Healthcare", href: "/solutions" },
               { label: "Civil service", href: "/solutions" },
-              { label: "Customers", href: "/customers" },
+              { label: "Customers", href: "/company/customers" },
             ],
           },
         ],
@@ -399,17 +423,17 @@ export const dictionaries: Record<Locale, Dictionary> = {
           {
             title: "Newsroom",
             links: [
-              { label: "Blog", href: "/blog" },
-              { label: "Customers", href: "/customers" },
-              { label: "Press", href: "/blog" },
+              { label: "Blog", href: "/company/blog" },
+              { label: "Customers", href: "/company/customers" },
+              { label: "Press", href: "/company/press" },
             ],
           },
           {
             title: "Careers",
             links: [
               { label: "Open roles", href: "/company/careers" },
-              { label: "Internships", href: "/company/careers" },
-              { label: "Benefits", href: "/company/careers" },
+              { label: "Internships", href: "/company/internships" },
+              { label: "Benefits", href: "/company/benefits" },
             ],
           },
         ],
@@ -837,6 +861,53 @@ export const dictionaries: Record<Locale, Dictionary> = {
             submit: "Send message"
           }
         },
+        press: {
+          kicker: "Newsroom",
+          title: "Press",
+          heroTitle: "Gytev in the news.",
+          body: "Press coverage, media mentions and company announcements.",
+          articles: [
+            { title: "Gytev raises $2M seed to build Africa's intelligence layer", source: "TechCrunch", date: "March 2025", excerpt: "The Dakar-based deeptech startup plans to scale its IoT platform for agriculture and healthcare across West Africa.", tag: "Funding" },
+            { title: "Rio launches in the Sahel region", source: "African Business", date: "June 2025", excerpt: "Digital twins for agriculture reach smallholder farmers in Senegal and Burkina Faso, with real-time irrigation recommendations.", tag: "Product" },
+            { title: "Senegal's blood bank goes digital with RedQ", source: "WHO News", date: "January 2026", excerpt: "A national platform for managing blood donations and blood bags brings full traceability from donor to hospital.", tag: "Impact" },
+          ],
+        },
+        internships: {
+          kicker: "Grow with us",
+          title: "Internships",
+          heroTitle: "Start your career in deeptech.",
+          body: "Internships at Gytev are hands-on. You will ship real code, deploy real hardware, or solve real operational problems — not fetch coffee.",
+          departments: [
+            {
+              name: "Engineering & AI",
+              openings: [
+                { title: "ML Engineer Intern", location: "Dakar / Remote", type: "6 months", description: "Work on time-series models for agricultural prediction. You will train, evaluate, and deploy models that run in production." },
+                { title: "Embedded Systems Intern", location: "Dakar", type: "6 months", description: "Contribute to the firmware of our IoT boxes. C/Rust, low-power computing, sensor integration." },
+              ],
+            },
+            {
+              name: "Operations & Product",
+              openings: [
+                { title: "Product Design Intern", location: "Dakar", type: "4 months", description: "Help design the interfaces that farmers and hospital staff use every day. Research, prototyping, user testing." },
+                { title: "Field Operations Intern", location: "West Africa", type: "4 months", description: "Join deployment teams in the field. Install sensors, collect feedback, and help us understand real-world constraints." },
+              ],
+            },
+          ],
+        },
+        benefits: {
+          kicker: "Why Gytev",
+          title: "Benefits",
+          heroTitle: "What we offer.",
+          body: "We believe great work comes from people who are supported, trusted and fairly compensated.",
+          benefits: [
+            { title: "Real impact", description: "Your work reaches farmers and hospitals within months, not years." },
+            { title: "Flexible work", description: "Remote-first with offices in Dakar. Work where you are most effective." },
+            { title: "Learning budget", description: "Annual budget for conferences, courses, and books. We invest in your growth." },
+            { title: "Equity", description: "All team members receive equity. When Gytev grows, everyone grows." },
+            { title: "Health coverage", description: "Comprehensive health insurance for you and your family." },
+            { title: "Relocation support", description: "We help you move to Dakar with a relocation package." },
+          ],
+        },
       },
     },
     footer: {
@@ -852,7 +923,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
                 { label: "Research Overview", href: "/research" },
                 { label: "Publications", href: "/research" },
                 { label: "Open source", href: "/developers" },
-                { label: "Research news", href: "/blog" },
+                { label: "Research news", href: "/company/blog" },
               ],
             },
             {
@@ -903,7 +974,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
                 { label: "Solutions", href: "/solutions" },
                 { label: "Agriculture", href: "/solutions" },
                 { label: "Public health", href: "/solutions" },
-                { label: "Customer Stories", href: "/customers" },
+                { label: "Customer Stories", href: "/company/customers" },
                 { label: "Contact Sales", href: "/company/contact" },
               ],
             },
@@ -925,7 +996,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
                 { label: "About Us", href: "/company/about" },
                 { label: "Our Vision", href: "/company/vision" },
                 { label: "Careers", href: "/company/careers" },
-                { label: "News", href: "/blog" },
+                { label: "Blog", href: "/company/blog" },
+                { label: "Press", href: "/company/press" },
                 { label: "Contact", href: "/company/contact" },
               ],
             },
@@ -943,7 +1015,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             {
               title: "More",
               links: [
-                { label: "Blog", href: "/blog" },
+                { label: "Blog", href: "/company/blog" },
                 { label: "Careers", href: "/company/careers" },
                 { label: "Developers", href: "/developers" },
               ],
@@ -975,7 +1047,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             links: [
               { label: "Publications", href: "/research" },
               { label: "Open source", href: "/developers" },
-              { label: "Actualités recherche", href: "/blog" },
+              { label: "Actualités recherche", href: "/company/blog" },
             ],
           },
           {
@@ -991,7 +1063,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             links: [
               { label: "IA Rio", href: "/products/rio" },
               { label: "RedQ", href: "/solutions/redq" },
-              { label: "Clients", href: "/customers" },
+              { label: "Clients", href: "/company/customers" },
             ],
           },
         ],
@@ -1046,7 +1118,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
               { label: "RedQ", href: "/solutions/redq" },
               { label: "Agriculture", href: "/solutions" },
               { label: "Santé publique", href: "/solutions" },
-              { label: "Clients", href: "/customers" },
+              { label: "Clients", href: "/company/customers" },
             ],
           },
           {
@@ -1062,7 +1134,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
               { label: "Agriculture", href: "/solutions" },
               { label: "Santé", href: "/solutions" },
               { label: "Services publics", href: "/solutions" },
-              { label: "Clients", href: "/customers" },
+              { label: "Clients", href: "/company/customers" },
             ],
           },
         ],
@@ -1123,17 +1195,17 @@ export const dictionaries: Record<Locale, Dictionary> = {
           {
             title: "Actualités",
             links: [
-              { label: "Blog", href: "/blog" },
-              { label: "Clients", href: "/customers" },
-              { label: "Presse", href: "/blog" },
+              { label: "Blog", href: "/company/blog" },
+              { label: "Clients", href: "/company/customers" },
+              { label: "Presse", href: "/company/press" },
             ],
           },
           {
             title: "Carrières",
             links: [
               { label: "Postes ouverts", href: "/company/careers" },
-              { label: "Stages", href: "/company/careers" },
-              { label: "Avantages", href: "/company/careers" },
+              { label: "Stages", href: "/company/internships" },
+              { label: "Avantages", href: "/company/benefits" },
             ],
           },
         ],
@@ -1561,6 +1633,53 @@ export const dictionaries: Record<Locale, Dictionary> = {
             submit: "Envoyer le message"
           }
         },
+        press: {
+          kicker: "Salle de presse",
+          title: "Presse",
+          heroTitle: "Gytev dans les médias.",
+          body: "Couverture médiatique, mentions dans la presse et annonces de l'entreprise.",
+          articles: [
+            { title: "Gytev lève 2M$ pour construire la couche d'intelligence de l'Afrique", source: "TechCrunch", date: "Mars 2025", excerpt: "Le startup deeptech basé à Dakar prévoit de déployer sa plateforme IoT pour l'agriculture et la santé en Afrique de l'Ouest.", tag: "Financement" },
+            { title: "Rio s'étend dans la région du Sahel", source: "African Business", date: "Juin 2025", excerpt: "Les jumeaux numériques pour l'agriculture arrivent chez les petits exploitants au Sénégal et au Burkina Faso.", tag: "Produit" },
+            { title: "La banque du sang du Sénégal se digitalise avec RedQ", source: "OMS Info", date: "Janvier 2026", excerpt: "Une plateforme nationale de gestion des dons de sang apporte une traçabilité complète du donneur à l'hôpital.", tag: "Impact" },
+          ],
+        },
+        internships: {
+          kicker: "Grandissez avec nous",
+          title: "Stages",
+          heroTitle: "Commencez votre carrière en deeptech.",
+          body: "Les stages chez Gytev sont concrets. Vous livrerez du vrai code, déployerez du vrai matériel ou résoudrez de vrais problèmes opérationnels — pas du café.",
+          departments: [
+            {
+              name: "Ingénierie & IA",
+              openings: [
+                { title: "Stagiaire ML Engineer", location: "Dakar / Remote", type: "6 mois", description: "Travaillez sur des modèles de séries temporelles pour la prédiction agricole. Entraînement, évaluation et déploiement en production." },
+                { title: "Stagiaire Systèmes Embarqués", location: "Dakar", type: "6 mois", description: "Contribuez au firmware de nos boîtiers IoT. C/Rust, informatique basse consommation, intégration de capteurs." },
+              ],
+            },
+            {
+              name: "Opérations & Produit",
+              openings: [
+                { title: "Stagiaire Design Produit", location: "Dakar", type: "4 mois", description: "Aidez à concevoir les interfaces que les agriculteurs et le personnel hospitalier utilisent au quotidien. Recherche, prototypage, tests utilisateurs." },
+                { title: "Stagiaire Opérations Terrain", location: "Afrique de l'Ouest", type: "4 mois", description: "Rejoignez les équipes de déploiement sur le terrain. Installation de capteurs, collecte de retours, compréhension des contraintes réelles." },
+              ],
+            },
+          ],
+        },
+        benefits: {
+          kicker: "Pourquoi Gytev",
+          title: "Avantages",
+          heroTitle: "Ce que nous offrons.",
+          body: "Nous croyons que le meilleur travail vient de personnes soutenues, en confiance et justement rémunérées.",
+          benefits: [
+            { title: "Impact réel", description: "Votre travail atteint des agriculteurs et des hôpitaux en quelques mois, pas en quelques années." },
+            { title: "Flexibilité", description: "Télétravail par défaut, bureaux à Dakar. Travaillez là où vous êtes le plus efficace." },
+            { title: "Budget formation", description: "Budget annuel pour conférences, formations et livres. Nous investissons dans votre croissance." },
+            { title: "Equity", description: "Tous les membres de l'équipe reçoivent des actions. Quand Gytev grandit, tout le monde grandit." },
+            { title: "Couverture santé", description: "Assurance santé complète pour vous et votre famille." },
+            { title: "Aide à la relocation", description: "Nous vous aidons à vous installer à Dakar avec un package de relocation." },
+          ],
+        },
       },
     },
     footer: {
@@ -1576,7 +1695,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
                 { label: "Vue d'ensemble", href: "/research" },
                 { label: "Publications", href: "/research" },
                 { label: "Open source", href: "/developers" },
-                { label: "Actualités recherche", href: "/blog" },
+                { label: "Actualités recherche", href: "/company/blog" },
               ],
             },
             {
@@ -1627,7 +1746,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
                 { label: "Solutions", href: "/solutions" },
                 { label: "Agriculture", href: "/solutions" },
                 { label: "Santé publique", href: "/solutions" },
-                { label: "Témoignages clients", href: "/customers" },
+                { label: "Témoignages clients", href: "/company/customers" },
                 { label: "Contacter les ventes", href: "/company/contact" },
               ],
             },
@@ -1649,7 +1768,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
                 { label: "À propos", href: "/company/about" },
                 { label: "Notre vision", href: "/company/vision" },
                 { label: "Carrières", href: "/company/careers" },
-                { label: "Actualités", href: "/blog" },
+                { label: "Actualités", href: "/company/blog" },
                 { label: "Contact", href: "/company/contact" },
               ],
             },
@@ -1667,7 +1786,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             {
               title: "Plus",
               links: [
-                { label: "Blog", href: "/blog" },
+                { label: "Blog", href: "/company/blog" },
                 { label: "Carrières", href: "/company/careers" },
                 { label: "Développeurs", href: "/developers" },
               ],
