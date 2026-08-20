@@ -154,7 +154,22 @@ export type Dictionary = {
     company: { title: string; description: string };
     rio: { contactSales: string; devDocs: string };
     redq: { contactUs: string; pillars: { title: string; description: string }[] };
-    vision: { eyebrow: string; heading: string; discover: string; loop: { step: string; text: string }[] };
+    vision: {
+      eyebrow: string;
+      heading: string;
+      subtitle: string;
+      discover: string;
+      loopHeading: string;
+      loopDescription: string;
+      thesis: { title: string; paragraphs: string[] };
+      architectureHeading: string;
+      architecture: {
+        title: string;
+        description: string;
+        features: string[];
+      }[];
+      loop: { step: string; text: string }[];
+    };
     companySections: {
       about: string;
       story: string;
@@ -164,9 +179,74 @@ export type Dictionary = {
       contact: string;
     };
     companyDetail: {
-      about: { kicker: string; title: string; body: string };
-      careers: { kicker: string; title: string; body: string };
-      contact: { kicker: string; title: string; note: string; cta: string };
+      about: {
+        kicker: string;
+        title: string;
+        heroTitle: string;
+        body: string;
+        timeline: { year: string; title: string; description: string; icon: string }[];
+        teamHeading: string;
+        teamDescription: string;
+        team: { name: string; role: string; bio: string; image: string | null }[];
+        partnersTitle: string;
+        partners: string[];
+        cta: { heading: string; description: string; primary: string; secondary: string };
+      };
+      careers: {
+        kicker: string;
+        title: string;
+        body: string;
+        heroTitle: string;
+        valuesHeading: string;
+        values: { title: string; description: string }[];
+        rolesHeading: string;
+        rolesEmpty: string;
+        departments: {
+          name: string;
+          openings: { title: string; location: string; type: string }[];
+        }[];
+      };
+      contact: {
+        kicker: string;
+        title: string;
+        note: string;
+        heroTitle: string;
+        officesHeading: string;
+        offices: { city: string; address: string; country: string }[];
+        inquiriesHeading: string;
+        inquiries: { title: string; email: string; description: string }[];
+        form: {
+          heading: string;
+          name: string;
+          email: string;
+          message: string;
+          submit: string;
+        };
+      };
+      press: {
+        kicker: string;
+        title: string;
+        heroTitle: string;
+        body: string;
+        articles: { title: string; source: string; date: string; excerpt: string; tag: string }[];
+      };
+      internships: {
+        kicker: string;
+        title: string;
+        heroTitle: string;
+        body: string;
+        departments: {
+          name: string;
+          openings: { title: string; location: string; type: string; description: string }[];
+        }[];
+      };
+      benefits: {
+        kicker: string;
+        title: string;
+        heroTitle: string;
+        body: string;
+        benefits: { title: string; description: string }[];
+      };
     };
   };
   footer: {
@@ -195,7 +275,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             links: [
               { label: "Publications", href: "/research" },
               { label: "Open source", href: "/developers" },
-              { label: "Research news", href: "/blog" },
+              { label: "Research news", href: "/company/blog" },
             ],
           },
           {
@@ -211,7 +291,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             links: [
               { label: "Rio", href: "/products/rio" },
               { label: "RedQ", href: "/solutions/redq" },
-              { label: "Customers", href: "/customers" },
+              { label: "Customers", href: "/company/customers" },
             ],
           },
         ],
@@ -266,7 +346,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
               { label: "RedQ", href: "/solutions/redq" },
               { label: "Agriculture", href: "/solutions" },
               { label: "Public health", href: "/solutions" },
-              { label: "Customers", href: "/customers" },
+              { label: "Customers", href: "/company/customers" },
             ],
           },
           {
@@ -282,7 +362,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
               { label: "Farming", href: "/solutions" },
               { label: "Healthcare", href: "/solutions" },
               { label: "Civil service", href: "/solutions" },
-              { label: "Customers", href: "/customers" },
+              { label: "Customers", href: "/company/customers" },
             ],
           },
         ],
@@ -343,17 +423,17 @@ export const dictionaries: Record<Locale, Dictionary> = {
           {
             title: "Newsroom",
             links: [
-              { label: "Blog", href: "/blog" },
-              { label: "Customers", href: "/customers" },
-              { label: "Press", href: "/blog" },
+              { label: "Blog", href: "/company/blog" },
+              { label: "Customers", href: "/company/customers" },
+              { label: "Press", href: "/company/press" },
             ],
           },
           {
             title: "Careers",
             links: [
               { label: "Open roles", href: "/company/careers" },
-              { label: "Internships", href: "/company/careers" },
-              { label: "Benefits", href: "/company/careers" },
+              { label: "Internships", href: "/company/internships" },
+              { label: "Benefits", href: "/company/benefits" },
             ],
           },
         ],
@@ -648,9 +728,38 @@ export const dictionaries: Record<Locale, Dictionary> = {
         ],
       },
       vision: {
-        eyebrow: "The Gytev intelligence loop",
-        heading: "We build intelligence for the real world.",
-        discover: "Discover Rio",
+        eyebrow: "The Technology Thesis",
+        heading: "A nervous system for the physical world.",
+        subtitle: "Software has eaten the digital world, but the physical world remains offline. We are building the infrastructure to make farms, blood banks, and industries readable by artificial intelligence.",
+        discover: "Read the manifesto",
+        loopHeading: "The Intelligence Loop",
+        loopDescription: "Every Gytev system, whether an agricultural IoT box or a national healthcare platform, relies on a strict execution cycle.",
+        thesis: {
+          title: "The Thesis",
+          paragraphs: [
+            "For decades, the physical world has been a black box to software. We build dashboards based on manual inputs and delayed reports. When something fails—a crop dies, a blood supply runs out—we only know after the fact.",
+            "Gytev believes the next major technological leap is not another digital app, but the deep integration of AI with physical reality. By deploying multimodal sensors directly in the field, we create a continuous stream of ground truth.",
+            "But data alone is useless. Our models are trained to understand the specific physics, biology, and logistics of each environment. They fuse weather forecasts with soil moisture, or historical hospital demand with real-time blood inventory, to predict the future and prescribe the exact next action."
+          ]
+        },
+        architectureHeading: "The Deeptech Stack",
+        architecture: [
+          {
+            title: "1. Sensory Perception (Edge)",
+            description: "Custom-designed IoT hardware running low-power models directly on the edge. Built to survive harsh environments, unstable power grids, and intermittent connectivity.",
+            features: ["LoRaWAN & Cellular fallback", "Solar-powered autonomy", "On-device anomaly detection"]
+          },
+          {
+            title: "2. Multimodal Synthesis",
+            description: "Our backend ingests unstructured streams: time-series sensor data, satellite imagery, and human text inputs, aligning them into a single coherent 'Digital Twin'.",
+            features: ["Spatiotemporal alignment", "Data imputation", "Real-time state graph"]
+          },
+          {
+            title: "3. Prescriptive AI",
+            description: "Beyond predicting risks, our domain-specific models evaluate thousands of possible interventions to recommend the optimal action with a calculated confidence score.",
+            features: ["Causal inference models", "Reinforcement learning", "Explainable AI (XAI) outputs"]
+          }
+        ],
         loop: [
           { step: "Observe", text: "Sensors, IoT, cameras, satellites, machines, human inputs." },
           { step: "Understand", text: "Patterns, relationships, anomalies, trends, risks, context." },
@@ -673,18 +782,131 @@ export const dictionaries: Record<Locale, Dictionary> = {
         about: {
           kicker: "Who we are",
           title: "About Gytev",
+          heroTitle: "From observing to understanding the physical world.",
           body: "The story of a company building intelligence for the real world, from Africa.",
+          timeline: [
+            { year: "2023", title: "Founded in Dakar", description: "Gytev was created with the ambition to connect AI to the physical world.", icon: "⚪" },
+            { year: "2024", title: "Rio Launch", description: "Deployment of the first digital twin for agriculture in Senegal and Burkina Faso.", icon: "🌾" },
+            { year: "2025", title: "RedQ & Public Health", description: "Deployment of the blood donation management platform and strategic partnership with the state.", icon: "🩸" },
+            { year: "2026", title: "Deeptech Expansion", description: "Integration of AI models on the edge for real-time perception with no latency.", icon: "⚡" }
+          ],
+          teamHeading: "Leadership team",
+          teamDescription: "A combination of expertise in artificial intelligence, hardware engineering, and field operations.",
+          team: [
+            { name: "Amadou Fall", role: "Co-founder & CEO", bio: "Former engineering director, passionate about distributed systems infrastructure.", image: null },
+            { name: "Sarah Ndiaye", role: "Co-founder & CTO", bio: "Expert in machine learning and digital twins for heavy industry.", image: null },
+            { name: "Ousmane Diallo", role: "VP of Product", bio: "Focus on the raw utility of data in the real world. Leads the Rio suite.", image: null },
+            { name: "Aïssatou Sow", role: "Head of Operations", bio: "Physical deployment of sensors, logistics, and government partnerships.", image: null }
+          ],
+          partnersTitle: "They rely on our intelligence",
+          partners: ["Ministry of Agriculture", "World Bank", "Sahel Coop", "Dakar Tech Hub", "Health Initiative", "AgriData"],
+          cta: {
+            heading: "Ready to build with us?",
+            description: "Whether you want to join the engineering team or deploy our solutions in your operations.",
+            primary: "View careers",
+            secondary: "Contact us"
+          }
         },
         careers: {
           kicker: "Join us",
           title: "Careers at Gytev",
-          body: "We're hiring engineers, researchers and operators who want to understand the real world.",
+          heroTitle: "Build intelligence for the physical world.",
+          body: "We're hiring engineers, researchers and operators who want to understand the real world. We are based in Dakar, but our problems are global.",
+          valuesHeading: "How we build",
+          values: [
+            { title: "Field first", description: "Models fail when they haven't met reality. We build hardware to get ground truth, not just scrape the internet." },
+            { title: "Radical clarity", description: "Complex systems require simple explanations. We communicate directly, without corporate jargon." },
+            { title: "Built to last", description: "Our systems run in harsh environments: farms with no power grid, blood banks with failing infrastructure. We build for resilience." }
+          ],
+          rolesHeading: "Open roles",
+          rolesEmpty: "No open roles at the moment, but we are always looking for exceptional talent. Reach out.",
+          departments: [
+            {
+              name: "Engineering & AI",
+              openings: [
+                { title: "Senior ML Engineer, Time Series", location: "Dakar / Remote", type: "Full-time" },
+                { title: "Embedded Systems Engineer (C/Rust)", location: "Dakar", type: "Full-time" },
+                { title: "Frontend Engineer (React/WebGL)", location: "Remote (CET ±2)", type: "Full-time" }
+              ]
+            },
+            {
+              name: "Operations & Product",
+              openings: [
+                { title: "Deployment Lead (Agriculture)", location: "West Africa", type: "Full-time" },
+                { title: "Product Manager (Data Platform)", location: "Dakar / Remote", type: "Full-time" }
+              ]
+            }
+          ]
         },
         contact: {
           kicker: "Talk to us",
           title: "Contact Gytev",
+          heroTitle: "Get in touch",
           note: "Tell us what you want to observe, understand or act on.",
-          cta: "Get in touch",
+          officesHeading: "Our Headquarters",
+          offices: [
+            { city: "Dakar", address: "Plateau, Dakar", country: "Senegal" }
+          ],
+          inquiriesHeading: "Direct Inquiries",
+          inquiries: [
+            { title: "Sales & Deployments", email: "sales@gytev.com", description: "To deploy Rio or RedQ in your organization." },
+            { title: "Press & Media", email: "press@gytev.com", description: "For interviews, brand assets, and media inquiries." },
+            { title: "General Support", email: "hello@gytev.com", description: "For anything else." }
+          ],
+          form: {
+            heading: "Send us a message",
+            name: "Your name",
+            email: "Work email",
+            message: "How can we help you?",
+            submit: "Send message"
+          }
+        },
+        press: {
+          kicker: "Newsroom",
+          title: "Press",
+          heroTitle: "Gytev in the news.",
+          body: "Press coverage, media mentions and company announcements.",
+          articles: [
+            { title: "Gytev raises $2M seed to build Africa's intelligence layer", source: "TechCrunch", date: "March 2025", excerpt: "The Dakar-based deeptech startup plans to scale its IoT platform for agriculture and healthcare across West Africa.", tag: "Funding" },
+            { title: "Rio launches in the Sahel region", source: "African Business", date: "June 2025", excerpt: "Digital twins for agriculture reach smallholder farmers in Senegal and Burkina Faso, with real-time irrigation recommendations.", tag: "Product" },
+            { title: "Senegal's blood bank goes digital with RedQ", source: "WHO News", date: "January 2026", excerpt: "A national platform for managing blood donations and blood bags brings full traceability from donor to hospital.", tag: "Impact" },
+          ],
+        },
+        internships: {
+          kicker: "Grow with us",
+          title: "Internships",
+          heroTitle: "Start your career in deeptech.",
+          body: "Internships at Gytev are hands-on. You will ship real code, deploy real hardware, or solve real operational problems — not fetch coffee.",
+          departments: [
+            {
+              name: "Engineering & AI",
+              openings: [
+                { title: "ML Engineer Intern", location: "Dakar / Remote", type: "6 months", description: "Work on time-series models for agricultural prediction. You will train, evaluate, and deploy models that run in production." },
+                { title: "Embedded Systems Intern", location: "Dakar", type: "6 months", description: "Contribute to the firmware of our IoT boxes. C/Rust, low-power computing, sensor integration." },
+              ],
+            },
+            {
+              name: "Operations & Product",
+              openings: [
+                { title: "Product Design Intern", location: "Dakar", type: "4 months", description: "Help design the interfaces that farmers and hospital staff use every day. Research, prototyping, user testing." },
+                { title: "Field Operations Intern", location: "West Africa", type: "4 months", description: "Join deployment teams in the field. Install sensors, collect feedback, and help us understand real-world constraints." },
+              ],
+            },
+          ],
+        },
+        benefits: {
+          kicker: "Why Gytev",
+          title: "Benefits",
+          heroTitle: "What we offer.",
+          body: "We believe great work comes from people who are supported, trusted and fairly compensated.",
+          benefits: [
+            { title: "Real impact", description: "Your work reaches farmers and hospitals within months, not years." },
+            { title: "Flexible work", description: "Remote-first with offices in Dakar. Work where you are most effective." },
+            { title: "Learning budget", description: "Annual budget for conferences, courses, and books. We invest in your growth." },
+            { title: "Equity", description: "All team members receive equity. When Gytev grows, everyone grows." },
+            { title: "Health coverage", description: "Comprehensive health insurance for you and your family." },
+            { title: "Relocation support", description: "We help you move to Dakar with a relocation package." },
+          ],
         },
       },
     },
@@ -701,7 +923,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
                 { label: "Research Overview", href: "/research" },
                 { label: "Publications", href: "/research" },
                 { label: "Open source", href: "/developers" },
-                { label: "Research news", href: "/blog" },
+                { label: "Research news", href: "/company/blog" },
               ],
             },
             {
@@ -752,7 +974,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
                 { label: "Solutions", href: "/solutions" },
                 { label: "Agriculture", href: "/solutions" },
                 { label: "Public health", href: "/solutions" },
-                { label: "Customer Stories", href: "/customers" },
+                { label: "Customer Stories", href: "/company/customers" },
                 { label: "Contact Sales", href: "/company/contact" },
               ],
             },
@@ -774,7 +996,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
                 { label: "About Us", href: "/company/about" },
                 { label: "Our Vision", href: "/company/vision" },
                 { label: "Careers", href: "/company/careers" },
-                { label: "News", href: "/blog" },
+                { label: "Blog", href: "/company/blog" },
+                { label: "Press", href: "/company/press" },
                 { label: "Contact", href: "/company/contact" },
               ],
             },
@@ -792,7 +1015,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             {
               title: "More",
               links: [
-                { label: "Blog", href: "/blog" },
+                { label: "Blog", href: "/company/blog" },
                 { label: "Careers", href: "/company/careers" },
                 { label: "Developers", href: "/developers" },
               ],
@@ -824,7 +1047,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             links: [
               { label: "Publications", href: "/research" },
               { label: "Open source", href: "/developers" },
-              { label: "Actualités recherche", href: "/blog" },
+              { label: "Actualités recherche", href: "/company/blog" },
             ],
           },
           {
@@ -840,7 +1063,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             links: [
               { label: "IA Rio", href: "/products/rio" },
               { label: "RedQ", href: "/solutions/redq" },
-              { label: "Clients", href: "/customers" },
+              { label: "Clients", href: "/company/customers" },
             ],
           },
         ],
@@ -895,7 +1118,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
               { label: "RedQ", href: "/solutions/redq" },
               { label: "Agriculture", href: "/solutions" },
               { label: "Santé publique", href: "/solutions" },
-              { label: "Clients", href: "/customers" },
+              { label: "Clients", href: "/company/customers" },
             ],
           },
           {
@@ -911,7 +1134,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
               { label: "Agriculture", href: "/solutions" },
               { label: "Santé", href: "/solutions" },
               { label: "Services publics", href: "/solutions" },
-              { label: "Clients", href: "/customers" },
+              { label: "Clients", href: "/company/customers" },
             ],
           },
         ],
@@ -972,17 +1195,17 @@ export const dictionaries: Record<Locale, Dictionary> = {
           {
             title: "Actualités",
             links: [
-              { label: "Blog", href: "/blog" },
-              { label: "Clients", href: "/customers" },
-              { label: "Presse", href: "/blog" },
+              { label: "Blog", href: "/company/blog" },
+              { label: "Clients", href: "/company/customers" },
+              { label: "Presse", href: "/company/press" },
             ],
           },
           {
             title: "Carrières",
             links: [
               { label: "Postes ouverts", href: "/company/careers" },
-              { label: "Stages", href: "/company/careers" },
-              { label: "Avantages", href: "/company/careers" },
+              { label: "Stages", href: "/company/internships" },
+              { label: "Avantages", href: "/company/benefits" },
             ],
           },
         ],
@@ -1277,9 +1500,38 @@ export const dictionaries: Record<Locale, Dictionary> = {
         ],
       },
       vision: {
-        eyebrow: "La boucle d'intelligence Gytev",
-        heading: "Nous construisons l'intelligence pour le monde réel.",
-        discover: "Découvrir Rio",
+        eyebrow: "La Thèse Technologique",
+        heading: "Un système nerveux pour le monde physique.",
+        subtitle: "Le logiciel a dévoré le monde numérique, mais le monde physique reste déconnecté. Nous construisons l'infrastructure pour rendre l'agriculture, la santé et l'industrie lisibles par l'intelligence artificielle.",
+        discover: "Lire le manifeste",
+        loopHeading: "La Boucle d'Intelligence",
+        loopDescription: "Chaque système Gytev, qu'il s'agisse d'un boîtier IoT ou d'une plateforme nationale, repose sur un cycle d'exécution strict.",
+        thesis: {
+          title: "La Thèse",
+          paragraphs: [
+            "Pendant des décennies, le monde physique a été une boîte noire pour les logiciels. Nous avons construit des tableaux de bord basés sur des saisies manuelles et des rapports différés. Lorsqu'une culture meurt ou qu'une réserve de sang s'épuise, nous ne le savons qu'après coup.",
+            "Gytev est convaincu que le prochain grand saut technologique n'est pas une énième application, mais l'intégration profonde de l'IA à la réalité physique. En déployant des capteurs multimodaux directement sur le terrain, nous créons un flux continu de vérité terrain.",
+            "Mais les données seules sont inutiles. Nos modèles sont entraînés pour comprendre la physique, la biologie et la logistique spécifiques de chaque environnement. Ils fusionnent les prévisions météo avec l'humidité du sol pour prédire l'avenir et prescrire l'action exacte à mener."
+          ]
+        },
+        architectureHeading: "La Stack Deeptech",
+        architecture: [
+          {
+            title: "1. Perception Sensorielle (Edge)",
+            description: "Matériel IoT conçu sur mesure exécutant des modèles basse consommation directement à la périphérie. Conçu pour survivre aux environnements difficiles et aux réseaux électriques instables.",
+            features: ["Réseau LoRaWAN & Cellulaire", "Autonomie solaire", "Détection d'anomalies embarquée"]
+          },
+          {
+            title: "2. Synthèse Multimodale",
+            description: "Notre backend ingère des flux non structurés : séries temporelles, imagerie satellite et textes, les alignant dans un 'Jumeau Numérique' cohérent.",
+            features: ["Alignement spatio-temporel", "Imputation de données", "Graphe d'état en temps réel"]
+          },
+          {
+            title: "3. IA Prescriptive",
+            description: "Au-delà de la prédiction des risques, nos modèles évaluent des milliers d'interventions possibles pour recommander l'action optimale avec un score de confiance.",
+            features: ["Modèles d'inférence causale", "Apprentissage par renforcement", "IA explicable (XAI)"]
+          }
+        ],
         loop: [
           { step: "Observer", text: "Capteurs, IoT, caméras, satellites, machines, saisies humaines." },
           { step: "Comprendre", text: "Motifs, relations, anomalies, tendances, risques, contexte." },
@@ -1302,18 +1554,131 @@ export const dictionaries: Record<Locale, Dictionary> = {
         about: {
           kicker: "Qui nous sommes",
           title: "À propos de Gytev",
+          heroTitle: "De l'observation à la compréhension du monde physique.",
           body: "L'histoire d'une entreprise qui construit l'intelligence pour le monde réel, depuis l'Afrique.",
+          timeline: [
+            { year: "2023", title: "Fondation à Dakar", description: "Création de Gytev avec l'ambition de connecter l'intelligence artificielle au monde physique.", icon: "⚪" },
+            { year: "2024", title: "Lancement de Rio", description: "Déploiement du premier jumeau numérique pour l'agriculture au Sénégal et au Burkina Faso.", icon: "🌾" },
+            { year: "2025", title: "RedQ & Santé Publique", description: "Déploiement de la plateforme de gestion des dons de sang et partenariat stratégique avec l'État.", icon: "🩸" },
+            { year: "2026", title: "Expansion Deeptech", description: "Intégration de modèles d'IA sur le edge pour une perception en temps réel sans latence.", icon: "⚡" }
+          ],
+          teamHeading: "L'équipe dirigeante",
+          teamDescription: "Une combinaison d'expertise en intelligence artificielle, ingénierie matérielle et opérations de terrain.",
+          team: [
+            { name: "Amadou Fall", role: "Co-fondateur & CEO", bio: "Ancien directeur d'ingénierie, passionné par l'infrastructure des systèmes distribués.", image: null },
+            { name: "Sarah Ndiaye", role: "Co-fondatrice & CTO", bio: "Experte en apprentissage automatique et jumeaux numériques pour l'industrie lourde.", image: null },
+            { name: "Ousmane Diallo", role: "VP of Product", bio: "Focus sur l'utilité brute des données dans le monde réel. Pilotage de la suite Rio.", image: null },
+            { name: "Aïssatou Sow", role: "Head of Operations", bio: "Déploiement physique des capteurs, logistique et partenariats gouvernementaux.", image: null }
+          ],
+          partnersTitle: "Ils s'appuient sur notre intelligence",
+          partners: ["Ministère de l'Agriculture", "Banque Mondiale", "Sahel Coop", "Dakar Tech Hub", "Initiative Santé", "AgriData"],
+          cta: {
+            heading: "Prêt à construire avec nous ?",
+            description: "Que vous souhaitiez rejoindre l'équipe d'ingénierie ou déployer nos solutions dans vos opérations.",
+            primary: "Voir les carrières",
+            secondary: "Nous contacter"
+          }
         },
         careers: {
           kicker: "Rejoignez-nous",
           title: "Carrières chez Gytev",
-          body: "Nous recrutons des ingénieurs, des chercheurs et des opérateurs qui veulent comprendre le monde réel.",
+          heroTitle: "Construire l'intelligence du monde physique.",
+          body: "Nous recrutons des ingénieurs, des chercheurs et des opérateurs qui veulent comprendre le monde réel. Nous sommes basés à Dakar, mais nos défis sont mondiaux.",
+          valuesHeading: "Comment nous construisons",
+          values: [
+            { title: "Le terrain d'abord", description: "Les modèles échouent lorsqu'ils n'ont pas rencontré la réalité. Nous construisons du matériel pour obtenir la vérité terrain, pas seulement pour scrapper internet." },
+            { title: "Clarté radicale", description: "Les systèmes complexes exigent des explications simples. Nous communiquons directement, sans jargon d'entreprise." },
+            { title: "Conçu pour durer", description: "Nos systèmes fonctionnent dans des environnements difficiles : fermes sans réseau électrique, banques de sang aux infrastructures défaillantes. Nous construisons pour la résilience." }
+          ],
+          rolesHeading: "Postes ouverts",
+          rolesEmpty: "Aucun poste ouvert pour le moment, mais nous recherchons toujours des talents exceptionnels. Contactez-nous.",
+          departments: [
+            {
+              name: "Ingénierie & IA",
+              openings: [
+                { title: "Senior ML Engineer, Séries Temporelles", location: "Dakar / Remote", type: "Temps plein" },
+                { title: "Ingénieur Systèmes Embarqués (C/Rust)", location: "Dakar", type: "Temps plein" },
+                { title: "Ingénieur Frontend (React/WebGL)", location: "Remote (CET ±2)", type: "Temps plein" }
+              ]
+            },
+            {
+              name: "Opérations & Produit",
+              openings: [
+                { title: "Responsable Déploiement (Agriculture)", location: "Afrique de l'Ouest", type: "Temps plein" },
+                { title: "Product Manager (Plateforme Data)", location: "Dakar / Remote", type: "Temps plein" }
+              ]
+            }
+          ]
         },
         contact: {
           kicker: "Parlons-en",
           title: "Contacter Gytev",
+          heroTitle: "Prendre contact",
           note: "Dites-nous ce que vous voulez observer, comprendre ou piloter.",
-          cta: "Prendre contact",
+          officesHeading: "Notre Siège",
+          offices: [
+            { city: "Dakar", address: "Plateau, Dakar", country: "Sénégal" }
+          ],
+          inquiriesHeading: "Demandes directes",
+          inquiries: [
+            { title: "Ventes & Déploiements", email: "sales@gytev.com", description: "Pour déployer Rio ou RedQ dans votre organisation." },
+            { title: "Presse & Médias", email: "press@gytev.com", description: "Pour les interviews, le kit de marque et les demandes médias." },
+            { title: "Support général", email: "hello@gytev.com", description: "Pour toute autre question." }
+          ],
+          form: {
+            heading: "Envoyez-nous un message",
+            name: "Votre nom",
+            email: "Email professionnel",
+            message: "Comment pouvons-nous vous aider ?",
+            submit: "Envoyer le message"
+          }
+        },
+        press: {
+          kicker: "Salle de presse",
+          title: "Presse",
+          heroTitle: "Gytev dans les médias.",
+          body: "Couverture médiatique, mentions dans la presse et annonces de l'entreprise.",
+          articles: [
+            { title: "Gytev lève 2M$ pour construire la couche d'intelligence de l'Afrique", source: "TechCrunch", date: "Mars 2025", excerpt: "Le startup deeptech basé à Dakar prévoit de déployer sa plateforme IoT pour l'agriculture et la santé en Afrique de l'Ouest.", tag: "Financement" },
+            { title: "Rio s'étend dans la région du Sahel", source: "African Business", date: "Juin 2025", excerpt: "Les jumeaux numériques pour l'agriculture arrivent chez les petits exploitants au Sénégal et au Burkina Faso.", tag: "Produit" },
+            { title: "La banque du sang du Sénégal se digitalise avec RedQ", source: "OMS Info", date: "Janvier 2026", excerpt: "Une plateforme nationale de gestion des dons de sang apporte une traçabilité complète du donneur à l'hôpital.", tag: "Impact" },
+          ],
+        },
+        internships: {
+          kicker: "Grandissez avec nous",
+          title: "Stages",
+          heroTitle: "Commencez votre carrière en deeptech.",
+          body: "Les stages chez Gytev sont concrets. Vous livrerez du vrai code, déployerez du vrai matériel ou résoudrez de vrais problèmes opérationnels — pas du café.",
+          departments: [
+            {
+              name: "Ingénierie & IA",
+              openings: [
+                { title: "Stagiaire ML Engineer", location: "Dakar / Remote", type: "6 mois", description: "Travaillez sur des modèles de séries temporelles pour la prédiction agricole. Entraînement, évaluation et déploiement en production." },
+                { title: "Stagiaire Systèmes Embarqués", location: "Dakar", type: "6 mois", description: "Contribuez au firmware de nos boîtiers IoT. C/Rust, informatique basse consommation, intégration de capteurs." },
+              ],
+            },
+            {
+              name: "Opérations & Produit",
+              openings: [
+                { title: "Stagiaire Design Produit", location: "Dakar", type: "4 mois", description: "Aidez à concevoir les interfaces que les agriculteurs et le personnel hospitalier utilisent au quotidien. Recherche, prototypage, tests utilisateurs." },
+                { title: "Stagiaire Opérations Terrain", location: "Afrique de l'Ouest", type: "4 mois", description: "Rejoignez les équipes de déploiement sur le terrain. Installation de capteurs, collecte de retours, compréhension des contraintes réelles." },
+              ],
+            },
+          ],
+        },
+        benefits: {
+          kicker: "Pourquoi Gytev",
+          title: "Avantages",
+          heroTitle: "Ce que nous offrons.",
+          body: "Nous croyons que le meilleur travail vient de personnes soutenues, en confiance et justement rémunérées.",
+          benefits: [
+            { title: "Impact réel", description: "Votre travail atteint des agriculteurs et des hôpitaux en quelques mois, pas en quelques années." },
+            { title: "Flexibilité", description: "Télétravail par défaut, bureaux à Dakar. Travaillez là où vous êtes le plus efficace." },
+            { title: "Budget formation", description: "Budget annuel pour conférences, formations et livres. Nous investissons dans votre croissance." },
+            { title: "Equity", description: "Tous les membres de l'équipe reçoivent des actions. Quand Gytev grandit, tout le monde grandit." },
+            { title: "Couverture santé", description: "Assurance santé complète pour vous et votre famille." },
+            { title: "Aide à la relocation", description: "Nous vous aidons à vous installer à Dakar avec un package de relocation." },
+          ],
         },
       },
     },
@@ -1330,7 +1695,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
                 { label: "Vue d'ensemble", href: "/research" },
                 { label: "Publications", href: "/research" },
                 { label: "Open source", href: "/developers" },
-                { label: "Actualités recherche", href: "/blog" },
+                { label: "Actualités recherche", href: "/company/blog" },
               ],
             },
             {
@@ -1381,7 +1746,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
                 { label: "Solutions", href: "/solutions" },
                 { label: "Agriculture", href: "/solutions" },
                 { label: "Santé publique", href: "/solutions" },
-                { label: "Témoignages clients", href: "/customers" },
+                { label: "Témoignages clients", href: "/company/customers" },
                 { label: "Contacter les ventes", href: "/company/contact" },
               ],
             },
@@ -1403,7 +1768,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
                 { label: "À propos", href: "/company/about" },
                 { label: "Notre vision", href: "/company/vision" },
                 { label: "Carrières", href: "/company/careers" },
-                { label: "Actualités", href: "/blog" },
+                { label: "Actualités", href: "/company/blog" },
                 { label: "Contact", href: "/company/contact" },
               ],
             },
@@ -1421,7 +1786,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             {
               title: "Plus",
               links: [
-                { label: "Blog", href: "/blog" },
+                { label: "Blog", href: "/company/blog" },
                 { label: "Carrières", href: "/company/careers" },
                 { label: "Développeurs", href: "/developers" },
               ],
