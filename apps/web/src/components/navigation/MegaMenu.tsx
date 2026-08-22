@@ -6,9 +6,10 @@ type MegaMenuProps = {
   label: string;
   columns: { title: string; links: { label: string; href: string }[] }[];
   visual: { eyebrow: string; title: string; description: string; href: string };
+  image?: string;
 };
 
-export function MegaMenu({ locale, label, columns, visual }: MegaMenuProps) {
+export function MegaMenu({ locale, label, columns, visual, image }: MegaMenuProps) {
   return (
     <div className="absolute inset-x-0 top-full border-t border-[#333] bg-black text-white">
       <div className="mx-auto grid min-h-[417px] max-w-[1280px] grid-cols-12 gap-10 px-10 py-12">
@@ -32,19 +33,34 @@ export function MegaMenu({ locale, label, columns, visual }: MegaMenuProps) {
           ))}
         </div>
 
-        <div className="col-span-4 flex items-center">
+        <div className="col-span-4 flex items-stretch">
           <a
+            key={image ?? "fallback"}
             href={localizedHref(locale, visual.href)}
-            className="flex w-full min-h-56 flex-col rounded-xl bg-gradient-to-br from-[#3d164f] via-[#85258d] to-[#1d0e26] p-7 transition-opacity hover:opacity-90"
+            className="mega-visual group relative flex min-h-[300px] w-full flex-col justify-end overflow-hidden rounded-xl bg-[#1c1424]"
           >
-            <p className="text-xs font-medium uppercase tracking-widest text-white/65">
-              {visual.eyebrow}
-            </p>
-            <h3 className="mt-2 text-xl font-semibold text-white">{visual.title}</h3>
-            <p className="mt-1 text-sm leading-6 text-white/80">{visual.description}</p>
-            <span className="mt-auto inline-flex items-center gap-1 pt-4 text-sm font-medium text-white">
-              {label} <span aria-hidden>→</span>
-            </span>
+            {image ? (
+              // eslint-disable-next-line @next/next/no-img-element -- decorative panel asset
+              <img
+                src={image}
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+              />
+            ) : null}
+            <div
+              className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/5"
+              aria-hidden="true"
+            />
+            <div className="relative p-7">
+              <p className="text-xs font-medium uppercase tracking-widest text-white/70">
+                {visual.eyebrow}
+              </p>
+              <h3 className="mt-2 text-xl font-semibold text-white">{visual.title}</h3>
+              <p className="mt-1 text-sm leading-6 text-white/80">{visual.description}</p>
+              <span className="mt-3 inline-flex items-center gap-1 pt-1 text-sm font-medium text-white">
+                {label} <span aria-hidden>→</span>
+              </span>
+            </div>
           </a>
         </div>
       </div>

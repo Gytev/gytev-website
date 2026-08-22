@@ -3,8 +3,8 @@
     {
       "slug": "rio",
       "name": "Rio",
-      "tagline": "Jumeau numérique pour l'agriculture.",
-      "description": "Une box IoT perçoit la parcelle, l'IA la comprend, et la plateforme recommande la bonne décision — irrigation, engrais, moment de la récolte.",
+      "tagline": "L'écosystème agricole tout-en-un.",
+      "description": "Du financement à l'accès au marché, Rio couvre tout le cycle de production avec des systèmes intelligents.",
       "href": "/products/rio"
     }
   ],
@@ -14,15 +14,21 @@
       "name": "RedQ",
       "description": "La plateforme nationale de gestion des dons et des poches de sang — du donneur à l'hôpital, avec traçabilité complète.",
       "href": "/solutions/redq"
+    },
+    {
+      "slug": "quiisa",
+      "name": "Quiisa",
+      "description": "La plateforme de gestion de projets n°1 en Afrique. Suivez les tâches, gérez les équipes et livrez les projets à temps.",
+      "href": "/solutions/quiisa"
     }
   ],
   "research": [
     {
-      "slug": "digital-twins",
-      "title": "Jumeaux numériques",
-      "summary": "Représentations virtuelles de systèmes réels, continuellement mises à jour par les données des capteurs.",
+      "slug": "agricultural-intelligence",
+      "title": "Intelligence Agricole",
+      "summary": "Systèmes alimentés par l'IA pour l'agriculture, de l'analyse du sol à la prédiction des rendements.",
       "status": "in-progress",
-      "href": "/research/digital-twins"
+      "href": "/research/agricultural-intelligence"
     },
     {
       "slug": "predictive-systems",

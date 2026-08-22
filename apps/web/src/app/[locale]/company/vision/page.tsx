@@ -1,7 +1,17 @@
+import { buildPageMetadata } from "@/lib/metadata";
 import type { Locale } from "@gytev/types";
 import { localizedHref } from "@gytev/i18n";
 import { Container } from "@gytev/ui";
 import { getDictionary } from "@/lib/i18n";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  return buildPageMetadata(locale, "vision");
+}
 
 type Props = {
   params: Promise<{ locale: string }>;

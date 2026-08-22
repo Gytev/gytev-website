@@ -1,7 +1,17 @@
+import { buildPageMetadata } from "@/lib/metadata";
 import { getDictionary } from "@/lib/i18n";
 import { CompanyHero } from "@/components/company/CompanyHero";
 import { BenefitCard } from "@/components/company/BenefitCard";
 import { Container } from "@gytev/ui";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  return buildPageMetadata(locale, "benefits");
+}
 
 type Props = {
   params: Promise<{ locale: string }>;

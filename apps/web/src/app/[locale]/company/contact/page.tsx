@@ -1,5 +1,15 @@
+import { buildPageMetadata } from "@/lib/metadata";
 import { Container } from "@gytev/ui";
 import { getDictionary } from "@/lib/i18n";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  return buildPageMetadata(locale, "contact");
+}
 
 type Props = {
   params: Promise<{ locale: string }>;

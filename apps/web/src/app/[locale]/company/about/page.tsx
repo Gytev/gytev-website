@@ -1,16 +1,25 @@
+import { buildPageMetadata } from "@/lib/metadata";
 import { Container } from "@gytev/ui";
 import { getContent } from "@/lib/content";
 import { getDictionary } from "@/lib/i18n";
 import { localizedHref } from "@gytev/i18n";
 import type { Locale } from "@gytev/types";
 
-import { Timeline } from "@/components/company/Timeline";
 import { TeamGrid } from "@/components/company/TeamGrid";
 import { LogoWall } from "@/components/company/LogoWall";
+import { MissionHero } from "@/components/company/about/MissionHero";
+import { ThesisScroll } from "@/components/company/about/ThesisScroll";
+import { LoopDiagram } from "@/components/company/about/LoopDiagram";
+import { OriginTimeline } from "@/components/company/about/OriginTimeline";
 
 type Props = {
   params: Promise<{ locale: string }>;
 };
+
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params;
+  return buildPageMetadata(locale, "about");
+}
 
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params;
@@ -20,38 +29,24 @@ export default async function AboutPage({ params }: Props) {
 
   return (
     <main className="min-h-screen bg-[var(--paper)] text-[var(--ink)]">
-      {/* HERO SECTION - Éditorial */}
-      <section className="relative pt-32 pb-24 lg:pt-48 lg:pb-32 border-b border-[var(--line)] bg-[var(--color-surface)]">
+      <MissionHero dict={dict} />
+      <ThesisScroll dict={dict} />
+      <LoopDiagram dict={dict} />
+      <OriginTimeline dict={dict} milestones={detail.timeline} />
+
+      {/* INTRO ÉDITORIALE */}
+      <section className="border-b border-[var(--line)] bg-[var(--color-surface)] py-20">
         <Container>
-          <div className="max-w-4xl">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="h-2 w-2 rounded-full bg-[var(--color-signal-500)]" />
-              <p className="text-sm font-medium uppercase tracking-widest text-zinc-500">
-                {detail.kicker}
-              </p>
-            </div>
-            
-            <h1 className="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl" style={{ textWrap: 'balance' }}>
-              {detail.heroTitle}
-            </h1>
-            
-            <div className="mt-12 text-lg leading-relaxed text-zinc-600 sm:text-xl space-y-6 max-w-3xl">
-              <p className="font-medium text-[var(--ink)]">
-                {content.company.story}
-              </p>
-              <p>
-                {content.company.about}
-              </p>
-            </div>
+          <div className="max-w-3xl space-y-6 text-lg leading-relaxed text-zinc-600 sm:text-xl">
+            <p className="font-medium text-[var(--ink)]">{content.company.story}</p>
+            <p>{content.company.about}</p>
           </div>
         </Container>
       </section>
 
-      {/* COMPOSANTS DÉDIÉS */}
-      <Timeline milestones={detail.timeline} title={dict.pages.companySections.story} />
       <TeamGrid team={detail.team} heading={detail.teamHeading} description={detail.teamDescription} />
       <LogoWall title={detail.partnersTitle} partners={detail.partners} />
-      
+
       {/* CTA SECTION - Footer de navigation croisée */}
       <section className="py-24 bg-[var(--color-ink-950)] text-white text-center">
         <Container>

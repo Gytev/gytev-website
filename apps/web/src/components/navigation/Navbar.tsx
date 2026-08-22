@@ -13,6 +13,14 @@ type NavbarProps = {
   dictionary: Dictionary;
 };
 
+const menuImages: Record<string, string> = {
+  research: "/images/mega/research.jpg",
+  products: "/images/mega/products.jpg",
+  solutions: "/images/mega/solutions.jpg",
+  developers: "/images/mega/developers.jpg",
+  company: "/images/mega/company.jpg",
+};
+
 export function Navbar({ locale, dictionary }: NavbarProps) {
   const [active, setActive] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
@@ -61,7 +69,7 @@ export function Navbar({ locale, dictionary }: NavbarProps) {
       onMouseLeave={() => setActive(null)}
       className="sticky top-0 z-40 bg-[#131313] text-white"
     >
-      <nav className="mx-auto flex h-16 w-full max-w-[1440px] items-center justify-between px-4 sm:px-10">
+      <nav className="relative z-10 mx-auto flex h-16 w-full max-w-[1440px] items-center justify-between px-4 sm:px-10">
         <div className="flex items-center gap-6 lg:gap-8">
           <a href={localizedHref(locale, "/")} className="shrink-0">
             {/* eslint-disable-next-line @next/next/no-img-element -- animated GIF, cannot use next/image */}
@@ -69,9 +77,9 @@ export function Navbar({ locale, dictionary }: NavbarProps) {
               ref={logoRef}
               src="/Logo%20G%E2%85%84T%C6%8EV.gif"
               alt="Gytev"
-              width={100}
-              height={100}
-              className="h-25 w-25 rounded-full object-cover"
+              width={112}
+              height={112}
+              className="h-28 w-28 rounded-full object-cover"
             />
           </a>
 
@@ -95,34 +103,40 @@ export function Navbar({ locale, dictionary }: NavbarProps) {
             })}
             <button
               type="button"
-              onClick={() => setSearchOpen(true)}
+              onClick={() => setSearchOpen((value) => !value)}
               className="p-2 text-[#c8c6c5] transition-colors hover:text-white"
-              aria-label={dict.header.search}
+              aria-label={searchOpen ? dict.search.close : dict.header.search}
             >
-              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"
-                />
-              </svg>
+              {searchOpen ? (
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"
+                  />
+                </svg>
+              )}
             </button>
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="nav-actions flex items-center gap-2">
           <a
-            href={localizedHref(locale, "/company/contact")}
-            className="hidden rounded-full px-3 py-2 text-[14px] font-medium text-[#c8c6c5] transition-colors hover:text-white lg:inline-flex"
+            href={localizedHref(locale, "/products")}
+            className="button button--light"
           >
-            {dict.header.login}
+            {dict.cta.ctaPrimary} <span aria-hidden>→</span>
           </a>
           <a
-            href={localizedHref(locale, "/products/rio")}
-            className="hidden rounded-full bg-white px-4 py-2 text-[14px] font-semibold text-[#1a1c1c] transition-colors hover:bg-zinc-200 lg:inline-flex"
+            href={localizedHref(locale, "/company/contact")}
+            className="button button--dark"
           >
-            {dict.header.cta} <span aria-hidden className="ml-1">→</span>
+            {dict.cta.ctaSecondary} <span aria-hidden>→</span>
           </a>
           <button
             onClick={() => setOpen(true)}
@@ -142,6 +156,7 @@ export function Navbar({ locale, dictionary }: NavbarProps) {
           label={dict.nav[activeNav.key]?.label ?? activeNav.label}
           columns={dict.nav[activeNav.key]?.columns ?? []}
           visual={dict.nav[activeNav.key]?.visual ?? { eyebrow: "", title: "", description: "", href: "/" }}
+          image={menuImages[activeNav.key]}
         />
       ) : null}
 
@@ -156,7 +171,6 @@ export function Navbar({ locale, dictionary }: NavbarProps) {
       />
 
       <SearchOverlay
-        locale={locale}
         dict={dict}
         open={searchOpen}
         onClose={() => setSearchOpen(false)}

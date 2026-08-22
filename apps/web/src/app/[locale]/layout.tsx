@@ -18,7 +18,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const dict = await getDictionary(locale);
   const url = locale === "en" ? "/" : `/${locale}`;
   return {
-    title: dict.meta.title,
+    title: {
+      default: dict.meta.title,
+      template: "%s | Gytev",
+    },
     description: dict.meta.description,
     openGraph: {
       type: "website",

@@ -234,7 +234,7 @@ Deliver a finished, bilingual, premium, production-ready showcase website:
   forecasting.
 - Customers (real content, use them): Coopérative du Sahel (agriculture,
   Burkina Faso), Banque de Sang de Dakar (public health, Senegal).
-- Research topics: Digital Twins, Predictive Systems, Language & AI (statuses:
+- Research topics: Agricultural Intelligence, Predictive Systems, Language & AI (statuses:
   published / in-progress / internal).
 - Vision: the 7-step intelligence loop, Africa as starting point, 20-year
   ambition ("intelligence layer for the real world").

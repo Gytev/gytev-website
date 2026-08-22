@@ -1,8 +1,18 @@
+import { buildPageMetadata } from "@/lib/metadata";
 import type { Locale } from "@gytev/types";
 import { localizedHref } from "@gytev/i18n";
 import { SectionPage } from "@/components/SectionPage";
 import { getContent } from "@/lib/content";
 import { getDictionary } from "@/lib/i18n";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  return buildPageMetadata(locale, "research");
+}
 
 type Props = {
   params: Promise<{ locale: string }>;

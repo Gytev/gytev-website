@@ -1,34 +1,43 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
-import type { Dictionary, Locale } from "@gytev/i18n";
-import { localizedHref } from "@gytev/i18n";
-import { searchEntries } from "@/lib/search";
+import { useEffect, useRef, useState } from "react";
+import type { Dictionary } from "@gytev/i18n";
 
 type SearchOverlayProps = {
-  locale: Locale;
   dict: Dictionary;
   open: boolean;
   onClose: () => void;
 };
 
-export function SearchOverlay({ locale, dict, open, onClose }: SearchOverlayProps) {
+type DomainKey = keyof Dictionary["search"]["domains"];
+
+const DOMAINS: DomainKey[] = [
+  "products",
+  "solutions",
+  "research",
+  "developers",
+  "blog",
+  "customers",
+  "company",
+];
+
+export function SearchOverlay({ dict, open, onClose }: SearchOverlayProps) {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [domainIndex, setDomainIndex] = useState(0);
+  const [focused, setFocused] = useState(false);
   const [query, setQuery] = useState("");
   const [wasOpen, setWasOpen] = useState(open);
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const results = useMemo(() => searchEntries(locale, query), [locale, query]);
 
   if (open !== wasOpen) {
     setWasOpen(open);
-    if (open) setQuery("");
+    if (open) {
+      setDomainIndex(0);
+      setFocused(false);
+      setQuery("");
+    }
   }
 
-  useEffect(() => {
-    if (open) {
-      requestAnimationFrame(() => inputRef.current?.focus());
-    }
-  }, [open]);
+  const idle = !focused && !query;
 
   useEffect(() => {
     if (!open) return;
@@ -38,77 +47,62 @@ export function SearchOverlay({ locale, dict, open, onClose }: SearchOverlayProp
     }
     document.addEventListener("keydown", onKeyDown);
     document.body.style.overflow = "hidden";
+    requestAnimationFrame(() => inputRef.current?.focus());
     return () => {
       document.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = "";
     };
   }, [open, onClose]);
 
+  useEffect(() => {
+    if (!open || !idle) return;
+    const id = setInterval(() => {
+      setDomainIndex((index) => (index + 1) % DOMAINS.length);
+    }, 2800);
+    return () => clearInterval(id);
+  }, [open, idle]);
+
   if (!open) return null;
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-start justify-center bg-black/40 p-4 pt-24"
-      onClick={onClose}
-    >
-      <div
-        className="w-full max-w-xl overflow-hidden rounded-2xl bg-white shadow-2xl"
-        onClick={(event) => event.stopPropagation()}
-      >
-        <div className="flex items-center gap-3 border-b border-zinc-200 px-4">
-          <svg className="h-5 w-5 shrink-0 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"
-            />
-          </svg>
-          <input
-            ref={inputRef}
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder={dict.search.placeholder}
-            className="h-14 w-full bg-transparent text-base text-zinc-900 outline-none placeholder:text-zinc-400"
-          />
-          <button
-            type="button"
-            onClick={onClose}
-            className="rounded-md p-1.5 text-zinc-400 transition-colors hover:text-zinc-900"
-            aria-label={dict.search.close}
-          >
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+    <div className="search-overlay fixed inset-x-0 bottom-0 top-16 z-0 overflow-y-auto bg-[#0c0c0c]" role="dialog">
+      <div className="mx-auto w-full max-w-3xl px-6 pt-[10vh] pb-20">
+        <div className="search-line">
+          <div className="flex items-center gap-4 border-b border-white/15 pb-5 transition-colors focus-within:border-white/50">
+            <svg
+              className="h-7 w-7 shrink-0 text-white/45"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.8}
+                d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"
+              />
             </svg>
-          </button>
-        </div>
 
-        <ul className="max-h-96 overflow-y-auto p-2">
-          {query.trim() === "" ? (
-            <li className="px-3 py-8 text-center text-sm text-zinc-500">
-              {dict.search.empty}
-            </li>
-          ) : results.length === 0 ? (
-            <li className="px-3 py-8 text-center text-sm text-zinc-500">
-              {dict.search.noResults.replace("{query}", query)}
-            </li>
-          ) : (
-            results.slice(0, 8).map((result) => (
-              <li key={`${result.href}-${result.title}`}>
-                <a
-                  href={localizedHref(locale, result.href)}
-                  onClick={onClose}
-                  className="block rounded-xl px-3 py-3 transition-colors hover:bg-zinc-50"
-                >
-                  <p className="text-sm font-semibold text-zinc-900">{result.title}</p>
-                  <p className="mt-0.5 line-clamp-2 text-sm leading-6 text-zinc-500">
-                    {result.description}
-                  </p>
-                </a>
-              </li>
-            ))
-          )}
-        </ul>
+            {idle ? (
+              <span
+                key={DOMAINS[domainIndex]}
+                className="search-domain shrink-0 select-none text-lg font-medium text-white md:text-xl"
+              >
+                {dict.search.searchIn} {dict.search.domains[DOMAINS[domainIndex]]}
+              </span>
+            ) : null}
+
+            <input
+              ref={inputRef}
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              onFocus={() => setFocused(true)}
+              onBlur={() => setFocused(false)}
+              aria-label={dict.search.placeholder}
+              className="h-11 min-w-0 flex-1 bg-transparent text-2xl font-light text-white outline-none placeholder:text-white/30 md:text-3xl"
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -36,6 +36,25 @@ export type Dictionary = {
   meta: {
     title: string;
     description: string;
+    pages: {
+      company: string;
+      about: string;
+      benefits: string;
+      careers: string;
+      contact: string;
+      internships: string;
+      press: string;
+      vision: string;
+      products: string;
+      rio: string;
+      solutions: string;
+      quiisa: string;
+      redq: string;
+      research: string;
+      developers: string;
+      blog: string;
+      customers: string;
+    };
   };
   nav: Record<
     string,
@@ -82,6 +101,9 @@ export type Dictionary = {
     eyebrow: string;
     title: string;
     description: string;
+    quiisa: {
+      description: string;
+    };
   };
   cta: {
     eyebrow: string;
@@ -94,6 +116,48 @@ export type Dictionary = {
     close: string;
     empty: string;
     noResults: string;
+    searchIn: string;
+    domainsHeading: string;
+    domainAll: string;
+    resultsHeading: string;
+    domains: {
+      products: string;
+      solutions: string;
+      research: string;
+      developers: string;
+      blog: string;
+      customers: string;
+      company: string;
+    };
+  };
+  cookies: {
+    title: string;
+    intro: string;
+    requiredTitle: string;
+    requiredDescription: string;
+    analyticsTitle: string;
+    analyticsDescription: string;
+    marketingTitle: string;
+    marketingDescription: string;
+    thirdPartyTitle: string;
+    thirdPartyDescription: string;
+    alwaysOn: string;
+    done: string;
+  };
+  aboutExperience: {
+    missionEyebrow: string;
+    missionLine: string;
+    thesisEyebrow: string;
+    thesisHeading: string;
+    questions: string[];
+    explanations: string[];
+    loopEyebrow: string;
+    loopHeading: string;
+    loopSteps: { label: string; description: string }[];
+    originEyebrow: string;
+    originHeading: string;
+    originBody: string;
+    stats: { value: string; label: string }[];
   };
     home: {
       cases: {
@@ -122,8 +186,9 @@ export type Dictionary = {
         title: string;
         tagline: string;
         description: string;
+        action: string;
         tags: string[];
-        panelType: "observe" | "understand" | "predict" | "act";
+        panelType: "observe" | "understand" | "predict" | "optimize" | "decide" | "act";
         panel: { label: string; lines: string[] };
       }[];
     };
@@ -144,111 +209,53 @@ export type Dictionary = {
       eyebrow: string;
     };
   };
-  pages: {
-    products: { title: string; description: string; cta: string };
-    solutions: { title: string; description: string; cta: string };
-    research: { title: string; description: string };
-    developers: { title: string; description: string };
-    blog: { title: string; description: string };
-    customers: { title: string; description: string };
-    company: { title: string; description: string };
-    rio: { contactSales: string; devDocs: string };
-    redq: { contactUs: string; pillars: { title: string; description: string }[] };
-    vision: {
-      eyebrow: string;
-      heading: string;
-      subtitle: string;
-      discover: string;
-      loopHeading: string;
-      loopDescription: string;
-      thesis: { title: string; paragraphs: string[] };
-      architectureHeading: string;
-      architecture: {
-        title: string;
-        description: string;
-        features: string[];
-      }[];
-      loop: { step: string; text: string }[];
-    };
-    companySections: {
-      about: string;
-      story: string;
-      vision: string;
-      newsroom: string;
-      careers: string;
-      contact: string;
-    };
-    companyDetail: {
-      about: {
-        kicker: string;
-        title: string;
-        heroTitle: string;
-        body: string;
-        timeline: { year: string; title: string; description: string; icon: string }[];
-        teamHeading: string;
-        teamDescription: string;
-        team: { name: string; role: string; bio: string; image: string | null }[];
-        partnersTitle: string;
-        partners: string[];
-        cta: { heading: string; description: string; primary: string; secondary: string };
+    pages: {
+      products: { title: string; description: string; cta: string };
+      solutions: { title: string; description: string; cta: string };
+      research: { title: string; description: string };
+      developers: { title: string; description: string };
+      blog: { title: string; description: string };
+      customers: { title: string; description: string };
+      company: { title: string; description: string };
+      rio: { contactSales: string; devDocs: string };
+      redq: { contactUs: string; pillars: { title: string; description: string }[] };
+      quiisa: {
+        startFree: string;
+        watchDemo: string;
+        featuresHeading: string;
+        featuresDescription: string;
+        features: { title: string; description: string }[];
+        builtForAfrica: string;
+        africaDescription: string;
+        tags: string[];
       };
-      careers: {
-        kicker: string;
-        title: string;
-        body: string;
-        heroTitle: string;
-        valuesHeading: string;
-        values: { title: string; description: string }[];
-        rolesHeading: string;
-        rolesEmpty: string;
-        departments: {
-          name: string;
-          openings: { title: string; location: string; type: string }[];
-        }[];
+      vision: { eyebrow: string; heading: string; discover: string; loop: { step: string; text: string }[] };
+      companySections: {
+        about: string;
+        story: string;
+        vision: string;
+        newsroom: string;
+        careers: string;
+        contact: string;
       };
-      contact: {
-        kicker: string;
-        title: string;
-        note: string;
-        heroTitle: string;
-        officesHeading: string;
-        offices: { city: string; address: string; country: string }[];
-        inquiriesHeading: string;
-        inquiries: { title: string; email: string; description: string }[];
-        form: {
-          heading: string;
-          name: string;
-          email: string;
-          message: string;
-          submit: string;
+      companyDetail: {
+        about: {
+          kicker: string;
+          title: string;
+          heroTitle: string;
+          body: string;
+          timeline: { year: string; title: string; description: string; icon?: string | null }[];
+          teamHeading: string;
+          teamDescription: string;
+          team: { name: string; role: string; bio: string; image: string | null }[];
+          partnersTitle: string;
+          partners: string[];
+          cta: { heading: string; description: string; primary: string; secondary: string };
         };
-      };
-      press: {
-        kicker: string;
-        title: string;
-        heroTitle: string;
-        body: string;
-        articles: { title: string; source: string; date: string; excerpt: string; tag: string }[];
-      };
-      internships: {
-        kicker: string;
-        title: string;
-        heroTitle: string;
-        body: string;
-        departments: {
-          name: string;
-          openings: { title: string; location: string; type: string; description: string }[];
-        }[];
-      };
-      benefits: {
-        kicker: string;
-        title: string;
-        heroTitle: string;
-        body: string;
-        benefits: { title: string; description: string }[];
+        careers: { kicker: string; title: string; body: string };
+        contact: { kicker: string; title: string; note: string; cta: string };
       };
     };
-  };
   footer: {
     tagline: string;
     rights: string;
@@ -263,6 +270,25 @@ export const dictionaries: Record<Locale, Dictionary> = {
   en: {
     meta: {
       title: "Gytev | Intelligent systems that understand the real world.",
+      pages: {
+        company: "Company",
+        about: "About us",
+        benefits: "Benefits",
+        careers: "Careers",
+        contact: "Contact",
+        internships: "Internships",
+        press: "Press",
+        vision: "Our vision",
+        products: "Products",
+        rio: "Rio",
+        solutions: "Solutions",
+        quiisa: "Quiisa",
+        redq: "RedQ",
+        research: "Research",
+        developers: "Developers",
+        blog: "Blog",
+        customers: "Customers",
+      },
       description:
         "Gytev builds intelligent systems that observe, understand, predict and act on the real world. From farms to blood banks, we combine sensors, data, AI and domain knowledge to make complex systems understandable and actionable.",
     },
@@ -282,7 +308,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             title: "Focus areas",
             links: [
               { label: "Language & AI", href: "/research" },
-              { label: "Digital Twins", href: "/research" },
+                { label: "Agricultural Intelligence", href: "/research" },
               { label: "Predictive Systems", href: "/research" },
             ],
           },
@@ -310,15 +336,17 @@ export const dictionaries: Record<Locale, Dictionary> = {
             links: [
               { label: "Rio", href: "/products/rio" },
               { label: "RedQ", href: "/solutions/redq" },
+              { label: "Quiisa", href: "/solutions/quiisa" },
               { label: "All products", href: "/products" },
             ],
           },
           {
-            title: "Platform",
+            title: "Rio Ecosystem",
             links: [
-              { label: "Web apps", href: "/products" },
-              { label: "Mobile", href: "/products" },
-              { label: "APIs & SDKs", href: "/developers" },
+              { label: "Rio Access", href: "/products/rio" },
+              { label: "Rio Box", href: "/products/rio" },
+              { label: "Rio AI", href: "/products/rio" },
+              { label: "Rio Connect", href: "/products/rio" },
             ],
           },
           {
@@ -333,7 +361,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
         visual: {
           eyebrow: "Product",
           title: "Rio",
-          description: "Digital twin of farms. IoT + AI for agriculture.",
+          description: "The all-in-one agricultural ecosystem.",
           href: "/products/rio",
         },
       },
@@ -344,6 +372,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             title: "Explore solutions",
             links: [
               { label: "RedQ", href: "/solutions/redq" },
+              { label: "Quiisa", href: "/solutions/quiisa" },
               { label: "Agriculture", href: "/solutions" },
               { label: "Public health", href: "/solutions" },
               { label: "Customers", href: "/company/customers" },
@@ -357,20 +386,18 @@ export const dictionaries: Record<Locale, Dictionary> = {
             ],
           },
           {
-            title: "Industries",
+            title: "Quiisa",
             links: [
-              { label: "Farming", href: "/solutions" },
-              { label: "Healthcare", href: "/solutions" },
-              { label: "Civil service", href: "/solutions" },
-              { label: "Customers", href: "/company/customers" },
+              { label: "Project management", href: "/solutions/quiisa" },
+              { label: "Team collaboration", href: "/solutions/quiisa" },
             ],
           },
         ],
         visual: {
           eyebrow: "Solution",
-          title: "RedQ",
-          description: "National blood donation and blood bag management.",
-          href: "/solutions/redq",
+          title: "Quiisa",
+          description: "Africa's #1 project management platform.",
+          href: "/solutions/quiisa",
         },
       },
       developers: {
@@ -479,35 +506,35 @@ export const dictionaries: Record<Locale, Dictionary> = {
       eyebrow: "Product",
       title: "Rio",
       description:
-        "A digital twin of your farm. An IoT box senses the field, AI understands it, and the platform tells you what to do next.",
+        "The all-in-one agricultural ecosystem. From financing to market access, Rio covers the entire production cycle with intelligent systems.",
       features: [
         {
-          title: "Observe.",
-          tagline: "Sense the field",
+          title: "Rio Access",
+          tagline: "Pre-production financing",
           description:
-            "The Rio Box collects soil moisture, temperature, humidity, light, rainfall and more, continuously.",
-          tags: ["SOIL MOISTURE", "TEMPERATURE", "AIR HUMIDITY", "RAINFALL", "LIGHT", "SOIL PH", "WATER LEVEL"],
+            "Connect farmers to financing and agricultural inputs. Access credit, seeds, fertilizers and equipment before the season starts.",
+          tags: ["FINANCING", "AGRICULTURAL INPUTS", "CREDIT ACCESS", "EQUIPMENT", "SEEDS & FERTILIZERS"],
         },
         {
-          title: "Understand.",
-          tagline: "Turn data into insight",
+          title: "Rio Box",
+          tagline: "On-site production intelligence",
           description:
-            "AI combines field history, weather, satellite data and agronomic knowledge to explain what is happening and why.",
-          tags: ["ANOMALY DETECTION", "CROP STAGES", "AGROCLIMATIC ANALYSIS", "FIELD HISTORY"],
+            "Deploy the IoT box on-site during production. Monitor soil, weather and crop conditions in real-time to protect against climate hazards.",
+          tags: ["IOT SENSORS", "REAL-TIME MONITORING", "CLIMATE PROTECTION", "SOIL ANALYSIS", "WEATHER DATA"],
         },
         {
-          title: "Predict.",
-          tagline: "Anticipate risks",
+          title: "Rio AI",
+          tagline: "The intelligence engine",
           description:
-            "Water stress, diseases, yield loss. Rio forecasts risks days and weeks ahead, crop by crop.",
-          tags: ["WATER-STRESS RISK", "DISEASE FORECASTING", "YIELD PREDICTION", "WEATHER FUSION"],
+            "The most powerful agricultural database and AI engine. Research, analysis, prediction and recommendations for the entire ecosystem.",
+          tags: ["AI ENGINE", "DATABASE", "RESEARCH", "ANALYSIS", "PREDICTION", "RECOMMENDATIONS"],
         },
         {
-          title: "Act.",
-          tagline: "Recommend the right decision",
+          title: "Rio Connect",
+          tagline: "Post-production market access",
           description:
-            "Irrigation within 24 hours, fertilizer adjustment, harvest timing. Clear recommendations, in your language.",
-          tags: ["IRRIGATION ALERTS", "DECISION SUPPORT", "DASHBOARD", "WEB & MOBILE"],
+            "Connect farmers directly with consumers. Sell production, find buyers, and manage distribution from harvest to market.",
+          tags: ["MARKET ACCESS", "CONSUMER CONNECTION", "DISTRIBUTION", "SALES", "LOGISTICS"],
         },
       ],
     },
@@ -515,10 +542,14 @@ export const dictionaries: Record<Locale, Dictionary> = {
       eyebrow: "Solution",
       title: "RedQ",
       description:
-        "The national platform for managing blood donations and blood bags — from donor to hospital, with full traceability.",
+        "The national platform for managing blood donations and blood bags from donor to hospital, with full traceability.",
+      quiisa: {
+        description:
+          "Africa's #1 project management platform. Track tasks, manage teams, and deliver projects on time built for the way African teams work.",
+      },
     },
     cta: {
-      eyebrow: "Solutions enterprise",
+      eyebrow: "OWN YOUR AI",
       title: "Build, customize, and deploy intelligent systems with complete control.",
       ctaPrimary: "Start building",
       ctaSecondary: "Contact sales",
@@ -528,6 +559,78 @@ export const dictionaries: Record<Locale, Dictionary> = {
       close: "Close search",
       empty: "Type to search the site.",
       noResults: "No results for “{query}”.",
+      searchIn: "Search in",
+      domainsHeading: "Browse by domain",
+      domainAll: "Everything",
+      resultsHeading: "Results",
+      domains: {
+        products: "Products",
+        solutions: "Solutions",
+        research: "Research",
+        developers: "Developers",
+        blog: "Blog",
+        customers: "Customers",
+        company: "Company",
+      },
+    },
+    cookies: {
+      title: "Cookie Preferences",
+      intro:
+        "Websites and apps use cookies and other identifiers to store and retrieve information on your device. Some of this information may be shared with third parties for different purposes. Use the tool below to manage your preferences. You can change them anytime.",
+      requiredTitle: "Strictly necessary cookies",
+      requiredDescription:
+        "These cookies are required for the site to work and can't be turned off. They support essential functions like security, user authentication, and customer support.",
+      analyticsTitle: "Analytics cookies",
+      analyticsDescription:
+        "These cookies help us understand how visitors interact with our site. They allow us to measure traffic and improve site performance.",
+      marketingTitle: "Marketing cookies",
+      marketingDescription:
+        "These cookies help us measure the effectiveness of our marketing campaigns.",
+      thirdPartyTitle: "Third-party platforms",
+      thirdPartyDescription:
+        "This helps us personalize and measure Gytev's own marketing on third-party platforms.",
+      alwaysOn: "Always on",
+      done: "Done",
+    },
+    aboutExperience: {
+      missionEyebrow: "Our mission",
+      missionLine: "We build intelligent systems that understand the real world.",
+      thesisEyebrow: "A 20-year thesis",
+      thesisHeading: "Every intelligent system must learn to answer five questions.",
+      questions: [
+        "What is happening?",
+        "Why is it happening?",
+        "What could happen next?",
+        "What are the possible outcomes?",
+        "What should we do?",
+      ],
+      explanations: [
+        "Sensors and systems give a live, truthful picture of any physical environment — no more guessing from scattered data.",
+        "Models connect the signals to their causes: anomalies get explained, not just flagged.",
+        "Prediction engines anticipate what happens next before it happens — from crop stress to supply shortages.",
+        "Every decision path is simulated and ranked, so operators see scenarios instead of a single guess.",
+        "Intelligence ends in action: clear recommendations that people and machines can execute in the field.",
+      ],
+      loopEyebrow: "The intelligence loop",
+      loopHeading:
+        "We move the world from data to action — one connected loop.",
+      loopSteps: [
+        { label: "Data", description: "Sensors and systems capture the pulse of physical environments." },
+        { label: "Understanding", description: "Models turn raw signals into a living picture of reality." },
+        { label: "Prediction", description: "The system anticipates what happens next, before it happens." },
+        { label: "Decision", description: "Insight becomes a clear, ranked choice for operators." },
+        { label: "Action", description: "People and machines act — and the loop learns from the result." },
+      ],
+      originEyebrow: "Our origin",
+      originHeading: "Born in Dakar. Built for the world.",
+      originBody:
+        "Gytev was founded in 2023 with a simple conviction: the next generation of technology will not live only on screens. It will perceive farms, hospitals, cities and machines — and help people act on them. Starting from Senegal and Burkina Faso, we deploy digital twins and edge AI where connectivity is hardest, because intelligence that works there works everywhere.",
+      stats: [
+        { value: "2023", label: "Founded in Dakar" },
+        { value: "$2M", label: "Seed to build Africa's intelligence layer" },
+        { value: "2", label: "Countries deployed in production" },
+        { value: "24/7", label: "Edge inference in the field" },
+      ],
     },
     home: {
       cases: {
@@ -560,121 +663,169 @@ export const dictionaries: Record<Locale, Dictionary> = {
       },
       why: {
         eyebrow: "Why Gytev",
-        heading: "One intelligence loop.",
+        heading: "Africa's #1 intelligent systems company.",
         description:
-          "Every Gytev system follows the same loop: observe the field, understand it, predict what happens next, and act on a clear recommendation.",
-        action: "Explore Rio",
+          "From agriculture to healthcare, Gytev builds intelligent systems that solve real-world problems across Africa and beyond. One platform, every sector, total control.",
+        action: "Discover our solutions",
         railLabel: "Capabilities",
         switcherLabel: "Switch capability",
         items: [
           {
             title: "Observe.",
-            tagline: "Sense the field",
+            tagline: "Sense any real-world system",
             description:
-              "The Rio Box collects soil moisture, temperature, humidity, light and rainfall, continuously.",
-            tags: ["SOIL MOISTURE", "TEMPERATURE", "AIR HUMIDITY", "RAINFALL", "LIGHT"],
+              "Sensors, IoT devices, satellites, mobile inputs and human data feed continuous intelligence streams into Gytev systems farms, hospitals, cities, industries.",
+            action: "Discover Rio",
+            tags: ["AGRICULTURE", "HEALTHCURE", "URBAN SYSTEMS", "SUPPLY CHAINS", "ENERGY"],
             panelType: "observe",
             panel: {
-              label: "Rio Box · live readout",
-              lines: ["Soil moisture · 22%", "Air temperature · 31°C", "Rainfall today · 0 mm", "Light · 84 klx"],
+              label: "What would you like to observe?",
+              lines: ["Farm conditions in real-time", "Hospital blood inventory", "City infrastructure status", "Supply chain movements"],
             },
           },
           {
             title: "Understand.",
-            tagline: "Turn data into insight",
+            tagline: "Turn data into actionable insight",
             description:
-              "AI combines field history, weather, satellite data and agronomic knowledge to explain what is happening and why.",
-            tags: ["ANOMALY DETECTION", "CROP STAGES", "AGROCLIMATIC ANALYSIS"],
+              "AI combines domain knowledge, historical data, weather patterns and local context to explain what is happening and why in any sector.",
+            action: "Discover our AI",
+            tags: ["DOMAIN EXPERTISE", "CONTEXTUAL AI", "LOCAL KNOWLEDGE", "PATTERN RECOGNITION", "RISK ANALYSIS"],
             panelType: "understand",
             panel: {
-              label: "AI analysis",
-              lines: ["Maize · flowering stage", "Soil moisture dropping 5 days", "Cause · no rain + heat", "Confidence · 91%"],
+              label: "Analyzing system data...",
+              lines: ["Soil moisture dropping", "Blood type O+ shortage", "Traffic congestion building", "Energy demand rising"],
             },
           },
           {
             title: "Predict.",
-            tagline: "Anticipate risks",
+            tagline: "Anticipate what comes next",
             description:
-              "Water stress, diseases, yield loss. Rio forecasts risks days and weeks ahead, crop by crop.",
-            tags: ["WATER-STRESS RISK", "YIELD PREDICTION", "WEATHER FUSION"],
+              "Droughts, disease outbreaks, supply shortages, equipment failures. Gytev forecasts risks days and weeks ahead, across every sector.",
+            action: "Discover predictive systems",
+            tags: ["CLIMATE RISKS", "HEALTH OUTBREAKS", "MARKET SHIFTS", "INFRASTRUCTURE FAILURES", "DEMAND SPIKES"],
             panelType: "predict",
             panel: {
               label: "7-day forecast",
-              lines: ["Water stress · high", "Disease pressure · low", "Yield impact · ~18%", "Next rain · in 7 days"],
+              lines: ["Water stress · high in Sahel", "Disease outbreak · moderate risk", "Supply shortage · 12 days", "Energy peak · tomorrow"],
+            },
+          },
+          {
+            title: "Optimize.",
+            tagline: "Find the best path forward",
+            description:
+              "Resources, timing, logistics, budgets. Optimization algorithms find the most efficient path given real-world constraints anywhere.",
+            action: "Discover optimization",
+            tags: ["RESOURCE ALLOCATION", "LOGISTICS", "BUDGET PLANNING", "WORKFORCE", "INFRASTRUCTURE"],
+            panelType: "optimize",
+            panel: {
+              label: "Optimization results",
+              lines: ["Irrigation efficiency · +23%", "Blood redistribution · 40% faster", "Transport routes · 15% shorter", "Cost reduction · ~$4,200/season"],
+            },
+          },
+          {
+            title: "Decide.",
+            tagline: "Recommend the right action",
+            description:
+              "Clear, actionable recommendations delivered to the right people at the right time in local languages, on any device.",
+            action: "Discover decision support",
+            tags: ["ACTIONABLE ALERTS", "LOCAL LANGUAGES", "MULTI-DEVICE", "PRIORITY SCORING", "CONFIDENCE LEVELS"],
+            panelType: "decide",
+            panel: {
+              label: "Decision recommendations",
+              lines: ["Irrigate zone A · 18mm", "Redistribute O+ bags · 120 units", "Deploy maintenance crew · Priority 1", "Confidence · 94%"],
             },
           },
           {
             title: "Act.",
-            tagline: "Recommend the right decision",
+            tagline: "Execute with precision",
             description:
-              "Irrigation within 24 hours, fertilizer adjustment, harvest timing. Clear recommendations, in your language.",
-            tags: ["IRRIGATION ALERTS", "DECISION SUPPORT", "WEB & MOBILE"],
+              "From alerts to automation. Gytev triggers actions across systems, teams and devices in real time on the ground, across networks.",
+            action: "Discover applied AI",
+            tags: ["REAL-TIME ACTIONS", "CROSS-SYSTEM", "MOBILE ALERTS", "AUTOMATION", "FIELD OPERATIONS"],
             panelType: "act",
             panel: {
-              label: "Recommended action",
-              lines: ["Irrigate within 24h", "Apply 20 mm over 2 passes", "Re-check soil in 3 days"],
+              label: "Active workflows",
+              lines: ["Irrigation system · triggered", "Hospital notified · WhatsApp + SMS", "Supply truck · dispatched", "Next review · in 72h"],
             },
           },
         ],
       },
       products: {
-        eyebrow: "Products & platform",
-        title: "Intelligence that acts on the real world.",
+        eyebrow: "Rio Ecosystem",
+        title: "The all-in-one agricultural platform.",
         description:
-          "From the Rio Box on the field to a national blood platform. Gytev turns complex real-world systems into systems you can understand, predict and act on.",
+          "From pre-production financing to post-production market access. Rio covers the entire agricultural cycle with intelligent systems.",
         tabs: [
           {
-            id: "rio",
-            label: "Rio",
-            heading: "A digital twin of your farm.",
+            id: "rio-access",
+            label: "Rio Access",
+            heading: "Finance before the season starts.",
             description:
-              "An IoT box senses the field, AI understands it, and the platform recommends the right decision — irrigation, fertilizer, harvest timing.",
+              "Connect farmers to financing and agricultural inputs. Access credit, seeds, fertilizers and equipment before the season begins.",
             features: [
-              { title: "Sense continuously", description: "Soil moisture, temperature, humidity, light and rainfall, sent automatically." },
-              { title: "Understand with AI", description: "Field history, weather and satellite data, fused into one clear picture." },
-              { title: "Act with confidence", description: "A clear recommendation for every question, in your language." },
+              { title: "Micro-financing", description: "Quick access to credit for seeds, fertilizers and equipment." },
+              { title: "Input marketplace", description: "Buy quality inputs at competitive prices from verified suppliers." },
+              { title: "Risk assessment", description: "AI-powered credit scoring based on farm data and history." },
             ],
             preview: {
-              label: "Rio · Digital twin",
+              label: "Rio Access · Financing",
+              heading: "Pre-season credit application",
+              alert: "Approved · $2,400",
+              lines: ["Farm size · 2.5 hectares", "Crop history · Maize, Cotton", "Credit score · 87/100", "Inputs ready for delivery"],
+            },
+          },
+          {
+            id: "rio-box",
+            label: "Rio Box",
+            heading: "Intelligent monitoring on the field.",
+            description:
+              "Deploy the IoT box on-site during production. Real-time sensors protect crops from climate hazards and optimize irrigation.",
+            features: [
+              { title: "Multi-sensor array", description: "Soil moisture, temperature, humidity, light, rainfall and more." },
+              { title: "Real-time alerts", description: "Instant notifications when conditions threaten your crops." },
+              { title: "Weather integration", description: "Local weather data fused with field sensors for accurate forecasting." },
+            ],
+            preview: {
+              label: "Rio Box · Field sensors",
               heading: "Maize field — flowering stage",
               alert: "Irrigate within 24h",
-              lines: ["Soil moisture dropping for 5 days", "No rain expected for 7 days", "Water-stress risk · high", "Yield impact if ignored · ~18%"],
+              lines: ["Soil moisture · 32% (dropping)", "Temperature · 34°C", "Humidity · 45%", "Next rain · in 7 days"],
             },
           },
           {
-            id: "redq",
-            label: "RedQ",
-            heading: "A national blood network, in real time.",
+            id: "rio-ai",
+            label: "Rio AI",
+            heading: "The intelligence engine.",
             description:
-              "From donor to hospital, every blood bag tracked type, group, status and expiry with shortages predicted, not endured.",
+              "The most powerful agricultural AI database. Research, analysis, prediction and recommendations for the entire ecosystem.",
             features: [
-              { title: "Trace every bag", description: "Donor, collection center, lab, bank and hospital in one system." },
-              { title: "See the national stock", description: "Real-time visibility of available bags across the whole network." },
-              { title: "Anticipate shortages", description: "Demand forecasting and redistribution before expiry." },
+              { title: "Crop intelligence", description: "Deep knowledge of 50+ African crops with regional expertise." },
+              { title: "Predictive analytics", description: "Forecast yields, diseases, droughts and market prices." },
+              { title: "Natural language", description: "Ask questions in French, English or local languages." },
             ],
             preview: {
-              label: "RedQ · National network",
-              heading: "National stock overview",
-              alert: "O+ shortage predicted in 12 days",
-              lines: ["2 418 bags tracked", "14 hospitals connected", "3 short-expiry alerts"],
+              label: "Rio AI · Intelligence",
+              heading: "Crop analysis — Maize",
+              alert: "Disease risk · moderate",
+              lines: ["Region · Sahel", "Rainfall forecast · 12mm/week", "Pest pressure · low", "Yield prediction · +15%"],
             },
           },
           {
-            id: "platform",
-            label: "Platform",
-            heading: "Build intelligence for your world.",
+            id: "rio-connect",
+            label: "Rio Connect",
+            heading: "Sell directly to consumers.",
             description:
-              "The Gytev platform combines IoT, AI and domain knowledge so you can observe, understand, predict and act on any real-world system.",
+              "Connect farmers with buyers. Find markets, negotiate prices and manage distribution from harvest to consumer.",
             features: [
-              { title: "Observe", description: "Connect sensors, machines, cameras, satellites and enterprise systems." },
-              { title: "Reason", description: "Models trained to understand your context, in your language." },
-              { title: "Act", description: "Alerts, dashboards and recommendations that reach the right people." },
+              { title: "Market matching", description: "AI connects your produce to the right buyers at the right price." },
+              { title: "Logistics coordination", description: "Transport, storage and cold chain management." },
+              { title: "Direct sales", description: "Sell to consumers, restaurants and retailers without middlemen." },
             ],
             preview: {
-              label: "Gytev platform",
-              heading: "From sensing to action",
-              alert: "Digital twin updated",
-              lines: ["IoT + AI + domain knowledge", "Predict, optimize, decide", "Works in your language"],
+              label: "Rio Connect · Market",
+              heading: "New buyer offer received",
+              alert: "Price +22% above market",
+              lines: ["Buyer · Restaurant Chain Dakar", "Volume · 500 kg maize", "Delivery · 3 days", "Profit margin · +34%"],
             },
           },
         ],
@@ -726,6 +877,23 @@ export const dictionaries: Record<Locale, Dictionary> = {
           { title: "National stock", description: "Real-time visibility of available bags across the whole network." },
           { title: "Demand & distribution", description: "Match hospital demand to supply, and redistribute before expiry." },
         ],
+      },
+      quiisa: {
+        startFree: "Start free",
+        watchDemo: "Watch demo",
+        featuresHeading: "Everything you need to manage projects",
+        featuresDescription: "From task management to team collaboration, Quiisa has the tools to keep your projects on track.",
+        features: [
+          { title: "Kanban Boards", description: "Visualize your workflow with drag-and-drop boards. See at a glance what's in progress, what's done, and what's next." },
+          { title: "Task Management", description: "Create, assign and track tasks with deadlines, priorities and dependencies. Never miss a deadline again." },
+          { title: "Team Collaboration", description: "Comment on tasks, share files, and keep everyone aligned with real-time updates and notifications." },
+          { title: "Gantt Charts", description: "Plan projects with interactive Gantt charts. Visualize timelines, dependencies and critical paths." },
+          { title: "Time Tracking", description: "Track time spent on tasks and projects. Generate reports for clients or internal use." },
+          { title: "Reporting & Analytics", description: "Get insights into project progress, team performance and resource allocation with powerful dashboards." },
+        ],
+        builtForAfrica: "Built for African teams",
+        africaDescription: "Quiisa is designed to work the way African teams work with offline support, mobile-first design, and local language support.",
+        tags: ["OFFLINE SUPPORT", "MOBILE-FIRST", "LOCAL LANGUAGES", "REAL-TIME SYNC", "MULTI-TEAM"],
       },
       vision: {
         eyebrow: "The Technology Thesis",
@@ -932,7 +1100,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
                 { label: "Rio", href: "/products/rio" },
                 { label: "RedQ", href: "/solutions/redq" },
                 { label: "Predictive Systems", href: "/research" },
-                { label: "Digital Twins", href: "/research" },
+              { label: "Agricultural Intelligence", href: "/research" },
               ],
             },
             {
@@ -949,11 +1117,19 @@ export const dictionaries: Record<Locale, Dictionary> = {
         {
           columns: [
             {
-              title: "Products",
+              title: "Industries",
               links: [
-                { label: "Rio", href: "/products/rio" },
-                { label: "RedQ", href: "/solutions/redq" },
-                { label: "All products", href: "/products" },
+                { label: "Agriculture", href: "/solutions" },
+                { label: "Healthcare", href: "/solutions" },
+                { label: "Public sector", href: "/solutions" },
+                { label: "Customers", href: "/customers" },
+              ],
+            },
+            {
+              title: "Quiisa",
+              links: [
+                { label: "Project management", href: "/solutions/quiisa" },
+                { label: "Team collaboration", href: "/solutions/quiisa" },
               ],
             },
             {
@@ -1034,9 +1210,28 @@ export const dictionaries: Record<Locale, Dictionary> = {
   },
   fr: {
     meta: {
-      title: "Gytev — Des systèmes intelligents qui comprennent le monde réel.",
+      title: "Gytev | Des systèmes intelligents qui comprennent le monde réel.",
+      pages: {
+        company: "Entreprise",
+        about: "À propos",
+        benefits: "Avantages",
+        careers: "Carrières",
+        contact: "Contact",
+        internships: "Stages",
+        press: "Presse",
+        vision: "Notre vision",
+        products: "Produits",
+        rio: "Rio",
+        solutions: "Solutions",
+        quiisa: "Quiisa",
+        redq: "RedQ",
+        research: "Recherche",
+        developers: "Développeurs",
+        blog: "Blog",
+        customers: "Clients",
+      },
       description:
-        "Gytev construit des systèmes intelligents qui observent, comprennent, prédisent et agissent sur le monde réel — à commencer par l'agriculture et la santé publique en Afrique.",
+        "Gytev construit des systèmes intelligents qui observent, comprennent, prédisent et agissent sur le monde réel à commencer par l'agriculture et la santé publique en Afrique.",
     },
     nav: {
       research: {
@@ -1054,7 +1249,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             title: "Domaines",
             links: [
               { label: "Langage & IA", href: "/research" },
-              { label: "Jumeaux numériques", href: "/research" },
+                { label: "Intelligence Agricole", href: "/research" },
               { label: "Systèmes prédictifs", href: "/research" },
             ],
           },
@@ -1082,15 +1277,17 @@ export const dictionaries: Record<Locale, Dictionary> = {
             links: [
               { label: "Rio", href: "/products/rio" },
               { label: "RedQ", href: "/solutions/redq" },
+              { label: "Quiisa", href: "/solutions/quiisa" },
               { label: "Tous les produits", href: "/products" },
             ],
           },
           {
-            title: "Plateforme",
+            title: "Écosystème Rio",
             links: [
-              { label: "Applications web", href: "/products" },
-              { label: "Applications mobiles", href: "/products" },
-              { label: "API & SDK", href: "/developers" },
+              { label: "Rio Access", href: "/products/rio" },
+              { label: "Rio Box", href: "/products/rio" },
+              { label: "Rio AI", href: "/products/rio" },
+              { label: "Rio Connect", href: "/products/rio" },
             ],
           },
           {
@@ -1105,7 +1302,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
         visual: {
           eyebrow: "Produit",
           title: "Rio",
-          description: "Jumeau numérique des exploitations. IoT + IA.",
+          description: "L'écosystème agricole tout-en-un.",
           href: "/products/rio",
         },
       },
@@ -1116,6 +1313,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             title: "Explorer les solutions",
             links: [
               { label: "RedQ", href: "/solutions/redq" },
+              { label: "Quiisa", href: "/solutions/quiisa" },
               { label: "Agriculture", href: "/solutions" },
               { label: "Santé publique", href: "/solutions" },
               { label: "Clients", href: "/company/customers" },
@@ -1129,20 +1327,18 @@ export const dictionaries: Record<Locale, Dictionary> = {
             ],
           },
           {
-            title: "Secteurs",
+            title: "Quiisa",
             links: [
-              { label: "Agriculture", href: "/solutions" },
-              { label: "Santé", href: "/solutions" },
-              { label: "Services publics", href: "/solutions" },
-              { label: "Clients", href: "/company/customers" },
+              { label: "Gestion de projets", href: "/solutions/quiisa" },
+              { label: "Collaboration d'équipe", href: "/solutions/quiisa" },
             ],
           },
         ],
         visual: {
           eyebrow: "Solution",
-          title: "RedQ",
-          description: "Gestion nationale des dons et des poches de sang.",
-          href: "/solutions/redq",
+          title: "Quiisa",
+          description: "La plateforme de gestion de projets n°1 en Afrique.",
+          href: "/solutions/quiisa",
         },
       },
       developers: {
@@ -1229,7 +1425,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       title: "Des systèmes intelligents qui comprennent",
       highlight: "le monde réel.",
       description:
-        "Nous combinons capteurs, données, intelligence artificielle et connaissance des métiers pour observer, comprendre, prédire et agir sur les systèmes qui nous entourent — exploitations, banques de sang, villes, industries.",
+        "Nous combinons capteurs, données, intelligence artificielle et connaissance des métiers pour observer, comprendre, prédire et agir sur les systèmes qui nous entourent exploitations, banques de sang, villes, industries.",
       ctaPrimary: "Découvrir Rio",
       ctaSecondary: "Lire la vision",
       caption: "Un raisonnement adaptatif, en mouvement",
@@ -1251,35 +1447,35 @@ export const dictionaries: Record<Locale, Dictionary> = {
       eyebrow: "Produit",
       title: "Rio",
       description:
-        "Un jumeau numérique de votre exploitation. Une box IoT perçoit la parcelle, l'IA la comprend, et la plateforme vous dit quoi faire.",
+        "L'écosystème agricole tout-en-un. Du financement à l'accès au marché, Rio couvre tout le cycle de production avec des systèmes intelligents.",
       features: [
         {
-          title: "Observer.",
-          tagline: "Percevoir la parcelle",
+          title: "Rio Access",
+          tagline: "Financement pré-production",
           description:
-            "La Box Rio collecte en continu humidité du sol, température, humidité, luminosité, pluviométrie et plus.",
-          tags: ["HUMIDITÉ DU SOL", "TEMPÉRATURE", "HUMIDITÉ DE L'AIR", "PLUVIOMÉTRIE", "LUMINOSITÉ", "PH DU SOL", "NIVEAU D'EAU"],
+            "Connecter les agriculteurs au financement et aux intrants agricoles. Accéder au crédit, aux semences, engrais et équipements avant le début de la saison.",
+          tags: ["FINANCEMENT", "INTRANTS AGRICOLES", "ACCÈS AU CRÉDIT", "ÉQUIPEMENTS", "SEMENCES & ENGRAIS"],
         },
         {
-          title: "Comprendre.",
-          tagline: "Transformer les données en connaissances",
+          title: "Rio Box",
+          tagline: "Intelligence de production sur site",
           description:
-            "L'IA combine l'historique, la météo, les données satellites et les connaissances agronomiques pour expliquer ce qui se passe et pourquoi.",
-          tags: ["DÉTECTION D'ANOMALIES", "STADES DE CULTURE", "ANALYSE AGROCLIMATIQUE", "HISTORIQUE DE LA PARCELLE"],
+            "Déployer la box IoT sur site pendant la production. Surveiller le sol, la météo et l'état des cultures en temps réel pour se protéger des aléas climatiques.",
+          tags: ["CAPEURS IOT", "SUIVI EN TEMPS RÉEL", "PROTECTION CLIMATIQUE", "ANALYSE DU SOL", "DONNÉES MÉTÉO"],
         },
         {
-          title: "Prédire.",
-          tagline: "Anticiper les risques",
+          title: "Rio AI",
+          tagline: "Le moteur d'intelligence",
           description:
-            "Stress hydrique, maladies, baisse de rendement. Rio prévoit les risques des jours et semaines à l'avance, culture par culture.",
-          tags: ["RISQUE DE STRESS HYDRIQUE", "PRÉVISION DES MALADIES", "PRÉDICTION DES RENDEMENTS", "FUSION MÉTÉO"],
+            "La base de données et le moteur IA agricoles les plus puissants. Recherche, analyse, prédiction et recommandations pour tout l'écosystème.",
+          tags: ["MOTEUR IA", "BASE DE DONNÉES", "RECHERCHE", "ANALYSE", "PRÉDICTION", "RECOMMANDATIONS"],
         },
         {
-          title: "Agir.",
-          tagline: "Recommander la bonne décision",
+          title: "Rio Connect",
+          tagline: "Accès au marché post-production",
           description:
-            "Irrigation dans les 24 heures, ajustement des engrais, moment de la récolte. Des recommandations claires, dans votre langue.",
-          tags: ["ALERTES D'IRRIGATION", "AIDE À LA DÉCISION", "TABLEAU DE BORD", "WEB & MOBILE"],
+            "Connecter directement les agriculteurs aux consommateurs. Vendre la production, trouver des acheteurs et gérer la distribution de la récolte au marché.",
+          tags: ["ACCÈS AU MARCHÉ", "CONNECTION CONSOMMATEURS", "DISTRIBUTION", "VENTES", "LOGISTIQUE"],
         },
       ],
     },
@@ -1287,10 +1483,14 @@ export const dictionaries: Record<Locale, Dictionary> = {
       eyebrow: "Solution",
       title: "RedQ",
       description:
-        "La plateforme nationale de gestion des dons et des poches de sang — du donneur à l'hôpital, avec traçabilité complète.",
+        "La plateforme nationale de gestion des dons et des poches de sang  du donneur à l'hôpital, avec traçabilité complète.",
+      quiisa: {
+        description:
+          "La plateforme de gestion de projets n°1 en Afrique. Suivez les tâches, gérez les équipes et livrez les projets à temps conçu pour la façon de travailler des équipes africaines.",
+      },
     },
     cta: {
-      eyebrow: "Solutions entreprise",
+      eyebrow: "OWN YOUR AI",
       title: "Construisez, personnalisez et déployez des systèmes intelligents avec un contrôle total.",
       ctaPrimary: "Commencer",
       ctaSecondary: "Contacter les ventes",
@@ -1300,6 +1500,80 @@ export const dictionaries: Record<Locale, Dictionary> = {
       close: "Fermer la recherche",
       empty: "Saisissez du texte pour rechercher sur le site.",
       noResults: "Aucun résultat pour « {query} ».",
+      searchIn: "Rechercher dans",
+      domainsHeading: "Parcourir par domaine",
+      domainAll: "Tout",
+      resultsHeading: "Résultats",
+      domains: {
+        products: "Produits",
+        solutions: "Solutions",
+        research: "Recherche",
+        developers: "Développeurs",
+        blog: "Blog",
+        customers: "Clients",
+        company: "Entreprise",
+      },
+    },
+    cookies: {
+      title: "Préférences de cookies",
+      intro:
+        "Les sites web et les applications utilisent des cookies et d'autres identifiants pour stocker et récupérer des informations sur votre appareil. Certaines de ces informations peuvent être partagées avec des tiers à diverses fins. Utilisez l'outil ci-dessous pour gérer vos préférences. Vous pouvez les modifier à tout moment.",
+      requiredTitle: "Cookies strictement nécessaires",
+      requiredDescription:
+        "Ces cookies sont indispensables au fonctionnement du site et ne peuvent pas être désactivés. Ils prennent en charge des fonctions essentielles comme la sécurité, l'authentification et le service client.",
+      analyticsTitle: "Cookies analytiques",
+      analyticsDescription:
+        "Ces cookies nous aident à comprendre comment les visiteurs interagissent avec notre site. Ils nous permettent de mesurer le trafic et d'améliorer les performances du site.",
+      marketingTitle: "Cookies marketing",
+      marketingDescription:
+        "Ces cookies nous aident à mesurer l'efficacité de nos campagnes marketing.",
+      thirdPartyTitle: "Plateformes tierces",
+      thirdPartyDescription:
+        "Cela nous aide à personnaliser et mesurer le marketing propre à Gytev sur les plateformes tierces.",
+      alwaysOn: "Toujours actifs",
+      done: "Terminé",
+    },
+    aboutExperience: {
+      missionEyebrow: "Notre mission",
+      missionLine:
+        "Nous construisons des systèmes intelligents qui comprennent le monde réel.",
+      thesisEyebrow: "Une thèse sur 20 ans",
+      thesisHeading:
+        "Chaque système intelligent doit apprendre à répondre à cinq questions.",
+      questions: [
+        "Que se passe-t-il ?",
+        "Pourquoi cela se produit-il ?",
+        "Que pourrait-il se passer ensuite ?",
+        "Quels sont les scénarios possibles ?",
+        "Que devons-nous faire ?",
+      ],
+      explanations: [
+        "Des capteurs et des systèmes donnent une image en direct et fidèle de n'importe quel environnement physique — fini les devinettes à partir de données dispersées.",
+        "Nos modèles relient les signaux à leurs causes : les anomalies sont expliquées, pas seulement signalées.",
+        "Nos moteurs de prédiction anticipent ce qui va se produire avant que cela n'arrive — du stress des cultures aux pénuries d'approvisionnement.",
+        "Chaque trajectoire de décision est simulée et hiérarchisée : les opérateurs voient des scénarios, pas une seule devinette.",
+        "L'intelligence se termine en action : des recommandations claires que les humains et les machines peuvent exécuter sur le terrain.",
+      ],
+      loopEyebrow: "La boucle d'intelligence",
+      loopHeading:
+        "Nous faisons passer le monde des données à l'action — en une seule boucle connectée.",
+      loopSteps: [
+        { label: "Données", description: "Capteurs et systèmes captent le pouls des environnements physiques." },
+        { label: "Compréhension", description: "Nos modèles transforment les signaux bruts en image vivante du réel." },
+        { label: "Prédiction", description: "Le système anticipe ce qui va se produire, avant que cela n'arrive." },
+        { label: "Décision", description: "L'analyse devient un choix clair, hiérarchisé pour les opérateurs." },
+        { label: "Action", description: "Humains et machines agissent — et la boucle apprend du résultat." },
+      ],
+      originEyebrow: "Nos origines",
+      originHeading: "Née à Dakar. Construite pour le monde.",
+      originBody:
+        "Gytev a été fondée en 2023 avec une conviction simple : la prochaine génération de technologie ne vivra pas seulement sur les écrans. Elle percevra les fermes, les hôpitaux, les villes et les machines — et aidera les gens à agir. En partant du Sénégal et du Burkina Faso, nous déployons des jumeaux numériques et de l'IA embarquée là où la connectivité est la plus difficile, parce que l'intelligence qui fonctionne là-bas fonctionne partout.",
+      stats: [
+        { value: "2023", label: "Fondation à Dakar" },
+        { value: "2 M$", label: "Seed pour bâtir la couche d'intelligence de l'Afrique" },
+        { value: "2", label: "Pays déployés en production" },
+        { value: "24/7", label: "Inférence embarquée sur le terrain" },
+      ],
     },
     home: {
       cases: {
@@ -1332,121 +1606,169 @@ export const dictionaries: Record<Locale, Dictionary> = {
       },
       why: {
         eyebrow: "Pourquoi Gytev",
-        heading: "Une seule boucle d'intelligence.",
+        heading: "N°1 des systèmes intelligents en Afrique.",
         description:
-          "Chaque système Gytev suit la même boucle : observer le terrain, le comprendre, prédire la suite, puis agir sur une recommandation claire.",
-        action: "Explorer Rio",
+          "De l'agriculture à la santé, Gytev construit des systèmes intelligents qui résolvent des problèmes réels en Afrique et au-delà. Une plateforme, tous les secteurs, contrôle total.",
+        action: "Découvrir nos solutions",
         railLabel: "Capacités",
         switcherLabel: "Changer de capacité",
         items: [
           {
             title: "Observer.",
-            tagline: "Capter le terrain",
+            tagline: "Capter tout système réel",
             description:
-              "Le Rio Box collecte en continu l'humidité du sol, la température, l'humidité de l'air, la lumière et les pluies.",
-            tags: ["HUMIDITÉ DU SOL", "TEMPÉRATURE", "HUMIDITÉ DE L'AIR", "PLUIES", "LUMIÈRE"],
+              "Capteurs, objets connectés, satellites, entrées mobiles et données humaines alimentent des flux d'intelligence continus dans les systèmes Gytev fermes, hôpitaux, villes, industries.",
+            action: "Découvrir Rio",
+            tags: ["AGRICULTURE", "SANTÉ", "SYSTÈMES URBAINS", "CHAÎNES D'APPROVISIONNEMENT", "ÉNERGIE"],
             panelType: "observe",
             panel: {
-              label: "Rio Box · lecture en direct",
-              lines: ["Humidité du sol · 22 %", "Température de l'air · 31 °C", "Pluie aujourd'hui · 0 mm", "Lumière · 84 klx"],
+              label: "Que souhaitez-vous observer ?",
+              lines: ["Conditions agricoles en temps réel", "Inventaire sanguin hospitalier", "État des infrastructures urbaines", "Mouvements de la chaîne d'approvisionnement"],
             },
           },
           {
             title: "Comprendre.",
-            tagline: "Transformer les données en insights",
+            tagline: "Transformer les données en insights exploitables",
             description:
-              "L'IA combine l'historique de la parcelle, la météo, les données satellite et la connaissance agronomique pour expliquer ce qui se passe et pourquoi.",
-            tags: ["DÉTECTION D'ANOMALIES", "STADES DE CULTURE", "ANALYSE AGROCLIMATIQUE"],
+              "L'IA combine les connaissances métier, les données historiques, les schémas météo et le contexte local pour expliquer ce qui se passe et pourquoi dans chaque secteur.",
+            action: "Découvrir notre IA",
+            tags: ["EXPERTISE DOMAINE", "IA CONTEXTUELLE", "CONNAISSANCES LOCALES", "RECONNAISSANCE DE MOTIFS", "ANALYSE DE RISQUES"],
             panelType: "understand",
             panel: {
-              label: "Analyse IA",
-              lines: ["Maïs · stade floraison", "Humidité du sol en baisse 5 jours", "Cause · pas de pluie + chaleur", "Confiance · 91 %"],
+              label: "Analyse des données système...",
+              lines: ["Humidité du sol en baisse", "Pénurie de sang O+", "Embouteillage en construction", "Demande énergétique en hausse"],
             },
           },
           {
             title: "Prédire.",
-            tagline: "Anticiper les risques",
+            tagline: "Anticiper ce qui vient",
             description:
-              "Stress hydrique, maladies, perte de rendement. Rio prévoit les risques des jours et des semaines à l'avance, culture par culture.",
-            tags: ["RISQUE DE STRESS HYDRIQUE", "PRÉVISION DE RENDEMENT", "FUSION MÉTÉO"],
+              "Sécheresses, épidémies, pénuries, pannes d'équipement. Gytev prévoit les risques des jours et semaines à l'avance, dans tous les secteurs.",
+            action: "Découvrir les systèmes prédictifs",
+            tags: ["RISQUES CLIMATIQUES", "ÉPIDÉMIES", "FLUCTUATIONS MARCHÉ", "PANNES INFRASTRUCTURE", "PIC DE DEMANDE"],
             panelType: "predict",
             panel: {
               label: "Prévision à 7 jours",
-              lines: ["Stress hydrique · élevé", "Pression des maladies · faible", "Impact sur le rendement · ~18 %", "Prochaine pluie · dans 7 jours"],
+              lines: ["Stress hydrique · élevé au Sahel", "Épidémie · risque modéré", "Pénurie · 12 jours", "Pic énergétique · demain"],
+            },
+          },
+          {
+            title: "Optimiser.",
+            tagline: "Trouver le meilleur chemin",
+            description:
+              "Ressources, timing, logistique, budgets. Les algorithmes d'optimisation trouvent le chemin le plus efficace compte tenu des contraintes réelles partout.",
+            action: "Découvrir l'optimisation",
+            tags: ["ALLOCATION RESSOURCES", "LOGISTIQUE", "PLANIFICATION BUDGÉTAIRE", "MAIN-D'ŒUVRE", "INFRASTRUCTURES"],
+            panelType: "optimize",
+            panel: {
+              label: "Résultats d'optimisation",
+              lines: ["Efficacité irrigation · +23%", "Redistribution sang · 40% plus rapide", "Itinéraires transport · 15% plus courts", "Réduction coûts · ~4 200 $/saison"],
+            },
+          },
+          {
+            title: "Décider.",
+            tagline: "Recommander la bonne action",
+            description:
+              "Des recommandations claires et exploitables livrées aux bonnes personnes au bon moment dans les langues locales, sur tous les appareils.",
+            action: "Découvrir l'aide à la décision",
+            tags: ["ALERTES EXPLOITABLES", "LANGUES LOCALES", "MULTI-APPAREILS", "SCORE DE PRIORITÉ", "NIVEAUX DE CONFIANCE"],
+            panelType: "decide",
+            panel: {
+              label: "Recommandations décisionnelles",
+              lines: ["Irriguer zone A · 18 mm", "Redistribuer poches O+ · 120 unités", "Déployer maintenance · Priorité 1", "Confiance · 94 %"],
             },
           },
           {
             title: "Agir.",
-            tagline: "Recommander la bonne décision",
+            tagline: "Exécuter avec précision",
             description:
-              "Irriguer sous 24 heures, ajuster l'engrais, choisir le moment de la récolte. Des recommandations claires, dans votre langue.",
-            tags: ["ALERTES D'IRRIGATION", "AIDE À LA DÉCISION", "WEB & MOBILE"],
+              "Des alertes à l'automatisation. Gytev déclenche des actions entre les systèmes, équipes et appareils en temps réel sur le terrain, à travers les réseaux.",
+            action: "Découvrir l'IA appliquée",
+            tags: ["ACTIONS TEMPS RÉEL", "INTER-SYSTÈMES", "ALERTES MOBILE", "AUTOMATISATION", "OPÉRATIONS TERRAIN"],
             panelType: "act",
             panel: {
-              label: "Action recommandée",
-              lines: ["Irriguer sous 24 h", "Apporter 20 mm en 2 passages", "Re-vérifier le sol dans 3 jours"],
+              label: "Workflows actifs",
+              lines: ["Système d'irrigation · déclenché", "Hôpital notifié · WhatsApp + SMS", "Camion livraison · envoyé", "Prochaine revue · dans 72 h"],
             },
           },
         ],
       },
       products: {
-        eyebrow: "Produits & plateforme",
-        title: "Une intelligence qui agit sur le monde réel.",
+        eyebrow: "Écosystème Rio",
+        title: "La plateforme agricole tout-en-un.",
         description:
-          "Du Rio Box au champ jusqu'à une plateforme sanguine nationale — Gytev transforme les systèmes complexes du monde réel en systèmes que l'on peut comprendre, prédire et piloter.",
+          "Du financement pré-production à l'accès au marché post-production. Rio couvre tout le cycle agricole avec des systèmes intelligents.",
         tabs: [
           {
-            id: "rio",
-            label: "Rio",
-            heading: "Un jumeau numérique de votre exploitation.",
+            id: "rio-access",
+            label: "Rio Access",
+            heading: "Financez avant la saison.",
             description:
-              "Un boîtier IoT capte le champ, l'IA le comprend, et la plateforme recommande la bonne décision — irrigation, engrais, moment de la récolte.",
+              "Connectez les agriculteurs au financement et aux intrants agricoles. Accédez au crédit, aux semences, engrais et équipements avant le début de la saison.",
             features: [
-              { title: "Capter en continu", description: "Humidité du sol, température, humidité de l'air, lumière et pluies, envoyées automatiquement." },
-              { title: "Comprendre avec l'IA", description: "Historique de la parcelle, météo et données satellite, fusionnés en une image claire." },
-              { title: "Agir avec confiance", description: "Une recommandation claire pour chaque question, dans votre langue." },
+              { title: "Micro-financement", description: "Accès rapide au crédit pour semences, engrais et équipements." },
+              { title: "Marché d'intrants", description: "Achetez des intrants de qualité à prix compétitifs chez des fournisseurs vérifiés." },
+              { title: "Évaluation des risques", description: "Score de crédit par IA basé sur les données et l'historique de la ferme." },
             ],
             preview: {
-              label: "Rio · Jumeau numérique",
+              label: "Rio Access · Financement",
+              heading: "Demande de crédit pré-saison",
+              alert: "Approuvé · 2 400 $",
+              lines: ["Superficie · 2,5 hectares", "Historique cultures · Maïs, Coton", "Score crédit · 87/100", "Intrants prêts à la livraison"],
+            },
+          },
+          {
+            id: "rio-box",
+            label: "Rio Box",
+            heading: "Surveillance intelligente sur le terrain.",
+            description:
+              "Déployez la box IoT sur site pendant la production. Des capteurs en temps réel protègent les cultures des aléas climatiques et optimisent l'irrigation.",
+            features: [
+              { title: "Réseau multi-capteurs", description: "Humidité du sol, température, humidité, luminosité, pluie et plus." },
+              { title: "Alertes en temps réel", description: "Notifications instantanées lorsque les conditions menacent vos cultures." },
+              { title: "Intégration météo", description: "Données météo locales fusionnées avec les capteurs du champ pour des prévisions précises." },
+            ],
+            preview: {
+              label: "Rio Box · Capteurs terrain",
               heading: "Parcelle de maïs — stade floraison",
-              alert: "Irriguer sous 24 h",
-              lines: ["Humidité du sol en baisse depuis 5 jours", "Aucune pluie attendue dans 7 jours", "Risque de stress hydrique · élevé", "Impact sur le rendement si ignoré · ~18 %"],
+              alert: "Irriguer sous 24h",
+              lines: ["Humidité sol · 32% (en baisse)", "Température · 34°C", "Humidité · 45%", "Prochaine pluie · dans 7 jours"],
             },
           },
           {
-            id: "redq",
-            label: "RedQ",
-            heading: "Un réseau sanguin national, en temps réel.",
+            id: "rio-ai",
+            label: "Rio AI",
+            heading: "Le moteur d'intelligence.",
             description:
-              "Du donneur à l'hôpital, chaque poche de sang est tracée — type, groupe, statut et péremption — avec des pénuries prédites, pas subies.",
+              "La base de données agricoles IA les plus puissante. Recherche, analyse, prédiction et recommandations pour tout l'écosystème.",
             features: [
-              { title: "Tracer chaque poche", description: "Donneur, centre de collecte, laboratoire, banque et hôpital dans un seul système." },
-              { title: "Voir le stock national", description: "Visibilité en temps réel des poches disponibles sur tout le réseau." },
-              { title: "Anticiper les pénuries", description: "Prévision de la demande et redistribution avant la péremption." },
+              { title: "Intelligence cultures", description: "Connaissance approfondie de 50+ cultures africaines avec expertise régionale." },
+              { title: "Analyses prédictives", description: "Prévoyez rendements, maladies, sécheresses et prix du marché." },
+              { title: "Langage naturel", description: "Posez des questions en français, anglais ou langues locales." },
             ],
             preview: {
-              label: "RedQ · Réseau national",
-              heading: "Vue du stock national",
-              alert: "Pénurie O+ prévue dans 12 jours",
-              lines: ["2 418 poches tracées", "14 hôpitaux connectés", "3 alertes de péremption proche"],
+              label: "Rio AI · Intelligence",
+              heading: "Analyse culture — Maïs",
+              alert: "Risque maladie · modéré",
+              lines: ["Région · Sahel", "Prévision pluie · 12mm/semaine", "Pression nuisibles · faible", "Prédiction rendement · +15%"],
             },
           },
           {
-            id: "platform",
-            label: "Plateforme",
-            heading: "Construisez l'intelligence de votre monde.",
+            id: "rio-connect",
+            label: "Rio Connect",
+            heading: "Vendez directement aux consommateurs.",
             description:
-              "La plateforme Gytev combine IoT, IA et connaissance des métiers pour observer, comprendre, prédire et agir sur n'importe quel système réel.",
+              "Connectez les agriculteurs aux acheteurs. Trouvez des marchés, négociez les prix et gérez la distribution de la récolte au consommateur.",
             features: [
-              { title: "Observer", description: "Connectez capteurs, machines, caméras, satellites et systèmes d'entreprise." },
-              { title: "Raisonner", description: "Des modèles entraînés pour comprendre votre contexte, dans votre langue." },
-              { title: "Agir", description: "Alertes, tableaux de bord et recommandations qui atteignent les bonnes personnes." },
+              { title: "Mise en relation", description: "L'IA connecte votre production aux bons acheteurs au bon prix." },
+              { title: "Coordination logistique", description: "Transport, stockage et chaîne du froid." },
+              { title: "Ventes directes", description: "Vendez aux consommateurs, restaurants et détaillants sans intermédiaires." },
             ],
             preview: {
-              label: "Plateforme Gytev",
-              heading: "De la détection à l'action",
-              alert: "Jumeau numérique mis à jour",
-              lines: ["IoT + IA + connaissance métier", "Prédire, optimiser, décider", "Fonctionne dans votre langue"],
+              label: "Rio Connect · Marché",
+              heading: "Nouvelle offre d'acheteur reçue",
+              alert: "Prix +22% au-dessus du marché",
+              lines: ["Acheteur · Chaîne restaurants Dakar", "Volume · 500 kg maïs", "Livraison · 3 jours", "Marge bénéficiaire · +34%"],
             },
           },
         ],
@@ -1493,11 +1815,28 @@ export const dictionaries: Record<Locale, Dictionary> = {
       redq: {
         contactUs: "Nous contacter",
         pillars: [
-          { title: "Donneurs & dons", description: "Enregistrez les donneurs, tracez chaque don, du centre de collecte au laboratoire." },
-          { title: "Traçabilité", description: "Chaque poche de sang est tracée : type, groupe, statut, péremption, lieu." },
+          { title: "Donneurs et dons", description: "Enregistrer les donneurs, enregistrer chaque don, du centre de collecte au laboratoire." },
+          { title: "Traçabilité", description: "Chaque poche de sang tracée : type, groupe, statut, péremption, localisation." },
           { title: "Stock national", description: "Visibilité en temps réel des poches disponibles sur tout le réseau." },
-          { title: "Demande & distribution", description: "Faire correspondre la demande hospitalière à l'offre, et redistribuer avant péremption." },
+          { title: "Demande et distribution", description: "Adapter l'offre à la demande hospitalière et redistribuer avant la péremption." },
         ],
+      },
+      quiisa: {
+        startFree: "Commencer gratuitement",
+        watchDemo: "Voir la démo",
+        featuresHeading: "Tout ce dont vous avez besoin pour gérer vos projets",
+        featuresDescription: "De la gestion des tâches à la collaboration en équipe, Quiisa a les outils pour garder vos projets sur la bonne voie.",
+        features: [
+          { title: "Tableaux Kanban", description: "Visualisez votre flux de travail avec des tableaux glisser-déposer. Voyez d'un coup d'œil ce qui est en cours, ce qui est terminé et ce qui vient ensuite." },
+          { title: "Gestion des tâches", description: "Créez, assignez et suivez les tâches avec des délais, priorités et dépendances. Ne manquez plus jamais une échéance." },
+          { title: "Collaboration d'équipe", description: "Commentez les tâches, partagez des fichiers et gardez tout le monde aligné avec des mises à jour et notifications en temps réel." },
+          { title: "Diagrammes de Gantt", description: "Planifiez les projets avec des diagrammes de Gantt interactifs. Visualisez les calendriers, dépendances et chemins critiques." },
+          { title: "Suivi du temps", description: "Suivez le temps passé sur les tâches et projets. Générez des rapports pour les clients ou un usage interne." },
+          { title: "Rapports et analyses", description: "Obtenez des informations sur l'avancement des projets, la performance des équipes et l'allocation des ressources avec des tableaux de bord puissants." },
+        ],
+        builtForAfrica: "Conçu pour les équipes africaines",
+        africaDescription: "Quiisa est conçu pour fonctionner comme les équipes africaines travaillent avec support hors ligne, conception mobile-first et support des langues locales.",
+        tags: ["HORS LIGNE", "MOBILE-FIRST", "LANGUES LOCALES", "SYNCHRO TEMPS RÉEL", "MULTI-ÉQUIPES"],
       },
       vision: {
         eyebrow: "La Thèse Technologique",
@@ -1704,7 +2043,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
                 { label: "Rio", href: "/products/rio" },
                 { label: "RedQ", href: "/solutions/redq" },
                 { label: "Systèmes prédictifs", href: "/research" },
-                { label: "Jumeaux numériques", href: "/research" },
+              { label: "Intelligence Agricole", href: "/research" },
               ],
             },
             {
@@ -1725,6 +2064,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
               links: [
                 { label: "Rio", href: "/products/rio" },
                 { label: "RedQ", href: "/solutions/redq" },
+                { label: "Quiisa", href: "/solutions/quiisa" },
                 { label: "Tous les produits", href: "/products" },
               ],
             },
@@ -1746,7 +2086,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
                 { label: "Solutions", href: "/solutions" },
                 { label: "Agriculture", href: "/solutions" },
                 { label: "Santé publique", href: "/solutions" },
-                { label: "Témoignages clients", href: "/company/customers" },
+                { label: "Gestion de projets", href: "/solutions/quiisa" },
+                { label: "Témoignages clients", href: "/customers" },
                 { label: "Contacter les ventes", href: "/company/contact" },
               ],
             },

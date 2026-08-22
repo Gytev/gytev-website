@@ -145,12 +145,17 @@ const entriesByLocale: Record<Locale, SearchEntry[]> = {
 
 export function searchEntries(locale: Locale, query: string): SearchEntry[] {
   const q = query.trim().toLowerCase();
+  const entries = entriesByLocale[locale] ?? [];
   if (!q) return [];
 
-  return entriesByLocale[locale].filter((entry) => {
+  return entries.filter((entry) => {
     const haystack = [entry.title, entry.description, ...entry.keywords]
       .join(" ")
       .toLowerCase();
     return haystack.includes(q);
   });
+}
+
+export function listEntries(locale: Locale): SearchEntry[] {
+  return entriesByLocale[locale] ?? [];
 }

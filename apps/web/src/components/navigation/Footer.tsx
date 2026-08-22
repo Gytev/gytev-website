@@ -1,6 +1,7 @@
 import type { Dictionary, Locale } from "@gytev/i18n";
 import { localizedHref } from "@gytev/i18n";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { CookiePreferences } from "./CookiePreferences";
 
 type FooterProps = {
   locale: Locale;
@@ -137,15 +138,10 @@ export function Footer({ locale, dictionary }: FooterProps) {
 
         <div className="mx-auto flex w-full max-w-[1280px] flex-col items-center gap-8 px-6 py-12 md:flex-row md:justify-between lg:px-8">
           <img src="/logoB-white.png" alt="Gytev" className="h-30 w-auto" />
-          <p className="flex flex-wrap justify-center gap-2 text-sm text-[#a3a3a3]">
+          <p className="flex flex-wrap items-center justify-center gap-2 text-sm text-[#a3a3a3]">
             <span>Gytev © {year}</span>
             <span>·</span>
-            <button
-              type="button"
-              className="text-[#a3a3a3] underline underline-offset-2 hover:text-white"
-            >
-              {dict.footer.manageCookies}
-            </button>
+            <CookiePreferences dict={dict} />
           </p>
           <LanguageSwitcher locale={locale} />
         </div>

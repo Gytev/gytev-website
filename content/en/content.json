@@ -3,8 +3,8 @@
     {
       "slug": "rio",
       "name": "Rio",
-      "tagline": "Digital twin for agriculture.",
-      "description": "An IoT box senses the field, AI understands it, and the platform recommends the right decision — irrigation, fertilizer, harvest timing.",
+      "tagline": "The all-in-one agricultural ecosystem.",
+      "description": "From financing to market access, Rio covers the entire production cycle with intelligent systems.",
       "href": "/products/rio"
     }
   ],
@@ -14,15 +14,21 @@
       "name": "RedQ",
       "description": "The national platform for managing blood donations and blood bags — from donor to hospital, with full traceability.",
       "href": "/solutions/redq"
+    },
+    {
+      "slug": "quiisa",
+      "name": "Quiisa",
+      "description": "Africa's #1 project management platform. Track tasks, manage teams, and deliver projects on time.",
+      "href": "/solutions/quiisa"
     }
   ],
   "research": [
     {
-      "slug": "digital-twins",
-      "title": "Digital Twins",
-      "summary": "Virtual representations of real-world systems, continuously updated by sensor data.",
+      "slug": "agricultural-intelligence",
+      "title": "Agricultural Intelligence",
+      "summary": "AI-powered systems for farming, from soil analysis to yield prediction.",
       "status": "in-progress",
-      "href": "/research/digital-twins"
+      "href": "/research/agricultural-intelligence"
     },
     {
       "slug": "predictive-systems",
