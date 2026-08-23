@@ -680,13 +680,13 @@ export const dictionaries: Record<Locale, Dictionary> = {
         { label: "Action", description: "People and machines act — and the loop learns from the result." },
       ],
       originEyebrow: "Our origin",
-      originHeading: "Born in Dakar. Built for the world.",
+      originHeading: "Born in Benin. Built for the world.",
       originBody:
-        "Gytev was founded in 2023 with a simple conviction: the next generation of technology will not live only on screens. It will perceive farms, hospitals, cities and machines — and help people act on them. Starting from Senegal and Burkina Faso, we deploy digital twins and edge AI where connectivity is hardest, because intelligence that works there works everywhere.",
+        "Gytev was founded in 2023 with a simple conviction: the next generation of technology will not live only on screens. It will perceive farms, hospitals, cities and machines — and help people act on them. Starting from Benin, we deploy digital twins and edge AI where connectivity is hardest, because intelligence that works there works everywhere.",
       stats: [
-        { value: "2023", label: "Founded in Dakar" },
+        { value: "2023", label: "Founded in Benin" },
         { value: "$2M", label: "Seed to build Africa's intelligence layer" },
-        { value: "2", label: "Countries deployed in production" },
+        { value: "1", label: "Country deployed in production" },
         { value: "24/7", label: "Edge inference in the field" },
       ],
     },
@@ -709,8 +709,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
         subtitle: "Built for the world.",
         label: "Trusted by teams across the continent",
         companies: [
-          { name: "Coopérative du Sahel", sector: "Agritech" },
-          { name: "Banque de Sang de Dakar", sector: "Health" },
+          { name: "Coopérative de l'Alibori", sector: "Agritech" },
+          { name: "National Blood Bank of Benin", sector: "Health" },
           { name: "Mwamba Telecom", sector: "Telecom" },
           { name: "Nyota Logistics", sector: "Logistics" },
           { name: "Umoja Bank", sector: "Banking" },
@@ -883,7 +883,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
               label: "Rio Connect · Market",
               heading: "New buyer offer received",
               alert: "Price +22% above market",
-              lines: ["Buyer · Restaurant Chain Dakar", "Volume · 500 kg maize", "Delivery · 3 days", "Profit margin · +34%"],
+              lines: ["Buyer · Restaurant Chain Cotonou", "Volume · 500 kg maize", "Delivery · 3 days", "Profit margin · +34%"],
             },
           },
         ],
@@ -1011,8 +1011,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
           heroTitle: "From observing to understanding the physical world.",
           body: "The story of a company building intelligence for the real world, from Africa.",
           timeline: [
-            { year: "2023", title: "Founded in Dakar", description: "Gytev was created with the ambition to connect AI to the physical world.", icon: "⚪" },
-            { year: "2024", title: "Rio Launch", description: "Deployment of the first digital twin for agriculture in Senegal and Burkina Faso.", icon: "🌾" },
+            { year: "2023", title: "Founded in Cotonou", description: "Gytev was created with the ambition to connect AI to the physical world.", icon: "⚪" },
+            { year: "2024", title: "Rio Launch", description: "Deployment of the first digital twin for agriculture in Benin.", icon: "🌾" },
             { year: "2025", title: "RedQ & Public Health", description: "Deployment of the blood donation management platform and strategic partnership with the state.", icon: "🩸" },
             { year: "2026", title: "Deeptech Expansion", description: "Integration of AI models on the edge for real-time perception with no latency.", icon: "⚡" }
           ],
@@ -1025,7 +1025,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             { name: "Aïssatou Sow", role: "Head of Operations", bio: "Physical deployment of sensors, logistics, and government partnerships.", image: null }
           ],
           partnersTitle: "They rely on our intelligence",
-          partners: ["Ministry of Agriculture", "World Bank", "Sahel Coop", "Dakar Tech Hub", "Health Initiative", "AgriData"],
+          partners: ["Ministry of Agriculture", "World Bank", "Sahel Coop", "Sèmè City", "Health Initiative", "AgriData"],
           cta: {
             heading: "Ready to build with us?",
             description: "Whether you want to join the engineering team or deploy our solutions in your operations.",
@@ -1037,7 +1037,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
           kicker: "Join us",
           title: "Careers at Gytev",
           heroTitle: "Build intelligence for the physical world.",
-          body: "We're hiring engineers, researchers and operators who want to understand the real world. We are based in Dakar, but our problems are global.",
+          body: "We're hiring engineers, researchers and operators who want to understand the real world. We are based in Cotonou, Benin, but our problems are global.",
           valuesHeading: "How we build",
           values: [
             { title: "Field first", description: "Models fail when they haven't met reality. We build hardware to get ground truth, not just scrape the internet." },
@@ -1050,16 +1050,16 @@ export const dictionaries: Record<Locale, Dictionary> = {
             {
               name: "Engineering & AI",
               openings: [
-                { title: "Senior ML Engineer, Time Series", location: "Dakar / Remote", type: "Full-time" },
-                { title: "Embedded Systems Engineer (C/Rust)", location: "Dakar", type: "Full-time" },
-                { title: "Frontend Engineer (React/WebGL)", location: "Remote (CET ±2)", type: "Full-time" }
+                { title: "Senior ML Engineer, Time Series", location: "Cotonou / Remote", type: "Full-time" },
+                { title: "Embedded Systems Engineer (C/Rust)", location: "Cotonou", type: "Full-time" },
+                { title: "Frontend Engineer (React/WebGL)", location: "Remote (UTC+1)", type: "Full-time" }
               ]
             },
             {
               name: "Operations & Product",
               openings: [
                 { title: "Deployment Lead (Agriculture)", location: "West Africa", type: "Full-time" },
-                { title: "Product Manager (Data Platform)", location: "Dakar / Remote", type: "Full-time" }
+                { title: "Product Manager (Data Platform)", location: "Cotonou / Remote", type: "Full-time" }
               ]
             }
           ]
@@ -1071,7 +1071,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
           note: "Tell us what you want to observe, understand or act on.",
           officesHeading: "Our Headquarters",
           offices: [
-            { city: "Dakar", address: "Plateau, Dakar", country: "Senegal" }
+            { city: "Cotonou", address: "Ganhi, Cotonou", country: "Benin" }
           ],
           inquiriesHeading: "Direct Inquiries",
           inquiries: [
@@ -1093,9 +1093,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
           heroTitle: "Gytev in the news.",
           body: "Press coverage, media mentions and company announcements.",
           articles: [
-            { title: "Gytev raises $2M seed to build Africa's intelligence layer", source: "TechCrunch", date: "March 2025", excerpt: "The Dakar-based deeptech startup plans to scale its IoT platform for agriculture and healthcare across West Africa.", tag: "Funding" },
-            { title: "Rio launches in the Sahel region", source: "African Business", date: "June 2025", excerpt: "Digital twins for agriculture reach smallholder farmers in Senegal and Burkina Faso, with real-time irrigation recommendations.", tag: "Product" },
-            { title: "Senegal's blood bank goes digital with RedQ", source: "WHO News", date: "January 2026", excerpt: "A national platform for managing blood donations and blood bags brings full traceability from donor to hospital.", tag: "Impact" },
+            { title: "Gytev raises $2M seed to build Africa's intelligence layer", source: "TechCrunch", date: "March 2025", excerpt: "The Cotonou-based deeptech startup plans to scale its IoT platform for agriculture and healthcare across West Africa.", tag: "Funding" },
+            { title: "Rio launches in West Africa", source: "African Business", date: "June 2025", excerpt: "Digital twins for agriculture reach smallholder farmers in Benin, with real-time irrigation recommendations.", tag: "Product" },
+            { title: "Benin's blood bank goes digital with RedQ", source: "WHO News", date: "January 2026", excerpt: "A national platform for managing blood donations and blood bags brings full traceability from donor to hospital.", tag: "Impact" },
           ],
         },
         internships: {
@@ -1107,14 +1107,14 @@ export const dictionaries: Record<Locale, Dictionary> = {
             {
               name: "Engineering & AI",
               openings: [
-                { title: "ML Engineer Intern", location: "Dakar / Remote", type: "6 months", description: "Work on time-series models for agricultural prediction. You will train, evaluate, and deploy models that run in production." },
-                { title: "Embedded Systems Intern", location: "Dakar", type: "6 months", description: "Contribute to the firmware of our IoT boxes. C/Rust, low-power computing, sensor integration." },
+                { title: "ML Engineer Intern", location: "Cotonou / Remote", type: "6 months", description: "Work on time-series models for agricultural prediction. You will train, evaluate, and deploy models that run in production." },
+                { title: "Embedded Systems Intern", location: "Cotonou", type: "6 months", description: "Contribute to the firmware of our IoT boxes. C/Rust, low-power computing, sensor integration." },
               ],
             },
             {
               name: "Operations & Product",
               openings: [
-                { title: "Product Design Intern", location: "Dakar", type: "4 months", description: "Help design the interfaces that farmers and hospital staff use every day. Research, prototyping, user testing." },
+                { title: "Product Design Intern", location: "Cotonou", type: "4 months", description: "Help design the interfaces that farmers and hospital staff use every day. Research, prototyping, user testing." },
                 { title: "Field Operations Intern", location: "West Africa", type: "4 months", description: "Join deployment teams in the field. Install sensors, collect feedback, and help us understand real-world constraints." },
               ],
             },
@@ -1127,11 +1127,11 @@ export const dictionaries: Record<Locale, Dictionary> = {
           body: "We believe great work comes from people who are supported, trusted and fairly compensated.",
           benefits: [
             { title: "Real impact", description: "Your work reaches farmers and hospitals within months, not years." },
-            { title: "Flexible work", description: "Remote-first with offices in Dakar. Work where you are most effective." },
+            { title: "Flexible work", description: "Remote-first with offices in Cotonou. Work where you are most effective." },
             { title: "Learning budget", description: "Annual budget for conferences, courses, and books. We invest in your growth." },
             { title: "Equity", description: "All team members receive equity. When Gytev grows, everyone grows." },
             { title: "Health coverage", description: "Comprehensive health insurance for you and your family." },
-            { title: "Relocation support", description: "We help you move to Dakar with a relocation package." },
+            { title: "Relocation support", description: "We help you move to Cotonou with a relocation package." },
           ],
         },
       },
@@ -1623,13 +1623,13 @@ export const dictionaries: Record<Locale, Dictionary> = {
         { label: "Action", description: "Humains et machines agissent — et la boucle apprend du résultat." },
       ],
       originEyebrow: "Nos origines",
-      originHeading: "Née à Dakar. Construite pour le monde.",
+      originHeading: "Née au Bénin. Construite pour le monde.",
       originBody:
-        "Gytev a été fondée en 2023 avec une conviction simple : la prochaine génération de technologie ne vivra pas seulement sur les écrans. Elle percevra les fermes, les hôpitaux, les villes et les machines — et aidera les gens à agir. En partant du Sénégal et du Burkina Faso, nous déployons des jumeaux numériques et de l'IA embarquée là où la connectivité est la plus difficile, parce que l'intelligence qui fonctionne là-bas fonctionne partout.",
+        "Gytev a été fondée en 2023 avec une conviction simple : la prochaine génération de technologie ne vivra pas seulement sur les écrans. Elle percevra les fermes, les hôpitaux, les villes et les machines — et aidera les gens à agir. En partant du Bénin, nous déployons des jumeaux numériques et de l'IA embarquée là où la connectivité est la plus difficile, parce que l'intelligence qui fonctionne là-bas fonctionne partout.",
       stats: [
-        { value: "2023", label: "Fondation à Dakar" },
+        { value: "2023", label: "Fondation au Bénin" },
         { value: "2 M$", label: "Seed pour bâtir la couche d'intelligence de l'Afrique" },
-        { value: "2", label: "Pays déployés en production" },
+        { value: "1", label: "Pays déployé en production" },
         { value: "24/7", label: "Inférence embarquée sur le terrain" },
       ],
     },
@@ -1652,8 +1652,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
         subtitle: "Conçu pour le monde.",
         label: "Ils nous font confiance sur tout le continent",
         companies: [
-          { name: "Coopérative du Sahel", sector: "Agritech" },
-          { name: "Banque de Sang de Dakar", sector: "Santé" },
+          { name: "Coopérative de l'Alibori", sector: "Agritech" },
+          { name: "Banque de Sang du Bénin", sector: "Santé" },
           { name: "Mwamba Telecom", sector: "Télécom" },
           { name: "Nyota Logistics", sector: "Logistique" },
           { name: "Umoja Bank", sector: "Banque" },
@@ -1826,7 +1826,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
               label: "Rio Connect · Marché",
               heading: "Nouvelle offre d'acheteur reçue",
               alert: "Prix +22% au-dessus du marché",
-              lines: ["Acheteur · Chaîne restaurants Dakar", "Volume · 500 kg maïs", "Livraison · 3 jours", "Marge bénéficiaire · +34%"],
+              lines: ["Acheteur · Chaîne restaurants Cotonou", "Volume · 500 kg maïs", "Livraison · 3 jours", "Marge bénéficiaire · +34%"],
             },
           },
         ],
@@ -1954,8 +1954,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
           heroTitle: "De l'observation à la compréhension du monde physique.",
           body: "L'histoire d'une entreprise qui construit l'intelligence pour le monde réel, depuis l'Afrique.",
           timeline: [
-            { year: "2023", title: "Fondation à Dakar", description: "Création de Gytev avec l'ambition de connecter l'intelligence artificielle au monde physique.", icon: "⚪" },
-            { year: "2024", title: "Lancement de Rio", description: "Déploiement du premier jumeau numérique pour l'agriculture au Sénégal et au Burkina Faso.", icon: "🌾" },
+            { year: "2023", title: "Fondation à Cotonou", description: "Création de Gytev avec l'ambition de connecter l'intelligence artificielle au monde physique.", icon: "⚪" },
+            { year: "2024", title: "Lancement de Rio", description: "Déploiement du premier jumeau numérique pour l'agriculture au Bénin.", icon: "🌾" },
             { year: "2025", title: "RedQ & Santé Publique", description: "Déploiement de la plateforme de gestion des dons de sang et partenariat stratégique avec l'État.", icon: "🩸" },
             { year: "2026", title: "Expansion Deeptech", description: "Intégration de modèles d'IA sur le edge pour une perception en temps réel sans latence.", icon: "⚡" }
           ],
@@ -1968,7 +1968,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             { name: "Aïssatou Sow", role: "Head of Operations", bio: "Déploiement physique des capteurs, logistique et partenariats gouvernementaux.", image: null }
           ],
           partnersTitle: "Ils s'appuient sur notre intelligence",
-          partners: ["Ministère de l'Agriculture", "Banque Mondiale", "Sahel Coop", "Dakar Tech Hub", "Initiative Santé", "AgriData"],
+          partners: ["Ministère de l'Agriculture", "Banque Mondiale", "Sahel Coop", "Sèmè City", "Initiative Santé", "AgriData"],
           cta: {
             heading: "Prêt à construire avec nous ?",
             description: "Que vous souhaitiez rejoindre l'équipe d'ingénierie ou déployer nos solutions dans vos opérations.",
@@ -1980,7 +1980,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
           kicker: "Rejoignez-nous",
           title: "Carrières chez Gytev",
           heroTitle: "Construire l'intelligence du monde physique.",
-          body: "Nous recrutons des ingénieurs, des chercheurs et des opérateurs qui veulent comprendre le monde réel. Nous sommes basés à Dakar, mais nos défis sont mondiaux.",
+          body: "Nous recrutons des ingénieurs, des chercheurs et des opérateurs qui veulent comprendre le monde réel. Nous sommes basés à Cotonou, au Bénin, mais nos défis sont mondiaux.",
           valuesHeading: "Comment nous construisons",
           values: [
             { title: "Le terrain d'abord", description: "Les modèles échouent lorsqu'ils n'ont pas rencontré la réalité. Nous construisons du matériel pour obtenir la vérité terrain, pas seulement pour scrapper internet." },
@@ -1993,16 +1993,16 @@ export const dictionaries: Record<Locale, Dictionary> = {
             {
               name: "Ingénierie & IA",
               openings: [
-                { title: "Senior ML Engineer, Séries Temporelles", location: "Dakar / Remote", type: "Temps plein" },
-                { title: "Ingénieur Systèmes Embarqués (C/Rust)", location: "Dakar", type: "Temps plein" },
-                { title: "Ingénieur Frontend (React/WebGL)", location: "Remote (CET ±2)", type: "Temps plein" }
+                { title: "Senior ML Engineer, Séries Temporelles", location: "Cotonou / Remote", type: "Temps plein" },
+                { title: "Ingénieur Systèmes Embarqués (C/Rust)", location: "Cotonou", type: "Temps plein" },
+                { title: "Ingénieur Frontend (React/WebGL)", location: "Remote (UTC+1)", type: "Temps plein" }
               ]
             },
             {
               name: "Opérations & Produit",
               openings: [
                 { title: "Responsable Déploiement (Agriculture)", location: "Afrique de l'Ouest", type: "Temps plein" },
-                { title: "Product Manager (Plateforme Data)", location: "Dakar / Remote", type: "Temps plein" }
+                { title: "Product Manager (Plateforme Data)", location: "Cotonou / Remote", type: "Temps plein" }
               ]
             }
           ]
@@ -2014,7 +2014,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
           note: "Dites-nous ce que vous voulez observer, comprendre ou piloter.",
           officesHeading: "Notre Siège",
           offices: [
-            { city: "Dakar", address: "Plateau, Dakar", country: "Sénégal" }
+            { city: "Cotonou", address: "Ganhi, Cotonou", country: "Bénin" }
           ],
           inquiriesHeading: "Demandes directes",
           inquiries: [
@@ -2036,9 +2036,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
           heroTitle: "Gytev dans les médias.",
           body: "Couverture médiatique, mentions dans la presse et annonces de l'entreprise.",
           articles: [
-            { title: "Gytev lève 2M$ pour construire la couche d'intelligence de l'Afrique", source: "TechCrunch", date: "Mars 2025", excerpt: "Le startup deeptech basé à Dakar prévoit de déployer sa plateforme IoT pour l'agriculture et la santé en Afrique de l'Ouest.", tag: "Financement" },
-            { title: "Rio s'étend dans la région du Sahel", source: "African Business", date: "Juin 2025", excerpt: "Les jumeaux numériques pour l'agriculture arrivent chez les petits exploitants au Sénégal et au Burkina Faso.", tag: "Produit" },
-            { title: "La banque du sang du Sénégal se digitalise avec RedQ", source: "OMS Info", date: "Janvier 2026", excerpt: "Une plateforme nationale de gestion des dons de sang apporte une traçabilité complète du donneur à l'hôpital.", tag: "Impact" },
+            { title: "Gytev lève 2M$ pour construire la couche d'intelligence de l'Afrique", source: "TechCrunch", date: "Mars 2025", excerpt: "La startup deeptech basée à Cotonou prévoit de déployer sa plateforme IoT pour l'agriculture et la santé en Afrique de l'Ouest.", tag: "Financement" },
+            { title: "Rio se déploie en Afrique de l'Ouest", source: "African Business", date: "Juin 2025", excerpt: "Les jumeaux numériques pour l'agriculture arrivent chez les petits exploitants au Bénin.", tag: "Produit" },
+            { title: "La banque de sang du Bénin se digitalise avec RedQ", source: "OMS Info", date: "Janvier 2026", excerpt: "Une plateforme nationale de gestion des dons de sang apporte une traçabilité complète du donneur à l'hôpital.", tag: "Impact" },
           ],
         },
         internships: {
@@ -2050,14 +2050,14 @@ export const dictionaries: Record<Locale, Dictionary> = {
             {
               name: "Ingénierie & IA",
               openings: [
-                { title: "Stagiaire ML Engineer", location: "Dakar / Remote", type: "6 mois", description: "Travaillez sur des modèles de séries temporelles pour la prédiction agricole. Entraînement, évaluation et déploiement en production." },
-                { title: "Stagiaire Systèmes Embarqués", location: "Dakar", type: "6 mois", description: "Contribuez au firmware de nos boîtiers IoT. C/Rust, informatique basse consommation, intégration de capteurs." },
+                { title: "Stagiaire ML Engineer", location: "Cotonou / Remote", type: "6 mois", description: "Travaillez sur des modèles de séries temporelles pour la prédiction agricole. Entraînement, évaluation et déploiement en production." },
+                { title: "Stagiaire Systèmes Embarqués", location: "Cotonou", type: "6 mois", description: "Contribuez au firmware de nos boîtiers IoT. C/Rust, informatique basse consommation, intégration de capteurs." },
               ],
             },
             {
               name: "Opérations & Produit",
               openings: [
-                { title: "Stagiaire Design Produit", location: "Dakar", type: "4 mois", description: "Aidez à concevoir les interfaces que les agriculteurs et le personnel hospitalier utilisent au quotidien. Recherche, prototypage, tests utilisateurs." },
+                { title: "Stagiaire Design Produit", location: "Cotonou", type: "4 mois", description: "Aidez à concevoir les interfaces que les agriculteurs et le personnel hospitalier utilisent au quotidien. Recherche, prototypage, tests utilisateurs." },
                 { title: "Stagiaire Opérations Terrain", location: "Afrique de l'Ouest", type: "4 mois", description: "Rejoignez les équipes de déploiement sur le terrain. Installation de capteurs, collecte de retours, compréhension des contraintes réelles." },
               ],
             },
@@ -2070,11 +2070,11 @@ export const dictionaries: Record<Locale, Dictionary> = {
           body: "Nous croyons que le meilleur travail vient de personnes soutenues, en confiance et justement rémunérées.",
           benefits: [
             { title: "Impact réel", description: "Votre travail atteint des agriculteurs et des hôpitaux en quelques mois, pas en quelques années." },
-            { title: "Flexibilité", description: "Télétravail par défaut, bureaux à Dakar. Travaillez là où vous êtes le plus efficace." },
+            { title: "Flexibilité", description: "Télétravail par défaut, bureaux à Cotonou. Travaillez là où vous êtes le plus efficace." },
             { title: "Budget formation", description: "Budget annuel pour conférences, formations et livres. Nous investissons dans votre croissance." },
             { title: "Equity", description: "Tous les membres de l'équipe reçoivent des actions. Quand Gytev grandit, tout le monde grandit." },
             { title: "Couverture santé", description: "Assurance santé complète pour vous et votre famille." },
-            { title: "Aide à la relocation", description: "Nous vous aidons à vous installer à Dakar avec un package de relocation." },
+            { title: "Aide à la relocation", description: "Nous vous aidons à vous installer à Cotonou avec un package de relocation." },
           ],
         },
       },

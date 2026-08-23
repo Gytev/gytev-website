@@ -88,17 +88,17 @@
   ],
   "customers": [
     {
-      "slug": "cooperative-sahel",
-      "name": "Coopérative du Sahel",
+      "slug": "cooperative-alibori",
+      "name": "Coopérative de l'Alibori",
       "sector": "Agriculture",
-      "country": "Burkina Faso",
+      "country": "Benin",
       "quote": "Rio warned us about water stress three days before the first leaves wilted. We irrigated in time."
     },
     {
-      "slug": "banque-du-sang-dakar",
-      "name": "Banque de Sang de Dakar",
+      "slug": "banque-du-sang-benin",
+      "name": "National Blood Bank of Benin",
       "sector": "Public health",
-      "country": "Senegal",
+      "country": "Benin",
       "quote": "RedQ gives us real-time visibility on every blood bag in the country. Shortages are predicted, not endured."
     }
   ],

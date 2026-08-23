@@ -7,7 +7,7 @@ chaînes d'approvisionnement — génère des quantités massives de données, m
 reste largement illisible pour le logiciel. Gytev construit les systèmes qui
 le **perçoivent, le comprennent, le prédisent et aident à agir** : capteurs
 IoT en bord de champ, jumeaux numériques, IA prescriptive déployée dans des
-environnements réels, depuis Dakar vers le monde.
+environnements réels, depuis le Bénin vers le monde.
 
 > Thèse complète : [docs/vision/README.md](docs/vision/README.md)
 

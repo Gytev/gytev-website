@@ -88,17 +88,17 @@
   ],
   "customers": [
     {
-      "slug": "cooperative-sahel",
-      "name": "Coopérative du Sahel",
+      "slug": "cooperative-alibori",
+      "name": "Coopérative de l'Alibori",
       "sector": "Agriculture",
-      "country": "Burkina Faso",
+      "country": "Benin",
       "quote": "Rio nous a alertés sur le stress hydrique trois jours avant le premier flétrissement. Nous avons irrigué à temps."
     },
     {
-      "slug": "banque-du-sang-dakar",
-      "name": "Banque de Sang de Dakar",
+      "slug": "banque-du-sang-benin",
+      "name": "National Blood Bank of Benin",
       "sector": "Santé publique",
-      "country": "Sénégal",
+      "country": "Benin",
       "quote": "RedQ nous donne une visibilité en temps réel sur chaque poche de sang du pays. Les pénuries sont prédites, plus subies."
     }
   ],
