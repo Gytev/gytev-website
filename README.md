@@ -1,9 +1,38 @@
 # Gytev
 
-**Le prochain Google africain, pour le monde entier.**
+**Des systèmes intelligents qui comprennent le monde réel.**
 
-Gytev construit la plateforme de recherche, d'IA et de données qui met l'Afrique
-sur la carte de l'économie numérique mondiale.
+Le monde physique — machines, fermes, hôpitaux, villes, réseaux d'énergie,
+chaînes d'approvisionnement — génère des quantités massives de données, mais
+reste largement illisible pour le logiciel. Gytev construit les systèmes qui
+le **perçoivent, le comprennent, le prédisent et aident à agir** : capteurs
+IoT en bord de champ, jumeaux numériques, IA prescriptive déployée dans des
+environnements réels, depuis Dakar vers le monde.
+
+> Thèse complète : [docs/vision/README.md](docs/vision/README.md)
+
+## Produits & solutions
+
+| | Nom | Description | Doc |
+|---|---|---|---|
+| 🌾 | **Rio** | Jumeau numérique agricole : boîtier IoT embarqué sur la ferme, capteurs continus (sol, climat), recommandations d'irrigation en temps réel. | [docs/products/rio.md](docs/products/rio.md) |
+| 🩸 | **RedQ** | Plateforme nationale de gestion du don du sang : traçabilité de chaque poche en temps réel entre centres, banques de sang et hôpitaux. | [docs/solutions/redq.md](docs/solutions/redq.md) |
+
+## État du projet
+
+**Fait :**
+
+- ✅ Monorepo pnpm complet : site vitrine, console admin, API, packages partagés
+- ✅ Site vitrine Next.js (App Router) bilingue **EN/FR**, SEO, sitemap hreflang
+- ✅ Console d'administration avec CRUD complet sur tout le contenu (produits, solutions, research, developers, blog, clients, company, navigation)
+- ✅ API REST FastAPI async (SQLAlchemy + PostgreSQL/pgvector), écritures protégées par clé API
+- ✅ Contenu éditorial versionné (`content/en`, `content/fr`) + seed vers PostgreSQL
+- ✅ CI GitHub Actions (lint, typecheck, tests, build)
+- ✅ Pages Company refondues (vision, careers, contact, press…)
+
+**En cours / prêt :**
+
+- 🔧 Déploiement production : Supabase (PostgreSQL) · Render (API) · Vercel (web + admin) — blueprint [`render.yaml`](render.yaml) et guide [`docs/deployment.md`](docs/deployment.md) prêts, domaine `gytev.com` (Hostinger)
 
 ## Structure du monorepo
 
@@ -22,8 +51,19 @@ GYTEV/
 ├── content/       # Contenu éditorial (en/ + fr/)
 ├── infrastructure/ # Docker Compose (PostgreSQL + pgvector, backend)
 ├── scripts/       # bootstrap, setup, dev
-└── docs/          # Documentation
+├── docs/          # Documentation (voir liens plus bas)
+└── render.yaml    # Blueprint Render (backend API)
 ```
+
+## Documentation
+
+| Document | Contenu |
+|---|---|
+| [docs/vision/README.md](docs/vision/README.md) | Vision & thèse technologique (fondation stratégique) |
+| [docs/architecture.md](docs/architecture.md) | Architecture technique, couches et décisions clés |
+| [docs/deployment.md](docs/deployment.md) | Déploiement Supabase · Render · Vercel · DNS Hostinger (`gytev.com`) |
+| [docs/products/rio.md](docs/products/rio.md) | Rio — jumeau numérique pour l'agriculture |
+| [docs/solutions/redq.md](docs/solutions/redq.md) | RedQ — plateforme nationale de gestion du don du sang |
 
 ## Prérequis
 
@@ -82,3 +122,9 @@ cp apps/admin/.env.example apps/admin/.env.local
 
 En production, définissez une `GYTEV_ADMIN_API_KEY` forte côté backend et la même
 clé côté admin. Sans clé configurée, les écritures restent ouvertes (mode dev).
+
+## Déploiement
+
+Voir [docs/deployment.md](docs/deployment.md) : Supabase (base), Render (API,
+blueprint [`render.yaml`](render.yaml)), Vercel (web + admin) et connexion du
+domaine `gytev.com` chez Hostinger.

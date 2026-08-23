@@ -1,0 +1,25 @@
+# Blueprint Render — https://render.com/docs/blueprint-spec
+# Déploiement : Dashboard Render → New → Blueprint → sélectionner ce repo.
+# Renseigner `databaseUrl` (Supabase) et `adminApiKey` à la création.
+
+services:
+  - type: web
+    name: gytev-api
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    region: frankfurt # le plus proche de l'Afrique de l'Ouest / Europe
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: GYTEV_ENVIRONMENT
+        value: production
+      - key: GYTEV_DEBUG
+        value: "false"
+      - key: GYTEV_DATABASE_URL
+        sync: false # postgresql+psycopg://postgres.<ref>:<pwd>@<host>.pooler.supabase.com:5432/postgres?sslmode=require
+      - key: GYTEV_CORS_ORIGINS
+        value: '["https://gytev.com","https://www.gytev.com","https://admin.gytev.com"]'
+      - key: GYTEV_ADMIN_API_KEY
+        generateValue: true # ou sync: false pour fournir votre propre clé

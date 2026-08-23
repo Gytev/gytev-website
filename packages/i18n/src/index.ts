@@ -229,7 +229,18 @@ export type Dictionary = {
         africaDescription: string;
         tags: string[];
       };
-      vision: { eyebrow: string; heading: string; discover: string; loop: { step: string; text: string }[] };
+      vision: {
+        eyebrow: string;
+        heading: string;
+        subtitle: string;
+        discover: string;
+        loopHeading: string;
+        loopDescription: string;
+        thesis: { title: string; paragraphs: string[] };
+        architectureHeading: string;
+        architecture: { title: string; description: string; features: string[] }[];
+        loop: { step: string; text: string }[];
+      };
       companySections: {
         about: string;
         story: string;
@@ -252,8 +263,55 @@ export type Dictionary = {
           partners: string[];
           cta: { heading: string; description: string; primary: string; secondary: string };
         };
-        careers: { kicker: string; title: string; body: string };
-        contact: { kicker: string; title: string; note: string; cta: string };
+        careers: {
+          kicker: string;
+          title: string;
+          heroTitle: string;
+          body: string;
+          valuesHeading: string;
+          values: { title: string; description: string }[];
+          rolesHeading: string;
+          rolesEmpty: string;
+          departments: {
+            name: string;
+            openings: { title: string; location: string; type: string; description?: string }[];
+          }[];
+        };
+        contact: {
+          kicker: string;
+          title: string;
+          heroTitle: string;
+          note: string;
+          officesHeading: string;
+          offices: { city: string; address: string; country: string }[];
+          inquiriesHeading: string;
+          inquiries: { title: string; email: string; description: string }[];
+          form: { heading: string; name: string; email: string; message: string; submit: string };
+        };
+        benefits: {
+          kicker: string;
+          title: string;
+          heroTitle: string;
+          body: string;
+          benefits: { title: string; description: string }[];
+        };
+        internships: {
+          kicker: string;
+          title: string;
+          heroTitle: string;
+          body: string;
+          departments: {
+            name: string;
+            openings: { title: string; location: string; type: string; description?: string }[];
+          }[];
+        };
+        press: {
+          kicker: string;
+          title: string;
+          heroTitle: string;
+          body: string;
+          articles: { title: string; source: string; date: string; excerpt: string; tag: string }[];
+        };
       };
     };
   footer: {
