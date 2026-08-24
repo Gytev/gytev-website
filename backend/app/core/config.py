@@ -1,5 +1,6 @@
 from functools import lru_cache
 
+from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -16,6 +17,18 @@ class Settings(BaseSettings):
 
     # Clé API pour les mutations admin (X-API-Key). Vide = auth désactivée (dev).
     admin_api_key: str = ""
+
+    @field_validator("database_url", mode="before")
+    @classmethod
+    def _force_async_driver(cls, value: object) -> object:
+        """Accepte les URLs standards (Neon, Supabase...) et force le driver async psycopg."""
+        if not isinstance(value, str):
+            return value
+        if value.startswith("postgres://"):
+            return f"postgresql+psycopg://{value.removeprefix('postgres://')}"
+        if value.startswith("postgresql://"):
+            return f"postgresql+psycopg://{value.removeprefix('postgresql://')}"
+        return value
 
 
 @lru_cache
