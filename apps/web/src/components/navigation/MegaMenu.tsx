@@ -11,7 +11,7 @@ type MegaMenuProps = {
 
 export function MegaMenu({ locale, label, columns, visual, image }: MegaMenuProps) {
   return (
-    <div className="absolute inset-x-0 top-full border-t border-[#333] bg-black text-white">
+    <div className="absolute inset-x-0 top-full hidden border-t border-[#333] bg-black text-white lg:block">
       <div className="mx-auto grid min-h-[417px] max-w-[1280px] grid-cols-12 gap-10 px-10 py-12">
         <div className="col-span-8 grid grid-cols-3 gap-x-16 gap-y-8">
           {columns.map((column) => (

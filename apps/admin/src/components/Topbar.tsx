@@ -64,6 +64,13 @@ export function Topbar() {
             Admin
           </span>
         </div>
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- route handler de déconnexion, pas une page */}
+        <a
+          href="/api/auth/logout"
+          className="rounded-full px-3 py-1.5 text-sm font-medium text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-red-600"
+        >
+          Déconnexion
+        </a>
       </div>
     </header>
   );

@@ -21,6 +21,23 @@ const menuImages: Record<string, string> = {
   company: "/images/mega/company.jpg",
 };
 
+const SearchIcon = () => (
+  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"
+    />
+  </svg>
+);
+
+const SearchCloseIcon = () => (
+  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+  </svg>
+);
+
 export function Navbar({ locale, dictionary }: NavbarProps) {
   const [active, setActive] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
@@ -79,7 +96,7 @@ export function Navbar({ locale, dictionary }: NavbarProps) {
               alt="Gytev"
               width={112}
               height={112}
-              className="h-28 w-28 rounded-full object-cover"
+              className="h-14 w-14 rounded-full object-cover sm:h-20 sm:w-20 lg:h-28 lg:w-28"
             />
           </a>
 
@@ -107,37 +124,36 @@ export function Navbar({ locale, dictionary }: NavbarProps) {
               className="p-2 text-[#c8c6c5] transition-colors hover:text-white"
               aria-label={searchOpen ? dict.search.close : dict.header.search}
             >
-              {searchOpen ? (
-                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"
-                  />
-                </svg>
-              )}
+              {searchOpen ? <SearchCloseIcon /> : <SearchIcon />}
             </button>
           </div>
         </div>
 
         <div className="nav-actions flex items-center gap-2">
-          <a
-            href={localizedHref(locale, "/products")}
-            className="button button--light"
-          >
-            {dict.cta.ctaPrimary} <span aria-hidden>→</span>
-          </a>
-          <a
-            href={localizedHref(locale, "/company/contact")}
-            className="button button--dark"
-          >
-            {dict.cta.ctaSecondary} <span aria-hidden>→</span>
-          </a>
+          {/* .button est défini hors @layer dans globals.css : il écrase les
+              utilitaires Tailwind — d'où les wrappers responsive. */}
+          <span className="hidden sm:block">
+            <a href={localizedHref(locale, "/products")} className="button button--light">
+              {dict.cta.ctaPrimary} <span aria-hidden>→</span>
+            </a>
+          </span>
+          {/* contact : présent dans la barre du haut, mobile comme desktop */}
+          <span>
+            <a href={localizedHref(locale, "/company/contact")} className="button button--dark">
+              {dict.cta.ctaSecondary} <span aria-hidden>→</span>
+            </a>
+          </span>
+          {/* loupe mobile : à côté du burger (desktop = après les liens) */}
+          <span className="lg:hidden">
+            <button
+              type="button"
+              onClick={() => setSearchOpen((value) => !value)}
+              className="rounded-md p-2 text-[#c8c6c5] transition-colors hover:text-white"
+              aria-label={searchOpen ? dict.search.close : dict.header.search}
+            >
+              {searchOpen ? <SearchCloseIcon /> : <SearchIcon />}
+            </button>
+          </span>
           <button
             onClick={() => setOpen(true)}
             className="rounded-md p-2 text-white hover:bg-white/10 lg:hidden"
@@ -164,10 +180,38 @@ export function Navbar({ locale, dictionary }: NavbarProps) {
         open={open}
         onClose={() => setOpen(false)}
         closeLabel={dict.header.close}
-        items={navItems.map((item) => ({
-          label: (dict.nav[item.key]?.label ?? item.label) as string,
-          href: localizedHref(locale, item.href),
-        }))}
+        title="Menu"
+        items={navItems.map((item) => {
+          const nav = dict.nav[item.key];
+          return {
+            label: (nav?.label ?? item.label) as string,
+            href: localizedHref(locale, item.href),
+            columns: nav?.columns.map((column) => ({
+              title: column.title,
+              links: column.links.map((link) => ({
+                label: link.label,
+                href: localizedHref(locale, link.href),
+              })),
+            })),
+            featured: nav?.visual.href
+              ? {
+                  eyebrow: nav.visual.eyebrow,
+                  title: nav.visual.title,
+                  description: nav.visual.description,
+                  href: localizedHref(locale, nav.visual.href),
+                }
+              : undefined,
+            image: menuImages[item.key],
+          };
+        })}
+        primaryCta={{
+          label: dict.cta.ctaPrimary,
+          href: localizedHref(locale, "/products"),
+        }}
+        secondaryCta={{
+          label: dict.cta.ctaSecondary,
+          href: localizedHref(locale, "/company/contact"),
+        }}
       />
 
       <SearchOverlay
