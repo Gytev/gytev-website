@@ -7,17 +7,19 @@ import type { Locale } from "@gytev/types";
 import { localizedHref } from "@gytev/i18n";
 import { Hero } from "./Hero";
 import { HardQuestions } from "./HardQuestions";
-import type { Content } from "@/lib/content";
+import { LogoMarquee } from "@/components/shared/LogoMarquee";
+import type { Content, PartnerData } from "@/lib/content";
 
 type HomeExperienceProps = {
   dict: Dictionary;
   locale: Locale;
   customers: Content["customers"];
+  partners: PartnerData[];
 };
 
 function Arrow() { return <span aria-hidden>→</span>; }
 
-export function HomeExperience({ dict, locale }: HomeExperienceProps) {
+export function HomeExperience({ dict, locale, partners }: HomeExperienceProps) {
   const [caseIndex, setCaseIndex] = useState(0);
   const whyItems = dict.home.why.items;
   const [capability, setCapability] = useState(0);
@@ -140,29 +142,7 @@ export function HomeExperience({ dict, locale }: HomeExperienceProps) {
       </div>
 
       <section className="trusted" aria-label="Companies trusted">
-        <div className="trusted__track">
-          <div className="trusted__slide">
-            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="Google" className="trusted__logo" /></div>
-            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="Google" className="trusted__logo" /></div>
-            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="Google" className="trusted__logo" /></div>
-            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="Google" className="trusted__logo" /></div>
-            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="Google" className="trusted__logo" /></div>
-          </div>
-          <div className="trusted__slide" aria-hidden="true">
-            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="" className="trusted__logo" /></div>
-            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="" className="trusted__logo" /></div>
-            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="" className="trusted__logo" /></div>
-            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="" className="trusted__logo" /></div>
-            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="" className="trusted__logo" /></div>
-          </div>
-          <div className="trusted__slide" aria-hidden="true">
-            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="" className="trusted__logo" /></div>
-            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="" className="trusted__logo" /></div>
-            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="" className="trusted__logo" /></div>
-            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="" className="trusted__logo" /></div>
-            <div className="trusted__case"><img src="/logoTrust/google.jpg" alt="" className="trusted__logo" /></div>
-          </div>
-        </div>
+        <LogoMarquee partners={partners} />
       </section>
 
       <section className="case-section" aria-label={dict.home.cases.heading} onWheel={(e) => { if (e.deltaY > 30) setCaseIndex((caseIndex + 1) % caseStudies.length); else if (e.deltaY < -30) setCaseIndex((caseIndex - 1 + caseStudies.length) % caseStudies.length); }}>

@@ -22,7 +22,7 @@ export function MegaMenu({ locale, label, columns, visual, image }: MegaMenuProp
                   <li key={link.label}>
                     <a
                       href={localizedHref(locale, link.href)}
-                      className="text-base text-white transition-colors hover:text-zinc-300"
+                      className="text-base font-medium text-white transition-colors hover:text-zinc-300"
                     >
                       {link.label}
                     </a>
@@ -55,7 +55,7 @@ export function MegaMenu({ locale, label, columns, visual, image }: MegaMenuProp
               <p className="text-xs font-medium uppercase tracking-widest text-white/70">
                 {visual.eyebrow}
               </p>
-              <h3 className="mt-2 text-xl font-semibold text-white">{visual.title}</h3>
+              <h3 className="mt-2 text-xl font-medium text-white">{visual.title}</h3>
               <p className="mt-1 text-sm leading-6 text-white/80">{visual.description}</p>
               <span className="mt-3 inline-flex items-center gap-1 pt-1 text-sm font-medium text-white">
                 {label} <span aria-hidden>→</span>

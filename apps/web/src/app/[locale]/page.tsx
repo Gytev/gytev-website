@@ -1,6 +1,6 @@
 import type { Locale } from "@gytev/types";
 import { HomeExperience } from "@/components/home/HomeExperience";
-import { getContent } from "@/lib/content";
+import { getPartners, getContent } from "@/lib/content";
 import { generateStaticParams, getDictionary } from "@/lib/i18n";
 
 export { generateStaticParams };
@@ -11,7 +11,18 @@ type Props = {
 
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
-  const [dict, content] = await Promise.all([getDictionary(locale), getContent(locale)]);
+  const [dict, content, apiPartners] = await Promise.all([
+    getDictionary(locale),
+    getContent(locale),
+    getPartners(locale),
+  ]);
 
-  return <HomeExperience dict={dict} locale={locale as Locale} customers={content.customers} />;
+  return (
+    <HomeExperience
+      dict={dict}
+      locale={locale as Locale}
+      customers={content.customers}
+      partners={apiPartners ?? dict.pages.companyDetail.about.partners.map((name) => ({ name }))}
+    />
+  );
 }

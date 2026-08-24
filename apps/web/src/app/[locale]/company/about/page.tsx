@@ -1,6 +1,6 @@
 import { buildPageMetadata } from "@/lib/metadata";
 import { Container } from "@gytev/ui";
-import { getContent } from "@/lib/content";
+import { getMilestones, getPartners, getTeam } from "@/lib/content";
 import { getDictionary } from "@/lib/i18n";
 import { localizedHref } from "@gytev/i18n";
 import type { Locale } from "@gytev/types";
@@ -23,29 +23,46 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params;
-  const [dict, content] = await Promise.all([getDictionary(locale), getContent(locale)]);
+  const [dict, apiMilestones, apiTeam, apiPartners] = await Promise.all([
+    getDictionary(locale),
+    getMilestones(locale),
+    getTeam(locale),
+    getPartners(locale),
+  ]);
   const detail = dict.pages.companyDetail.about;
   const l = locale as Locale;
+  const milestones =
+    apiMilestones ??
+    detail.timeline.map((item) => ({
+      date: item.date,
+      title: item.title,
+      description: item.description,
+      event_type: item.type,
+    }));
 
   return (
     <main className="min-h-screen bg-[var(--paper)] text-[var(--ink)]">
       <MissionHero dict={dict} />
       <ThesisScroll dict={dict} />
       <LoopDiagram dict={dict} />
-      <OriginTimeline dict={dict} milestones={detail.timeline} />
+      <OriginTimeline dict={dict} milestones={milestones} />
 
-      {/* INTRO ÉDITORIALE */}
-      <section className="border-b border-[var(--line)] bg-[var(--color-surface)] py-20">
-        <Container>
-          <div className="max-w-3xl space-y-6 text-lg leading-relaxed text-zinc-600 sm:text-xl">
-            <p className="font-medium text-[var(--ink)]">{content.company.story}</p>
-            <p>{content.company.about}</p>
-          </div>
-        </Container>
-      </section>
-
-      <TeamGrid team={detail.team} heading={detail.teamHeading} description={detail.teamDescription} />
-      <LogoWall title={detail.partnersTitle} partners={detail.partners} />
+      <TeamGrid
+        team={
+          apiTeam ??
+          detail.team.map((member) => ({
+            name: member.name,
+            role: member.role,
+            image: member.image,
+          }))
+        }
+        heading={detail.teamHeading}
+        description={detail.teamDescription}
+      />
+      <LogoWall
+        title={detail.partnersTitle}
+        partners={apiPartners ?? detail.partners.map((name) => ({ name }))}
+      />
 
       {/* CTA SECTION - Footer de navigation croisée */}
       <section className="py-24 bg-[var(--color-ink-950)] text-white text-center">

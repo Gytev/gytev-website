@@ -62,12 +62,6 @@ function buildEntries(content: Content): SearchEntry[] {
       keywords: ["about", "mission", "entreprise"],
     },
     {
-      title: "Vision",
-      description: content.company.vision,
-      href: "/company/vision",
-      keywords: ["20 years", "strategy"],
-    },
-    {
       title: "Contact",
       description: content.company.contact,
       href: "/company/contact",

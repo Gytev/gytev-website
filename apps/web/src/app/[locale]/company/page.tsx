@@ -4,6 +4,7 @@ import { localizedHref } from "@gytev/i18n";
 import { Container } from "@gytev/ui";
 import { getContent } from "@/lib/content";
 import { getDictionary } from "@/lib/i18n";
+import { Reveal } from "@/components/company/about/Reveal";
 
 export async function generateMetadata({
   params,
@@ -27,20 +28,24 @@ export default async function CompanyHubPage({ params }: Props) {
   return (
     <main className="min-h-screen bg-[var(--paper)] text-[var(--ink)]">
       {/* HERO SECTION - Bilingual */}
-      <section className="relative overflow-hidden pt-32 pb-24 lg:pt-48 lg:pb-32 border-b border-[var(--line)] bg-[var(--color-surface)]">
+      <section className="relative overflow-hidden pt-20 pb-14 lg:pt-28 lg:pb-20 border-b border-[var(--line)] bg-[var(--color-surface)]">
         <Container>
           <div className="mx-auto max-w-4xl">
-            <h1
-              className="text-5xl font-medium tracking-tight sm:text-6xl lg:text-7xl"
-              style={{ textWrap: "balance" }}
-            >
-              {locale === "fr"
-                ? "Connecter l'intelligence numérique à la réalité physique."
-                : "Connecting digital intelligence to the physical world."}
-            </h1>
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-zinc-600 sm:text-xl">
-              {content.company.story}
-            </p>
+            <Reveal>
+              <h1
+                className="text-5xl font-medium tracking-tight sm:text-6xl lg:text-7xl"
+                style={{ textWrap: "balance" }}
+              >
+                {locale === "fr"
+                  ? "Connecter l'intelligence numérique à la réalité physique."
+                  : "Connecting digital intelligence to the physical world."}
+              </h1>
+            </Reveal>
+            <Reveal delay={140}>
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-600 sm:text-xl">
+                {content.company.story}
+              </p>
+            </Reveal>
           </div>
         </Container>
       </section>
@@ -50,13 +55,14 @@ export default async function CompanyHubPage({ params }: Props) {
         <Container className="py-24">
           <div className="grid grid-cols-1 gap-px bg-[var(--line)] sm:grid-cols-2 lg:grid-cols-3 border border-[var(--line)]">
             {/* ABOUT CARD - Span 2 columns */}
-            <a
+                        <Reveal delay={60} className="lg:col-span-2">
+<a
               href={localizedHref(l, "/company/about")}
-              className="group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)] lg:col-span-2"
+              className="h-full group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)]"
             >
               <div>
                 <div className="flex items-center gap-3">
-                  <div className="h-2 w-2 rounded-full bg-[var(--color-signal-500)]" />
+                  <div className="company-pulse h-2 w-2 rounded-full bg-[var(--color-signal-500)]" />
                   <h2 className="text-sm font-semibold uppercase tracking-widest text-[var(--ink)]">
                     {labels.about}
                   </h2>
@@ -73,31 +79,13 @@ export default async function CompanyHubPage({ params }: Props) {
                 </span>
               </div>
             </a>
-
-            {/* VISION CARD */}
-            <a
-              href={localizedHref(l, "/company/vision")}
-              className="group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)]"
-            >
-              <div>
-                <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-500 group-hover:text-[var(--ink)]">
-                  {labels.vision}
-                </h2>
-                <p className="mt-6 text-xl font-medium leading-snug text-zinc-700">
-                  {content.company.vision}
-                </p>
-              </div>
-              <div className="mt-12 flex justify-end">
-                <span className="text-sm font-medium text-zinc-500 group-hover:text-[var(--color-signal-500)]">
-                  {locale === "fr" ? "Découvrir la thèse →" : "Read the thesis →"}
-                </span>
-              </div>
-            </a>
+            </Reveal>
 
             {/* BLOG CARD */}
-            <a
+                        <Reveal delay={120}>
+<a
               href={localizedHref(l, "/company/blog")}
-              className="group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)]"
+              className="h-full group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)]"
             >
               <div>
                 <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-500 group-hover:text-[var(--ink)]">
@@ -115,11 +103,13 @@ export default async function CompanyHubPage({ params }: Props) {
                 </span>
               </div>
             </a>
+            </Reveal>
 
             {/* CUSTOMERS CARD */}
-            <a
+                        <Reveal delay={180}>
+<a
               href={localizedHref(l, "/company/customers")}
-              className="group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)]"
+              className="h-full group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)]"
             >
               <div>
                 <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-500 group-hover:text-[var(--ink)]">
@@ -135,11 +125,13 @@ export default async function CompanyHubPage({ params }: Props) {
                 </span>
               </div>
             </a>
+            </Reveal>
 
             {/* CAREERS CARD */}
-            <a
+                        <Reveal delay={240}>
+<a
               href={localizedHref(l, "/company/careers")}
-              className="group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)]"
+              className="h-full group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)]"
             >
               <div>
                 <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-500 group-hover:text-[var(--ink)]">
@@ -155,11 +147,13 @@ export default async function CompanyHubPage({ params }: Props) {
                 </span>
               </div>
             </a>
+            </Reveal>
 
             {/* PRESS CARD */}
-            <a
+                        <Reveal delay={300}>
+<a
               href={localizedHref(l, "/company/press")}
-              className="group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)]"
+              className="h-full group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)]"
             >
               <div>
                 <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-500 group-hover:text-[var(--ink)]">
@@ -175,11 +169,13 @@ export default async function CompanyHubPage({ params }: Props) {
                 </span>
               </div>
             </a>
+            </Reveal>
 
             {/* INTERNSHIPS CARD */}
-            <a
+                        <Reveal delay={360}>
+<a
               href={localizedHref(l, "/company/internships")}
-              className="group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)]"
+              className="h-full group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)]"
             >
               <div>
                 <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-500 group-hover:text-[var(--ink)]">
@@ -197,11 +193,13 @@ export default async function CompanyHubPage({ params }: Props) {
                 </span>
               </div>
             </a>
+            </Reveal>
 
             {/* BENEFITS CARD - Span 2 columns */}
-            <a
+                        <Reveal delay={420} className="lg:col-span-2">
+<a
               href={localizedHref(l, "/company/benefits")}
-              className="group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)] lg:col-span-2"
+              className="h-full group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)]"
             >
               <div>
                 <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-500 group-hover:text-[var(--ink)]">
@@ -219,11 +217,13 @@ export default async function CompanyHubPage({ params }: Props) {
                 </span>
               </div>
             </a>
+            </Reveal>
 
             {/* CONTACT CARD */}
-            <a
+                        <Reveal delay={480}>
+<a
               href={localizedHref(l, "/company/contact")}
-              className="group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)]"
+              className="h-full group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)]"
             >
               <div className="flex items-center justify-between">
                 <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-500 group-hover:text-[var(--ink)]">
@@ -237,6 +237,7 @@ export default async function CompanyHubPage({ params }: Props) {
                 {content.company.contact}
               </p>
             </a>
+            </Reveal>
           </div>
         </Container>
       </section>

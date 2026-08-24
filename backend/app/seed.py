@@ -17,6 +17,10 @@ from sqlalchemy import delete, select
 from app.core.database import Base, SessionLocal, engine
 from app.models import (
     BlogPost,
+    CompanyContactCopy,
+    CompanyMilestone,
+    CompanyPartner,
+    CompanyTeamMember,
     CompanySection,
     Customer,
     DeveloperResource,
@@ -44,6 +48,89 @@ def parse_date(value: str) -> datetime | None:
     except (ValueError, TypeError):
         return None
 
+
+
+CONTACT_FLAT_MAP = {
+    "heroEyebrow": ("eyebrow",),
+    "heroTitle": ("heroTitle",),
+    "heroSub": ("heroSub",),
+    "helpHeading": ("helpHeading",),
+    "titleTeam": ("cards", "titles", "team"),
+    "titleSupport": ("cards", "titles", "support"),
+    "titlePress": ("cards", "titles", "press"),
+    "titlePrivacy": ("cards", "titles", "privacy"),
+    "titleVulnerability": ("cards", "titles", "vulnerability"),
+    "supportHelpPrefix": ("cards", "support", "helpPrefix"),
+    "supportHelpLink": ("cards", "support", "helpLink"),
+    "supportLoginLink": ("cards", "support", "loginLink"),
+    "supportLoginSuffix": ("cards", "support", "loginSuffix"),
+    "supportDiscordPrefix": ("cards", "support", "discordPrefix"),
+    "supportDiscordLabel": ("cards", "support", "discordLabel"),
+    "supportDiscordSuffix": ("cards", "support", "discordSuffix"),
+    "supportCta": ("cards", "support", "cta"),
+    "pressPrefix": ("cards", "press", "prefix"),
+    "pressEmail": ("cards", "press", "email"),
+    "privacyText": ("cards", "privacy", "text"),
+    "privacyCta": ("cards", "privacy", "cta"),
+    "vulnText": ("cards", "vulnerability", "text"),
+    "vulnSmallPrint": ("cards", "vulnerability", "smallPrint"),
+    "vulnCta": ("cards", "vulnerability", "cta"),
+    "formThanks": ("forms", "thanks"),
+    "formSending": ("forms", "sending"),
+    "formLegal": ("forms", "legal"),
+    "formUpdates": ("forms", "updates"),
+    "formSubmit": ("forms", "submit"),
+    "formError": ("forms", "error"),
+    "teamFirstnameLabel": ("forms", "team", "firstname", "label"),
+    "teamFirstnamePlaceholder": ("forms", "team", "firstname", "placeholder"),
+    "teamLastnameLabel": ("forms", "team", "lastname", "label"),
+    "teamLastnamePlaceholder": ("forms", "team", "lastname", "placeholder"),
+    "teamEmailLabel": ("forms", "team", "email", "label"),
+    "teamEmailPlaceholder": ("forms", "team", "email", "placeholder"),
+    "teamRoleLabel": ("forms", "team", "role", "label"),
+    "teamRolePlaceholder": ("forms", "team", "role", "placeholder"),
+    "teamMessageLabel": ("forms", "team", "message", "label"),
+    "teamMessagePlaceholder": ("forms", "team", "message", "placeholder"),
+    "supportEmailLabel": ("forms", "support", "email", "label"),
+    "supportEmailPlaceholder": ("forms", "support", "email", "placeholder"),
+    "supportIssueLabel": ("forms", "support", "issue", "label"),
+    "supportIssuePlaceholder": ("forms", "support", "issue", "placeholder"),
+    "pressFormNameLabel": ("forms", "press", "name", "label"),
+    "pressFormNamePlaceholder": ("forms", "press", "name", "placeholder"),
+    "pressFormEmailLabel": ("forms", "press", "email", "label"),
+    "pressFormEmailPlaceholder": ("forms", "press", "email", "placeholder"),
+    "pressOutletLabel": ("forms", "press", "outlet", "label"),
+    "pressOutletPlaceholder": ("forms", "press", "outlet", "placeholder"),
+    "pressRequestLabel": ("forms", "press", "request", "label"),
+    "pressRequestPlaceholder": ("forms", "press", "request", "placeholder"),
+    "privacyFormEmailLabel": ("forms", "privacy", "email", "label"),
+    "privacyFormEmailPlaceholder": ("forms", "privacy", "email", "placeholder"),
+    "privacyTypeLabel": ("forms", "privacy", "typeLabel"),
+    "privacyTypePlaceholder": ("forms", "privacy", "typePlaceholder"),
+    "privacyDetailsLabel": ("forms", "privacy", "details", "label"),
+    "privacyDetailsPlaceholder": ("forms", "privacy", "details", "placeholder"),
+    "vulnFormEmailLabel": ("forms", "vulnerability", "email", "label"),
+    "vulnFormEmailPlaceholder": ("forms", "vulnerability", "email", "placeholder"),
+    "vulnProductLabel": ("forms", "vulnerability", "product", "label"),
+    "vulnProductPlaceholder": ("forms", "vulnerability", "product", "placeholder"),
+    "vulnReportLabel": ("forms", "vulnerability", "report", "label"),
+    "vulnReportPlaceholder": ("forms", "vulnerability", "report", "placeholder"),
+}
+
+
+def _dig(obj: Any, path: tuple[str, ...]) -> str:
+    cur: Any = obj
+    for key in path:
+        if not isinstance(cur, dict) or key not in cur:
+            return ""
+        cur = cur[key]
+    return str(cur)
+
+
+def contact_copy_row(locale: str, data: dict[str, Any]) -> CompanyContactCopy:
+    source = data.get("contactPage", {})
+    kwargs = {col: _dig(source, path) for col, path in CONTACT_FLAT_MAP.items()}
+    return CompanyContactCopy(locale=locale, **kwargs)
 
 def content_rows(locale: str, data: dict[str, Any]) -> list[Any]:
     products = [
@@ -117,7 +204,38 @@ def content_rows(locale: str, data: dict[str, Any]) -> list[Any]:
         CompanySection(locale=locale, key=key, content=text)
         for key, text in data.get("company", {}).items()
     ]
-    return products + solutions + research + developers + blog + customers + company
+    milestones = [
+        CompanyMilestone(
+            locale=locale,
+            date_label=item["date"],
+            title=item["title"],
+            description=item.get("description"),
+            event_type=item.get("type", "milestone"),
+            sort_order=index,
+        )
+        for index, item in enumerate(data.get("timeline", []))
+    ]
+    team = [
+        CompanyTeamMember(
+            locale=locale,
+            name=item["name"],
+            role=item["role"],
+            photo_url=item.get("photo"),
+            sort_order=index,
+        )
+        for index, item in enumerate(data.get("team", []))
+    ]
+    partners = [
+        CompanyPartner(
+            locale=locale,
+            name=item["name"],
+            logo_url=item.get("logo"),
+            sort_order=index,
+        )
+        for index, item in enumerate(data.get("partners", []))
+    ]
+    contact_copy = [contact_copy_row(locale, data)]
+    return products + solutions + research + developers + blog + customers + company + milestones + team + partners + contact_copy
 
 
 async def seed(reset: bool) -> None:
@@ -134,6 +252,9 @@ async def seed(reset: bool) -> None:
                 BlogPost,
                 Customer,
                 CompanySection,
+                CompanyMilestone,
+                CompanyPartner,
+                CompanyTeamMember,
                 NavigationItem,
             ):
                 await db.execute(delete(model))
@@ -149,8 +270,24 @@ async def seed(reset: bool) -> None:
                 model = type(row)
                 if hasattr(row, "slug"):
                     field, value = "slug", row.slug
-                else:
+                elif model is CompanyContactCopy:
+                    continue
+                elif hasattr(row, "key"):
                     field, value = "key", row.key
+                elif hasattr(row, "date_label") and hasattr(row, "title"):
+                    exists = await db.execute(
+                        select(model).where(  # type: ignore[arg-type]
+                            model.locale == locale,  # type: ignore[attr-defined]
+                            model.date_label == row.date_label,  # type: ignore[attr-defined]
+                            model.title == row.title,  # type: ignore[attr-defined]
+                        )
+                    )
+                    if exists.scalar_one_or_none() is None:
+                        db.add(row)
+                    continue
+                else:
+                    db.add(row)
+                    continue
                 exists = await db.execute(
                     select(model).where(
                         model.locale == locale,  # type: ignore[attr-defined]
@@ -161,6 +298,27 @@ async def seed(reset: bool) -> None:
                     db.add(row)
             await db.commit()
             print(f"[ok] {locale}: {path.name}")
+
+        # Copie Contact : upsert par locale (une seule ligne par langue)
+        for locale in LOCALES:
+            path = CONTENT_DIR / locale / "content.json"
+            if not path.exists():
+                continue
+            data = json.loads(path.read_text(encoding="utf-8"))
+            row = contact_copy_row(locale, data)
+            existing = await db.execute(
+                select(CompanyContactCopy).where(CompanyContactCopy.locale == locale)
+            )
+            current = existing.scalar_one_or_none()
+            if current is None:
+                db.add(row)
+            else:
+                for column in CompanyContactCopy.__table__.columns:
+                    if column.name in ("id", "locale", "created_at", "updated_at"):
+                        continue
+                    setattr(current, column.name, getattr(row, column.name))
+        await db.commit()
+        print("[ok] copie contact seedée")
 
         for item in NAV_ITEMS:
             exists = await db.execute(

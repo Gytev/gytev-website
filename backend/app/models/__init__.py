@@ -1,5 +1,9 @@
 from app.models.models import (
     BlogPost,
+    CompanyContactCopy,
+    CompanyMilestone,
+    CompanyPartner,
+    CompanyTeamMember,
     CompanySection,
     Customer,
     DeveloperResource,
@@ -11,6 +15,10 @@ from app.models.models import (
 
 __all__ = [
     "BlogPost",
+    "CompanyContactCopy",
+    "CompanyMilestone",
+    "CompanyPartner",
+    "CompanyTeamMember",
     "CompanySection",
     "Customer",
     "DeveloperResource",

@@ -86,7 +86,7 @@ export function CookiePreferences({ dict }: { dict: Dictionary }) {
       <button
         type="button"
         onClick={openModal}
-        className="text-[#a3a3a3] underline decoration-white/30 underline-offset-2 transition-colors hover:text-white"
+        className="text-sm font-medium text-[#a3a3a3] underline decoration-white/30 underline-offset-2 transition-colors hover:text-white"
       >
         {dict.footer.manageCookies}
       </button>

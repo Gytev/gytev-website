@@ -5,7 +5,7 @@ import "@gytev/design-system/tokens.css";
 export const metadata: Metadata = {
   title: {
     default: "Gytev",
-    template: "%s — Gytev",
+    template: "%s | Gytev",
   },
   description:
     "Gytev builds intelligent systems that observe, understand, predict and act on the real world.",

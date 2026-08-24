@@ -3,8 +3,7 @@ import { Container } from "@gytev/ui";
 type TeamMember = {
   name: string;
   role: string;
-  bio: string;
-  image: string | null;
+  image?: string | null;
 };
 
 type TeamGridProps = {
@@ -18,7 +17,7 @@ export function TeamGrid({ team, heading, description }: TeamGridProps) {
     <section className="py-24 bg-[var(--paper)]">
       <Container>
         <div className="max-w-2xl mb-16">
-          <h2 className="text-3xl font-medium tracking-tight text-[var(--ink)] sm:text-4xl">{heading}</h2>
+          <h2 className="about-heading about-heading--ink">{heading}</h2>
           <p className="mt-4 text-lg text-zinc-600">
             {description}
           </p>
@@ -46,8 +45,9 @@ export function TeamGrid({ team, heading, description }: TeamGridProps) {
               
               {/* Infos */}
               <h3 className="text-lg font-semibold text-[var(--ink)]">{member.name}</h3>
-              <p className="text-sm font-medium text-[var(--color-signal-500)] mt-1">{member.role}</p>
-              <p className="text-sm text-zinc-600 mt-3 leading-relaxed">{member.bio}</p>
+              <p className="text-sm font-medium text-[var(--color-signal-500)] mt-1">
+                {member.role.replace(/\.+$/, "")}.
+              </p>
             </div>
           ))}
         </div>

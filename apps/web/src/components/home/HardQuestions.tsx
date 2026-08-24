@@ -42,10 +42,12 @@ export function HardQuestions({ dict, locale }: HardQuestionsProps) {
             <h2 id="hard-questions-title" className="big-cta_title is-kt3" ref={titleRef}>
               {cq.title}
             </h2>
-            <div className="big-cta_subtitle-wrap is-kt3">
-              <p className="big-cta_subtitle is-kt3">{cq.subtitle}</p>
-            </div>
-            <Link href={localizedHref(locale, "/company/vision")} className="big-cta_btn">
+            {cq.subtitle ? (
+              <div className="big-cta_subtitle-wrap is-kt3">
+                <p className="big-cta_subtitle is-kt3">{cq.subtitle}</p>
+              </div>
+            ) : null}
+            <Link href={localizedHref(locale, "/company/about")} className="big-cta_btn">
               {cq.cta} <span aria-hidden>↗</span>
             </Link>
           </div>

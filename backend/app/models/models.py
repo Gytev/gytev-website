@@ -102,6 +102,39 @@ class CompanySection(Base, TimestampMixin):
     content = Column(Text, nullable=False)
 
 
+class CompanyMilestone(Base, TimestampMixin):
+    __tablename__ = "company_milestones"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
+    locale = Column(String(8), nullable=False, default="en", index=True)
+    date_label = Column(String(64), nullable=False)
+    title = Column(String(200), nullable=False)
+    description = Column(Text, nullable=True)
+    event_type = Column(String(32), nullable=False, default="milestone", index=True)
+    sort_order = Column(Integer, nullable=False, default=0)
+
+
+class CompanyTeamMember(Base, TimestampMixin):
+    __tablename__ = "company_team_members"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
+    locale = Column(String(8), nullable=False, default="en", index=True)
+    name = Column(String(120), nullable=False)
+    role = Column(String(120), nullable=False)
+    photo_url = Column(String(255), nullable=True)
+    sort_order = Column(Integer, nullable=False, default=0)
+
+
+class CompanyPartner(Base, TimestampMixin):
+    __tablename__ = "company_partners"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
+    locale = Column(String(8), nullable=False, default="en", index=True)
+    name = Column(String(120), nullable=False)
+    logo_url = Column(String(255), nullable=True)
+    sort_order = Column(Integer, nullable=False, default=0)
+
+
 class NavigationItem(Base, TimestampMixin):
     __tablename__ = "navigation_items"
     __table_args__ = (UniqueConstraint("key", name="uq_navigation_items_key"),)
@@ -111,3 +144,76 @@ class NavigationItem(Base, TimestampMixin):
     label = Column(String(120), nullable=False)
     href = Column(String(255), nullable=False)
     sort_order = Column(Integer, nullable=False, default=0)
+
+
+class CompanyContactCopy(Base, TimestampMixin):
+    """Contenu éditable de la page Contact (une ligne par locale)."""
+
+    __tablename__ = "company_contact_copy"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
+    locale = Column(String(8), nullable=False, default="en", index=True)
+    heroEyebrow = Column(String(500), nullable=False, default="")
+    heroTitle = Column(String(500), nullable=False, default="")
+    heroSub = Column(String(500), nullable=False, default="")
+    helpHeading = Column(String(500), nullable=False, default="")
+    titleTeam = Column(String(500), nullable=False, default="")
+    titleSupport = Column(String(500), nullable=False, default="")
+    titlePress = Column(String(500), nullable=False, default="")
+    titlePrivacy = Column(String(500), nullable=False, default="")
+    titleVulnerability = Column(String(500), nullable=False, default="")
+    supportHelpPrefix = Column(String(500), nullable=False, default="")
+    supportHelpLink = Column(String(500), nullable=False, default="")
+    supportLoginLink = Column(String(500), nullable=False, default="")
+    supportLoginSuffix = Column(String(500), nullable=False, default="")
+    supportDiscordPrefix = Column(String(500), nullable=False, default="")
+    supportDiscordLabel = Column(String(500), nullable=False, default="")
+    supportDiscordSuffix = Column(String(500), nullable=False, default="")
+    supportCta = Column(String(500), nullable=False, default="")
+    pressPrefix = Column(String(500), nullable=False, default="")
+    pressEmail = Column(String(500), nullable=False, default="")
+    privacyText = Column(String(500), nullable=False, default="")
+    privacyCta = Column(String(500), nullable=False, default="")
+    vulnText = Column(String(500), nullable=False, default="")
+    vulnSmallPrint = Column(String(500), nullable=False, default="")
+    vulnCta = Column(String(500), nullable=False, default="")
+    formThanks = Column(String(500), nullable=False, default="")
+    formSending = Column(String(500), nullable=False, default="")
+    formLegal = Column(String(500), nullable=False, default="")
+    formUpdates = Column(String(500), nullable=False, default="")
+    formSubmit = Column(String(500), nullable=False, default="")
+    formError = Column(String(500), nullable=False, default="")
+    teamFirstnameLabel = Column(String(500), nullable=False, default="")
+    teamFirstnamePlaceholder = Column(String(500), nullable=False, default="")
+    teamLastnameLabel = Column(String(500), nullable=False, default="")
+    teamLastnamePlaceholder = Column(String(500), nullable=False, default="")
+    teamEmailLabel = Column(String(500), nullable=False, default="")
+    teamEmailPlaceholder = Column(String(500), nullable=False, default="")
+    teamRoleLabel = Column(String(500), nullable=False, default="")
+    teamRolePlaceholder = Column(String(500), nullable=False, default="")
+    teamMessageLabel = Column(String(500), nullable=False, default="")
+    teamMessagePlaceholder = Column(String(500), nullable=False, default="")
+    supportEmailLabel = Column(String(500), nullable=False, default="")
+    supportEmailPlaceholder = Column(String(500), nullable=False, default="")
+    supportIssueLabel = Column(String(500), nullable=False, default="")
+    supportIssuePlaceholder = Column(String(500), nullable=False, default="")
+    pressFormNameLabel = Column(String(500), nullable=False, default="")
+    pressFormNamePlaceholder = Column(String(500), nullable=False, default="")
+    pressFormEmailLabel = Column(String(500), nullable=False, default="")
+    pressFormEmailPlaceholder = Column(String(500), nullable=False, default="")
+    pressOutletLabel = Column(String(500), nullable=False, default="")
+    pressOutletPlaceholder = Column(String(500), nullable=False, default="")
+    pressRequestLabel = Column(String(500), nullable=False, default="")
+    pressRequestPlaceholder = Column(String(500), nullable=False, default="")
+    privacyFormEmailLabel = Column(String(500), nullable=False, default="")
+    privacyFormEmailPlaceholder = Column(String(500), nullable=False, default="")
+    privacyTypeLabel = Column(String(500), nullable=False, default="")
+    privacyTypePlaceholder = Column(String(500), nullable=False, default="")
+    privacyDetailsLabel = Column(String(500), nullable=False, default="")
+    privacyDetailsPlaceholder = Column(String(500), nullable=False, default="")
+    vulnFormEmailLabel = Column(String(500), nullable=False, default="")
+    vulnFormEmailPlaceholder = Column(String(500), nullable=False, default="")
+    vulnProductLabel = Column(String(500), nullable=False, default="")
+    vulnProductPlaceholder = Column(String(500), nullable=False, default="")
+    vulnReportLabel = Column(String(500), nullable=False, default="")
+    vulnReportPlaceholder = Column(String(500), nullable=False, default="")

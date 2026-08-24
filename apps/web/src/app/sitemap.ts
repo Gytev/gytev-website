@@ -13,7 +13,6 @@ const paths = [
   "/customers",
   "/company",
   "/company/about",
-  "/company/vision",
   "/company/careers",
   "/company/contact",
 ];

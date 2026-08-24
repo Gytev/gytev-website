@@ -75,7 +75,9 @@
       "excerpt": "Why Gytev is not building a search engine, but the layer that connects digital intelligence to reality.",
       "date": "2026-06-01",
       "author": "The Gytev Team",
-      "tags": ["mission"]
+      "tags": [
+        "mission"
+      ]
     },
     {
       "slug": "what-a-digital-twin-tells-a-farmer",
@@ -83,7 +85,10 @@
       "excerpt": "A maize field in flowering stage, a week without rain, and one clear recommendation.",
       "date": "2026-07-12",
       "author": "Rio Team",
-      "tags": ["product", "rio"]
+      "tags": [
+        "product",
+        "rio"
+      ]
     }
   ],
   "customers": [
@@ -109,5 +114,201 @@
     "newsroom": "Press releases, media coverage and company announcements.",
     "careers": "Join a team building intelligent systems for the real world, from Africa.",
     "contact": "Tell us what you want to observe, understand or act on."
+  },
+  "timeline": [
+    {
+      "date": "Jan 12, 2026",
+      "title": "First lines of code",
+      "description": "Gytev starts as a small engineering team obsessed with connecting AI to the physical world.",
+      "type": "milestone"
+    },
+    {
+      "date": "Mar 3, 2026",
+      "title": "Gytev launches",
+      "description": "The company is officially launched, with digital twins and edge AI at its core.",
+      "type": "milestone"
+    },
+    {
+      "date": "Apr 21, 2026",
+      "title": "Rio, first twin",
+      "description": "First deployment of the Rio agricultural digital twin in the fields of Benin.",
+      "type": "launch"
+    },
+    {
+      "date": "Jun 30, 2026",
+      "title": "RedQ & public health",
+      "description": "RedQ extends the mission to public health, managing blood donations end to end.",
+      "type": "launch"
+    }
+  ],
+  "team": [
+    {
+      "name": "Amadou Fall",
+      "role": "Co-founder & CEO",
+      "photo": null
+    },
+    {
+      "name": "Sarah Ndiaye",
+      "role": "Co-founder & Chief Science Officer",
+      "photo": null
+    },
+    {
+      "name": "Ousmane Diallo",
+      "role": "Co-founder & CTO",
+      "photo": null
+    },
+    {
+      "name": "Aïssatou Sow",
+      "role": "Head of Operations",
+      "photo": null
+    }
+  ],
+  "partners": [
+    {
+      "name": "Ministry of Agriculture",
+      "logo": null
+    },
+    {
+      "name": "World Bank",
+      "logo": null
+    },
+    {
+      "name": "Sahel Coop",
+      "logo": null
+    },
+    {
+      "name": "Sèmè City",
+      "logo": null
+    },
+    {
+      "name": "Health Initiative",
+      "logo": null
+    },
+    {
+      "name": "AgriData",
+      "logo": null
+    }
+  ],
+  "contactPage": {
+    "eyebrow": "Contact",
+    "heroTitle": "Get in touch with the team.",
+    "heroSub": "Start your journey to real-world intelligence.",
+    "helpHeading": "Looking for help?",
+    "cards": {
+      "titles": {
+        "team": "Talk to the team.",
+        "support": "Support.",
+        "press": "Press and events.",
+        "privacy": "Privacy requests.",
+        "vulnerability": "Vulnerability disclosure."
+      },
+      "support": {
+        "helpPrefix": "Visit our ",
+        "helpLink": "Help center",
+        "loginLink": "Login",
+        "loginSuffix": " to chat with support.",
+        "discordPrefix": "Join our ",
+        "discordLabel": "Discord",
+        "discordSuffix": " for community support.",
+        "cta": "Go to help center"
+      },
+      "press": {
+        "prefix": "Email us at ",
+        "email": "press@gytev.ai"
+      },
+      "privacy": {
+        "text": "You have rights regarding your data management. Contact us via our platform.",
+        "cta": "Submit here"
+      },
+      "vulnerability": {
+        "text": "If you have found a security vulnerability on one of our products, you can report it through our vulnerability disclosure program.",
+        "smallPrint": "General bugs shall be reported via our standard support channels.",
+        "cta": "Submit here"
+      }
+    },
+    "forms": {
+      "thanks": "Thank you for your submission.",
+      "sending": "Sending…",
+      "legal": "By submitting this form, you agree with our Terms of Service. We process your data to respond to your contact request in accordance with our Privacy Policy.",
+      "updates": "I want to receive updates about new features and products from Gytev.",
+      "submit": "Talk with our team",
+      "team": {
+        "firstname": {
+          "label": "First name",
+          "placeholder": "Awa"
+        },
+        "lastname": {
+          "label": "Last name",
+          "placeholder": "Gytev"
+        },
+        "email": {
+          "label": "Company email",
+          "placeholder": "awa@company.com"
+        },
+        "role": {
+          "label": "Role",
+          "placeholder": "Engineer"
+        },
+        "message": {
+          "label": "Tell us about your project, so we can connect you with the right team.",
+          "placeholder": "Please share your objectives and any specific requirements for deployment, performance or scale."
+        }
+      },
+      "support": {
+        "email": {
+          "label": "Email",
+          "placeholder": "you@example.com"
+        },
+        "issue": {
+          "label": "How can we help?",
+          "placeholder": "Describe the issue you are facing."
+        }
+      },
+      "press": {
+        "name": {
+          "label": "Full name",
+          "placeholder": "Awa Diallo"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "awa@journal.com"
+        },
+        "outlet": {
+          "label": "Outlet",
+          "placeholder": "Publication name"
+        },
+        "request": {
+          "label": "Your request",
+          "placeholder": "Interview, information, accreditation…"
+        }
+      },
+      "privacy": {
+        "email": {
+          "label": "Email",
+          "placeholder": "you@example.com"
+        },
+        "typeLabel": "Request type",
+        "typePlaceholder": "Select",
+        "details": {
+          "label": "Details",
+          "placeholder": "Provide more context about your request."
+        }
+      },
+      "vulnerability": {
+        "email": {
+          "label": "Email",
+          "placeholder": "security@example.com"
+        },
+        "product": {
+          "label": "Affected product",
+          "placeholder": "Rio, RedQ, Quiisa…"
+        },
+        "report": {
+          "label": "Vulnerability description",
+          "placeholder": "Steps to reproduce, impact, proof of concept."
+        }
+      },
+      "error": "Something went wrong while sending your message. Please try again or email us directly."
+    }
   }
 }

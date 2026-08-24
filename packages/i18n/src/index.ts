@@ -154,10 +154,8 @@ export type Dictionary = {
     loopEyebrow: string;
     loopHeading: string;
     loopSteps: { label: string; description: string }[];
-    originEyebrow: string;
-    originHeading: string;
-    originBody: string;
-    stats: { value: string; label: string }[];
+    keyDatesHeading: string;
+    eventTypes: { launch: string; funding: string; leadership: string; milestone: string };
   };
     home: {
       cases: {
@@ -244,7 +242,6 @@ export type Dictionary = {
       companySections: {
         about: string;
         story: string;
-        vision: string;
         newsroom: string;
         careers: string;
         contact: string;
@@ -255,7 +252,7 @@ export type Dictionary = {
           title: string;
           heroTitle: string;
           body: string;
-          timeline: { year: string; title: string; description: string; icon?: string | null }[];
+          timeline: { date: string; title: string; description?: string; type?: string }[];
           teamHeading: string;
           teamDescription: string;
           team: { name: string; role: string; bio: string; image: string | null }[];
@@ -288,6 +285,55 @@ export type Dictionary = {
           inquiries: { title: string; email: string; description: string }[];
           form: { heading: string; name: string; email: string; message: string; submit: string };
         };
+        contactPage: {
+          eyebrow: string;
+          heroTitle: string;
+          heroSub: string;
+          helpHeading: string;
+          cards: {
+            titles: { team: string; support: string; press: string; privacy: string; vulnerability: string };
+            support: { helpPrefix: string; helpLink: string; loginLink: string; loginSuffix: string; discordPrefix: string; discordLabel: string; discordSuffix: string; cta: string };
+            press: { prefix: string; email: string };
+            privacy: { text: string; cta: string };
+            vulnerability: { text: string; smallPrint: string; cta: string };
+          };
+          forms: {
+            thanks: string;
+            sending: string;
+            legal: string;
+            updates: string;
+            submit: string;
+            error: string;
+            team: {
+              firstname: { label: string; placeholder: string };
+              lastname: { label: string; placeholder: string };
+              email: { label: string; placeholder: string };
+              role: { label: string; placeholder: string };
+              message: { label: string; placeholder: string };
+            };
+            support: {
+              email: { label: string; placeholder: string };
+              issue: { label: string; placeholder: string };
+            };
+            press: {
+              name: { label: string; placeholder: string };
+              email: { label: string; placeholder: string };
+              outlet: { label: string; placeholder: string };
+              request: { label: string; placeholder: string };
+            };
+            privacy: {
+              email: { label: string; placeholder: string };
+              typeLabel: string;
+              typePlaceholder: string;
+              details: { label: string; placeholder: string };
+            };
+            vulnerability: {
+              email: { label: string; placeholder: string };
+              product: { label: string; placeholder: string };
+              report: { label: string; placeholder: string };
+            };
+          };
+        };
         benefits: {
           kicker: string;
           title: string;
@@ -313,6 +359,7 @@ export type Dictionary = {
           articles: { title: string; source: string; date: string; excerpt: string; tag: string }[];
         };
       };
+
     };
   footer: {
     tagline: string;
@@ -437,17 +484,27 @@ export const dictionaries: Record<Locale, Dictionary> = {
             ],
           },
           {
-            title: "RedQ",
+            title: "Teams",
             links: [
-              { label: "Donor management", href: "/solutions/redq" },
-              { label: "Hospital network", href: "/solutions/redq" },
+              { label: "Finance", href: "/solutions/teams/finance" },
+              { label: "Data Analytics", href: "/solutions/teams/data-analytics" },
+              { label: "Sales", href: "/solutions/teams/sales" },
+              { label: "Marketing", href: "/solutions/teams/marketing" },
+              { label: "Operations", href: "/solutions/teams/operations" },
+              { label: "Engineering", href: "/solutions/teams/engineering" },
+              { label: "Design", href: "/solutions/teams/design" },
             ],
           },
           {
-            title: "Quiisa",
+            title: "Industries",
             links: [
-              { label: "Project management", href: "/solutions/quiisa" },
-              { label: "Team collaboration", href: "/solutions/quiisa" },
+              { label: "Cybersecurity", href: "/solutions/industries/cybersecurity" },
+              { label: "Financial Services", href: "/solutions/industries/financial-services" },
+              { label: "Life Sciences", href: "/solutions/industries/life-sciences" },
+              { label: "Healthcare", href: "/solutions/industries/healthcare" },
+              { label: "Retail", href: "/solutions/industries/retail" },
+              { label: "Government", href: "/solutions/industries/government" },
+              { label: "Education", href: "/solutions/industries/education" },
             ],
           },
         ],
@@ -500,7 +557,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
             title: "Explore company",
             links: [
               { label: "About", href: "/company/about" },
-              { label: "Vision", href: "/company/vision" },
               { label: "Careers", href: "/company/careers" },
               { label: "Contact", href: "/company/contact" },
             ],
@@ -526,7 +582,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
           eyebrow: "Company",
           title: "Our vision",
           description: "The 20-year technology thesis.",
-          href: "/company/vision",
+          href: "/company/about",
         },
       },
     },
@@ -548,16 +604,15 @@ export const dictionaries: Record<Locale, Dictionary> = {
       caption: "Adaptive reasoning, in motion",
     },
     centralQuestion: {
-      title: "How AI can break the global economy?",
-      subtitle:
-        "See how intelligent systems are rewiring every sector at once from the farm to the factory floor.",
+      title: "Gytev addresses critical global challenges that reshape the world economy.",
+      subtitle: "",
       cta: "Read the vision",
       nodes: [
-        { first: "How will AI", second: "feed the world?" },
-        { first: "How will AI", second: "move the world?" },
-        { first: "How will AI", second: "heal the world?" },
-        { first: "How will AI", second: "move money?" },
-        { first: "How will AI", second: "power the world?" },
+        { first: "AI will", second: "feed the world" },
+        { first: "AI will", second: "move the world" },
+        { first: "AI will", second: "heal the world" },
+        { first: "AI will", second: "move money" },
+        { first: "AI will", second: "power the world" },
       ],
     },
     product: {
@@ -663,32 +718,28 @@ export const dictionaries: Record<Locale, Dictionary> = {
         "What should we do?",
       ],
       explanations: [
-        "Sensors and systems give a live, truthful picture of any physical environment — no more guessing from scattered data.",
+        "Sensors and systems give a live, truthful picture of any physical environment. No more guessing from scattered data.",
         "Models connect the signals to their causes: anomalies get explained, not just flagged.",
-        "Prediction engines anticipate what happens next before it happens — from crop stress to supply shortages.",
+        "Prediction engines anticipate what happens next before it happens, from crop stress to supply shortages.",
         "Every decision path is simulated and ranked, so operators see scenarios instead of a single guess.",
         "Intelligence ends in action: clear recommendations that people and machines can execute in the field.",
       ],
       loopEyebrow: "The intelligence loop",
-      loopHeading:
-        "We move the world from data to action — one connected loop.",
+      loopHeading: "Loop with Gytev.",
       loopSteps: [
         { label: "Data", description: "Sensors and systems capture the pulse of physical environments." },
         { label: "Understanding", description: "Models turn raw signals into a living picture of reality." },
         { label: "Prediction", description: "The system anticipates what happens next, before it happens." },
         { label: "Decision", description: "Insight becomes a clear, ranked choice for operators." },
-        { label: "Action", description: "People and machines act — and the loop learns from the result." },
+        { label: "Action", description: "People and machines act, and the loop learns from the result." },
       ],
-      originEyebrow: "Our origin",
-      originHeading: "Born in Benin. Built for the world.",
-      originBody:
-        "Gytev was founded in 2023 with a simple conviction: the next generation of technology will not live only on screens. It will perceive farms, hospitals, cities and machines — and help people act on them. Starting from Benin, we deploy digital twins and edge AI where connectivity is hardest, because intelligence that works there works everywhere.",
-      stats: [
-        { value: "2023", label: "Founded in Benin" },
-        { value: "$2M", label: "Seed to build Africa's intelligence layer" },
-        { value: "1", label: "Country deployed in production" },
-        { value: "24/7", label: "Edge inference in the field" },
-      ],
+      keyDatesHeading: "Key dates for Gytev.",
+      eventTypes: {
+        launch: "Product launch",
+        funding: "Funding",
+        leadership: "Leadership",
+        milestone: "Company",
+      },
     },
     home: {
       cases: {
@@ -845,7 +896,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             ],
             preview: {
               label: "Rio Box · Field sensors",
-              heading: "Maize field — flowering stage",
+              heading: "Flowering maize field",
               alert: "Irrigate within 24h",
               lines: ["Soil moisture · 32% (dropping)", "Temperature · 34°C", "Humidity · 45%", "Next rain · in 7 days"],
             },
@@ -863,7 +914,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             ],
             preview: {
               label: "Rio AI · Intelligence",
-              heading: "Crop analysis — Maize",
+              heading: "Maize crop analysis",
               alert: "Disease risk · moderate",
               lines: ["Region · Sahel", "Rainfall forecast · 12mm/week", "Pest pressure · low", "Yield prediction · +15%"],
             },
@@ -963,7 +1014,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
         thesis: {
           title: "The Thesis",
           paragraphs: [
-            "For decades, the physical world has been a black box to software. We build dashboards based on manual inputs and delayed reports. When something fails—a crop dies, a blood supply runs out—we only know after the fact.",
+            "For decades, the physical world has been a black box to software. We build dashboards based on manual inputs and delayed reports. When something fails, a crop dies or a blood supply runs out, we only know after the fact.",
             "Gytev believes the next major technological leap is not another digital app, but the deep integration of AI with physical reality. By deploying multimodal sensors directly in the field, we create a continuous stream of ground truth.",
             "But data alone is useless. Our models are trained to understand the specific physics, biology, and logistics of each environment. They fuse weather forecasts with soil moisture, or historical hospital demand with real-time blood inventory, to predict the future and prescribe the exact next action."
           ]
@@ -999,7 +1050,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
       companySections: {
         about: "About",
         story: "Our story",
-        vision: "Vision",
         newsroom: "Newsroom",
         careers: "Careers",
         contact: "Contact",
@@ -1011,20 +1061,20 @@ export const dictionaries: Record<Locale, Dictionary> = {
           heroTitle: "From observing to understanding the physical world.",
           body: "The story of a company building intelligence for the real world, from Africa.",
           timeline: [
-            { year: "2023", title: "Founded in Cotonou", description: "Gytev was created with the ambition to connect AI to the physical world.", icon: "⚪" },
-            { year: "2024", title: "Rio Launch", description: "Deployment of the first digital twin for agriculture in Benin.", icon: "🌾" },
-            { year: "2025", title: "RedQ & Public Health", description: "Deployment of the blood donation management platform and strategic partnership with the state.", icon: "🩸" },
-            { year: "2026", title: "Deeptech Expansion", description: "Integration of AI models on the edge for real-time perception with no latency.", icon: "⚡" }
+            { date: "Jan 12, 2026", title: "First lines of code", description: "Gytev starts as a small engineering team obsessed with connecting AI to the physical world.", type: "milestone" },
+            { date: "Mar 3, 2026", title: "Gytev launches", description: "The company is officially launched, with digital twins and edge AI at its core.", type: "milestone" },
+            { date: "Apr 21, 2026", title: "Rio, first twin", description: "First deployment of the Rio agricultural digital twin in the fields of Benin.", type: "launch" },
+            { date: "Jun 30, 2026", title: "RedQ & public health", description: "RedQ extends the mission to public health, managing blood donations end to end.", type: "launch" }
           ],
-          teamHeading: "Leadership team",
-          teamDescription: "A combination of expertise in artificial intelligence, hardware engineering, and field operations.",
+          teamHeading: "Leadership team.",
+          teamDescription: "A combination of bright, prepared and trained minds, both business profiles and young senior technical talent. We rely on a strong leadership spirit for a clear mission, a dedicated R&D team, security and governance.",
           team: [
             { name: "Amadou Fall", role: "Co-founder & CEO", bio: "Former engineering director, passionate about distributed systems infrastructure.", image: null },
-            { name: "Sarah Ndiaye", role: "Co-founder & CTO", bio: "Expert in machine learning and digital twins for heavy industry.", image: null },
-            { name: "Ousmane Diallo", role: "VP of Product", bio: "Focus on the raw utility of data in the real world. Leads the Rio suite.", image: null },
+            { name: "Sarah Ndiaye", role: "Co-founder & Chief Science Officer", bio: "Expert in machine learning and digital twins for heavy industry.", image: null },
+            { name: "Ousmane Diallo", role: "Co-founder & CTO", bio: "Focus on the raw utility of data in the real world. Leads the Rio suite.", image: null },
             { name: "Aïssatou Sow", role: "Head of Operations", bio: "Physical deployment of sensors, logistics, and government partnerships.", image: null }
           ],
-          partnersTitle: "They rely on our intelligence",
+          partnersTitle: "Who we work with.",
           partners: ["Ministry of Agriculture", "World Bank", "Sahel Coop", "Sèmè City", "Health Initiative", "AgriData"],
           cta: {
             heading: "Ready to build with us?",
@@ -1098,11 +1148,85 @@ export const dictionaries: Record<Locale, Dictionary> = {
             { title: "Benin's blood bank goes digital with RedQ", source: "WHO News", date: "January 2026", excerpt: "A national platform for managing blood donations and blood bags brings full traceability from donor to hospital.", tag: "Impact" },
           ],
         },
+        contactPage: {
+          eyebrow: "Contact",
+          heroTitle: "Get in touch with the team.",
+          heroSub: "Start your journey to real-world intelligence.",
+          helpHeading: "Looking for help?",
+          cards: {
+            titles: {
+              team: "Talk to the team.",
+              support: "Support.",
+              press: "Press and events.",
+              privacy: "Privacy requests.",
+              vulnerability: "Vulnerability disclosure.",
+            },
+            support: {
+              helpPrefix: "Visit our ",
+              helpLink: "Help center",
+              loginLink: "Login",
+              loginSuffix: " to chat with support.",
+              discordPrefix: "Join our ",
+              discordLabel: "Discord",
+              discordSuffix: " for community support.",
+              cta: "Go to help center",
+            },
+            press: { prefix: "Email us at ", email: "press@gytev.com" },
+            privacy: {
+              text: "You have rights regarding your data management. Contact us via our platform.",
+              cta: "Submit here",
+            },
+            vulnerability: {
+              text: "If you have found a security vulnerability on one of our products, you can report it through our vulnerability disclosure program.",
+              smallPrint: "General bugs shall be reported via our standard support channels.",
+              cta: "Submit here",
+            },
+          },
+          forms: {
+            thanks: "Thank you for your submission.",
+            sending: "Sending…",
+            legal: "By submitting this form, you agree with our Terms of Service. We process your data to respond to your contact request in accordance with our Privacy Policy.",
+            updates: "I want to receive updates about new features and products from Gytev.",
+            submit: "Talk with our team",
+            error: "Something went wrong while sending your message. Please try again or email us directly.",
+            team: {
+              firstname: { label: "First name", placeholder: "Awa" },
+              lastname: { label: "Last name", placeholder: "Gytev" },
+              email: { label: "Company email", placeholder: "awa@company.com" },
+              role: { label: "Role", placeholder: "Engineer" },
+              message: {
+                label: "Tell us about your project, so we can connect you with the right team.",
+                placeholder: "Please share your objectives and any specific requirements for deployment, performance or scale.",
+              },
+            },
+            support: {
+              email: { label: "Email", placeholder: "you@example.com" },
+              issue: { label: "How can we help?", placeholder: "Describe the issue you are facing." },
+            },
+            press: {
+              name: { label: "Full name", placeholder: "Awa Diallo" },
+              email: { label: "Email", placeholder: "awa@journal.com" },
+              outlet: { label: "Outlet", placeholder: "Publication name" },
+              request: { label: "Your request", placeholder: "Interview, information, accreditation…" },
+            },
+            privacy: {
+              email: { label: "Email", placeholder: "you@example.com" },
+              typeLabel: "Request type",
+              typePlaceholder: "Select",
+              details: { label: "Details", placeholder: "Provide more context about your request." },
+            },
+            vulnerability: {
+              email: { label: "Email", placeholder: "security@example.com" },
+              product: { label: "Affected product", placeholder: "Rio, RedQ, Quiisa…" },
+              report: { label: "Vulnerability description", placeholder: "Steps to reproduce, impact, proof of concept." },
+            },
+          },
+        },
         internships: {
           kicker: "Grow with us",
           title: "Internships",
           heroTitle: "Start your career in deeptech.",
-          body: "Internships at Gytev are hands-on. You will ship real code, deploy real hardware, or solve real operational problems — not fetch coffee.",
+          body: "Internships at Gytev are hands-on. You will ship real code, deploy real hardware, or solve real operational problems, not fetch coffee.",
           departments: [
             {
               name: "Engineering & AI",
@@ -1166,8 +1290,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
               links: [
                 { label: "Safety Approach", href: "/research" },
                 { label: "Deployment Safety", href: "/research" },
-                { label: "Security & Privacy", href: "/company/vision" },
-                { label: "Trust & Transparency", href: "/company/vision" },
+                { label: "Security & Privacy", href: "/company/about" },
+                { label: "Trust & Transparency", href: "/company/about" },
               ],
             },
           ],
@@ -1175,19 +1299,27 @@ export const dictionaries: Record<Locale, Dictionary> = {
         {
           columns: [
             {
-              title: "Industries",
+              title: "Teams",
               links: [
-                { label: "Agriculture", href: "/solutions" },
-                { label: "Healthcare", href: "/solutions" },
-                { label: "Public sector", href: "/solutions" },
-                { label: "Customers", href: "/customers" },
+                { label: "Finance", href: "/solutions/teams/finance" },
+                { label: "Data Analytics", href: "/solutions/teams/data-analytics" },
+                { label: "Sales", href: "/solutions/teams/sales" },
+                { label: "Marketing", href: "/solutions/teams/marketing" },
+                { label: "Operations", href: "/solutions/teams/operations" },
+                { label: "Engineering", href: "/solutions/teams/engineering" },
+                { label: "Design", href: "/solutions/teams/design" },
               ],
             },
             {
-              title: "Quiisa",
+              title: "Industries",
               links: [
-                { label: "Project management", href: "/solutions/quiisa" },
-                { label: "Team collaboration", href: "/solutions/quiisa" },
+                { label: "Cybersecurity", href: "/solutions/industries/cybersecurity" },
+                { label: "Financial Services", href: "/solutions/industries/financial-services" },
+                { label: "Life Sciences", href: "/solutions/industries/life-sciences" },
+                { label: "Healthcare", href: "/solutions/industries/healthcare" },
+                { label: "Retail", href: "/solutions/industries/retail" },
+                { label: "Government", href: "/solutions/industries/government" },
+                { label: "Education", href: "/solutions/industries/education" },
               ],
             },
             {
@@ -1228,7 +1360,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
               title: "Company",
               links: [
                 { label: "About Us", href: "/company/about" },
-                { label: "Our Vision", href: "/company/vision" },
                 { label: "Careers", href: "/company/careers" },
                 { label: "Blog", href: "/company/blog" },
                 { label: "Press", href: "/company/press" },
@@ -1257,8 +1388,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
             {
               title: "Terms & Policies",
               links: [
-                { label: "Terms of Use", href: "/company/vision" },
-                { label: "Privacy Policy", href: "/company/vision" },
+                { label: "Terms of Use", href: "/company/about" },
+                { label: "Privacy Policy", href: "/company/about" },
               ],
             },
           ],
@@ -1378,17 +1509,27 @@ export const dictionaries: Record<Locale, Dictionary> = {
             ],
           },
           {
-            title: "RedQ",
+            title: "Équipes",
             links: [
-              { label: "Gestion des donneurs", href: "/solutions/redq" },
-              { label: "Réseau hospitalier", href: "/solutions/redq" },
+              { label: "Finance", href: "/solutions/teams/finance" },
+              { label: "Data Analytics", href: "/solutions/teams/data-analytics" },
+              { label: "Sales", href: "/solutions/teams/sales" },
+              { label: "Marketing", href: "/solutions/teams/marketing" },
+              { label: "Operations", href: "/solutions/teams/operations" },
+              { label: "Engineering", href: "/solutions/teams/engineering" },
+              { label: "Design", href: "/solutions/teams/design" },
             ],
           },
           {
-            title: "Quiisa",
+            title: "Industries",
             links: [
-              { label: "Gestion de projets", href: "/solutions/quiisa" },
-              { label: "Collaboration d'équipe", href: "/solutions/quiisa" },
+              { label: "Cybersecurity", href: "/solutions/industries/cybersecurity" },
+              { label: "Financial Services", href: "/solutions/industries/financial-services" },
+              { label: "Life Sciences", href: "/solutions/industries/life-sciences" },
+              { label: "Healthcare", href: "/solutions/industries/healthcare" },
+              { label: "Retail", href: "/solutions/industries/retail" },
+              { label: "Government", href: "/solutions/industries/government" },
+              { label: "Education", href: "/solutions/industries/education" },
             ],
           },
         ],
@@ -1441,7 +1582,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
             title: "Explorer l'entreprise",
             links: [
               { label: "À propos", href: "/company/about" },
-              { label: "Vision", href: "/company/vision" },
               { label: "Carrières", href: "/company/careers" },
               { label: "Contact", href: "/company/contact" },
             ],
@@ -1467,7 +1607,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
           eyebrow: "Entreprise",
           title: "Notre vision",
           description: "La thèse technologique sur 20 ans.",
-          href: "/company/vision",
+          href: "/company/about",
         },
       },
     },
@@ -1489,16 +1629,15 @@ export const dictionaries: Record<Locale, Dictionary> = {
       caption: "Un raisonnement adaptatif, en mouvement",
     },
     centralQuestion: {
-      title: "Comment l'IA peut bouleverser l'économie mondiale ?",
-      subtitle:
-        "Découvrez comment les systèmes intelligents transforment simultanément tous les secteurs, de la ferme à l'usine.",
+      title: "Gytev relève les défis mondiaux critiques qui redessinent l'économie mondiale.",
+      subtitle: "",
       cta: "Lire la vision",
       nodes: [
-        { first: "Comment l'IA", second: "nourrira le monde ?" },
-        { first: "Comment l'IA", second: "déplacera le monde ?" },
-        { first: "Comment l'IA", second: "soignera le monde ?" },
-        { first: "Comment l'IA", second: "déplacera l'argent ?" },
-        { first: "Comment l'IA", second: "alimentera le monde ?" },
+        { first: "L'IA", second: "nourrira le monde" },
+        { first: "L'IA", second: "déplacera le monde" },
+        { first: "L'IA", second: "soignera le monde" },
+        { first: "L'IA", second: "déplacera l'argent" },
+        { first: "L'IA", second: "alimentera le monde" },
       ],
     },
     product: {
@@ -1606,32 +1745,28 @@ export const dictionaries: Record<Locale, Dictionary> = {
         "Que devons-nous faire ?",
       ],
       explanations: [
-        "Des capteurs et des systèmes donnent une image en direct et fidèle de n'importe quel environnement physique — fini les devinettes à partir de données dispersées.",
+        "Des capteurs et des systèmes donnent une image en direct et fidèle de n'importe quel environnement physique. Fini les devinettes à partir de données dispersées.",
         "Nos modèles relient les signaux à leurs causes : les anomalies sont expliquées, pas seulement signalées.",
-        "Nos moteurs de prédiction anticipent ce qui va se produire avant que cela n'arrive — du stress des cultures aux pénuries d'approvisionnement.",
+        "Nos moteurs de prédiction anticipent ce qui va se produire avant que cela n'arrive, du stress des cultures aux pénuries d'approvisionnement.",
         "Chaque trajectoire de décision est simulée et hiérarchisée : les opérateurs voient des scénarios, pas une seule devinette.",
         "L'intelligence se termine en action : des recommandations claires que les humains et les machines peuvent exécuter sur le terrain.",
       ],
       loopEyebrow: "La boucle d'intelligence",
-      loopHeading:
-        "Nous faisons passer le monde des données à l'action — en une seule boucle connectée.",
+      loopHeading: "Bouclez avec Gytev.",
       loopSteps: [
         { label: "Données", description: "Capteurs et systèmes captent le pouls des environnements physiques." },
         { label: "Compréhension", description: "Nos modèles transforment les signaux bruts en image vivante du réel." },
         { label: "Prédiction", description: "Le système anticipe ce qui va se produire, avant que cela n'arrive." },
         { label: "Décision", description: "L'analyse devient un choix clair, hiérarchisé pour les opérateurs." },
-        { label: "Action", description: "Humains et machines agissent — et la boucle apprend du résultat." },
+        { label: "Action", description: "Humains et machines agissent, et la boucle apprend du résultat." },
       ],
-      originEyebrow: "Nos origines",
-      originHeading: "Née au Bénin. Construite pour le monde.",
-      originBody:
-        "Gytev a été fondée en 2023 avec une conviction simple : la prochaine génération de technologie ne vivra pas seulement sur les écrans. Elle percevra les fermes, les hôpitaux, les villes et les machines — et aidera les gens à agir. En partant du Bénin, nous déployons des jumeaux numériques et de l'IA embarquée là où la connectivité est la plus difficile, parce que l'intelligence qui fonctionne là-bas fonctionne partout.",
-      stats: [
-        { value: "2023", label: "Fondation au Bénin" },
-        { value: "2 M$", label: "Seed pour bâtir la couche d'intelligence de l'Afrique" },
-        { value: "1", label: "Pays déployé en production" },
-        { value: "24/7", label: "Inférence embarquée sur le terrain" },
-      ],
+      keyDatesHeading: "Les dates clés de Gytev.",
+      eventTypes: {
+        launch: "Lancement produit",
+        funding: "Levée de fonds",
+        leadership: "Leadership",
+        milestone: "Entreprise",
+      },
     },
     home: {
       cases: {
@@ -1788,7 +1923,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             ],
             preview: {
               label: "Rio Box · Capteurs terrain",
-              heading: "Parcelle de maïs — stade floraison",
+              heading: "Parcelle de maïs en floraison",
               alert: "Irriguer sous 24h",
               lines: ["Humidité sol · 32% (en baisse)", "Température · 34°C", "Humidité · 45%", "Prochaine pluie · dans 7 jours"],
             },
@@ -1806,7 +1941,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             ],
             preview: {
               label: "Rio AI · Intelligence",
-              heading: "Analyse culture — Maïs",
+              heading: "Analyse du maïs",
               alert: "Risque maladie · modéré",
               lines: ["Région · Sahel", "Prévision pluie · 12mm/semaine", "Pression nuisibles · faible", "Prédiction rendement · +15%"],
             },
@@ -1942,7 +2077,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
       companySections: {
         about: "À propos",
         story: "Notre histoire",
-        vision: "Vision",
         newsroom: "Salle de presse",
         careers: "Carrières",
         contact: "Contact",
@@ -1954,20 +2088,20 @@ export const dictionaries: Record<Locale, Dictionary> = {
           heroTitle: "De l'observation à la compréhension du monde physique.",
           body: "L'histoire d'une entreprise qui construit l'intelligence pour le monde réel, depuis l'Afrique.",
           timeline: [
-            { year: "2023", title: "Fondation à Cotonou", description: "Création de Gytev avec l'ambition de connecter l'intelligence artificielle au monde physique.", icon: "⚪" },
-            { year: "2024", title: "Lancement de Rio", description: "Déploiement du premier jumeau numérique pour l'agriculture au Bénin.", icon: "🌾" },
-            { year: "2025", title: "RedQ & Santé Publique", description: "Déploiement de la plateforme de gestion des dons de sang et partenariat stratégique avec l'État.", icon: "🩸" },
-            { year: "2026", title: "Expansion Deeptech", description: "Intégration de modèles d'IA sur le edge pour une perception en temps réel sans latence.", icon: "⚡" }
+            { date: "12 janv. 2026", title: "Premières lignes de code", description: "Gytev démarre comme une petite équipe d'ingénieurs obsédée par la connexion de l'IA au monde physique.", type: "milestone" },
+            { date: "3 mars 2026", title: "Lancement de Gytev", description: "L'entreprise est officiellement lancée, avec les jumeaux numériques et l'IA embarquée au coeur.", type: "milestone" },
+            { date: "21 avr. 2026", title: "Rio, premier jumeau", description: "Premier déploiement du jumeau numérique agricole Rio dans les champs du Bénin.", type: "launch" },
+            { date: "30 juin 2026", title: "RedQ & santé publique", description: "RedQ étend la mission à la santé publique, en gérant les dons de sang de bout en bout.", type: "launch" }
           ],
-          teamHeading: "L'équipe dirigeante",
-          teamDescription: "Une combinaison d'expertise en intelligence artificielle, ingénierie matérielle et opérations de terrain.",
+          teamHeading: "L'équipe dirigeante.",
+          teamDescription: "Un ensemble d'esprits brillants, préparés et formés, mêlant profils business et jeunes talents techniques seniors. Nous nous appuyons sur un fort esprit de leadership au service d'une mission claire, d'une équipe R&D dédiée, de la sécurité et de la gouvernance.",
           team: [
             { name: "Amadou Fall", role: "Co-fondateur & CEO", bio: "Ancien directeur d'ingénierie, passionné par l'infrastructure des systèmes distribués.", image: null },
-            { name: "Sarah Ndiaye", role: "Co-fondatrice & CTO", bio: "Experte en apprentissage automatique et jumeaux numériques pour l'industrie lourde.", image: null },
-            { name: "Ousmane Diallo", role: "VP of Product", bio: "Focus sur l'utilité brute des données dans le monde réel. Pilotage de la suite Rio.", image: null },
+            { name: "Sarah Ndiaye", role: "Co-fondatrice & Directrice scientifique", bio: "Experte en apprentissage automatique et jumeaux numériques pour l'industrie lourde.", image: null },
+            { name: "Ousmane Diallo", role: "Co-fondateur & CTO", bio: "Focus sur l'utilité brute des données dans le monde réel. Pilotage de la suite Rio.", image: null },
             { name: "Aïssatou Sow", role: "Head of Operations", bio: "Déploiement physique des capteurs, logistique et partenariats gouvernementaux.", image: null }
           ],
-          partnersTitle: "Ils s'appuient sur notre intelligence",
+          partnersTitle: "Avec qui nous travaillons.",
           partners: ["Ministère de l'Agriculture", "Banque Mondiale", "Sahel Coop", "Sèmè City", "Initiative Santé", "AgriData"],
           cta: {
             heading: "Prêt à construire avec nous ?",
@@ -2041,11 +2175,85 @@ export const dictionaries: Record<Locale, Dictionary> = {
             { title: "La banque de sang du Bénin se digitalise avec RedQ", source: "OMS Info", date: "Janvier 2026", excerpt: "Une plateforme nationale de gestion des dons de sang apporte une traçabilité complète du donneur à l'hôpital.", tag: "Impact" },
           ],
         },
-        internships: {
+                contactPage: {
+          eyebrow: "Contact",
+          heroTitle: "Entrer en contact avec l'équipe.",
+          heroSub: "Commencez votre voyage vers l'intelligence du monde réel.",
+          helpHeading: "Besoin d'aide ?",
+          cards: {
+            titles: {
+              team: "Parler à l'équipe.",
+              support: "Support.",
+              press: "Presse et événements.",
+              privacy: "Demandes de confidentialité.",
+              vulnerability: "Divulgation de vulnérabilités.",
+            },
+            support: {
+              helpPrefix: "Consultez notre ",
+              helpLink: "centre d'aide",
+              loginLink: "Connectez-vous",
+              loginSuffix: " pour discuter avec le support.",
+              discordPrefix: "Rejoignez notre ",
+              discordLabel: "Discord",
+              discordSuffix: " pour le support communautaire.",
+              cta: "Aller au centre d'aide",
+            },
+            press: { prefix: "Écrivez-nous à ", email: "press@gytev.com" },
+            privacy: {
+              text: "Vous disposez de droits concernant la gestion de vos données. Contactez-nous via notre plateforme.",
+              cta: "Envoyer ici",
+            },
+            vulnerability: {
+              text: "Si vous avez découvert une faille de sécurité sur l'un de nos produits, vous pouvez la signaler via notre programme de divulgation.",
+              smallPrint: "Les bugs généraux doivent être signalés via nos canaux de support standard.",
+              cta: "Envoyer ici",
+            },
+          },
+          forms: {
+            thanks: "Merci pour votre envoi.",
+            sending: "Envoi…",
+            legal: "En envoyant ce formulaire, vous acceptez nos conditions d'utilisation. Nous traitons vos données afin de répondre à votre demande, conformément à notre politique de confidentialité.",
+            updates: "Je souhaite recevoir les actualités et nouveaux produits de Gytev.",
+            submit: "Parler à l'équipe",
+            error: "Une erreur est survenue lors de l'envoi. Réessayez ou écrivez-nous directement.",
+            team: {
+              firstname: { label: "Prénom", placeholder: "Awa" },
+              lastname: { label: "Nom", placeholder: "Gytev" },
+              email: { label: "E-mail professionnel", placeholder: "awa@entreprise.com" },
+              role: { label: "Fonction", placeholder: "Ingénieur" },
+              message: {
+                label: "Décrivez votre projet, pour que nous vous mettions en relation avec la bonne équipe.",
+                placeholder: "Partagez vos objectifs et vos besoins de déploiement, performance ou échelle.",
+              },
+            },
+            support: {
+              email: { label: "E-mail", placeholder: "vous@exemple.com" },
+              issue: { label: "Comment pouvons-nous aider ?", placeholder: "Décrivez le problème rencontré." },
+            },
+            press: {
+              name: { label: "Nom complet", placeholder: "Awa Diallo" },
+              email: { label: "E-mail", placeholder: "awa@journal.com" },
+              outlet: { label: "Média", placeholder: "Nom du média" },
+              request: { label: "Votre demande", placeholder: "Interview, informations, accréditation…" },
+            },
+            privacy: {
+              email: { label: "E-mail", placeholder: "vous@exemple.com" },
+              typeLabel: "Type de demande",
+              typePlaceholder: "Choisir",
+              details: { label: "Détails", placeholder: "Précisez votre demande." },
+            },
+            vulnerability: {
+              email: { label: "E-mail", placeholder: "security@exemple.com" },
+              product: { label: "Produit concerné", placeholder: "Rio, RedQ, Quiisa…" },
+              report: { label: "Description de la vulnérabilité", placeholder: "Étapes de reproduction, impact, preuves de concept." },
+            },
+          },
+        },
+internships: {
           kicker: "Grandissez avec nous",
           title: "Stages",
           heroTitle: "Commencez votre carrière en deeptech.",
-          body: "Les stages chez Gytev sont concrets. Vous livrerez du vrai code, déployerez du vrai matériel ou résoudrez de vrais problèmes opérationnels — pas du café.",
+          body: "Les stages chez Gytev sont concrets. Vous livrerez du vrai code, déployerez du vrai matériel ou résoudrez de vrais problèmes opérationnels, pas du café.",
           departments: [
             {
               name: "Ingénierie & IA",
@@ -2109,8 +2317,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
               links: [
                 { label: "Approche sécurité", href: "/research" },
                 { label: "Sécurité de déploiement", href: "/research" },
-                { label: "Sécurité & confidentialité", href: "/company/vision" },
-                { label: "Confiance & transparence", href: "/company/vision" },
+                { label: "Sécurité & confidentialité", href: "/company/about" },
+                { label: "Confiance & transparence", href: "/company/about" },
               ],
             },
           ],
@@ -2124,6 +2332,30 @@ export const dictionaries: Record<Locale, Dictionary> = {
                 { label: "RedQ", href: "/solutions/redq" },
                 { label: "Quiisa", href: "/solutions/quiisa" },
                 { label: "Tous les produits", href: "/products" },
+              ],
+            },
+            {
+              title: "Équipes",
+              links: [
+                { label: "Finance", href: "/solutions/teams/finance" },
+                { label: "Data Analytics", href: "/solutions/teams/data-analytics" },
+                { label: "Sales", href: "/solutions/teams/sales" },
+                { label: "Marketing", href: "/solutions/teams/marketing" },
+                { label: "Operations", href: "/solutions/teams/operations" },
+                { label: "Engineering", href: "/solutions/teams/engineering" },
+                { label: "Design", href: "/solutions/teams/design" },
+              ],
+            },
+            {
+              title: "Industries",
+              links: [
+                { label: "Cybersécurité", href: "/solutions/industries/cybersecurity" },
+                { label: "Services financiers", href: "/solutions/industries/financial-services" },
+                { label: "Sciences de la vie", href: "/solutions/industries/life-sciences" },
+                { label: "Santé", href: "/solutions/industries/healthcare" },
+                { label: "Commerce de détail", href: "/solutions/industries/retail" },
+                { label: "Secteur public", href: "/solutions/industries/government" },
+                { label: "Éducation", href: "/solutions/industries/education" },
               ],
             },
             {
@@ -2165,7 +2397,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
               title: "Entreprise",
               links: [
                 { label: "À propos", href: "/company/about" },
-                { label: "Notre vision", href: "/company/vision" },
                 { label: "Carrières", href: "/company/careers" },
                 { label: "Actualités", href: "/company/blog" },
                 { label: "Contact", href: "/company/contact" },
@@ -2193,8 +2424,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
             {
               title: "Conditions & politiques",
               links: [
-                { label: "Conditions d'utilisation", href: "/company/vision" },
-                { label: "Politique de confidentialité", href: "/company/vision" },
+                { label: "Conditions d'utilisation", href: "/company/about" },
+                { label: "Politique de confidentialité", href: "/company/about" },
               ],
             },
           ],
