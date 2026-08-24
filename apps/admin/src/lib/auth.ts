@@ -61,9 +61,11 @@ export async function verifySessionToken(token: string | undefined): Promise<boo
 
 /** Vérifie le mot de passe saisi contre ADMIN_PASSWORD (temps constant). */
 export async function verifyPassword(candidate: string): Promise<boolean> {
-  const expected = process.env.ADMIN_PASSWORD;
+  const expected = process.env.ADMIN_PASSWORD?.trim();
   if (!expected) return false;
-  const digest = await crypto.subtle.digest("SHA-256", encoder.encode(candidate));
+  const clean = candidate.trim();
+  if (!clean) return false;
+  const digest = await crypto.subtle.digest("SHA-256", encoder.encode(clean));
   const reference = await crypto.subtle.digest("SHA-256", encoder.encode(expected));
   return constantTimeEqual(toHex(digest), toHex(reference));
 }
