@@ -10,7 +10,8 @@ COPY app ./app
 
 RUN pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir "fastapi>=0.115" "uvicorn[standard]>=0.32" \
-       "sqlalchemy>=2.0" "psycopg[binary]>=3.2" "pydantic-settings>=2.6"
+       "sqlalchemy>=2.0" "psycopg[binary]>=3.2" "pydantic-settings>=2.6" \
+       "email-validator>=2.3" "pgvector>=0.3"
 
 EXPOSE 8000
 
