@@ -114,14 +114,13 @@ export function OpenRoles({ heading, description, emptyText, departments, applyF
                 <p className="text-lg text-neutral-500">{emptyText}</p>
               ) : (
                 <div className="space-y-4">
-                  {filteredDepts.map((dept) => {
-                    const isExpanded = expandedDept === departments.indexOf(dept);
-                    const deptIdx = departments.indexOf(dept);
+                  {filteredDepts.map((dept, idx) => {
+                    const isExpanded = expandedDept === idx;
                     return (
                       <div key={dept.name} className="border border-neutral-700 rounded-2xl overflow-hidden">
                         {/* Department header */}
                         <button
-                          onClick={() => setExpandedDept((prev) => (prev === deptIdx ? null : deptIdx))}
+                          onClick={() => setExpandedDept((prev) => (prev === idx ? null : idx))}
                           className="w-full flex items-center justify-between px-6 md:px-8 py-5 text-left hover:bg-neutral-800 transition-colors group"
                         >
                           <div className="flex items-center gap-4">

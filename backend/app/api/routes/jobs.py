@@ -1,8 +1,7 @@
 from fastapi import APIRouter, Query
 from sqlalchemy import select
-from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.api.crud import content_router, Db
+from app.api.crud import Db, content_router
 from app.models import JobDepartment, JobOpening
 from app.schemas import (
     JobDepartmentCreate,
