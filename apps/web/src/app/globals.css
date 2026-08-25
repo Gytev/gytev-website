@@ -634,6 +634,23 @@ button:focus-visible, a:focus-visible { outline: 2px solid #fff; outline-offset:
 .company-pulse::after { content: ""; position: absolute; inset: 0; border-radius: 9999px; background: var(--color-signal-500); animation: company-ping 2.4s cubic-bezier(0,0,.2,1) infinite; }
 @keyframes company-ping { 0% { transform: scale(1); opacity: .55; } 80%, 100% { transform: scale(2.9); opacity: 0; } }
 
+/* Company hero — ambient drifting light */
+.hero-glow { position: absolute; width: 46vw; height: 46vw; min-width: 420px; min-height: 420px; border-radius: 50%; filter: blur(70px); will-change: transform, opacity; }
+.hero-glow--one { right: -10%; top: -22%; background: radial-gradient(circle, rgba(196,88,36,.20), transparent 62%); animation: hero-glow-drift 18s ease-in-out infinite; }
+.hero-glow--two { left: -14%; bottom: -34%; background: radial-gradient(circle, rgba(66,109,155,.15), transparent 62%); animation: hero-glow-drift 24s ease-in-out -9s infinite reverse; }
+@keyframes hero-glow-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: .6; }
+  33% { transform: translate3d(4%, -5%, 0) scale(1.12); opacity: .85; }
+  66% { transform: translate3d(-5%, 4%, 0) scale(.94); opacity: .7; }
+}
+
+/* Careers stats cells — checkerboard background (≈9 squares per cell) */
+.stat-cell {
+  background-color: #fff;
+  background-image: repeating-conic-gradient(#f1f0ec 0% 25%, #ffffff 0% 50%);
+  background-size: 66.7% 66.7%;
+}
+
 .about-thesis { padding: clamp(90px, 12vh, 150px) 0; }
 .about-thesis__grid { display: grid; grid-template-columns: minmax(280px, 5fr) 7fr; gap: clamp(40px, 6vw, 96px); align-items: start; }
 .about-thesis__sticky { position: sticky; top: 120px; }

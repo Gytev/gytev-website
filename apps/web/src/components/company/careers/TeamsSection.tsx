@@ -28,14 +28,14 @@ export function TeamsSection({ heading, description, teams, stats }: TeamsSectio
             <p className="text-lg text-neutral-600 leading-relaxed">
               {description}
             </p>
-            <ul className="flex flex-col items-start gap-2">
+            <ul className="flex flex-col gap-2">
               {teams.map((team, idx) => {
                 const isActive = activeTeam === idx;
                 return (
-                  <li key={team.name}>
+                  <li key={team.name} className="w-full">
                     <button
                       onClick={() => toggleTeam(idx)}
-                      className={`group inline-block w-fit rounded-full transition-all duration-300 ${
+                      className={`group block w-full rounded-full transition-all duration-300 ${
                         isActive
                           ? "rounded-xl p-6 bg-white"
                           : "p-2 pr-3 bg-white hover:bg-neutral-100"
@@ -77,22 +77,15 @@ export function TeamsSection({ heading, description, teams, stats }: TeamsSectio
           <div className="w-full flex items-center justify-center relative xl:w-[50%] p-4 md:p-10 xl:p-20 bg-white">
             <div className="w-full h-full object-contain relative z-2">
               <div className="grid grid-cols-2 aspect-square border-l border-t border-neutral-200">
-                {stats.slice(0, 2).map((stat) => (
-                  <div key={stat.label} className="aspect-square p-6 flex flex-col justify-between border-b border-r border-neutral-200 bg-white">
-                    <p className="text-4xl font-medium text-neutral-900 sm:text-5xl">{stat.value}</p>
-                    <p className="text-base text-neutral-600">{stat.label}</p>
-                  </div>
-                ))}
-                <div className="aspect-square grid grid-cols-2 border-b border-r border-neutral-200">
-                  <div className="bg-neutral-200"></div>
-                  <div className="bg-neutral-100"></div>
-                  <div className="bg-neutral-100"></div>
-                  <div className="bg-neutral-200"></div>
-                </div>
-                {stats.slice(2, 3).map((stat) => (
-                  <div key={stat.label} className="aspect-square p-6 flex flex-col justify-between border-b border-r border-neutral-200 bg-white">
-                    <p className="text-4xl font-medium text-neutral-900 sm:text-5xl">{stat.value}</p>
-                    <p className="text-base text-neutral-600">{stat.label}</p>
+                {stats.map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="stat-cell aspect-square p-6 md:p-10 flex flex-col items-center justify-center gap-2 md:gap-4 border-b border-r border-neutral-200"
+                  >
+                    <p className="text-5xl sm:text-6xl lg:text-7xl font-medium tracking-tight text-neutral-900 leading-none">
+                      {stat.value}
+                    </p>
+                    <p className="text-base sm:text-lg text-neutral-600">{stat.label}</p>
                   </div>
                 ))}
               </div>

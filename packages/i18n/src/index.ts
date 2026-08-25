@@ -1128,9 +1128,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
             { name: "Product", description: "Designing the platforms and experiences that make complex systems understandable." }
           ],
           stats: [
-            { value: "150+", label: "team members" },
-            { value: "3+", label: "countries" },
-            { value: "5+", label: "sectors" }
+            { value: "+150", label: "team members" },
+            { value: "+3", label: "countries" },
+            { value: "+5", label: "sectors" },
+            { value: "50%", label: "women" }
           ],
           cultureHeading: "Our culture.",
           cultureDescription: "At Gytev, every individual has the power to shape our trajectory. We foster transparency and ownership, where your goals and ideas are visible and valued company-wide. With flat structures and open collaboration, you'll take the lead, drive impact, and work to bring your vision to life.",
@@ -2237,7 +2238,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
           stats: [
             { value: "150+", label: "collaborateurs" },
             { value: "3+", label: "pays" },
-            { value: "5+", label: "secteurs" }
+            { value: "5+", label: "secteurs" },
+            { value: "50 %", label: "femmes" }
           ],
           cultureHeading: "Notre culture.",
           cultureDescription: "Chez Gytev, chaque individu a le pouvoir de modeler notre trajectoire. Nous favorisons la transparence et l'appropriation, où vos objectifs et idées sont visibles et valorisés dans toute l'entreprise. Avec des structures plates et une collaboration ouverte, vous prendrez les devants, créerez de l'impact et travaillerez pour concrétiser votre vision.",

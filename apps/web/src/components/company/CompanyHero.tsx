@@ -34,7 +34,12 @@ export function CompanyHero({ kicker, title, description, children }: CompanyHer
   }, []);
 
   return (
-    <section className="relative pt-20 pb-16 lg:pt-28 lg:pb-20 border-b border-[var(--line)] bg-[var(--color-surface)]">
+    <section className="relative pt-20 pb-16 lg:pt-28 lg:pb-20 border-b border-[var(--line)] bg-[var(--color-surface)] overflow-hidden">
+      {/* Ambient animated light */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="hero-glow hero-glow--one" />
+        <div className="hero-glow hero-glow--two" />
+      </div>
       <Container>
         {/* Title */}
         <div className="max-w-4xl">
