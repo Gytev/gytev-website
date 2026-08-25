@@ -143,23 +143,18 @@
   ],
   "team": [
     {
-      "name": "Amadou Fall",
+      "name": "Nehm",
       "role": "Co-founder & CEO",
       "photo": null
     },
     {
-      "name": "Sarah Ndiaye",
-      "role": "Co-founder & Chief Science Officer",
-      "photo": null
-    },
-    {
-      "name": "Ousmane Diallo",
+      "name": "Harold Chanwin",
       "role": "Co-founder & CTO",
       "photo": null
     },
     {
-      "name": "Aïssatou Sow",
-      "role": "Head of Operations",
+      "name": "Ghilth Gbaguidi",
+      "role": "Head of Science & Applied AI",
       "photo": null
     }
   ],
