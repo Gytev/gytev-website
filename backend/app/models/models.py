@@ -216,4 +216,30 @@ class CompanyContactCopy(Base, TimestampMixin):
     vulnProductLabel = Column(String(500), nullable=False, default="")
     vulnProductPlaceholder = Column(String(500), nullable=False, default="")
     vulnReportLabel = Column(String(500), nullable=False, default="")
+
+
+class JobDepartment(Base, TimestampMixin):
+    __tablename__ = "job_departments"
+    __table_args__ = (UniqueConstraint("locale", "slug", name="uq_job_departments_locale_slug"),)
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
+    locale = Column(String(8), nullable=False, default="en", index=True)
+    slug = Column(String(120), nullable=False, index=True)
+    name = Column(String(120), nullable=False)
+    description = Column(Text, nullable=False, default="")
+    sort_order = Column(Integer, nullable=False, default=0)
+
+
+class JobOpening(Base, TimestampMixin):
+    __tablename__ = "job_openings"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
+    locale = Column(String(8), nullable=False, default="en", index=True)
+    department_id = Column(UUID(as_uuid=True), nullable=False, index=True)
+    title = Column(String(200), nullable=False)
+    location = Column(String(120), nullable=False)
+    type = Column(String(64), nullable=False, default="Full-time")
+    description = Column(Text, nullable=False, default="")
+    requirements = Column(JSON, default=list)
+    sort_order = Column(Integer, nullable=False, default=0)
     vulnReportPlaceholder = Column(String(500), nullable=False, default="")

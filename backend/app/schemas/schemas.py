@@ -524,4 +524,58 @@ class CompanyContactCopyRead(ReadBase):
     vulnReportPlaceholder: str
 
 
+class JobDepartmentCreate(BaseModel):
+    locale: str = Field(default="en", min_length=2, max_length=8)
+    slug: str = Field(min_length=1, max_length=120)
+    name: str = Field(min_length=1, max_length=120)
+    description: str = ""
+    sort_order: int = 0
 
+
+class JobDepartmentUpdate(BaseModel):
+    locale: str | None = None
+    slug: str | None = None
+    name: str | None = None
+    description: str | None = None
+    sort_order: int | None = None
+
+
+class JobDepartmentRead(ReadBase):
+    locale: str
+    slug: str
+    name: str
+    description: str
+    sort_order: int
+
+
+class JobOpeningCreate(BaseModel):
+    locale: str = Field(default="en", min_length=2, max_length=8)
+    department_id: UUID
+    title: str = Field(min_length=1, max_length=200)
+    location: str = Field(min_length=1, max_length=120)
+    type: str = Field(default="Full-time", max_length=64)
+    description: str = ""
+    requirements: list[str] = Field(default_factory=list)
+    sort_order: int = 0
+
+
+class JobOpeningUpdate(BaseModel):
+    locale: str | None = None
+    department_id: UUID | None = None
+    title: str | None = None
+    location: str | None = None
+    type: str | None = None
+    description: str | None = None
+    requirements: list[str] | None = None
+    sort_order: int | None = None
+
+
+class JobOpeningRead(ReadBase):
+    locale: str
+    department_id: UUID
+    title: str
+    location: str
+    type: str
+    description: str
+    requirements: list[str]
+    sort_order: int

@@ -35,6 +35,7 @@ TOPIC_EMAILS = {
     "press": "press@gytev.com",
     "privacy": "sales@gytev.com",
     "vulnerability": "security@gytev.com",
+    "jobs": "jobs@gytev.com",
 }
 
 TOPIC_LABELS = {
@@ -43,6 +44,7 @@ TOPIC_LABELS = {
     "press": "Press",
     "privacy": "Privacy request",
     "vulnerability": "Vulnerability report",
+    "jobs": "Job application",
 }
 
 TOPIC_SUBJECTS = {
@@ -51,6 +53,7 @@ TOPIC_SUBJECTS = {
     "press": lambda d: f"Press inquiry from {d.email}",
     "privacy": lambda d: f"Privacy request from {d.email}",
     "vulnerability": lambda d: f"Vulnerability report from {d.email}",
+    "jobs": lambda d: f"Job application: {d.role or 'General'} from {d.email}",
 }
 
 

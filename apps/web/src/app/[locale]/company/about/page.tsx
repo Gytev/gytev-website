@@ -1,6 +1,6 @@
 import { buildPageMetadata } from "@/lib/metadata";
 import { Container } from "@gytev/ui";
-import { getMilestones, getPartners, getTeam } from "@/lib/content";
+import { getMilestones, getPartners, getTeam, getLocalContent } from "@/lib/content";
 import { getDictionary } from "@/lib/i18n";
 import { localizedHref } from "@gytev/i18n";
 import type { Locale } from "@gytev/types";
@@ -30,6 +30,7 @@ export default async function AboutPage({ params }: Props) {
     getPartners(locale),
   ]);
   const detail = dict.pages.companyDetail.about;
+  const content = getLocalContent(locale);
   const l = locale as Locale;
   const milestones =
     apiMilestones ??
@@ -40,6 +41,14 @@ export default async function AboutPage({ params }: Props) {
       event_type: item.type,
     }));
 
+  const teamMembers =
+    apiTeam ??
+    content.team.map((member) => ({
+      name: member.name,
+      role: member.role,
+      image: member.photo,
+    }));
+
   return (
     <main className="min-h-screen bg-[var(--paper)] text-[var(--ink)]">
       <MissionHero dict={dict} />
@@ -48,20 +57,13 @@ export default async function AboutPage({ params }: Props) {
       <OriginTimeline dict={dict} milestones={milestones} />
 
       <TeamGrid
-        team={
-          apiTeam ??
-          detail.team.map((member) => ({
-            name: member.name,
-            role: member.role,
-            image: member.image,
-          }))
-        }
+        team={teamMembers}
         heading={detail.teamHeading}
         description={detail.teamDescription}
       />
       <LogoWall
         title={detail.partnersTitle}
-        partners={apiPartners ?? detail.partners.map((name) => ({ name }))}
+        partners={apiPartners ?? content.partners.map((p) => ({ name: p.name }))}
       />
 
       {/* CTA SECTION - Footer de navigation croisée */}

@@ -22,7 +22,7 @@ export default async function HomePage({ params }: Props) {
       dict={dict}
       locale={locale as Locale}
       customers={content.customers}
-      partners={apiPartners ?? dict.pages.companyDetail.about.partners.map((name) => ({ name }))}
+      partners={apiPartners ?? content.partners.map((p) => ({ name: p.name }))}
     />
   );
 }

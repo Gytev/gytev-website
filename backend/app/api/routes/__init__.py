@@ -9,6 +9,7 @@ from app.api.routes import (
     customers,
     developers,
     health,
+    jobs,
     navigation,
     products,
     research,
@@ -33,3 +34,6 @@ api_router.include_router(company.team_router)
 api_router.include_router(company.partners_router)
 api_router.include_router(company.contact_router)
 api_router.include_router(contact.router)
+api_router.include_router(jobs.router)
+api_router.include_router(jobs.openings_router)
+api_router.include_router(jobs.grouped_router)

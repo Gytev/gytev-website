@@ -1,8 +1,14 @@
 import { buildPageMetadata } from "@/lib/metadata";
-import { Container } from "@gytev/ui";
 import { getDictionary } from "@/lib/i18n";
 import { CompanyHero } from "@/components/company/CompanyHero";
-import { RoleCard } from "@/components/company/RoleCard";
+import { TeamsSection } from "@/components/company/careers/TeamsSection";
+import { CultureSection } from "@/components/company/careers/CultureSection";
+import { ValuesSection } from "@/components/company/careers/ValuesSection";
+import { BenefitsTabs } from "@/components/company/careers/BenefitsTabs";
+import { InterviewProcess } from "@/components/company/careers/InterviewProcess";
+import { LookForSection } from "@/components/company/careers/LookForSection";
+import { OpenRoles } from "@/components/company/careers/OpenRoles";
+import { getJobs } from "@/lib/content";
 
 export async function generateMetadata({
   params,
@@ -20,78 +26,78 @@ type Props = {
 export default async function CareersPage({ params }: Props) {
   const { locale } = await params;
   const dict = await getDictionary(locale);
-  const detail = dict.pages.companyDetail.careers;
+  const d = dict.pages.companyDetail.careers;
+  const apiDepartments = await getJobs(locale);
+  const departments = apiDepartments ?? d.departments ?? [];
 
   return (
-    <main className="min-h-screen bg-[var(--paper)] text-[var(--ink)]">
+    <main className="min-h-screen bg-white text-neutral-900">
+      {/* 1. Hero */}
       <CompanyHero
-        kicker={detail.kicker}
-        title={detail.heroTitle}
-        description={detail.body}
+        kicker=""
+        title={d.heroTitle}
+        description={d.body}
+      >
+        <a
+          href="#roles"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white text-sm font-normal rounded-full hover:bg-neutral-800 transition-colors mt-8"
+        >
+          {d.ctaLabel}
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </a>
+      </CompanyHero>
+
+      {/* 2. Discover Our Teams */}
+      <TeamsSection
+        heading={d.teamsHeading}
+        description={d.teamsDescription}
+        teams={d.teams}
+        stats={d.stats}
       />
 
-      {/* VALUES SECTION */}
-      <section className="py-24 bg-[var(--color-surface)] border-b border-[var(--line)]">
-        <Container>
-          <div className="mb-16">
-            <h2 className="text-3xl font-medium tracking-tight sm:text-4xl">
-              {detail.valuesHeading}
-            </h2>
-          </div>
+      {/* 3. Our Culture */}
+      <CultureSection
+        heading={d.cultureHeading}
+        description={d.cultureDescription}
+        image={d.cultureImage}
+      />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[var(--line)] border border-[var(--line)]">
-            {detail.values.map((value, idx) => (
-              <div
-                key={idx}
-                className="bg-[var(--color-surface)] p-10 lg:p-12 hover:bg-[var(--color-primary-50)] transition-colors"
-              >
-                <span className="text-sm font-semibold uppercase tracking-widest text-[var(--color-signal-500)] mb-6 block">
-                  0{idx + 1}
-                </span>
-                <h3 className="text-xl md:text-2xl font-semibold mb-4">
-                  {value.title}
-                </h3>
-                <p className="text-zinc-600 leading-relaxed">{value.description}</p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
+      {/* 4. Our Values */}
+      <ValuesSection
+        heading={d.valuesHeading}
+        values={d.values}
+      />
 
-      {/* OPEN ROLES SECTION */}
-      <section className="py-24 bg-[var(--paper)]">
-        <Container>
-          <div className="mb-16">
-            <h2 className="text-3xl font-medium tracking-tight sm:text-4xl">
-              {detail.rolesHeading}
-            </h2>
-          </div>
+      {/* 5. Benefits */}
+      <BenefitsTabs
+        heading={d.benefitsHeading}
+        description={d.benefitsDescription}
+        tabs={d.benefitTabs}
+      />
 
-          <div className="max-w-4xl space-y-16">
-            {detail.departments.length === 0 ? (
-              <p className="text-lg text-zinc-500">{detail.rolesEmpty}</p>
-            ) : (
-              detail.departments.map((dept, idx) => (
-                <div key={idx}>
-                  <h3 className="text-xl font-semibold mb-8 text-[var(--ink)] pb-4 border-b border-[var(--line)]">
-                    {dept.name}
-                  </h3>
-                  <div className="space-y-4">
-                    {dept.openings.map((role, rIdx) => (
-                      <RoleCard
-                        key={rIdx}
-                        title={role.title}
-                        location={role.location}
-                        type={role.type}
-                      />
-                    ))}
-                  </div>
-                </div>
-              ))
-            )}
-          </div>
-        </Container>
-      </section>
+      {/* 6. Interview Process */}
+      <InterviewProcess
+        heading={d.interviewHeading}
+        description={d.interviewDescription}
+        tabs={d.interviewTabs}
+      />
+
+      {/* 7. What We Look For */}
+      <LookForSection
+        heading={d.lookForHeading}
+        items={d.lookFor}
+      />
+
+      {/* 8. Open Roles */}
+      <OpenRoles
+        heading={d.rolesHeading}
+        description={d.rolesDescription}
+        emptyText={d.rolesEmpty}
+        departments={departments}
+        applyForm={d.applyForm}
+      />
     </main>
   );
 }

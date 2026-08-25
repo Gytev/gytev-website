@@ -258,3 +258,56 @@ export async function getContactCopy(
   }
   return null;
 }
+
+export type JobOpening = {
+  title: string;
+  location: string;
+  type: string;
+  description: string;
+  requirements: string[];
+};
+
+export type JobDepartment = {
+  name: string;
+  description: string;
+  openings: JobOpening[];
+};
+
+export async function getJobs(locale: string): Promise<JobDepartment[] | null> {
+  if (!contentApiUrl) return null;
+  try {
+    const response = await fetch(
+      `${contentApiUrl}/jobs?locale=${encodeURIComponent(locale)}`,
+      { next: { revalidate: 60 } },
+    );
+    if (response.ok) {
+      const items = (await response.json()) as Array<{
+        name: string;
+        description: string;
+        jobs: Array<{
+          title: string;
+          location: string;
+          type: string;
+          description: string;
+          requirements: string[];
+        }>;
+      }>;
+      if (!Array.isArray(items) || items.length === 0) return null;
+      return items.map((dept) => ({
+        name: dept.name,
+        description: dept.description,
+        openings: dept.jobs.map((job) => ({
+          title: job.title,
+          location: job.location,
+          type: job.type,
+          description: job.description,
+          requirements: job.requirements,
+        })),
+      }));
+    }
+  } catch {
+    // API indisponible → fallback dict.
+  }
+  return null;
+}
+

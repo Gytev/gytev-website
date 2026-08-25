@@ -255,9 +255,7 @@ export type Dictionary = {
           timeline: { date: string; title: string; description?: string; type?: string }[];
           teamHeading: string;
           teamDescription: string;
-          team: { name: string; role: string; bio: string; image: string | null }[];
           partnersTitle: string;
-          partners: string[];
           cta: { heading: string; description: string; primary: string; secondary: string };
         };
         careers: {
@@ -265,14 +263,51 @@ export type Dictionary = {
           title: string;
           heroTitle: string;
           body: string;
+          ctaLabel: string;
+          teamsHeading: string;
+          teamsDescription: string;
+          teams: { name: string; description: string }[];
+          stats: { value: string; label: string }[];
+          cultureHeading: string;
+          cultureDescription: string;
+          cultureImage: string;
           valuesHeading: string;
           values: { title: string; description: string }[];
+          benefitsHeading: string;
+          benefitsDescription: string;
+          benefitTabs: { id: string; label: string; items: { title: string; description: string }[] }[];
+          interviewHeading: string;
+          interviewDescription: string;
+          interviewTabs: { id: string; label: string; steps: { title: string; description: string }[]; image: string }[];
+          lookForHeading: string;
+          lookFor: { title: string; description: string; image: string }[];
           rolesHeading: string;
           rolesEmpty: string;
-          departments: {
+          rolesDescription: string;
+          departments?: {
             name: string;
-            openings: { title: string; location: string; type: string; description?: string }[];
+            description: string;
+            openings: { title: string; location: string; type: string; description: string; requirements: string[] }[];
           }[];
+          applyForm: {
+            modalTitle: string;
+            nameLabel: string;
+            namePlaceholder: string;
+            emailLabel: string;
+            emailPlaceholder: string;
+            phoneLabel: string;
+            phonePlaceholder: string;
+            linkedinLabel: string;
+            linkedinPlaceholder: string;
+            cvLabel: string;
+            messageLabel: string;
+            messagePlaceholder: string;
+            submitLabel: string;
+            sendingLabel: string;
+            successLabel: string;
+            errorLabel: string;
+            closeLabel: string;
+          };
         };
         contact: {
           kicker: string;
@@ -1066,16 +1101,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
             { date: "Apr 21, 2026", title: "Rio, first twin", description: "First deployment of the Rio agricultural digital twin in the fields of Benin.", type: "launch" },
             { date: "Jun 30, 2026", title: "RedQ & public health", description: "RedQ extends the mission to public health, managing blood donations end to end.", type: "launch" }
           ],
-          teamHeading: "Leadership team.",
+          teamHeading: "Gytev's Founder.",
           teamDescription: "A combination of bright, prepared and trained minds, both business profiles and young senior technical talent. We rely on a strong leadership spirit for a clear mission, a dedicated R&D team, security and governance.",
-          team: [
-            { name: "Amadou Fall", role: "Co-founder & CEO", bio: "Former engineering director, passionate about distributed systems infrastructure.", image: null },
-            { name: "Sarah Ndiaye", role: "Co-founder & Chief Science Officer", bio: "Expert in machine learning and digital twins for heavy industry.", image: null },
-            { name: "Ousmane Diallo", role: "Co-founder & CTO", bio: "Focus on the raw utility of data in the real world. Leads the Rio suite.", image: null },
-            { name: "Aïssatou Sow", role: "Head of Operations", bio: "Physical deployment of sensors, logistics, and government partnerships.", image: null }
-          ],
           partnersTitle: "Who we work with.",
-          partners: ["Ministry of Agriculture", "World Bank", "Sahel Coop", "Sèmè City", "Health Initiative", "AgriData"],
           cta: {
             heading: "Ready to build with us?",
             description: "Whether you want to join the engineering team or deploy our solutions in your operations.",
@@ -1084,35 +1112,122 @@ export const dictionaries: Record<Locale, Dictionary> = {
           }
         },
         careers: {
-          kicker: "Join us",
+          kicker: "Careers",
           title: "Careers at Gytev",
-          heroTitle: "Build intelligence for the physical world.",
-          body: "We're hiring engineers, researchers and operators who want to understand the real world. We are based in Cotonou, Benin, but our problems are global.",
-          valuesHeading: "How we build",
+          heroTitle: "Build intelligence for the real world.",
+          body: "We hire engineers, researchers and operators who connect AI to the real world. We address global issues in agriculture, healthcare, and critical infrastructure that demand rigorous thinking and high-impact solutions.",
+          ctaLabel: "Apply open roles",
+          teamsHeading: "Discover our teams.",
+          teamsDescription: "We are building one of the most ambitious intelligent systems platforms in Africa. We combine sensors, AI, and domain expertise to solve real-world problems across agriculture, healthcare, and industries.",
+          teams: [
+            { name: "AI & Research", description: "Pioneering machine learning models and digital twins that understand the physical world." },
+            { name: "Engineering", description: "Shipping the platforms, hardware, and infrastructure that bring intelligent systems to life." },
+            { name: "GTM", description: "Empowering customers to solve real business challenges with our solutions." },
+            { name: "Corporate", description: "Building the operational foundations for long-term success." },
+            { name: "Operations", description: "Deploying sensors, managing logistics, and ensuring real-world impact on the ground." },
+            { name: "Product", description: "Designing the platforms and experiences that make complex systems understandable." }
+          ],
+          stats: [
+            { value: "150+", label: "team members" },
+            { value: "3+", label: "countries" },
+            { value: "5+", label: "sectors" }
+          ],
+          cultureHeading: "Our culture.",
+          cultureDescription: "At Gytev, every individual has the power to shape our trajectory. We foster transparency and ownership, where your goals and ideas are visible and valued company-wide. With flat structures and open collaboration, you'll take the lead, drive impact, and work to bring your vision to life.",
+          cultureImage: "/images/careers/culture.jpg",
+          valuesHeading: "Our values.",
           values: [
             { title: "Field first", description: "Models fail when they haven't met reality. We build hardware to get ground truth, not just scrape the internet." },
             { title: "Radical clarity", description: "Complex systems require simple explanations. We communicate directly, without corporate jargon." },
-            { title: "Built to last", description: "Our systems run in harsh environments: farms with no power grid, blood banks with failing infrastructure. We build for resilience." }
+            { title: "Built to last", description: "Our systems run in harsh environments: farms with no power grid, blood banks with failing infrastructure. We build for resilience." },
+            { title: "Speed", description: "We experiment, iterate and ship fast. When we make mistakes, we strive to detect them early." },
+            { title: "Low-ego", description: "We're all collectively responsible for the company's success. We get our hands dirty as needed, wherever needed." }
           ],
-          rolesHeading: "Open roles",
-          rolesEmpty: "No open roles at the moment, but we are always looking for exceptional talent. Reach out.",
-          departments: [
+          benefitsHeading: "Benefits.",
+          benefitsDescription: "We support our employees' well-being, growth, and work-life balance, with a range of benefits designed to meet the diverse needs of our team members.",
+          benefitTabs: [
             {
-              name: "Engineering & AI",
-              openings: [
-                { title: "Senior ML Engineer, Time Series", location: "Cotonou / Remote", type: "Full-time" },
-                { title: "Embedded Systems Engineer (C/Rust)", location: "Cotonou", type: "Full-time" },
-                { title: "Frontend Engineer (React/WebGL)", location: "Remote (UTC+1)", type: "Full-time" }
+              id: "health",
+              label: "Health & family",
+              items: [
+                { title: "Healthcare coverage", description: "100% employer-sponsored premium plans for medical, dental, and vision care for you and your dependents." },
+                { title: "Parental leave", description: "Paid leave for all birthing parents." },
+                { title: "Childcare support", description: "Reserved daycare seats or financial assistance for working parents." }
               ]
             },
             {
-              name: "Operations & Product",
-              openings: [
-                { title: "Deployment Lead (Agriculture)", location: "West Africa", type: "Full-time" },
-                { title: "Product Manager (Data Platform)", location: "Cotonou / Remote", type: "Full-time" }
+              id: "financial",
+              label: "Financial & career",
+              items: [
+                { title: "Retirement plans", description: "Competitive employer-matched contributions to secure your financial future." },
+                { title: "Relocation support", description: "Financial assistance for moving expenses, visa sponsorship, and settling-in services." },
+                { title: "Learning budget", description: "Annual budget for conferences, courses, and professional development." }
+              ]
+            },
+            {
+              id: "daily",
+              label: "Daily life & wellness",
+              items: [
+                { title: "Meal allowances", description: "Monthly stipends or catered in-office meals." },
+                { title: "Transportation support", description: "Monthly allowances for public transport, parking, or sustainable mobility." },
+                { title: "Fitness and wellness", description: "Subsidies or memberships for gyms, wellness programs, or fitness activities." }
               ]
             }
-          ]
+          ],
+          interviewHeading: "Steps in the process.",
+          interviewDescription: "We are intentional about how we build our team. We look for people with authenticity who are willing to roll up their sleeves, embrace discomfort, and turn ideas into outcomes that can scale.",
+          interviewTabs: [
+            {
+              id: "technical",
+              label: "AI, Research & Engineering roles",
+              steps: [
+                { title: "Intro conversation", description: "A first conversation with a recruiter or hiring manager to understand your experience and interests." },
+                { title: "Technical assessments", description: "You'll complete a series of technical exercises designed to reflect real challenges you'd work on here." },
+                { title: "Values conversation", description: "A final discussion to explore alignment with our values and ways of working." }
+              ],
+              image: "/images/careers/interview-technical.jpg"
+            },
+            {
+              id: "operations",
+              label: "Operations, GTM & Corporate roles",
+              steps: [
+                { title: "Intro conversation", description: "You'll start with a conversation with a recruiter or hiring manager to understand your background and expectations." },
+                { title: "Interviews", description: "You'll meet with the hiring manager and potential teammates focused on your functional expertise and how you approach problems." },
+                { title: "Case study or exercise", description: "Depending on the role, you may complete a business case or practical exercise aligned with day-to-day responsibilities." },
+                { title: "Values conversation", description: "A final discussion to explore alignment with our values and ways of working." }
+              ],
+              image: "/images/careers/interview-operations.jpg"
+            }
+          ],
+          lookForHeading: "What we look for.",
+          lookFor: [
+            { title: "People who raise the bar.", description: "Beyond experience, we value people with intellectual rigor who challenge thinking, sharpen the way we work, and bring informed perspectives. We want system improvers, not people pleasers.", image: "/images/careers/lookfor-1.jpg" },
+            { title: "Builders, not order takers.", description: "We want people who like to get their hands dirty and take ownership from day one. People who are comfortable operating in ambiguity and who are not satisfied until they've solved the problem.", image: "/images/careers/lookfor-2.jpg" },
+            { title: "Directness and authenticity.", description: "We look for people who care more about content than tone, and who are structured and to the point in their communication. We separate ideas from individuals.", image: "/images/careers/lookfor-3.jpg" }
+          ],
+          rolesHeading: "Open roles",
+          rolesEmpty: "No open roles at the moment, but we are always looking for exceptional talent. Reach out.",
+          rolesDescription: "We're building the future of intelligent systems. Find a role where you can make a real impact.",
+          departments: [],
+          applyForm: {
+            modalTitle: "Apply for this role",
+            nameLabel: "Full name",
+            namePlaceholder: "John Doe",
+            emailLabel: "Email",
+            emailPlaceholder: "john@example.com",
+            phoneLabel: "Phone",
+            phonePlaceholder: "+1 234 567 890",
+            linkedinLabel: "LinkedIn profile",
+            linkedinPlaceholder: "https://linkedin.com/in/your-profile",
+            cvLabel: "Upload CV (PDF)",
+            messageLabel: "Why are you interested?",
+            messagePlaceholder: "Tell us why you'd be a great fit for this role...",
+            submitLabel: "Submit application",
+            sendingLabel: "Sending...",
+            successLabel: "Application sent! We'll get back to you soon.",
+            errorLabel: "Something went wrong. Please try again.",
+            closeLabel: "Close"
+          }
         },
         contact: {
           kicker: "Talk to us",
@@ -2093,16 +2208,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
             { date: "21 avr. 2026", title: "Rio, premier jumeau", description: "Premier déploiement du jumeau numérique agricole Rio dans les champs du Bénin.", type: "launch" },
             { date: "30 juin 2026", title: "RedQ & santé publique", description: "RedQ étend la mission à la santé publique, en gérant les dons de sang de bout en bout.", type: "launch" }
           ],
-          teamHeading: "L'équipe dirigeante.",
+          teamHeading: "Les fondateurs de Gytev.",
           teamDescription: "Un ensemble d'esprits brillants, préparés et formés, mêlant profils business et jeunes talents techniques seniors. Nous nous appuyons sur un fort esprit de leadership au service d'une mission claire, d'une équipe R&D dédiée, de la sécurité et de la gouvernance.",
-          team: [
-            { name: "Amadou Fall", role: "Co-fondateur & CEO", bio: "Ancien directeur d'ingénierie, passionné par l'infrastructure des systèmes distribués.", image: null },
-            { name: "Sarah Ndiaye", role: "Co-fondatrice & Directrice scientifique", bio: "Experte en apprentissage automatique et jumeaux numériques pour l'industrie lourde.", image: null },
-            { name: "Ousmane Diallo", role: "Co-fondateur & CTO", bio: "Focus sur l'utilité brute des données dans le monde réel. Pilotage de la suite Rio.", image: null },
-            { name: "Aïssatou Sow", role: "Head of Operations", bio: "Déploiement physique des capteurs, logistique et partenariats gouvernementaux.", image: null }
-          ],
           partnersTitle: "Avec qui nous travaillons.",
-          partners: ["Ministère de l'Agriculture", "Banque Mondiale", "Sahel Coop", "Sèmè City", "Initiative Santé", "AgriData"],
           cta: {
             heading: "Prêt à construire avec nous ?",
             description: "Que vous souhaitiez rejoindre l'équipe d'ingénierie ou déployer nos solutions dans vos opérations.",
@@ -2111,35 +2219,122 @@ export const dictionaries: Record<Locale, Dictionary> = {
           }
         },
         careers: {
-          kicker: "Rejoignez-nous",
+          kicker: "Carrières",
           title: "Carrières chez Gytev",
-          heroTitle: "Construire l'intelligence du monde physique.",
-          body: "Nous recrutons des ingénieurs, des chercheurs et des opérateurs qui veulent comprendre le monde réel. Nous sommes basés à Cotonou, au Bénin, mais nos défis sont mondiaux.",
-          valuesHeading: "Comment nous construisons",
+          heroTitle: "Construire l'intelligence pour le monde réel.",
+          body: "Nous recrutons des ingénieurs, des chercheurs et des opérateurs qui connectent l'IA au monde réel. Nous traitons des enjeux mondiaux en agriculture, santé et infrastructures critiques qui exigent rigueur et impact.",
+          ctaLabel: "Voir les postes ouverts",
+          teamsHeading: "Découvrez nos équipes.",
+          teamsDescription: "Nous construisons l'une des plateformes de systèmes intelligents les plus ambitieuses d'Afrique. Nous combinons capteurs, IA et expertise métier pour résoudre des problèmes réels dans l'agriculture, la santé et l'industrie.",
+          teams: [
+            { name: "IA & Recherche", description: "Modèles d'apprentissage automatique et jumeaux numériques qui comprennent le monde physique." },
+            { name: "Ingénierie", description: "Les plateformes, le matériel et l'infrastructure qui donnent vie aux systèmes intelligents." },
+            { name: "GTM", description: "Aider les clients à résoudre des défis métier réels avec nos solutions." },
+            { name: "Corporate", description: "Construire les fondations opérationnelles pour le succès à long terme." },
+            { name: "Opérations", description: "Déployer les capteurs, gérer la logistique et assurer l'impact réel sur le terrain." },
+            { name: "Produit", description: "Concevoir les plateformes et expériences qui rendent les systèmes complexes compréhensibles." }
+          ],
+          stats: [
+            { value: "150+", label: "collaborateurs" },
+            { value: "3+", label: "pays" },
+            { value: "5+", label: "secteurs" }
+          ],
+          cultureHeading: "Notre culture.",
+          cultureDescription: "Chez Gytev, chaque individu a le pouvoir de modeler notre trajectoire. Nous favorisons la transparence et l'appropriation, où vos objectifs et idées sont visibles et valorisés dans toute l'entreprise. Avec des structures plates et une collaboration ouverte, vous prendrez les devants, créerez de l'impact et travaillerez pour concrétiser votre vision.",
+          cultureImage: "/images/careers/culture.jpg",
+          valuesHeading: "Nos valeurs.",
           values: [
             { title: "Le terrain d'abord", description: "Les modèles échouent lorsqu'ils n'ont pas rencontré la réalité. Nous construisons du matériel pour obtenir la vérité terrain, pas seulement pour scrapper internet." },
             { title: "Clarté radicale", description: "Les systèmes complexes exigent des explications simples. Nous communiquons directement, sans jargon d'entreprise." },
-            { title: "Conçu pour durer", description: "Nos systèmes fonctionnent dans des environnements difficiles : fermes sans réseau électrique, banques de sang aux infrastructures défaillantes. Nous construisons pour la résilience." }
+            { title: "Conçu pour durer", description: "Nos systèmes fonctionnent dans des environnements difficiles : fermes sans réseau électrique, banques de sang aux infrastructures défaillantes. Nous construisons pour la résilience." },
+            { title: "Vitesse", description: "Nous expérimentons, itérons et livrons rapidement. Quand nous faisons des erreurs, nous nous efforçons de les détecter tôt." },
+            { title: "Humilité", description: "Nous sommes collectivement responsables du succès de l'entreprise. Nous mettons la main à la pâte quand c'est nécessaire, où que ce soit dans l'organisation." }
           ],
-          rolesHeading: "Postes ouverts",
-          rolesEmpty: "Aucun poste ouvert pour le moment, mais nous recherchons toujours des talents exceptionnels. Contactez-nous.",
-          departments: [
+          benefitsHeading: "Avantages.",
+          benefitsDescription: "Nous soutenons le bien-être, la croissance et l'équilibre travail-vie de nos employés, avec une gamme d'avantages conçus pour répondre aux besoins divers de nos équipes.",
+          benefitTabs: [
             {
-              name: "Ingénierie & IA",
-              openings: [
-                { title: "Senior ML Engineer, Séries Temporelles", location: "Cotonou / Remote", type: "Temps plein" },
-                { title: "Ingénieur Systèmes Embarqués (C/Rust)", location: "Cotonou", type: "Temps plein" },
-                { title: "Ingénieur Frontend (React/WebGL)", location: "Remote (UTC+1)", type: "Temps plein" }
+              id: "health",
+              label: "Santé & famille",
+              items: [
+                { title: "Couverture santé", description: "Plans premium à 100% pour les soins médicaux, dentaires et optiques pour vous et vos ayants droit." },
+                { title: "Congé parental", description: "Congé payé pour tous les parents accouchants." },
+                { title: "Soutien à la garde d'enfants", description: "Places de crèche réservées ou aide financière pour les parents actifs." }
               ]
             },
             {
-              name: "Opérations & Produit",
-              openings: [
-                { title: "Responsable Déploiement (Agriculture)", location: "Afrique de l'Ouest", type: "Temps plein" },
-                { title: "Product Manager (Plateforme Data)", location: "Cotonou / Remote", type: "Temps plein" }
+              id: "financial",
+              label: "Financier & carrière",
+              items: [
+                { title: "Plans de retraite", description: "Contributions patronales compétitives pour sécuriser votre avenir financier." },
+                { title: "Soutien au déménagement", description: "Aide financière pour les frais de déménagement, parrainage de visa et services d'installation." },
+                { title: "Budget formation", description: "Budget annuel pour conférences, cours et développement professionnel." }
+              ]
+            },
+            {
+              id: "daily",
+              label: "Vie quotidienne & bien-être",
+              items: [
+                { title: "Indemnités repas", description: "Allocations mensuelles ou repas fournis au bureau." },
+                { title: "Soutien transport", description: "Allocations mensuelles pour les transports en commun, parking ou mobilité durable." },
+                { title: "Fitness et bien-être", description: "Subventions ou abonnements pour salles de sport, programmes bien-être ou activités fitness." }
               ]
             }
-          ]
+          ],
+          interviewHeading: "Les étapes du processus.",
+          interviewDescription: "Nous sommes intentionnels dans la façon dont nous constituons notre équipe. Nous cherchons des personnes authentiques, prêtes à retrousser leurs manches, embrasser l'inconfort et transformer les idées en résultats à grande échelle.",
+          interviewTabs: [
+            {
+              id: "technical",
+              label: "Rôles IA, Recherche & Ingénierie",
+              steps: [
+                { title: "Conversation introductive", description: "Une première conversation avec un recruteur ou manager pour comprendre votre expérience et vos intérêts." },
+                { title: "Évaluations techniques", description: "Vous complétez une série d'exercices techniques conçus pour refléter les vrais défis sur lesquels vous travaillerez ici." },
+                { title: "Conversation sur les valeurs", description: "Une dernière discussion pour explorer l'alignement avec nos valeurs et nos modes de travail." }
+              ],
+              image: "/images/careers/interview-technical.jpg"
+            },
+            {
+              id: "operations",
+              label: "Rôles Opérations, GTM & Corporate",
+              steps: [
+                { title: "Conversation introductive", description: "Vous commencez par une conversation avec un recruteur ou manager pour comprendre votre parcours et vos attentes." },
+                { title: "Entretiens", description: "Vous rencontrerez le manager et des futurs coéquipiers, concentrés sur votre expertise fonctionnelle et votre approche des problèmes." },
+                { title: "Étude de cas ou exercice", description: "Selon le rôle, vous pourriez compléter une étude de cas métier ou un exercice pratique aligné avec les responsabilités quotidiennes." },
+                { title: "Conversation sur les valeurs", description: "Une dernière discussion pour explorer l'alignement avec nos valeurs et nos modes de travail." }
+              ],
+              image: "/images/careers/interview-operations.jpg"
+            }
+          ],
+          lookForHeading: "Ce que nous recherchons.",
+          lookFor: [
+            { title: "Des personnes qui élèvent le niveau.", description: "Au-delà de l'expérience, nous valorisons les personnes avec un rigor intellectuel qui remettent en question la réflexion, affinent notre façon de travailler et apportent des perspectives éclairées.", image: "/images/careers/lookfor-1.jpg" },
+            { title: "Des bâtisseurs, pas des exécutants.", description: "Nous voulons des personnes qui aiment se salir les mains et prendre possession du projet dès le premier jour. Confortables dans l'ambiguïté, insatisfaites tant que le problème n'est pas résolu.", image: "/images/careers/lookfor-2.jpg" },
+            { title: "Directitude et authenticité.", description: "Nous cherchons des personnes qui accordent plus d'importance au fond qu'à la forme, structurées et directes dans leur communication. Nous séparons les idées des individus.", image: "/images/careers/lookfor-3.jpg" }
+          ],
+          rolesHeading: "Postes ouverts",
+          rolesEmpty: "Aucun poste ouvert pour le moment, mais nous recherchons toujours des talents exceptionnels. Contactez-nous.",
+          rolesDescription: "Nous construisons l'avenir des systèmes intelligents. Trouvez un poste où vous pouvez avoir un impact réel.",
+          departments: [],
+          applyForm: {
+            modalTitle: "Postuler à ce poste",
+            nameLabel: "Nom complet",
+            namePlaceholder: "Jean Dupont",
+            emailLabel: "Email",
+            emailPlaceholder: "jean@exemple.com",
+            phoneLabel: "Téléphone",
+            phonePlaceholder: "+229 01 23 45 67",
+            linkedinLabel: "Profil LinkedIn",
+            linkedinPlaceholder: "https://linkedin.com/in/votre-profil",
+            cvLabel: "Télécharger CV (PDF)",
+            messageLabel: "Pourquoi êtes-vous intéressé?",
+            messagePlaceholder: "Dites-nous pourquoi vous seriez un excellent candidat pour ce poste...",
+            submitLabel: "Envoyer la candidature",
+            sendingLabel: "Envoi en cours...",
+            successLabel: "Candidature envoyée! Nous vous recontacterons bientôt.",
+            errorLabel: "Une erreur s'est produite. Veuillez réessayer.",
+            closeLabel: "Fermer"
+          }
         },
         contact: {
           kicker: "Parlons-en",
