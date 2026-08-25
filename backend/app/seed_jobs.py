@@ -89,7 +89,9 @@ DEPARTMENTS = [
     {
         "slug": "gtm",
         "name": "GTM",
-        "description": "Empowering customers to solve real business challenges with our solutions.",
+        "description": (
+            "Empowering customers to solve real business challenges with our solutions.",
+        ),
         "sort_order": 2,
         "jobs": [
             {
@@ -161,7 +163,9 @@ DEPARTMENTS = [
     {
         "slug": "product",
         "name": "Product",
-        "description": "Designing the platforms and experiences that make complex systems understandable.",
+        "description": (
+            "Designing the platforms and experiences that make complex systems understandable."
+        ),
         "sort_order": 5,
         "jobs": [
             {
@@ -176,7 +180,9 @@ DEPARTMENTS = [
                 "title": "UX Designer",
                 "location": "Remote (UTC+1)",
                 "type": "Full-time",
-                "description": "Design intuitive interfaces for complex environmental monitoring systems. Your work will make satellite imagery, sensor data, and AI predictions accessible to non-technical users.",
+                "description": (
+                    "Design intuitive interfaces for complex environmental monitoring systems. Your work will make satellite imagery, sensor data, and AI predictions accessible to non-technical users.",
+                ),
                 "requirements": ["3+ years in UX design", "Experience with data-heavy interfaces", "Strong portfolio", "Proficiency in Figma"],
                 "sort_order": 1,
             },
@@ -233,7 +239,7 @@ async def seed_jobs(reset: bool) -> None:
                     db.add(job)
 
             await db.commit()
-            print(f"[ok] {locale}: {len(DEPARTMENTS)} departments + {sum(len(d['jobs']) for d in DEPARTMENTS)} jobs seeded")
+            print((f"[ok] {locale}: {len(DEPARTMENTS)} departments + {sum(len(d['jobs']) for d in DEPARTMENTS)} jobs seeded"))
 
 
 async def main() -> None:
