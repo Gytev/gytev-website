@@ -277,7 +277,7 @@ export async function getJobs(locale: string): Promise<JobDepartment[] | null> {
   if (!contentApiUrl) return null;
   try {
     const response = await fetch(
-      `${contentApiUrl}/jobs?locale=${encodeURIComponent(locale)}`,
+      `${contentApiUrl}/jobs/grouped?locale=${encodeURIComponent(locale)}`,
       { next: { revalidate: 60 } },
     );
     if (response.ok) {
