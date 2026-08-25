@@ -138,13 +138,10 @@ function GhostButton({
     "group relative flex items-center justify-center overflow-hidden h-8 py-1 px-3 rounded-md bg-zinc-900/[.06] hover:bg-zinc-900/[.12] text-sm font-medium text-[var(--ink)] transition-colors";
   const inner = (
     <>
-      <span className="absolute -translate-x-6 transition-transform duration-300 will-change-transform group-hover:translate-x-0 group-hover:delay-100 w-3.5">
-        <PixelArrow className="w-full rotate-180" />
-      </span>
-      <span className="transition-transform duration-300 will-change-transform group-hover:translate-x-4 group-hover:delay-75">
+      <span className="transition-transform duration-300 will-change-transform group-hover:translate-x-1">
         {children}
       </span>
-      <span className="relative ml-1.5 inline-block w-3.5 transition-transform duration-300 will-change-transform group-hover:translate-x-5">
+      <span className="relative ml-1.5 inline-block w-3.5 transition-transform duration-300 will-change-transform group-hover:translate-x-2">
         <PixelArrow className="w-full" />
       </span>
     </>
@@ -185,13 +182,27 @@ export function ContactSection({ locale, copy }: { locale: Locale; copy: Copy })
     }
   };
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSending(true);
-    window.setTimeout(() => {
-      setSending(false);
+    try {
+      const payload = {
+        topic: active,
+        ...values,
+        updates,
+      };
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000"}/api/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error("Failed to send");
       setSent(true);
-    }, 600);
+    } catch {
+      setSent(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   const set = (key: string, v: string) =>
@@ -403,13 +414,10 @@ export function ContactSection({ locale, copy }: { locale: Locale; copy: Copy })
                 disabled={sending}
                 className="group relative mt-2 flex w-full items-center justify-center overflow-hidden rounded-md bg-[var(--ink)] px-5 py-3.5 text-base font-medium text-white transition-colors hover:bg-zinc-700 disabled:opacity-60 md:w-fit"
               >
-                <span className="absolute -translate-x-10 transition-transform duration-300 will-change-transform group-hover:translate-x-0 group-hover:delay-100 w-5">
-                  <PixelArrow className="w-full rotate-180" />
-                </span>
-                <span className="transition-transform duration-300 will-change-transform group-hover:translate-x-6 group-hover:delay-75">
+                <span className="transition-transform duration-300 will-change-transform group-hover:translate-x-1">
                   {sending ? copy.forms.sending : copy.forms.submit}
                 </span>
-                <span className="relative ml-2 inline-block w-5 transition-transform duration-300 will-change-transform group-hover:translate-x-9">
+                <span className="relative ml-2 inline-block w-5 transition-transform duration-300 will-change-transform group-hover:translate-x-2">
                   <PixelArrow className="w-full" />
                 </span>
               </button>

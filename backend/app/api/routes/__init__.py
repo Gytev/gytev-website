@@ -4,6 +4,7 @@ from app.api.routes import (
     admin,
     blog,
     company,
+    contact,
     content,
     customers,
     developers,
@@ -31,3 +32,4 @@ api_router.include_router(company.milestones_router)
 api_router.include_router(company.team_router)
 api_router.include_router(company.partners_router)
 api_router.include_router(company.contact_router)
+api_router.include_router(contact.router)
