@@ -61,11 +61,14 @@ DEPARTMENTS = [
                 "sort_order": 0,
             },
             {
-                "title": "Frontend Engineer (React/WebGL)",
+                "title": "UX Designer",
                 "location": "Remote (UTC+1)",
                 "type": "Full-time",
-                "description": "Build the dashboards and visualization tools that make complex environmental data understandable. You'll work with WebGL, real-time data streams, and interactive mapping interfaces.",
-                "requirements": ["3+ years React/TypeScript", "Experience with WebGL or Three.js", "Strong design sensibility", "Experience with data visualization"],
+                "description": (
+                    "Design intuitive interfaces for complex environmental monitoring systems. "
+                    "Your work will make satellite imagery, sensor data, and AI predictions accessible to non-technical users."
+                ),
+                "requirements": ["3+ years in UX design", "Experience with data-heavy interfaces", "Strong portfolio", "Proficiency in Figma"],
                 "sort_order": 1,
             },
             {
@@ -80,7 +83,10 @@ DEPARTMENTS = [
                 "title": "Hardware Test Engineer",
                 "location": "Cotonou",
                 "type": "Full-time",
-                "description": "Develop testing protocols and automated test rigs for our sensor hardware. Ensure reliability of devices deployed in harsh agricultural and healthcare environments.",
+                "description": (
+                    "Develop testing protocols and automated test rigs for our sensor hardware. "
+                    "Ensure reliability of devices deployed in harsh agricultural and healthcare environments."
+                ),
                 "requirements": ["2+ years in hardware testing", "Experience with test automation", "Knowledge of sensor calibration", "Strong documentation skills"],
                 "sort_order": 3,
             },
@@ -106,7 +112,11 @@ DEPARTMENTS = [
                 "title": "Business Development Manager",
                 "location": "Cotonou",
                 "type": "Full-time",
-                "description": "Drive adoption of our intelligent systems across key verticals. You'll build relationships with government agencies, NGOs, and private sector partners to scale our impact.",
+                "description": (
+                    "Drive adoption of our intelligent systems across key verticals. "
+                    "You'll build relationships with government agencies, NGOs, "
+                    "and private sector partners to scale our impact."
+                ),
                 "requirements": ["5+ years in B2B sales", "Network in West African markets", "Experience with enterprise sales", "Strong presentation skills"],
                 "sort_order": 1,
             },
@@ -122,7 +132,10 @@ DEPARTMENTS = [
                 "title": "Finance & Operations Manager",
                 "location": "Cotonou",
                 "type": "Full-time",
-                "description": "Manage financial planning, reporting, and operational processes for a fast-growing deep-tech company. You'll build the systems that enable scale across multiple countries.",
+                "description": (
+                    "Manage financial planning, reporting, and operational processes for a fast-growing deep-tech company. "
+                    "You'll build the systems that enable scale across multiple countries."
+                ),
                 "requirements": ["5+ years in finance/ops", "Experience with multi-country operations", "Strong analytical skills", "CPA or equivalent preferred"],
                 "sort_order": 0,
             },
@@ -130,7 +143,10 @@ DEPARTMENTS = [
                 "title": "People & Culture Lead",
                 "location": "Cotonou",
                 "type": "Full-time",
-                "description": "Design and implement HR processes for a distributed, multicultural team. You'll own recruiting, onboarding, performance management, and culture initiatives.",
+                "description": (
+                    "Design and implement HR processes for a distributed, multicultural team. "
+                    "You'll own recruiting, onboarding, performance management, and culture initiatives."
+                ),
                 "requirements": ["4+ years in HR/people ops", "Experience with remote teams", "Strong interpersonal skills", "Knowledge of West African labor law"],
                 "sort_order": 1,
             },
@@ -154,7 +170,10 @@ DEPARTMENTS = [
                 "title": "Sensor Network Technician",
                 "location": "Cotonou / Benin",
                 "type": "Full-time",
-                "description": "Install, maintain, and troubleshoot sensor networks in agricultural and healthcare settings. You'll be the bridge between our technology and the real world.",
+                "description": (
+                    "Install, maintain, and troubleshoot sensor networks in agricultural and healthcare settings. "
+                    "You'll be the bridge between our technology and the real world."
+                ),
                 "requirements": ["2+ years in technical fieldwork", "Basic electronics knowledge", "Strong problem-solving skills", "Willingness to travel"],
                 "sort_order": 1,
             },
@@ -172,7 +191,10 @@ DEPARTMENTS = [
                 "title": "Product Manager (Data Platform)",
                 "location": "Cotonou / Remote",
                 "type": "Full-time",
-                "description": "Define and execute the product vision for our data platform that processes millions of sensor readings. You'll work at the intersection of AI, hardware, and user experience.",
+                "description": (
+                    "Define and execute the product vision for our data platform that processes millions of sensor readings. "
+                    "You'll work at the intersection of AI, hardware, and user experience."
+                ),
                 "requirements": ["3+ years in product management", "Experience with data platforms", "Strong technical understanding", "Experience with enterprise products"],
                 "sort_order": 0,
             },
@@ -239,7 +261,7 @@ async def seed_jobs(reset: bool) -> None:
                     db.add(job)
 
             await db.commit()
-            print((f"[ok] {locale}: {len(DEPARTMENTS)} departments + {sum(len(d['jobs']) for d in DEPARTMENTS)} jobs seeded"))
+            print(f"[ok] {locale}: {len(DEPARTMENTS)} departments + {sum(len(d['jobs']) for d in DEPARTMENTS)} jobs seeded")
 
 
 async def main() -> None:
