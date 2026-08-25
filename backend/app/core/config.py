@@ -18,6 +18,13 @@ class Settings(BaseSettings):
     # Clé API pour les mutations admin (X-API-Key). Vide = auth désactivée (dev).
     admin_api_key: str = ""
 
+    # Email (contact form)
+    smtp_host: str = ""
+    smtp_port: int = 587
+    smtp_user: str = ""
+    smtp_pass: str = ""
+    from_email: str = "noreply@gytev.com"
+
     @field_validator("database_url", mode="before")
     @classmethod
     def _force_async_driver(cls, value: object) -> object:

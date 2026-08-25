@@ -20,8 +20,8 @@ from app.models import (
     CompanyContactCopy,
     CompanyMilestone,
     CompanyPartner,
-    CompanyTeamMember,
     CompanySection,
+    CompanyTeamMember,
     Customer,
     DeveloperResource,
     NavigationItem,
@@ -235,7 +235,11 @@ def content_rows(locale: str, data: dict[str, Any]) -> list[Any]:
         for index, item in enumerate(data.get("partners", []))
     ]
     contact_copy = [contact_copy_row(locale, data)]
-    return products + solutions + research + developers + blog + customers + company + milestones + team + partners + contact_copy
+    return (
+        products + solutions + research + developers + blog
+        + customers + company + milestones + team + partners
+        + contact_copy
+    )
 
 
 async def seed(reset: bool) -> None:

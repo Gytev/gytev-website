@@ -1,6 +1,15 @@
 from app.api.crud import content_router
-from app.models import CompanyContactCopy, CompanyMilestone, CompanyPartner, CompanySection, CompanyTeamMember
+from app.models import (
+    CompanyContactCopy,
+    CompanyMilestone,
+    CompanyPartner,
+    CompanySection,
+    CompanyTeamMember,
+)
 from app.schemas import (
+    CompanyContactCopyCreate,
+    CompanyContactCopyRead,
+    CompanyContactCopyUpdate,
     CompanyMilestoneCreate,
     CompanyMilestoneRead,
     CompanyMilestoneUpdate,
@@ -13,9 +22,6 @@ from app.schemas import (
     CompanyTeamMemberCreate,
     CompanyTeamMemberRead,
     CompanyTeamMemberUpdate,
-    CompanyContactCopyCreate,
-    CompanyContactCopyRead,
-    CompanyContactCopyUpdate,
 )
 
 router = content_router(

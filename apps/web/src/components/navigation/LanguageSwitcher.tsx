@@ -4,11 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import type { Locale } from "@gytev/types";
 import { locales, localeNames } from "@gytev/i18n";
 
-const flags: Record<Locale, string> = {
-  en: "🇬🇧",
-  fr: "🇫🇷",
-};
-
 export function LanguageSwitcher({ locale }: { locale: Locale }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);

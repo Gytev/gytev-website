@@ -136,6 +136,7 @@ export function Footer({ locale, dictionary }: FooterProps) {
                 </svg>
               </a>
               <a href="https://play.google.com/" target="_blank" rel="noopener noreferrer" aria-label="Get it on Google Play">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/gooplaySVG.png" alt="Get it on Google Play" width="128" height="38" className="h-[38px] w-auto" />
               </a>
             </div>
@@ -143,6 +144,7 @@ export function Footer({ locale, dictionary }: FooterProps) {
         </div>
 
         <div className="mx-auto flex w-full max-w-[1280px] flex-col items-center gap-8 px-6 py-12 md:flex-row md:justify-between lg:px-8">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logoB-white.png" alt="Gytev" className="h-30 w-auto" />
           <p className="flex flex-wrap items-center justify-center gap-2 text-sm font-medium text-[#a3a3a3]">
             <span>Gytev © {year}</span>

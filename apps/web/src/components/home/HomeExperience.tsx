@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import type { Dictionary } from "@gytev/i18n";
 import type { Locale } from "@gytev/types";
@@ -148,6 +148,7 @@ export function HomeExperience({ dict, locale, partners }: HomeExperienceProps) 
       <section className="case-section" aria-label={dict.home.cases.heading} onWheel={(e) => { if (e.deltaY > 30) setCaseIndex((caseIndex + 1) % caseStudies.length); else if (e.deltaY < -30) setCaseIndex((caseIndex - 1 + caseStudies.length) % caseStudies.length); }}>
         <div className="case-grid">
           <Link key={`${selectedCase.badge}-${caseIndex}`} href={localizedHref(locale, "/customers")} className="case-card">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={selectedCase.image} alt="" className="case-card__bg" />
             <div className="case-card__overlay">
               <div className="case-card__content">
@@ -164,6 +165,7 @@ export function HomeExperience({ dict, locale, partners }: HomeExperienceProps) 
             </div>
           </Link>
           <Link key={`${nextCase.badge}-${caseIndex + 1}`} href={localizedHref(locale, "/customers")} className="case-card case-card--next">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={nextCase.image} alt="" className="case-card__bg" />
             <div className="case-card__overlay">
               <div className="case-card__content">

@@ -429,7 +429,7 @@ export function ContactSection({ locale, copy }: { locale: Locale; copy: Copy })
   );
 }
 
-export function ContactHero({ locale, copy }: { locale: Locale; copy: Copy }) {
+export function ContactHero({ copy }: { locale: Locale; copy: Copy }) {
   return (
     <section className="border-b border-[var(--line)] bg-[var(--color-surface)]">
       <div className="mx-auto grid w-full max-w-7xl gap-6 pt-10 md:min-h-[220px] md:grid-cols-[70%_30%] md:gap-0">
