@@ -8,6 +8,7 @@ import { Wordmark } from "./ui";
 
 const links = [
   { href: "/", label: "Dashboard" },
+  { href: "/analytics", label: "Analytics" },
   ...entities.map((entity) => ({
     href: `/${entity.slug}`,
     label: entity.plural,

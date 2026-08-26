@@ -2,6 +2,7 @@ from fastapi import APIRouter
 
 from app.api.routes import (
     admin,
+    analytics,
     blog,
     company,
     contact,
@@ -35,3 +36,4 @@ api_router.include_router(company.partners_router)
 api_router.include_router(company.contact_router)
 api_router.include_router(contact.router)
 api_router.include_router(jobs.router)
+api_router.include_router(analytics.router)

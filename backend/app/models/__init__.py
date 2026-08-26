@@ -1,4 +1,5 @@
 from app.models.models import (
+    AnalyticsEvent,
     BlogPost,
     CompanyContactCopy,
     CompanyMilestone,
@@ -16,6 +17,7 @@ from app.models.models import (
 )
 
 __all__ = [
+    "AnalyticsEvent",
     "BlogPost",
     "CompanyContactCopy",
     "CompanyMilestone",

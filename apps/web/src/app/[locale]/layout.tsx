@@ -4,6 +4,7 @@ import { siteConfig } from "@gytev/config";
 import { generateStaticParams } from "@/lib/i18n";
 import { Navbar } from "@/components/navigation/Navbar";
 import { Footer } from "@/components/navigation/Footer";
+import { Tracker } from "@/components/analytics/Tracker";
 import { getDictionary } from "@/lib/i18n";
 
 export { generateStaticParams };
@@ -48,6 +49,7 @@ export default async function LocaleLayout({ params, children }: Props) {
 
   return (
     <div className="flex min-h-screen flex-col">
+      <Tracker />
       <Navbar locale={l} dictionary={dict} />
       <main className="flex-1">{children}</main>
       <Footer locale={l} dictionary={dict} />

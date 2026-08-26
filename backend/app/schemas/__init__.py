@@ -43,6 +43,7 @@ from app.schemas.schemas import (
     SolutionCreate,
     SolutionRead,
     SolutionUpdate,
+    TrackEventCreate,
 )
 
 __all__ = [
@@ -90,4 +91,5 @@ __all__ = [
     "SolutionCreate",
     "SolutionRead",
     "SolutionUpdate",
+    "TrackEventCreate",
 ]

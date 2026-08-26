@@ -256,3 +256,16 @@ class JobOpening(Base, TimestampMixin):
     requirements = Column(JSON, default=list)
     sort_order = Column(Integer, nullable=False, default=0)
     vulnReportPlaceholder = Column(String(500), nullable=False, default="")
+
+
+class AnalyticsEvent(Base, TimestampMixin):
+    __tablename__ = "analytics_events"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
+    session_id = Column(String(64), nullable=False, index=True)
+    event_type = Column(String(16), nullable=False, default="view", index=True)
+    path = Column(String(500), nullable=False, index=True)
+    locale = Column(String(8), nullable=True)
+    referrer = Column(String(500), nullable=True)
+    country = Column(String(8), nullable=True, index=True)
+    device = Column(String(16), nullable=False, default="desktop")

@@ -585,3 +585,12 @@ class JobOpeningRead(ReadBase):
     description: str
     requirements: list[str]
     sort_order: int
+
+
+class TrackEventCreate(BaseModel):
+    session_id: str = Field(min_length=8, max_length=64)
+    path: str = Field(min_length=1, max_length=500)
+    event_type: str = Field(default="view", pattern="^(view|leave)$")
+    locale: str | None = None
+    referrer: str | None = None
+    timezone: str | None = None
