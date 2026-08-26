@@ -1,6 +1,5 @@
 import { buildPageMetadata } from "@/lib/metadata";
 import { getBlogPosts } from "@/lib/content";
-import { getDictionary } from "@/lib/i18n";
 import { NewsIndex } from "@/components/company/blog/NewsIndex";
 
 export async function generateMetadata({
@@ -18,10 +17,7 @@ type Props = {
 
 export default async function BlogPage({ params }: Props) {
   const { locale } = await params;
-  const [posts, dict] = await Promise.all([
-    getBlogPosts(locale),
-    getDictionary(locale),
-  ]);
+  const posts = await getBlogPosts(locale);
   const fr = locale === "fr";
 
   return (
