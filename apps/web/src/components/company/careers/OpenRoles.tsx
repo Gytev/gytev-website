@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { JobModal } from "./JobModal";
 
 const FORMATS = ["Full-time", "Intern", "Remote", "On-site"] as const;
@@ -52,12 +52,17 @@ export function OpenRoles({ heading, description, emptyText, departments, applyF
   const [selectedJob, setSelectedJob] = useState<(Opening & { department: string }) | null>(null);
   const [search, setSearch] = useState("");
   const [filterDept, setFilterDept] = useState("all");
-  const [format, setFormat] = useState<string>(() => {
+  const [format, setFormat] = useState<string>("all");
+
+  // Pre-select format from URL (?type=Intern) — nav "Internships" link
+  useEffect(() => {
     const t = new URLSearchParams(window.location.search).get("type");
-    if (!t) return "all";
+    if (!t) return;
     const match = FORMATS.find((f) => f.toLowerCase() === t.toLowerCase());
-    return match ?? "all";
-  });
+    if (!match) return;
+    const raf = requestAnimationFrame(() => setFormat(match));
+    return () => cancelAnimationFrame(raf);
+  }, []);
 
   const filteredDepts = useMemo(() => {
     return departments
