@@ -1,4 +1,4 @@
-export type FieldKind = "text" | "textarea" | "list" | "number" | "select";
+export type FieldKind = "text" | "textarea" | "list" | "number" | "select" | "boolean";
 
 export type FieldConfig = {
   name: string;
