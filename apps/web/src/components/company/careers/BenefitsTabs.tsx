@@ -70,7 +70,7 @@ export function BenefitsTabs({ heading, description, tabs }: BenefitsTabsProps) 
   }
 
   return (
-    <section className="text-neutral-900 pt-10 pb-10 lg:pb-20 bg-white">
+    <section id="benefits" className="scroll-mt-24 text-neutral-900 pt-10 pb-10 lg:pb-20 bg-white">
       {/* Editorial headline */}
       <div className="w-full relative px-4 lg:px-10">
         <p className="pt-10 lg:pt-20 text-4xl font-medium tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl text-left">

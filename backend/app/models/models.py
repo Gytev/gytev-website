@@ -1,6 +1,17 @@
 from uuid import uuid4
 
-from sqlalchemy import JSON, UUID, Column, DateTime, Integer, String, Text, UniqueConstraint, func
+from sqlalchemy import (
+    JSON,
+    UUID,
+    Boolean,
+    Column,
+    DateTime,
+    Integer,
+    String,
+    Text,
+    UniqueConstraint,
+    func,
+)
 
 from app.core.database import Base
 
@@ -75,6 +86,8 @@ class BlogPost(Base, TimestampMixin):
     excerpt = Column(Text, nullable=False)
     author = Column(String(120), nullable=False)
     tags = Column(JSON, default=list)
+    image = Column(String(500), nullable=True)
+    featured = Column(Boolean, nullable=False, default=False)
     published_at = Column(DateTime(timezone=True), nullable=True)
 
 

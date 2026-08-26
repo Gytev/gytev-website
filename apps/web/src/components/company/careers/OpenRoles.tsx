@@ -1,7 +1,9 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { JobModal } from "./JobModal";
+
+const FORMATS = ["Full-time", "Intern", "Remote", "On-site"] as const;
 
 type Opening = {
   title: string;
@@ -50,15 +52,28 @@ export function OpenRoles({ heading, description, emptyText, departments, applyF
   const [selectedJob, setSelectedJob] = useState<(Opening & { department: string }) | null>(null);
   const [search, setSearch] = useState("");
   const [filterDept, setFilterDept] = useState("all");
+  const [format, setFormat] = useState<string>("all");
+
+  // Pre-select format from URL (?type=Intern) — nav "Internships" link
+  useEffect(() => {
+    const t = new URLSearchParams(window.location.search).get("type");
+    if (!t) return;
+    const match = FORMATS.find((f) => f.toLowerCase() === t.toLowerCase());
+    if (match) setFormat(match);
+  }, []);
 
   const filteredDepts = useMemo(() => {
     return departments
       .map((dept) => {
         const q = search.toLowerCase();
+        const fmt = format.toLowerCase();
         const matchesFilter = filterDept === "all" || dept.name === filterDept;
         const filtered = dept.openings.filter(
           (job) =>
             matchesFilter &&
+            (fmt === "all" ||
+              job.type.toLowerCase().includes(fmt) ||
+              job.location.toLowerCase().includes(fmt)) &&
             (q === "" ||
               job.title.toLowerCase().includes(q) ||
               job.location.toLowerCase().includes(q) ||
@@ -67,7 +82,7 @@ export function OpenRoles({ heading, description, emptyText, departments, applyF
         return { ...dept, openings: filtered };
       })
       .filter((dept) => dept.openings.length > 0);
-  }, [departments, search, filterDept]);
+  }, [departments, search, filterDept, format]);
 
   return (
     <>
@@ -92,6 +107,26 @@ export function OpenRoles({ heading, description, emptyText, departments, applyF
                       placeholder="Search..."
                       className="pl-9 pr-3 py-2 w-40 bg-neutral-800 border border-neutral-700 rounded-lg text-xs text-white placeholder-neutral-500 focus:outline-none focus:ring-1 focus:ring-[#c45824]/40 focus:border-[#c45824] transition-colors"
                     />
+                  </div>
+                  <div className="relative">
+                    <svg className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 pointer-events-none text-neutral-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3c-4.97 0-9 1.343-9 3s4.03 3 9 3 9-1.343 9-3-4.03-3-9-3zM3 6v6l6 3v6h6v-6l6-3V6" />
+                    </svg>
+                    <select
+                      value={format}
+                      onChange={(e) => setFormat(e.target.value)}
+                      aria-label="Filter by role format"
+                      className={`pl-8 pr-3 py-2 w-32 appearance-none cursor-pointer bg-neutral-800 border rounded-lg text-xs transition-colors focus:outline-none focus:ring-1 focus:ring-[#c45824]/40 ${
+                        format === "all"
+                          ? "text-white placeholder-neutral-500 border-neutral-700"
+                          : "text-[#ff8a5c] border-[#c45824]"
+                      }`}
+                    >
+                      <option value="all">All formats</option>
+                      {FORMATS.map((f) => (
+                        <option key={f} value={f}>{f}</option>
+                      ))}
+                    </select>
                   </div>
                   <select
                     value={filterDept}

@@ -607,9 +607,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
           {
             title: "Careers",
             links: [
-              { label: "Open roles", href: "/company/careers" },
-              { label: "Internships", href: "/company/internships" },
-              { label: "Benefits", href: "/company/benefits" },
+              { label: "Open roles", href: "/company/careers#roles" },
+              { label: "Internships", href: "/company/careers?type=Intern#roles" },
+              { label: "Benefits", href: "/company/careers#benefits" },
             ],
           },
         ],
@@ -1713,9 +1713,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
           {
             title: "Carrières",
             links: [
-              { label: "Postes ouverts", href: "/company/careers" },
-              { label: "Stages", href: "/company/internships" },
-              { label: "Avantages", href: "/company/benefits" },
+              { label: "Postes ouverts", href: "/company/careers#roles" },
+              { label: "Stages", href: "/company/careers?type=Intern#roles" },
+              { label: "Avantages", href: "/company/careers#benefits" },
             ],
           },
         ],

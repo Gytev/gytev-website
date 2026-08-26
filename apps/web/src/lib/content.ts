@@ -265,9 +265,7 @@ export type JobOpening = {
   type: string;
   description: string;
   requirements: string[];
-};
-
-export type JobDepartment = {
+};export type JobDepartment = {
   name: string;
   description: string;
   openings: JobOpening[];
@@ -309,5 +307,68 @@ export async function getJobs(locale: string): Promise<JobDepartment[] | null> {
     // API indisponible → fallback dict.
   }
   return null;
+}
+
+export type BlogPostCard = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  author: string;
+  date: string;
+  tags: string[];
+  image: string | null;
+  featured: boolean;
+};
+
+export async function getBlogPosts(locale: string): Promise<BlogPostCard[]> {
+  const local = getLocalContent(locale).blog.map((post) => ({
+    slug: post.slug,
+    title: post.title,
+    excerpt: post.excerpt,
+    author: post.author,
+    date: post.date,
+    tags: (post as { tags?: string[] }).tags ?? [],
+    image: null as string | null,
+    featured: false,
+  }));
+  if (!contentApiUrl) return local;
+  try {
+    const response = await fetch(
+      `${contentApiUrl}/blog?locale=${encodeURIComponent(locale)}`,
+      { next: { revalidate: 60 } },
+    );
+    if (!response.ok) return local;
+    const items = (await response.json()) as Array<{
+      slug: string;
+      title: string;
+      excerpt: string;
+      author: string;
+      tags: string[] | null;
+      image: string | null;
+      featured: boolean | null;
+      published_at: string | null;
+    }>;
+    if (!Array.isArray(items) || items.length === 0) return local;
+    return items
+      .map((p) => ({
+        slug: p.slug,
+        title: p.title,
+        excerpt: p.excerpt,
+        author: p.author,
+        date: p.published_at
+          ? new Date(p.published_at).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          : "",
+        tags: p.tags ?? [],
+        image: p.image,
+        featured: Boolean(p.featured),
+      }))
+      .sort((a, b) => b.date.localeCompare(a.date));
+  } catch {
+    return local;
+  }
 }
 

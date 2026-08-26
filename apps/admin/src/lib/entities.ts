@@ -402,7 +402,7 @@ export const entities: EntityConfig[] = [
     plural: "Blog",
     endpoint: "/blog",
     titleField: "title",
-    showFields: ["title", "author", "published_at", "locale"],
+    showFields: ["title", "author", "published_at", "featured", "locale"],
     fields: [
       localeField,
       { name: "slug", label: "Slug", required: true },
@@ -410,6 +410,8 @@ export const entities: EntityConfig[] = [
       { name: "excerpt", label: "Excerpt", kind: "textarea" },
       { name: "author", label: "Author", required: true },
       { name: "tags", label: "Tags", kind: "list", hint: "Séparer par des virgules" },
+      { name: "image", label: "Image URL", placeholder: "/images/blog/cover.jpg ou https://…" },
+      { name: "featured", label: "Featured", kind: "boolean", hint: "Mettre en avant (grande carte)" },
       { name: "published_at", label: "Published at", placeholder: "2026-06-01", hint: "Format : YYYY-MM-DD" },
     ],
   },

@@ -128,6 +128,8 @@ class BlogPostCreate(BaseModel):
     excerpt: str
     author: str = Field(min_length=1, max_length=120)
     tags: list[str] = Field(default_factory=list)
+    image: str | None = None
+    featured: bool = False
     published_at: datetime | None = None
 
 
@@ -138,6 +140,8 @@ class BlogPostUpdate(BaseModel):
     excerpt: str | None = None
     author: str | None = None
     tags: list[str] | None = None
+    image: str | None = None
+    featured: bool | None = None
     published_at: datetime | None = None
 
 
@@ -148,6 +152,8 @@ class BlogPostRead(ReadBase):
     excerpt: str
     author: str
     tags: list[str]
+    image: str | None
+    featured: bool
     published_at: datetime | None
 
 

@@ -175,6 +175,21 @@ function FieldInput({
     );
   }
 
+  if (kind === "boolean") {
+    return (
+      <label className="flex items-center gap-2 cursor-pointer select-none">
+        <input
+          id={field.name}
+          type="checkbox"
+          checked={value === "true"}
+          onChange={(event) => onChange(field, event.target.checked ? "true" : "false")}
+          className="size-4 rounded border-zinc-300 accent-zinc-900"
+        />
+        <span className="text-sm text-zinc-600">{field.hint ?? "Yes"}</span>
+      </label>
+    );
+  }
+
   return (
     <input
       id={field.name}
@@ -214,6 +229,9 @@ function buildPayload(fields: FieldConfig[], values: Record<string, string>): Re
         break;
       case "number":
         payload[field.name] = raw === "" ? 0 : Number(raw);
+        break;
+      case "boolean":
+        payload[field.name] = raw === "true";
         break;
       default:
         payload[field.name] = field.name === "published_at" && raw === "" ? null : raw;
