@@ -160,7 +160,15 @@ function GhostButton({
 }
 
 export function ContactSection({ locale, copy }: { locale: Locale; copy: Copy }) {
-  const [active, setActive] = useState<TopicId>("team");
+  const [active, setActive] = useState<TopicId>(() => {
+    if (typeof window !== "undefined") {
+      const topic = window.location.hash.replace("#", "") as TopicId;
+      if (topic && ["team", "support", "press", "privacy", "vulnerability"].includes(topic)) {
+        return topic;
+      }
+    }
+    return "team";
+  });
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [values, setValues] = useState<Record<string, string>>({});

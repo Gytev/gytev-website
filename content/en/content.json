@@ -373,7 +373,7 @@
         {
           "id": "who-we-are",
           "title": "Who we are",
-          "content": "Gytev is a technology company building intelligent systems for the real world. Our mission is to connect digital intelligence to physical reality. Gytev is a subsidiary of HOEX LLC, headquartered in Cotonou, Republic of Benin. For more information about Gytev, please visit https://gytev.com/about."
+          "content": "Gytev is a technology company building intelligent systems for the real world. Our mission is to connect digital intelligence to physical reality. Gytev is a subsidiary of HOEX LLC, headquartered in Cotonou, Republic of Benin. For more information about Gytev, please visit <a href=\"https://www.gytev.com/company/about\" class=\"underline underline-offset-2 hover:text-[#fff]\">Us</a>."
         },
         {
           "id": "registration-and-access",

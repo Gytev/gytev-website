@@ -373,7 +373,7 @@
         {
           "id": "who-we-are",
           "title": "Qui nous sommes",
-          "content": "Gytev est une entreprise de technologie spécialisée dans les systèmes intelligents pour le monde réel. Notre mission est de connecter l'intelligence numérique à la réalité physique. Gytev est une filiale de HOEX SARL, dont le siège social est situé à Cotonou, République du Bénin. Pour en savoir plus sur Gytev, veuillez visiter https://gytev.com/about."
+          "content": "Gytev est une entreprise de technologie spécialisée dans les systèmes intelligents pour le monde réel. Notre mission est de connecter l'intelligence numérique à la réalité physique. Gytev est une filiale de HOEX SARL, dont le siège social est situé à Cotonou, République du Bénin. Pour en savoir plus sur Gytev, veuillez visiter <a href=\"https://www.gytev.com/company/about\" class=\"underline underline-offset-2 hover:text-[#fff]\">Us</a>."
         },
         {
           "id": "registration-and-access",

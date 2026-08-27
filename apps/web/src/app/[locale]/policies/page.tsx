@@ -32,10 +32,10 @@ export default async function PoliciesPage({ params }: Props) {
                   {content.legal.map((item) => (
                     <li key={item.title}>
                       <a href={item.href} className="group block underline decoration-[#666] underline-offset-2 hover:decoration-[#999] transition-colors">
-                        <h3 className="text-[15px] font-normal text-white group-hover:text-[#ccc] transition-colors">
+                        <h3 className="text-[15px] font-semibold text-white group-hover:text-[#ccc] transition-colors">
                           {item.title}
                         </h3>
-                        <p className="mt-1 text-[14px] text-[#a0a0a0]">
+                        <p className="mt-1 text-[14px] font-semibold text-[#a0a0a0]">
                           {item.description}
                         </p>
                       </a>
@@ -52,10 +52,10 @@ export default async function PoliciesPage({ params }: Props) {
                   {content.policies.map((item) => (
                     <li key={item.title}>
                       <a href={item.href} className="group block underline decoration-[#666] underline-offset-2 hover:decoration-[#999] transition-colors">
-                        <h3 className="text-[15px] font-normal text-white group-hover:text-[#ccc] transition-colors">
+                        <h3 className="text-[15px] font-semibold text-white group-hover:text-[#ccc] transition-colors">
                           {item.title}
                         </h3>
-                        <p className="mt-1 text-[14px] text-[#a0a0a0]">
+                        <p className="mt-1 text-[14px] font-semibold text-[#a0a0a0]">
                           {item.description}
                         </p>
                       </a>
