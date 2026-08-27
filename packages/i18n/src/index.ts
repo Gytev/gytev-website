@@ -601,7 +601,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
             links: [
               { label: "Blog", href: "/company/blog" },
               { label: "Customers", href: "/company/customers" },
-              { label: "Press", href: "/company/press" },
             ],
           },
           {
@@ -1478,7 +1477,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
                 { label: "About Us", href: "/company/about" },
                 { label: "Careers", href: "/company/careers" },
                 { label: "Blog", href: "/company/blog" },
-                { label: "Press", href: "/company/press" },
                 { label: "Contact", href: "/company/contact" },
               ],
             },
@@ -1707,7 +1705,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
             links: [
               { label: "Blog", href: "/company/blog" },
               { label: "Clients", href: "/company/customers" },
-              { label: "Presse", href: "/company/press" },
             ],
           },
           {

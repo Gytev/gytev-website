@@ -185,6 +185,7 @@ def content_rows(locale: str, data: dict[str, Any]) -> list[Any]:
             excerpt=item["excerpt"],
             author=item["author"],
             tags=item.get("tags", []),
+            image=item.get("image"),
             published_at=parse_date(item.get("date", "")),
         )
         for item in data.get("blog", [])
@@ -197,6 +198,16 @@ def content_rows(locale: str, data: dict[str, Any]) -> list[Any]:
             sector=item["sector"],
             country=item["country"],
             quote=item["quote"],
+            badge=item.get("badge"),
+            image=item.get("image"),
+            overview=item.get("overview"),
+            challenge=item.get("challenge"),
+            solution=item.get("solution"),
+            results=item.get("results"),
+            metrics=item.get("metrics"),
+            quote_author=item.get("quoteAuthor"),
+            quote_role=item.get("quoteRole"),
+            video_url=item.get("videoUrl"),
         )
         for item in data.get("customers", [])
     ]

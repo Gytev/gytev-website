@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Container } from "@gytev/ui";
 
 type CompanyHeroProps = {
@@ -12,14 +12,14 @@ type CompanyHeroProps = {
 
 export function CompanyHero({ kicker, title, description, children }: CompanyHeroProps) {
   const descRef = useRef<HTMLDivElement>(null);
-  const [mounted, setMounted] = useState(false);
+  const mountedRef = useRef(false);
 
   useEffect(() => {
-    setMounted(true);
+    mountedRef.current = true;
   }, []);
 
   useEffect(() => {
-    if (!mounted) return;
+    if (!mountedRef.current) return;
     function onScroll() {
       if (!descRef.current) return;
       const rect = descRef.current.getBoundingClientRect();
@@ -36,7 +36,7 @@ export function CompanyHero({ kicker, title, description, children }: CompanyHer
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
-  }, [mounted]);
+  }, []);
 
   return (
     <section className="relative pt-20 pb-16 lg:pt-28 lg:pb-20 border-b border-[var(--line)] bg-[var(--color-surface)] overflow-hidden">

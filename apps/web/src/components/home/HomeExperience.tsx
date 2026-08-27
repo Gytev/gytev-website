@@ -8,7 +8,7 @@ import { localizedHref } from "@gytev/i18n";
 import { Hero } from "./Hero";
 import { HardQuestions } from "./HardQuestions";
 import { LogoMarquee } from "@/components/shared/LogoMarquee";
-import type { Content, PartnerData, CustomerData } from "@/lib/content";
+import type { PartnerData, CustomerData } from "@/lib/content";
 
 type HomeExperienceProps = {
   dict: Dictionary;
