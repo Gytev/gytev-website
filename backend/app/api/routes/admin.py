@@ -15,6 +15,7 @@ from app.models import (
     Product,
     ResearchTopic,
     Solution,
+    TermsPage,
 )
 from app.schemas import Overview
 
@@ -30,6 +31,7 @@ MODELS = {
     "customers": Customer,
     "company": CompanySection,
     "navigation": NavigationItem,
+    "terms": TermsPage,
 }
 
 

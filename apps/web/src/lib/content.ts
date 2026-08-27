@@ -460,3 +460,156 @@ export async function getCustomers(locale: string): Promise<CustomerData[]> {
   }
 }
 
+export interface TermsSection {
+  id: string;
+  title: string;
+  content: string;
+}
+
+export interface TermsContent {
+  slug: string;
+  title: string;
+  published_at: string | null;
+  updated_at_doc: string | null;
+  sidebar_label: string;
+  intro_heading: string | null;
+  intro_content: string | null;
+  sections: TermsSection[];
+}
+
+export async function getTermsContent(locale: string): Promise<TermsContent | null> {
+  const resolved: Locale = (locale as Locale) in localContents ? (locale as Locale) : "en";
+  const localTerms = localContents[resolved].terms as Array<{
+    slug: string;
+    title: string;
+    published_at?: string;
+    updated_at_doc?: string;
+    sidebar_label?: string;
+    intro_heading?: string;
+    intro_content?: string;
+    sections: Array<{ id: string; title: string; content: string }>;
+  }> | undefined;
+  const raw = localTerms?.[0] ?? null;
+  const local: TermsContent | null = raw
+    ? {
+        slug: raw.slug,
+        title: raw.title,
+        published_at: raw.published_at ?? null,
+        updated_at_doc: raw.updated_at_doc ?? null,
+        sidebar_label: raw.sidebar_label ?? "On this page",
+        intro_heading: raw.intro_heading ?? null,
+        intro_content: raw.intro_content ?? null,
+        sections: raw.sections,
+      }
+    : null;
+  if (!contentApiUrl) return local;
+  try {
+    const response = await fetch(
+      `${contentApiUrl}/terms?locale=${encodeURIComponent(resolved)}`,
+      { next: { revalidate: 60 } },
+    );
+    if (!response.ok) return local;
+    const items = (await response.json()) as Array<{
+      slug: string;
+      title: string;
+      published_at?: string | null;
+      updated_at_doc?: string | null;
+      sidebar_label?: string;
+      intro_heading?: string | null;
+      intro_content?: string | null;
+      sections: Array<{ id: string; title: string; content: string }>;
+    }>;
+    if (!Array.isArray(items) || items.length === 0) return local;
+    return {
+      slug: items[0].slug,
+      title: items[0].title,
+      published_at: items[0].published_at ?? null,
+      updated_at_doc: items[0].updated_at_doc ?? null,
+      sidebar_label: items[0].sidebar_label ?? "On this page",
+      intro_heading: items[0].intro_heading ?? null,
+      intro_content: items[0].intro_content ?? null,
+      sections: items[0].sections,
+    };
+  } catch {
+    return local;
+  }
+}
+
+export async function getPrivacyContent(locale: string): Promise<TermsContent | null> {
+  const resolved: Locale = (locale as Locale) in localContents ? (locale as Locale) : "en";
+  const localTerms = localContents[resolved].privacy as Array<{
+    slug: string;
+    title: string;
+    published_at?: string;
+    updated_at_doc?: string;
+    sidebar_label?: string;
+    intro_heading?: string;
+    intro_content?: string;
+    sections: Array<{ id: string; title: string; content: string }>;
+  }> | undefined;
+  const raw = localTerms?.[0] ?? null;
+  const local: TermsContent | null = raw
+    ? {
+        slug: raw.slug,
+        title: raw.title,
+        published_at: raw.published_at ?? null,
+        updated_at_doc: raw.updated_at_doc ?? null,
+        sidebar_label: raw.sidebar_label ?? "On this page",
+        intro_heading: raw.intro_heading ?? null,
+        intro_content: raw.intro_content ?? null,
+        sections: raw.sections,
+      }
+    : null;
+  if (!contentApiUrl) return local;
+  try {
+    const response = await fetch(
+      `${contentApiUrl}/privacy?locale=${encodeURIComponent(resolved)}`,
+      { next: { revalidate: 60 } },
+    );
+    if (!response.ok) return local;
+    const items = (await response.json()) as Array<{
+      slug: string;
+      title: string;
+      published_at?: string | null;
+      updated_at_doc?: string | null;
+      sidebar_label?: string;
+      intro_heading?: string | null;
+      intro_content?: string | null;
+      sections: Array<{ id: string; title: string; content: string }>;
+    }>;
+    if (!Array.isArray(items) || items.length === 0) return local;
+    return {
+      slug: items[0].slug,
+      title: items[0].title,
+      published_at: items[0].published_at ?? null,
+      updated_at_doc: items[0].updated_at_doc ?? null,
+      sidebar_label: items[0].sidebar_label ?? "On this page",
+      intro_heading: items[0].intro_heading ?? null,
+      intro_content: items[0].intro_content ?? null,
+      sections: items[0].sections,
+    };
+  } catch {
+    return local;
+  }
+}
+
+export interface PolicyItem {
+  title: string;
+  description: string;
+  href: string;
+}
+
+export function getPoliciesContent(locale: string): { legal: PolicyItem[]; policies: PolicyItem[] } {
+  const fr = locale === "fr";
+  return {
+    legal: [
+      { title: fr ? "Conditions d'utilisation" : "Terms of use", description: fr ? "Conditions régissant l'utilisation de Rio, RedQ, Quiisa et des autres services Gytev." : "Terms that govern use of Rio, RedQ, Quiisa, and Gytev's other services.", href: fr ? "/fr/policies/terms-of-use" : "/policies/terms-of-use" },
+      { title: fr ? "Politique de confidentialité" : "Privacy policy", description: fr ? "Pratiques relatives aux informations personnelles que nous collectons." : "Practices with respect to personal information we collect from or about you.", href: fr ? "/fr/policies/privacy-policy" : "/policies/privacy-policy" },
+    ],
+    policies: [
+      { title: fr ? "Politique d'utilisation" : "Usage policies", description: fr ? "Veiller à ce que notre technologie soit utilisée à bon escient." : "Ensuring our technology is used for good.", href: "#" },
+      { title: fr ? "Politique de confidentialité entreprise" : "Enterprise privacy", description: fr ? "Utilisation et conservation des données soumises pour les utilisateurs entreprise." : "Usage and retention of data submitted for enterprise users.", href: "#" },
+    ],
+  };
+}
+

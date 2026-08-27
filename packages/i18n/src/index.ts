@@ -54,6 +54,9 @@ export type Dictionary = {
       developers: string;
       blog: string;
       customers: string;
+      terms: string;
+      policies: string;
+      privacy: string;
     };
   };
   nav: Record<
@@ -428,6 +431,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
         developers: "Developers",
         blog: "Blog",
         customers: "Customers",
+        terms: "Terms of Use",
+        policies: "Terms & policies",
+        privacy: "Privacy policy",
       },
       description:
         "Gytev builds intelligent systems that observe, understand, predict and act on the real world. From farms to blood banks, we combine sensors, data, AI and domain knowledge to make complex systems understandable and actionable.",
@@ -1502,8 +1508,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
             {
               title: "Terms & Policies",
               links: [
-                { label: "Terms of Use", href: "/company/about" },
-                { label: "Privacy Policy", href: "/company/about" },
+                { label: "Terms of Use", href: "/policies/terms-of-use" },
+                { label: "Privacy Policy", href: "/policies/privacy-policy" },
+                { label: "Other Policies", href: "/policies" },
               ],
             },
           ],
@@ -1532,6 +1539,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
         developers: "Développeurs",
         blog: "Blog",
         customers: "Clients",
+        terms: "Conditions d'utilisation",
+        policies: "Conditions et politiques",
+        privacy: "Politique de confidentialité",
       },
       description:
         "Gytev construit des systèmes intelligents qui observent, comprennent, prédisent et agissent sur le monde réel à commencer par l'agriculture et la santé publique en Afrique.",
@@ -2618,8 +2628,9 @@ internships: {
             {
               title: "Conditions & politiques",
               links: [
-                { label: "Conditions d'utilisation", href: "/company/about" },
-                { label: "Politique de confidentialité", href: "/company/about" },
+                { label: "Conditions d'utilisation", href: "/policies/terms-of-use" },
+                { label: "Politique de confidentialité", href: "/policies/privacy-policy" },
+                { label: "Autres politiques", href: "/policies" },
               ],
             },
           ],

@@ -125,6 +125,22 @@ class CompanySection(Base, TimestampMixin):
     content = Column(Text, nullable=False)
 
 
+class TermsPage(Base, TimestampMixin):
+    __tablename__ = "terms_pages"
+    __table_args__ = (UniqueConstraint("locale", "slug", name="uq_terms_pages_locale_slug"),)
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
+    locale = Column(String(8), nullable=False, default="en", index=True)
+    slug = Column(String(120), nullable=False, index=True)
+    title = Column(String(200), nullable=False)
+    published_at = Column(DateTime(timezone=True), nullable=True)
+    updated_at_doc = Column(DateTime(timezone=True), nullable=True)
+    sidebar_label = Column(String(100), nullable=False, default="On this page")
+    intro_heading = Column(Text, nullable=True)
+    intro_content = Column(Text, nullable=True)
+    sections = Column(JSON, nullable=False, default=list)
+
+
 class CompanyMilestone(Base, TimestampMixin):
     __tablename__ = "company_milestones"
 

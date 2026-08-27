@@ -16,6 +16,9 @@ const staticPaths = [
   "/company/careers",
   "/company/contact",
   "/company/customers",
+  "/policies",
+  "/policies/terms-of-use",
+  "/policies/privacy-policy",
 ];
 
 const customerSlugs = [

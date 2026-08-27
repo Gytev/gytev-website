@@ -537,6 +537,28 @@ export const entities: EntityConfig[] = [
       { name: "sort_order", label: "Order", kind: "number", defaultValue: 0 },
     ],
   },
+  {
+    slug: "terms",
+    label: "Terms",
+    plural: "Terms Pages",
+    endpoint: "/terms",
+    titleField: "title",
+    showFields: ["slug", "title", "published_at", "updated_at_doc"],
+    fields: [
+      { name: "slug", label: "Slug", required: true },
+      { name: "title", label: "Title", required: true },
+      { name: "locale", label: "Locale", required: true, defaultValue: "en" },
+      { name: "published_at", label: "Published at" },
+      { name: "updated_at_doc", label: "Last updated" },
+      {
+        name: "sections",
+        label: "Sections",
+        kind: "list",
+        placeholder: "Add a section",
+        hint: "Each section needs an id, title, and HTML content.",
+      },
+    ],
+  },
 ];
 
 export function getEntity(slug: string): EntityConfig | undefined {

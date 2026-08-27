@@ -12,7 +12,7 @@
     {
       "slug": "redq",
       "name": "RedQ",
-      "description": "La plateforme nationale de gestion des dons et des poches de sang — du donneur à l'hôpital, avec traçabilité complète.",
+      "description": "La plateforme nationale de gestion des dons et des poches de sang, du donneur à l'hôpital, avec traçabilité complète.",
       "href": "/solutions/redq"
     },
     {
@@ -145,7 +145,7 @@
       "country": "Bénin",
       "badge": "VILLE INTELLIGENTE",
       "product": "quiisa",
-      "quote": "Quiisa garde notre développement de 1 000 hectares sur les rails — chaque tâche, chaque équipe, chaque échéance visibles en un seul endroit.",
+      "quote": "Quiisa garde notre développement de 1 000 hectares sur les rails, chaque tâche, chaque équipe, chaque échéance visibles en un seul endroit.",
       "quoteAuthor": "Prof. Valentin Agon",
       "quoteRole": "Directeur exécutif, Sèmè City",
       "overview": "Sèmè City est le projet phare de ville intelligente du Bénin, une zone de 1 000 hectares près de Cotonou. La plateforme Quiisa de Gytev gère la coordination multi-acteurs de la construction et des opérations.",
@@ -162,7 +162,7 @@
     }
   ],
   "company": {
-    "about": "Gytev construit des systèmes intelligents qui comprennent le monde réel — des systèmes qui observent, comprennent, prédisent et agissent sur les exploitations, les banques de sang, les villes et les industries.",
+    "about": "Gytev construit des systèmes intelligents qui comprennent le monde réel, des systèmes qui observent, comprennent, prédisent et agissent sur les exploitations, les banques de sang, les villes et les industries.",
     "story": "Nous sommes partis d'une observation simple : le monde physique reste fragmenté, complexe et difficile à comprendre pour les logiciels. Nous nous sommes lancés pour connecter l'intelligence numérique à la réalité.",
     "vision": "Notre ambition sur 20 ans est de construire la couche d'intelligence du monde réel. Les données fournissent le contexte, les capteurs la perception, l'IA l'intelligence, le logiciel l'utilité.",
     "newsroom": "Communiqués de presse, couverture médiatique et annonces de l'entreprise.",
@@ -197,18 +197,18 @@
   ],
   "team": [
     {
-      "name": "Nehm",
+      "name": "Nehm Hounga",
       "role": "Co-fondateur & CEO",
-      "photo": null
+      "photo": "/images/about/nehm.png"
     },
     {
       "name": "Harold Chanwin",
-      "role": "Co-fondateur & CTO",
-      "photo": null
+      "role": "Co-fondateur",
+      "photo": "/images/about/harold.png"
     },
     {
-      "name": "Ghilth Gbaguidi",
-      "role": "Chef Science & AI Appliqué",
+      "name": "Epiphane Semassa",
+      "role": "CTO",
       "photo": null
     }
   ],
@@ -359,5 +359,156 @@
       },
       "error": "Une erreur est survenue lors de l'envoi. Réessayez ou écrivez-nous directement."
     }
-  }
+  },
+  "terms": [
+    {
+      "slug": "terms-of-use",
+      "title": "Conditions d'utilisation",
+      "published_at": "2026-01-01",
+      "updated_at_doc": "2026-01-01",
+      "sidebar_label": "Sur cette page",
+      "intro_heading": "Merci d'utiliser les services Gytev !",
+      "intro_content": "Les présentes Conditions d'utilisation s'appliquent à votre utilisation de Rio, RedQ, Quiisa et des autres services Gytev à destination des entreprises et des particuliers, ainsi qu'à toute application logicielle et tout site web associés (collectivement, les « Services »). Ces Conditions constituent un accord entre vous et HOEX SARL, société de droit béninois, et incluent nos Conditions de service et des dispositions importantes pour la résolution des litiges. En utilisant nos Services, vous acceptez ces Conditions.",
+      "sections": [
+        {
+          "id": "who-we-are",
+          "title": "Qui nous sommes",
+          "content": "Gytev est une entreprise de technologie spécialisée dans les systèmes intelligents pour le monde réel. Notre mission est de connecter l'intelligence numérique à la réalité physique. Gytev est une filiale de HOEX SARL, dont le siège social est situé à Cotonou, République du Bénin. Pour en savoir plus sur Gytev, veuillez visiter https://gytev.com/about."
+        },
+        {
+          "id": "registration-and-access",
+          "title": "Inscription et accès",
+          "content": "<h3>Âge minimum</h3><p>Vous devez avoir au moins 16 ans, ou l'âge de la majorité dans votre juridiction, pour consentir à l'utilisation des Services. Si vous êtes mineur de 18 ans, vous devez avoir l'autorisation de votre parent ou tuteur légal pour utiliser les Services.</p><h3>Inscription</h3><p>Vous devez fournir des informations exactes et complètes pour créer un compte et utiliser nos Services. Vous ne devez pas partager vos identifiants de compte ni rendre votre compte accessible à quiconque. Vous êtes responsable de toutes les activités qui se produisent sous votre compte. Si vous créez un compte ou utilisez les Services pour le compte d'une autre personne ou entité, vous devez avoir l'autorité d'accepter ces Conditions en leur nom.</p>"
+        },
+        {
+          "id": "using-our-services",
+          "title": "Utilisation de nos Services",
+          "content": "<h3>Ce que vous pouvez faire</h3><p>Sous réserve de votre conformité aux présentes Conditions, vous pouvez accéder à nos Services et les utiliser. Dans votre utilisation de nos Services, vous devez respecter toutes les lois applicables ainsi que nos Politiques d'utilisation et toute autre documentation, guideline ou politique que nous mettons à votre disposition.</p><h3>Ce que vous ne pouvez pas faire</h3><p>Vous ne pouvez pas utiliser nos Services pour toute activité illégale, nuisible ou abusive. Par exemple, vous ne pouvez pas :</p><ul><li>Utiliser nos Services de manière à enfreindre, usurper ou violer les droits de quiconque.</li><li>Modifier, copier, louer, vendre ou distribuer tout ou partie de nos Services.</li><li>Tenter d'ingénierie inverse ou d'assister quiconque à décompiler ou découvrir le code source ou les composants sous-jacents de nos Services.</li><li>Extraire automatiquement ou par programme des données ou des Sorties.</li><li>Représenter que les Sorties ont été générées par un humain alors qu'elles ne l'ont pas été.</li><li>Interrompre ou perturber nos Services.</li><li>Utiliser les Sorties pour développer des modèles concurrents de Gytev.</li></ul><h3>Logiciel</h3><p>Nos Services peuvent vous permettre de télécharger des logiciels, qui peuvent se mettre à jour automatiquement pour vous assurer que vous utilisez la dernière version.</p><h3>Domaines d'entreprise</h3><p>Si vous créez un compte en utilisant une adresse e-mail détenue par une organisation, ce compte peut être ajouté au compte professionnel de l'organisation chez nous.</p><h3>Services de tiers</h3><p>Nos Services peuvent inclure des logiciels, produits ou services de tiers. Les Services de Tiers et les Sorties de Tiers sont soumis à leurs propres conditions, et nous n'en sommes pas responsables.</p><h3>Commentaires</h3><p>Nous apprécios vos commentaires, et vous acceptez que nous puissions les utiliser sans restriction ni compensation.</p>"
+        },
+        {
+          "id": "content",
+          "title": "Contenu",
+          "content": "<h3>Votre contenu</h3><p>Vous pouvez fournir des entrées aux Services (« Entrée ») et recevoir des sorties des Services basées sur les Entrées (« Sortie »). Les Entrées et les Sorties sont collectivement le « Contenu ». Vous êtes responsable du Contenu.</p><h3>Propriété du contenu</h3><p>Entre vous et Gytev, vous (a) conservez vos droits de propriété sur les Entrées et (b) êtes propriétaire des Sorties. Nous vous cédons ici tous nos droits, titres et intérêts, dans les Sorties.</p><h3>Similitude du contenu</h3><p>En raison de la nature de nos Services, les sortites peuvent ne pas être uniques et d'autres utilisateurs peuvent recevoir des sorties similaires.</p><h3>Notre utilisation du contenu</h3><p>Nous pouvons utiliser le Contenu pour fournir, maintenir, développer et améliorer nos Services.</p><h3>Exactitude</h3><p>L'intelligence artificielle et l'apprentissage automatique sont des domaines en évolution rapide. L'utilisation de nos Services peut entraîner des Sorties qui ne reflètent pas fidèlement des personnes, des lieux ou des faits réels.</p><p>Lorsque vous utilisez nos Services, vous comprenez et acceptez que :</p><ul><li>Les Sorties peuvent ne pas toujours être exactes.</li><li>Vous devez évaluer l'exactitude et la pertinence des Sorties.</li><li>Vous ne devez utiliser aucune Sortie relative à une personne à des fins qui pourraient avoir un impact légal ou matériel.</li><li>Nos Services peuvent fournir des Sorties incomplètes, incorrectes ou offensantes.</li></ul>"
+        },
+        {
+          "id": "our-ip-rights",
+          "title": "Nos droits de propriété intellectuelle",
+          "content": "<p>Nous et nos affiliés détenons tous les droits, titres et intérêts dans et sur les Services. Vous ne pouvez utiliser notre nom et notre logo que conformément à nos Directives de marque.</p>"
+        },
+        {
+          "id": "paid-accounts",
+          "title": "Comptes payants",
+          "content": "<h3>Facturation</h3><p>Si vous achetez des Services, vous fournirez des informations de facturation complètes et exactes. Pour les abonnements payants, nous facturerons automatiquement votre moyen de paiement jusqu'à ce que vous annuliez.</p><h3>Annulation</h3><p>Vous pouvez annuler votre abonnement payant à tout moment. Les paiements ne sont pas remboursables, sauf lorsque la loi l'exige.</p><h3>Modifications</h3><p>Nous pouvons modifier nos prix de temps en temps. Si nous augmentons les prix, nous vous donnerons au moins 30 jours de préavis.</p>"
+        },
+        {
+          "id": "termination-and-suspension",
+          "title": "Résiliation et suspension",
+          "content": "<h3>Résiliation</h3><p>Vous êtes libre d'arrêter d'utiliser nos Services à tout moment. Nous nous réservons le droit de suspendre ou de résilier votre accès si nous déterminons que :</p><ul><li>Vous avez violé les présentes Conditions.</li><li>Nous devons le faire pour nous conformer à la loi.</li><li>Votre utilisation pourrait causer un risque ou un préjudice.</li></ul><h3>Appels</h3><p>Si vous estimez que nous avons suspendu ou résilié votre compte par erreur, vous pouvez déposer un appel en contactant notre équipe de support.</p>"
+        },
+        {
+          "id": "discontinuation-of-services",
+          "title": "Arrêt des Services",
+          "content": "<p>Nous pouvons décider d'interrompre nos Services, mais si nous le faisons, nous vous en informerons à l'avance et vous rembourserons.</p>"
+        },
+        {
+          "id": "disclaimer-of-warranties",
+          "title": "Exclusion de garanties",
+          "content": "<p class=\"legal-bold\">NOS SERVICES SONT FOURNIS « EN L'ÉTAT ». NOUS EXCLUONS TOUTES LES GARANTIES, Y COMPRIS LES GARANTIES DE QUALITÉ MARCHANDE, D'ADÉQUATION À UN USAGE PARTICULIER, ET DE NON-VIOLATION.</p><p class=\"legal-bold\">VOUS ACCEPTEZ QUE TOUTE UTILISATION DES SORTIES EST À VOS RISQUES ET PÉRILS.</p>"
+        },
+        {
+          "id": "limitation-of-liability",
+          "title": "Limitation de responsabilité",
+          "content": "<p class=\"legal-bold\">NI NOUS NI L'UN DE NOS AFFILIÉS NE SERONS RESPONSABLES DES DOMMAGES INDIRECTS, ACCESSOIRES, SPÉCIAUX OU CONSÉCUTIFS. NOTRE RESPONSABILITÉ NE DÉPASSERA PAS CENT DOLLARS (100 000 FCFA).</p><p>Certains pays n'autorisent pas l'exclusion de certaines garanties, de sorte que certaines dispositions peuvent ne pas s'appliquer à vous.</p>"
+        },
+        {
+          "id": "indemnity",
+          "title": "Indemnisation",
+          "content": "<p>Si vous êtes une entreprise, vous indemniserez Gytev de toute responsabilité découlant de votre utilisation des Services.</p>"
+        },
+        {
+          "id": "dispute-resolution",
+          "title": "Règlement des litiges",
+          "content": "<p>En cas de litige, les parties s'efforceront de le résoudre à l'amiable. À défaut d'accord dans les 60 jours, le litige sera soumis aux juridictions compétentes de Cotonou, République du Bénin.</p><p>Les parties conviennent de tenter la médiation avant de recourir à un tribunal.</p>"
+        },
+        {
+          "id": "copyright-complaints",
+          "title": "Plaintes pour violation de droits d'auteur",
+          "content": "<p>Si vous estimez que vos droits de propriété intellectuelle ont été violés, veuillez envoyer un avis à l'adresse ci-dessous.</p><p class=\"legal-address\">HOEX SARL<br/>Cotonou, République du Bénin<br/>À l'attention du Directeur Juridique</p>"
+        },
+        {
+          "id": "general-terms",
+          "title": "Conditions générales",
+          "content": "<h3>Cession</h3><p>Vous ne pouvez pas céder les droits aux présentes. Nous pouvons les céder à nos affiliés.</p><h3>Modifications</h3><p>Nous pouvons modifier les présentes Conditions de temps en temps. Nous vous donnerons 30 jours de préavis pour les modifications importantes.</p><h3>Accord intégral</h3><p>Les présentes Conditions constituent l'accord intégral entre vous et Gytev.</p><h3>Loi applicable</h3><p>La législation de la République du Bénin régira les présentes Conditions. Les litiges seront portés devant les tribunaux de Cotonou.</p>"
+        }
+      ]
+    }
+  ],
+  "privacy": [
+    {
+      "slug": "privacy-policy",
+      "title": "Politique de confidentialité",
+      "published_at": "2026-01-01",
+      "updated_at_doc": "2026-01-01",
+      "sidebar_label": "Sur cette page",
+      "intro_heading": "",
+      "intro_content": "Chez Gytev, notre mission est de connecter l'intelligence numérique à la réalité physique. Nous construisons des outils comme Rio, RedQ et Quiisa pour aider les entreprises et les particuliers à gérer leurs opérations dans le monde réel. Nous chez HOEX SARL (ensemble avec nos filiales, « Gytev », « nous », « notre » ou « nos ») nous nous engageons à respecter votre vie privée et à protéger fermement toute information que nous obtenons de vous ou vous concernant. Cette Politique de confidentialité décrit nos pratiques concernant les données personnelles que nous collectons concernant vous, et la façon dont nous les utilisons lorsque vous utilisez notre site web, nos applications et nos services (collectivement, les « Services »).",
+      "sections": [
+        {
+          "id": "personal-data-we-collect",
+          "title": "1. Données personnelles collectées",
+          "content": "<p>Nous collectons les données personnelles vous concernant (« Données personnelles ») comme suit :</p><h3>Données que vous fournissez</h3><p>Nous collectons les Données personnelles si vous créez un compte pour utiliser nos Services ou communiquez avec nous :</p><ul><li><strong>Informations de compte :</strong> Lors de la création d'un compte, nous collectons les informations associées, y compris votre nom, coordonnées, identifiants de compte, informations de paiement et historique des transactions.</li><li><strong>Contenu utilisateur :</strong> Nous collectons les Données personnelles que vous fournissez dans les entrées de nos Services (« Contenu »), y compris vos configurations, téléversements de données, appels API, rapports et autres contenus que vous soumettez via Rio, RedQ, Quiisa ou nos outils pour développeurs.</li><li><strong>Informations de communication :</strong> Si vous communiquez avec nous, nous pouvons collecter des Données personnelles comme votre nom, coordonnées et le contenu des messages que vous envoyez.</li></ul><h3>Données reçues de votre utilisation des Services</h3><p>Lorsque vous visitez, utilisez ou interagissez avec les Services, nous recevons les informations suivantes :</p><ul><li><strong>Données de journalisation :</strong> Nous collectons les informations que votre navigateur ou appareil envoie automatiquement. Les données de journalisation comprennent votre adresse protocole Internet, le type et les paramètres de navigateur, la date et l'heure de votre requête et la façon dont vous interagissez avec nos Services.</li><li><strong>Données d'utilisation :</strong> Nous collectons les informations sur votre utilisation et activité sur les Services, comme les types de contenus que vous consultez ou avec lesquels vous interagissez, les fonctionnalités que vous utilisez et les actions que vous entreprenez, les personnes ou systèmes avec lesquels vous interagissez, ainsi que votre fuseau horaire, pays, dates et heures d'accès, agent utilisateur et version, type d'appareil et votre connexion informatique.</li><li><strong>Informations sur l'appareil :</strong> Nous collectons les informations sur l'appareil que vous utilisez pour accéder aux Services, comme le nom de l'appareil, le système d'exploitation, les identifiants d'appareil et le navigateur utilisé.</li><li><strong>Informations de localisation :</strong> Nous déterminons la zone générale d'accès à nos Services en fonction d'informations comme votre adresse IP, pour des raisons de sécurité et pour améliorer votre expérience produit. Certains Services vous permettent également de fournir des informations de localisation plus précises, comme les coordonnées GPS.</li><li><strong>Cookies et technologies similaires :</strong> Nous utilisons des cookies et technologies similaires pour exploiter et administrer nos Services et améliorer votre expérience. Pour plus de détails, veuillez consulter notre Avis sur les cookies.</li></ul><h3>Informations provenant d'autres sources</h3><p>Nous recevons des informations provenant d'autres sources, comme nos partenaires de sécurité et de sûreté de confiance pour protéger la sécurité et prévenir la fraude, les abus et autres menaces, ainsi que des fournisseurs de marketing qui nous fournissent des informations sur des clients potentiels de nos services professionnels.</p>"
+        },
+        {
+          "id": "how-we-use-personal-data",
+          "title": "2. Utilisation des Données personnelles",
+          "content": "<p>Nous utilisons les Données personnelles aux fins suivantes :</p><ul><li>Pour fournir, analyser et maintenir nos Services, par exemple pour traiter les données de capteurs via Rio ou générer des rapports via RedQ ;</li><li>Pour améliorer et développer nos Services et mener des recherches, par exemple pour développer de nouvelles fonctionnalités ;</li><li>Pour personnaliser et adapter votre expérience sur nos Services, par exemple pour vous fournir des analyses et recommandations plus pertinentes ;</li><li>Pour communiquer avec vous, y compris pour répondre à vos questions, et vous envoyer des informations sur nos Services et événements ;</li><li>Pour promouvoir nos produits et services auprès de vous par marketing direct et sur des propriétés tierces, et pour évaluer l'efficacité de ces efforts, selon vos choix et paramètres ;</li><li>Pour prévenir la fraude, l'activité illégale ou les utilisations abusives de nos Services, et pour protéger la sécurité de nos systèmes et Services ;</li><li>Pour nous conformer aux obligations légales et protéger les droits, la vie privée, la sécurité ou la propriété de nos utilisateurs, de Gytev ou de tiers.</li></ul><p>Nous agrégeons ou désidentifions également les Données personnelles afin qu'elles ne vous identifient plus et utilisons ces informations aux fins décrites ci-dessus. Nous maintenons et utilisons les informations désidentifiées sous forme désidentifiée et n'essayons pas de réidentifier les informations, sauf si la loi l'exige.</p>"
+        },
+        {
+          "id": "disclosure-of-personal-data",
+          "title": "3. Divulgation des Données personnelles",
+          "content": "<p>Nous divulguons vos Données personnelles dans les circonstances suivantes :</p><ul><li><strong>Prestataires, fournisseurs de services et partenaires marketing :</strong> Pour nous aider à répondre aux besoins opérationnels et à exécuter certains services et fonctions, nous divulguons les Données personnelles à des prestataires, fournisseurs de services et partenaires marketing, y compris des fournisseurs d'hébergement, de services client, de services cloud, de diffusion de contenu, de support et de sûreté, de logiciels de communication par e-mail, de services d'analyse Web, de traitement de paiements, et de fournisseurs de technologies de l'information. Lorsque nous travaillons avec des fournisseurs de services, ces parties accèdent, traitent ou stockent les Données personnelles sur la base de nos instructions et uniquement dans le cadre de l'exécution de leurs fonctions.</li><li><strong>Transactions commerciales :</strong> Si nous sommes impliqués dans des transactions stratégiques, des réorganisations, des faillites, des redressements judiciaires ou des transitions de service vers un autre fournisseur, vos Données personnelles peuvent être divulguées dans le cadre du processus de diligence et transférées à un successeur ou affilié.</li><li><strong>Autorités gouvernementales ou autres tiers :</strong> Nous pouvons partager vos Données personnelles avec des autorités gouvernementales, des pairs de l'industrie ou des tiers tiers conformément à la loi.</li><li><strong>Affiliés :</strong> Nous divulguons les Données personnelles à nos affiliés, c'est-à-dire une entité qui contrôle, est contrôlée par, ou est sous le contrôle commun de HOEX SARL.</li><li><strong>Autres utilisateurs et tiers avec lesquels vous interagissez :</strong> Certains Services vous permettent d'interagir ou de partager des informations avec d'autres utilisateurs ou tiers. Les informations que vous partagez avec des partenaires tiers sont régies par leurs propres conditions et politiques de confidentialité.</li></ul><p>Nous agrégeons ou désidentifions également les Données personnelles et les partageons avec des tiers pour les fins décrites ci-dessus.</p>"
+        },
+        {
+          "id": "retention",
+          "title": "4. Conservation",
+          "content": "<p>Nous ne conservons vos Données personnelles que le temps nécessaire pour vous fournir nos Services, ou pour d'autres objectifs commerciaux légitimes tels que la résolution de litiges, des raisons de sécurité ou le respect de nos obligations légales. La durée de conservation dépend du type de données, de leur utilisation et, dans de nombreux cas, de vos paramètres :</p><ul><li><strong>Informations que nous conservons jusqu'à leur suppression :</strong> Certains Services vous permettent de supprimer les Données personnelles stockées dans votre compte. Une fois que vous choisissez de supprimer des Données personnelles, nous les supprimons de nos systèmes dans un délai de 30 jours, sauf si nous devons les conserver plus longtemps comme décrit ci-dessous.</li><li><strong>Informations que nous conservons plus longtemps pour des raisons légitimes de sécurité ou légales :</strong> Dans certains cas, nous devons conserver les Données personnelles plus longtemps même après leur suppression, par exemple parce que la loi l'exige, pour lutter contre la fraude et les abus, pour des raisons de sécurité ou pour la tenue de registres financiers. Par exemple :<ul><li>Si du Contenu ou votre compte est banni en raison de violations de nos politiques d'utilisation, nous pouvons conserver ces données pour protéger nos services contre la fraude ou les abus ;</li><li>Si la loi nous impose de conserver vos données (par exemple, nous recevons une assignation légale), nous pouvons les conserver pendant la durée de l'obligation légale ou réglementaire applicable ;</li><li>Lorsque nous sommes partie à une transaction financière, nous pouvons conserver les informations de paiement et de transaction à des fins de comptabilité, de résolution de litiges et de conformité réglementaire ;</li><li>Lorsque vous nous demandez de supprimer vos Données personnelles, nous conservons l'audit de la demande de suppression pour pouvoir vérifier que nous avons satisfait à la demande.</li></ul></li></ul><p>Pour déterminer ces durées de conservation, nous prenons en compte plusieurs facteurs, tels que notre objectif de traitement, la quantité, la nature et la sensibilité des informations, le risque potentiel d'utilisation ou de divulgation non autorisée, et les exigences légales auxquelles nous sommes soumis.</p>"
+        },
+        {
+          "id": "your-rights",
+          "title": "5. Vos droits",
+          "content": "<p>Selon votre lieu de résidence, vous pouvez disposer de certains droits statutaires concernant vos Données personnelles. Par exemple, vous pouvez avoir le droit de :</p><ul><li>Accéder à vos Données personnelles et aux informations relatives à leur traitement.</li><li>Rectifier ou mettre à jour vos Données personnelles.</li><li>Supprimer vos Données personnelles de nos registres.</li><li>Restreindre la façon dont nous traitons vos Données personnelles.</li><li>Transférer vos Données personnelles à un tiers (droit à la portabilité des données).</li><li>Retirer votre consentement, lorsque nous nous appuyons sur le consentement comme base légale du traitement.</li><li>Déposer une plainte auprès de votre autorité de protection des données locale.</li></ul><p>Vous pouvez exercer certains de ces droits via les paramètres de votre compte, ou en nous contactant directement. Vous pouvez contacter notre délégué à la protection des données à privacy@gytev.com.</p><p>Nous traitons vos Données personnelles pour les fins décrites dans cette politique sur des serveurs situés dans diverses juridictions, y compris le traitement et le stockage de vos Données personnelles dans nos installations et serveurs, ou dans des pays ou territoires où se trouvent nos affiliés et partenaires ou nos fournisseurs et prestataires de services. Bien que la législation sur la protection des données varie selon les pays, nous appliquons les protections décrites dans cette politique à vos Données personnelles quel que soit le lieu de traitement, et ne transférons ces données que selon des mécanismes de transfert juridiquement valables.</p>"
+        },
+        {
+          "id": "security",
+          "title": "6. Sécurité",
+          "content": "<p>Nous mettons en œuvre des mesures techniques, administratives et organisationnelles raisonnables sur le plan commercial conçues pour protéger les Données personnelles contre la perte, l'utilisation abusive et l'accès non autorisé, la divulgation, l'altération ou la destruction. Cependant, aucune transmission par Internet ou par e-mail n'est jamais entièrement sécurisée ou exempte d'erreurs. Vous devez donc faire preuve d'une attention particulière lors de la décision des informations que vous fournissez aux Services. De plus, nous ne sommes pas responsables de la contournement de paramètres de confidentialité ou de mesures de sécurité contenus dans le Service, ou sur des sites Web tiers.</p>"
+        },
+        {
+          "id": "children",
+          "title": "7. Enfants",
+          "content": "<p>Nos Services ne sont pas destinés aux enfants de moins de 13 ans. Nous ne collectons pas sciemment de Données personnelles auprès des enfants de moins de 13 ans. Si vous avez des raisons de croire qu'un enfant de moins de 13 ans a fourni des Données personnelles à Gytev via les Services, veuillez nous envoyer un courriel à privacy@gytev.com. Nous enquêterons sur toute notification et, le cas échéant, supprimerons les Données personnelles de nos systèmes. Les utilisateurs de moins de 18 ans doivent avoir l'autorisation de leur parent ou tuteur légal pour utiliser nos Services.</p>"
+        },
+        {
+          "id": "additional-disclosures",
+          "title": "8. Divulgations supplémentaires",
+          "content": "<p>Selon votre juridiction, vous pouvez disposer de droits de confidentialité supplémentaires. Nous honorons les demandes des individus pour exercer leurs droits conformément aux lois applicables sur la protection des données.</p><h3>Vérification</h3><p>Afin de protéger vos Données personnelles contre les accès, modifications ou suppressions non autorisés, nous pouvons vous demander de vérifier vos identifiants avant de pouvoir soumettre une demande d'accès, de correction ou de suppression de Données personnelles. Si vous n'avez pas de compte chez nous, ou si nous soupçonnons une activité frauduleuse ou malveillante, nous pouvons vous demander de fournir des Données personnelles supplémentaires à des fins de vérification.</p><h3>Mandataires autorisés</h3><p>Selon votre lieu de résidence, vous pouvez également soumettre une demande de droits par l'intermédiaire d'un mandataire autorisé. Dans ce cas, le mandataire doit présenter une autorisation d'agir en votre nom, et vous pouvez également être tenu de vérifier votre identité de manière indépendante auprès de nous.</p>"
+        },
+        {
+          "id": "changes-to-privacy-policy",
+          "title": "9. Modifications de la politique de confidentialité",
+          "content": "<p>Nous pouvons mettre à jour cette politique de temps en temps. Lorsque nous le faisons, nous publions une version mise à jour et une date d'entrée en vigueur sur cette page, sauf si un autre type de notification est requis par la législation applicable.</p>"
+        },
+        {
+          "id": "data-controller",
+          "title": "10. Responsable du traitement",
+          "content": "<p>HOEX SARL, dont le siège social est situé à Cotonou, République du Bénin, est le responsable du traitement de vos Données personnelles tel que décrit dans cette politique.</p>"
+        },
+        {
+          "id": "how-to-contact-us",
+          "title": "11. Comment nous contacter",
+          "content": "<p>Veuillez nous contacter à privacy@gytev.com si vous avez des questions ou des préoccupations non déjà traitées dans cette politique.</p><p class=\"legal-address\">HOEX SARL<br/>Cotonou, République du Bénin<br/>À l'attention du Délégué à la protection des données<br/>privacy@gytev.com</p>"
+        }
+      ]
+    }
+  ]
 }

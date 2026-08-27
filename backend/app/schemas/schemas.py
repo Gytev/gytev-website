@@ -157,6 +157,42 @@ class BlogPostRead(ReadBase):
     published_at: datetime | None
 
 
+class TermsPageCreate(BaseModel):
+    locale: str = Field(default="en", min_length=2, max_length=8)
+    slug: str = Field(min_length=1, max_length=120)
+    title: str = Field(min_length=1, max_length=200)
+    published_at: datetime | None = None
+    updated_at_doc: datetime | None = None
+    sidebar_label: str = "On this page"
+    intro_heading: str | None = None
+    intro_content: str | None = None
+    sections: list[dict[str, Any]] = Field(default_factory=list)
+
+
+class TermsPageUpdate(BaseModel):
+    locale: str | None = None
+    slug: str | None = None
+    title: str | None = None
+    published_at: datetime | None = None
+    updated_at_doc: datetime | None = None
+    sidebar_label: str | None = None
+    intro_heading: str | None = None
+    intro_content: str | None = None
+    sections: list[dict[str, Any]] | None = None
+
+
+class TermsPageRead(ReadBase):
+    locale: str
+    slug: str
+    title: str
+    published_at: datetime | None
+    updated_at_doc: datetime | None
+    sidebar_label: str
+    intro_heading: str | None
+    intro_content: str | None
+    sections: list[dict[str, Any]]
+
+
 class CustomerCreate(BaseModel):
     locale: str = Field(default="en", min_length=2, max_length=8)
     slug: str = Field(min_length=1, max_length=120)

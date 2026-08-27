@@ -756,3 +756,9 @@ button:focus-visible, a:focus-visible { outline: 2px solid #c45824; outline-offs
   .about-reveal, .about-loop__card { opacity: 1 !important; transform: none !important; transition: none !important; }
   .company-pulse::after { animation: none !important; opacity: 0 !important; }
 }
+
+/* Legal pages: uniform text weight + underlined links */
+.legal-content strong { font-weight: 400 !important; }
+.legal-content a { text-decoration: underline !important; text-decoration-color: #666 !important; text-underline-offset: 2px !important; transition: text-decoration-color 0.15s; }
+.legal-content a:hover { text-decoration-color: #999 !important; }
+.legal-content h3 { font-size: 1.125rem; font-weight: 400 !important; color: white; margin-top: 2rem; margin-bottom: 0.75rem; }

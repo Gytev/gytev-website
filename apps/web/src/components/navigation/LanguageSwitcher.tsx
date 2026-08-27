@@ -1,12 +1,23 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import type { Locale } from "@gytev/types";
-import { locales, localeNames } from "@gytev/i18n";
+import { locales, localeNames, defaultLocale } from "@gytev/i18n";
+
+function switchLocale(pathname: string, target: Locale): string {
+  const segments = pathname.split("/");
+  const first = segments[1];
+  const hasLocalePrefix = locales.includes(first as Locale);
+  const pathWithoutLocale = hasLocalePrefix ? "/" + segments.slice(2).join("/") : pathname;
+  if (target === defaultLocale) return pathWithoutLocale || "/";
+  return `/${target}${pathWithoutLocale === "/" ? "" : pathWithoutLocale}`;
+}
 
 export function LanguageSwitcher({ locale }: { locale: Locale }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     function onMouseDown(event: MouseEvent) {
@@ -56,7 +67,7 @@ export function LanguageSwitcher({ locale }: { locale: Locale }) {
             return (
               <li key={code}>
                 <a
-                  href={isActive ? undefined : `/${code}`}
+                  href={isActive ? undefined : switchLocale(pathname, code)}
                   role="option"
                   aria-selected={isActive}
                   onClick={() => setOpen(false)}

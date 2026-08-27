@@ -15,6 +15,7 @@ from app.api.routes import (
     products,
     research,
     solutions,
+    terms,
 )
 
 api_router = APIRouter()
@@ -37,3 +38,4 @@ api_router.include_router(company.contact_router)
 api_router.include_router(contact.router)
 api_router.include_router(jobs.router)
 api_router.include_router(analytics.router)
+api_router.include_router(terms.router)

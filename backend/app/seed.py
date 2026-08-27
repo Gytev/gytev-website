@@ -28,6 +28,7 @@ from app.models import (
     Product,
     ResearchTopic,
     Solution,
+    TermsPage,
 )
 
 CONTENT_DIR = Path(__file__).resolve().parents[2] / "content"
@@ -114,7 +115,6 @@ CONTACT_FLAT_MAP = {
     "vulnProductLabel": ("forms", "vulnerability", "product", "label"),
     "vulnProductPlaceholder": ("forms", "vulnerability", "product", "placeholder"),
     "vulnReportLabel": ("forms", "vulnerability", "report", "label"),
-    "vulnReportPlaceholder": ("forms", "vulnerability", "report", "placeholder"),
 }
 
 
@@ -246,10 +246,24 @@ def content_rows(locale: str, data: dict[str, Any]) -> list[Any]:
         for index, item in enumerate(data.get("partners", []))
     ]
     contact_copy = [contact_copy_row(locale, data)]
+    terms = [
+        TermsPage(
+            locale=locale,
+            slug=item["slug"],
+            title=item["title"],
+            published_at=parse_date(item.get("published_at", "")),
+            updated_at_doc=parse_date(item.get("updated_at_doc", "")),
+            sidebar_label=item.get("sidebar_label", "On this page"),
+            intro_heading=item.get("intro_heading"),
+            intro_content=item.get("intro_content"),
+            sections=item.get("sections", []),
+        )
+        for item in data.get("terms", [])
+    ]
     return (
         products + solutions + research + developers + blog
         + customers + company + milestones + team + partners
-        + contact_copy
+        + contact_copy + terms
     )
 
 
@@ -271,6 +285,7 @@ async def seed(reset: bool) -> None:
                 CompanyPartner,
                 CompanyTeamMember,
                 NavigationItem,
+                TermsPage,
             ):
                 await db.execute(delete(model))
             await db.commit()

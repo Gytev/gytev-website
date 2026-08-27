@@ -43,6 +43,9 @@ from app.schemas.schemas import (
     SolutionCreate,
     SolutionRead,
     SolutionUpdate,
+    TermsPageCreate,
+    TermsPageRead,
+    TermsPageUpdate,
     TrackEventCreate,
 )
 
@@ -91,5 +94,8 @@ __all__ = [
     "SolutionCreate",
     "SolutionRead",
     "SolutionUpdate",
+    "TermsPageCreate",
+    "TermsPageRead",
+    "TermsPageUpdate",
     "TrackEventCreate",
 ]

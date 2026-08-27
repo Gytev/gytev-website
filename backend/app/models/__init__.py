@@ -14,6 +14,7 @@ from app.models.models import (
     Product,
     ResearchTopic,
     Solution,
+    TermsPage,
 )
 
 __all__ = [
@@ -32,4 +33,5 @@ __all__ = [
     "Product",
     "ResearchTopic",
     "Solution",
+    "TermsPage",
 ]

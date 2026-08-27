@@ -22,7 +22,7 @@ function FounderCard({ member }: { member: TeamMember }) {
     <div className="flex flex-col gap-4 p-4 md:p-10 border-neutral-200 border-b border-r dark:border-neutral-800">
       <div
         className="relative overflow-hidden group bg-neutral-100 dark:bg-neutral-900"
-        style={{ aspectRatio: "1494 / 1344" }}
+        style={{ aspectRatio: "10 / 11" }}
       >
         {member.image ? (
           // eslint-disable-next-line @next/next/no-img-element
@@ -31,7 +31,7 @@ function FounderCard({ member }: { member: TeamMember }) {
             alt={member.name}
             loading="lazy"
             onLoad={() => setLoaded(true)}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out ${
+            className={`absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-500 ease-in-out ${
               loaded ? "opacity-100" : "opacity-0"
             }`}
           />
