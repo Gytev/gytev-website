@@ -1,6 +1,7 @@
 import { buildPageMetadata } from "@/lib/metadata";
-import { getContent } from "@/lib/content";
+import { getCustomers } from "@/lib/content";
 import { getDictionary } from "@/lib/i18n";
+import type { Locale } from "@gytev/types";
 import { CompanyHero } from "@/components/company/CompanyHero";
 import { TestimonialCard } from "@/components/company/TestimonialCard";
 import { Container } from "@gytev/ui";
@@ -20,7 +21,8 @@ type Props = {
 
 export default async function CustomersPage({ params }: Props) {
   const { locale } = await params;
-  const [content, dict] = await Promise.all([getContent(locale), getDictionary(locale)]);
+  const [customers, dict] = await Promise.all([getCustomers(locale), getDictionary(locale)]);
+  const l = locale as Locale;
 
   return (
     <main className="min-h-screen bg-[var(--paper)] text-[var(--ink)]">
@@ -33,13 +35,18 @@ export default async function CustomersPage({ params }: Props) {
       <section className="py-24">
         <Container>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-            {content.customers.map((customer) => (
+            {customers.map((customer) => (
               <TestimonialCard
                 key={customer.slug}
+                slug={customer.slug}
                 quote={customer.quote}
                 name={customer.name}
                 sector={customer.sector}
                 country={customer.country}
+                badge={customer.badge ?? undefined}
+                metrics={customer.metrics ?? undefined}
+                image={customer.image ?? undefined}
+                locale={l}
               />
             ))}
           </div>

@@ -124,7 +124,7 @@ function buildEntries(content: Content): SearchEntry[] {
     entries.push({
       title: customer.name,
       description: customer.quote,
-      href: "/customers",
+      href: `/customers/${customer.slug}`,
       keywords: [customer.sector, customer.country],
     });
   }

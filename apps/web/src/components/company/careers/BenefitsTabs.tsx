@@ -70,26 +70,26 @@ export function BenefitsTabs({ heading, description, tabs }: BenefitsTabsProps) 
   }
 
   return (
-    <section id="benefits" className="scroll-mt-24 text-neutral-900 pt-10 pb-10 lg:pb-20 bg-white">
+    <section id="benefits" className="scroll-mt-24 text-[#f0ede8] pt-10 pb-10 lg:pb-20 bg-[#0a0a0b]">
       {/* Editorial headline */}
       <div className="w-full relative px-4 lg:px-10">
-        <p className="pt-10 lg:pt-20 text-4xl font-medium tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl text-left">
+        <p className="pt-10 lg:pt-20 text-4xl font-medium tracking-tight text-[#f0ede8] sm:text-5xl lg:text-6xl text-left">
           {heading}
         </p>
-        <p className="mt-6 lg:mt-10 text-lg text-neutral-600 text-left leading-relaxed">
+        <p className="mt-6 lg:mt-10 text-lg text-[#999] text-left leading-relaxed">
           {description}
         </p>
       </div>
 
       {/* Anchor nav + stacked categories */}
-      <div ref={sectionRef} className="mt-10 border-neutral-200 border-y">
+      <div ref={sectionRef} className="mt-10 border-[rgba(255,255,255,0.08)] border-y">
         <div className="relative h-auto w-full flex flex-col md:flex-row md:gap-10 px-4 md:px-10">
           {/* Left: sticky scroll-spy nav */}
-          <div className="shrink-0 md:max-w-56 sticky top-12 md:top-11 z-10 w-full md:w-1/4 bg-white md:border-0 border-b border-neutral-200 py-4 md:py-10">
+          <div className="shrink-0 md:max-w-56 sticky top-12 md:top-11 z-10 w-full md:w-1/4 bg-[#0a0a0b] md:border-0 border-b border-[rgba(255,255,255,0.08)] py-4 md:py-10">
             {/* Mobile trigger */}
             <button
               onClick={() => setMobileOpen((o) => !o)}
-              className="w-full gap-4 flex md:hidden items-center justify-between duration-300 transition-all p-4 border border-t-0 border-neutral-200"
+              className="w-full gap-4 flex md:hidden items-center justify-between duration-300 transition-all p-4 border border-t-0 border-[rgba(255,255,255,0.08)]"
             >
               <p className="text-base text-current text-left">{activeLabel}</p>
               <svg
@@ -104,19 +104,19 @@ export function BenefitsTabs({ heading, description, tabs }: BenefitsTabsProps) 
             </button>
 
             <div className={mobileOpen ? "" : "hidden md:block"}>
-              <div className="shadow-lg bg-white rounded-b-xl md:rounded-xl border border-t-0 md:border-t border-neutral-200">
+              <div className="shadow-lg bg-[#141416] rounded-b-xl md:rounded-xl border border-t-0 md:border-t border-[rgba(255,255,255,0.08)]">
                 <ul className="flex flex-col w-full">
                   {tabs.map((tab, idx) => (
                     <li
                       key={tab.id}
-                      className={idx < tabs.length - 1 ? "border-b border-neutral-200" : ""}
+                      className={idx < tabs.length - 1 ? "border-b border-[rgba(255,255,255,0.08)]" : ""}
                     >
                       <button
                         onClick={() => goTo(tab.id)}
                         className={`w-full flex justify-between items-center transition-all duration-300 p-4 pt-3 text-left ${
                           activeId === tab.id
-                            ? "text-neutral-900"
-                            : "text-neutral-400 hover:text-neutral-900"
+                            ? "text-[#f0ede8]"
+                            : "text-[#888] hover:text-[#f0ede8]"
                         }`}
                       >
                         <div className="flex gap-3 items-center h-full">
@@ -124,7 +124,7 @@ export function BenefitsTabs({ heading, description, tabs }: BenefitsTabsProps) 
                         </div>
                         {activeId === tab.id && (
                           <svg
-                            className="w-4 h-4 shrink-0 text-neutral-900"
+                            className="w-4 h-4 shrink-0 text-[#f0ede8]"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -144,11 +144,11 @@ export function BenefitsTabs({ heading, description, tabs }: BenefitsTabsProps) 
           {/* Right: all categories stacked */}
           <div className="w-full md:w-3/4">
             {tabs.map((tab) => (
-              <div key={tab.id} id={`benefit-${tab.id}`} className="scroll-mt-28 border-l border-neutral-200">
+              <div key={tab.id} id={`benefit-${tab.id}`} className="scroll-mt-28 border-l border-[rgba(255,255,255,0.08)]">
                 {/* Category heading band */}
                 <div className="-mb-px md:grid lg:grid-cols-1">
-                  <div className="flex items-end p-4 md:p-10 gap-10 md:gap-40 border-b border-neutral-200 border-r">
-                    <p className="text-3xl font-medium tracking-tight text-neutral-900 sm:text-4xl lg:text-5xl">
+                  <div className="flex items-end p-4 md:p-10 gap-10 md:gap-40 border-b border-[rgba(255,255,255,0.08)] border-r">
+                    <p className="text-3xl font-medium tracking-tight text-[#f0ede8] sm:text-4xl lg:text-5xl">
                       {tab.label}
                     </p>
                   </div>
@@ -162,7 +162,7 @@ export function BenefitsTabs({ heading, description, tabs }: BenefitsTabsProps) 
                   {tab.items.map((item, i) => (
                     <div
                       key={item.title}
-                      className="flex flex-col gap-4 p-4 md:gap-10 md:p-10 justify-between items-start border-b border-neutral-200 border-r"
+                      className="flex flex-col gap-4 p-4 md:gap-10 md:p-10 justify-between items-start border-b border-[rgba(255,255,255,0.08)] border-r"
                     >
                       <div className="flex flex-col gap-4 items-start">
                         <span
@@ -174,10 +174,10 @@ export function BenefitsTabs({ heading, description, tabs }: BenefitsTabsProps) 
                           </svg>
                         </span>
                         <div className="flex flex-col gap-2 items-start">
-                          <p className="text-xl font-medium text-neutral-900 min-h-16">
+                          <p className="text-xl font-medium text-[#f0ede8] min-h-16">
                             {withDot(item.title)}
                           </p>
-                          <div className="text-neutral-600 leading-relaxed">
+                          <div className="text-[#999] leading-relaxed">
                             <p>{item.description}</p>
                           </div>
                         </div>
@@ -188,7 +188,7 @@ export function BenefitsTabs({ heading, description, tabs }: BenefitsTabsProps) 
               </div>
             ))}
             {/* Decorative end strip */}
-            <div className="hidden md:block border-x border-neutral-200 h-10 w-full" />
+            <div className="hidden md:block border-x border-[rgba(255,255,255,0.08)] h-10 w-full" />
           </div>
         </div>
       </div>

@@ -84,7 +84,7 @@ export function Navbar({ locale, dictionary }: NavbarProps) {
     <header
       ref={headerRef}
       onMouseLeave={() => setActive(null)}
-      className="sticky top-0 z-40 bg-[#131313] text-white"
+      className="sticky top-0 z-40 bg-black text-white"
     >
       <nav className="relative z-10 mx-auto flex h-16 w-full max-w-[1440px] items-center justify-between px-4 sm:px-10">
         <div className="flex items-center gap-6 lg:gap-8">

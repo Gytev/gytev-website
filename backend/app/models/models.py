@@ -102,6 +102,16 @@ class Customer(Base, TimestampMixin):
     sector = Column(String(120), nullable=False)
     country = Column(String(120), nullable=False)
     quote = Column(Text, nullable=False)
+    badge = Column(String(120), nullable=True)
+    image = Column(String(500), nullable=True)
+    overview = Column(Text, nullable=True)
+    challenge = Column(Text, nullable=True)
+    solution = Column(Text, nullable=True)
+    results = Column(Text, nullable=True)
+    metrics = Column(JSON, nullable=True)
+    quote_author = Column(String(200), nullable=True)
+    quote_role = Column(String(200), nullable=True)
+    video_url = Column(String(500), nullable=True)
 
 
 class CompanySection(Base, TimestampMixin):

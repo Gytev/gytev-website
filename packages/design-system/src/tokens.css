@@ -21,13 +21,13 @@
   --color-ink-400: #a1a1aa;
   --color-ink-100: #f4f4f5;
 
-  --color-paper: #f4f2ec;
-  --color-ink: #0a0a0b;
-  --color-line: rgba(10, 10, 11, 0.08);
-  --color-line-strong: rgba(10, 10, 11, 0.16);
+  --color-paper: #0a0a0b;
+  --color-ink: #f0ede8;
+  --color-line: rgba(255, 255, 255, 0.08);
+  --color-line-strong: rgba(255, 255, 255, 0.16);
 
-  --color-surface: #ffffff;
-  --color-background: #ffffff;
+  --color-surface: #141416;
+  --color-background: #0a0a0b;
 
   --font-sans: "Gytev Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, monospace;

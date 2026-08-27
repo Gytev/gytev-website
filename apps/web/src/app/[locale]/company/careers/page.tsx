@@ -31,7 +31,7 @@ export default async function CareersPage({ params }: Props) {
   const departments = apiDepartments ?? d.departments ?? [];
 
   return (
-    <main className="min-h-screen bg-white text-neutral-900">
+    <main className="min-h-screen bg-[#0a0a0b] text-[#f0ede8]">
       {/* 1. Hero */}
       <CompanyHero
         kicker=""
@@ -40,7 +40,7 @@ export default async function CareersPage({ params }: Props) {
       >
         <a
           href="#roles"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white text-sm font-normal rounded-full hover:bg-neutral-800 transition-colors mt-8"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-[#f0ede8] text-[#0a0a0b] text-sm font-normal rounded-full hover:bg-white transition-colors mt-8"
         >
           {d.ctaLabel}
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

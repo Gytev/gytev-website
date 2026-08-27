@@ -12,9 +12,14 @@ type CompanyHeroProps = {
 
 export function CompanyHero({ kicker, title, description, children }: CompanyHeroProps) {
   const descRef = useRef<HTMLDivElement>(null);
-  const [opacity, setOpacity] = useState(1);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
     function onScroll() {
       if (!descRef.current) return;
       const rect = descRef.current.getBoundingClientRect();
@@ -23,15 +28,15 @@ export function CompanyHero({ kicker, title, description, children }: CompanyHer
       const fadeEnd = viewH * 0.1;
       if (rect.top < fadeStart) {
         const ratio = Math.max(0, (rect.top - fadeEnd) / (fadeStart - fadeEnd));
-        setOpacity(ratio);
+        descRef.current.style.opacity = String(ratio);
       } else {
-        setOpacity(1);
+        descRef.current.style.opacity = "1";
       }
     }
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [mounted]);
 
   return (
     <section className="relative pt-20 pb-16 lg:pt-28 lg:pb-20 border-b border-[var(--line)] bg-[var(--color-surface)] overflow-hidden">
@@ -68,7 +73,7 @@ export function CompanyHero({ kicker, title, description, children }: CompanyHer
             <div
               ref={descRef}
               className="max-w-xs sm:max-w-sm"
-              style={{ opacity, transition: "opacity 0.1s ease-out" }}
+              style={{ transition: "opacity 0.1s ease-out" }}
             >
               <p className="text-sm leading-relaxed text-zinc-500 font-medium">
                 {description}

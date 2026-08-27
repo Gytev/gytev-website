@@ -75,6 +75,7 @@
       "excerpt": "Pourquoi Gytev ne construit pas un moteur de recherche, mais la couche qui connecte l'intelligence numérique à la réalité.",
       "date": "2026-06-01",
       "author": "L'équipe Gytev",
+      "image": "/images/figma/agri.jpg",
       "tags": [
         "mission"
       ]
@@ -85,6 +86,7 @@
       "excerpt": "Un champ de maïs en pleine floraison, une semaine sans pluie, et une seule recommandation claire.",
       "date": "2026-07-12",
       "author": "Équipe Rio",
+      "image": "/images/figma/projecttrack.webp",
       "tags": [
         "product",
         "rio"
@@ -96,15 +98,67 @@
       "slug": "cooperative-alibori",
       "name": "Coopérative de l'Alibori",
       "sector": "Agriculture",
-      "country": "Benin",
-      "quote": "Rio nous a alertés sur le stress hydrique trois jours avant le premier flétrissement. Nous avons irrigué à temps."
+      "country": "Bénin",
+      "badge": "AGRICULTURE",
+      "product": "rio",
+      "quote": "Rio nous a alertés sur le stress hydrique trois jours avant le premier flétrissement. Nous avons irrigué à temps.",
+      "quoteAuthor": "Patrice Kossi",
+      "quoteRole": "Directeur des opérations",
+      "overview": "La Coopérative de l'Alibori est une coopérative agricole de 1 200 membres dans le nord du Bénin, spécialisée dans la culture du coton et du maïs sur 8 000 hectares. Face à la volatilité climatique, la coopérative a déployé Rio.",
+      "challenge": "Les agriculteurs s'appuyaient sur des connaissances générationnelles et des prévisions météo trop imprécises. Le stress hydrique et les infestations étaient détectés trop tard, entraînant des pertes de récolte moyennes de 22 % par saison.",
+      "solution": "Gytev a déployé Rio sur 8 000 hectares grâce à des images satellites, des capteurs de sol et des données météo. L'IA fournit des prédictions de stress hydrique 72 heures à l'avance et des calendriers d'irrigation optimisés par SMS.",
+      "results": "Dès la première saison, la coopérative a réduit le gaspillage d'eau de 34 % et augmenté le rendement de 18 %. Les pertes de récolte sont passées de 22 % à moins de 8 %.",
+      "metrics": [
+        { "label": "Hausse du rendement", "value": "+18 %" },
+        { "label": "Eau économisée", "value": "34 %" },
+        { "label": "Réduction des pertes", "value": "22 % → 8 %" },
+        { "label": "Membres servis", "value": "1 200" }
+      ],
+      "image": "/images/figma/agri.jpg"
     },
     {
       "slug": "banque-du-sang-benin",
-      "name": "National Blood Bank of Benin",
+      "name": "Banque nationale du sang du Bénin",
       "sector": "Santé publique",
-      "country": "Benin",
-      "quote": "RedQ nous donne une visibilité en temps réel sur chaque poche de sang du pays. Les pénuries sont prédites, plus subies."
+      "country": "Bénin",
+      "badge": "SANTE PUBLIQUE",
+      "product": "redq",
+      "quote": "RedQ nous donne une visibilité en temps réel sur chaque poche de sang du pays. Les pénuries sont prédites, plus subies.",
+      "quoteAuthor": "Dr. Adjovi Laurent",
+      "quoteRole": "Directeur national de la transfusion sanguine",
+      "overview": "La Banque nationale du sang du Bénin gère l'approvisionnement en sang dans 42 hôpitaux et 12 centres régionaux. Avant RedQ, le système fonctionnait en mode réactif. La plateforme a transformé cette opération en un système prédictif.",
+      "challenge": "La durée de conservation des produits sanguins est limitée. La banque n'avait aucune visibilité en temps réel sur les inventaires. Les pénuries de groupes rares n'étaient découvertes que lorsque les patients en avaient besoin.",
+      "solution": "Gytev a déployé RedQ comme couche d'intelligence centralisée connectant les 42 banques du sang. La plateforme fournit des tableaux de bord en temps réel, des prévisions de demande, des alertes d'expiration et des recommandations de redistribution.",
+      "results": "Les pertes dues à l'expiration ont chuté de 41 %. Les pénuries critiques de sang O-négatif ont été réduites de 67 %. Le temps de réponse est passé de 36 heures à 8 heures.",
+      "metrics": [
+        { "label": "Réduction du gaspillage", "value": "41 %" },
+        { "label": "Réduction des pénuries", "value": "67 %" },
+        { "label": "Temps de réponse", "value": "36h → 8h" },
+        { "label": "Hôpitaux connectés", "value": "42" }
+      ],
+      "image": "/images/figma/blood.jpg"
+    },
+    {
+      "slug": "seme-city",
+      "name": "Sèmè City",
+      "sector": "Ville intelligente",
+      "country": "Bénin",
+      "badge": "VILLE INTELLIGENTE",
+      "product": "quiisa",
+      "quote": "Quiisa garde notre développement de 1 000 hectares sur les rails — chaque tâche, chaque équipe, chaque échéance visibles en un seul endroit.",
+      "quoteAuthor": "Prof. Valentin Agon",
+      "quoteRole": "Directeur exécutif, Sèmè City",
+      "overview": "Sèmè City est le projet phare de ville intelligente du Bénin, une zone de 1 000 hectares près de Cotonou. La plateforme Quiisa de Gytev gère la coordination multi-acteurs de la construction et des opérations.",
+      "challenge": "Construire une ville intelligente nécessite de coordonner des centaines d'entrepreneurs, de gérer des milliers de tâches sur une décennie, et de suivre les budgets across plusieurs sources de financement.",
+      "solution": "Gytev a déployé Quiisa comme plateforme centrale de gestion de projet. L'IA priorise les tâches, prédit les retards avant qu'ils ne surviennent et réaffecte automatiquement les ressources.",
+      "results": "La vitesse de livraison a été améliorée de 28 %. Les dépassements de budget sont passés de 15 % à moins de 3 %. La plateforme gère 2 400+ tâches actives sur 18 filières.",
+      "metrics": [
+        { "label": "Vitesse de livraison", "value": "+28 %" },
+        { "label": "Dépassement budget", "value": "15 % → 3 %" },
+        { "label": "Tâches actives", "value": "2 400+" },
+        { "label": "Filières", "value": "18" }
+      ],
+      "image": "/images/figma/projecttrack.webp"
     }
   ],
   "company": {

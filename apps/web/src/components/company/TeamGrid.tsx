@@ -58,18 +58,18 @@ function FounderCard({ member }: { member: TeamMember }) {
 
 export function TeamGrid({ team, heading, description }: TeamGridProps) {
   return (
-    <section className="py-24 bg-white dark:bg-neutral-950">
+    <section className="py-24 bg-[#0a0a0b]">
       <Container>
         <div className="max-w-2xl mb-16">
-          <h2 className="text-3xl font-medium tracking-tight text-neutral-900 dark:text-white sm:text-4xl">
+          <h2 className="text-3xl font-medium tracking-tight text-[#f0ede8] sm:text-4xl">
             {heading}
           </h2>
-          <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
+          <p className="mt-4 text-lg text-[#999]">
             {description}
           </p>
         </div>
 
-        <div className="border-neutral-200 border-l border-t grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 dark:border-neutral-800">
+        <div className="border-[rgba(255,255,255,0.08)] border-l border-t grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {team.map((member) => (
             <FounderCard key={member.name} member={member} />
           ))}

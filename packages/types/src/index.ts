@@ -65,10 +65,26 @@ export type BlogPostMeta = {
   tags: string[];
 };
 
+export type CustomerMetric = {
+  label: string;
+  value: string;
+};
+
 export type Customer = {
   slug: string;
   name: string;
   sector: string;
   country: string;
   quote: string;
+  logo?: string;
+  image?: string;
+  badge?: string;
+  overview?: string;
+  challenge?: string;
+  solution?: string;
+  results?: string;
+  metrics?: CustomerMetric[];
+  videoUrl?: string;
+  quoteAuthor?: string;
+  quoteRole?: string;
 };

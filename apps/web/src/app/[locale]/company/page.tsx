@@ -149,28 +149,6 @@ export default async function CompanyHubPage({ params }: Props) {
             </a>
             </Reveal>
 
-            {/* PRESS CARD */}
-                        <Reveal delay={300}>
-<a
-              href={localizedHref(l, "/company/press")}
-              className="h-full group relative flex flex-col justify-between bg-[var(--color-surface)] p-10 transition-colors hover:bg-[var(--color-primary-50)]"
-            >
-              <div>
-                <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-500 group-hover:text-[var(--ink)]">
-                  {locale === "fr" ? "Presse" : "Press"}
-                </h2>
-                <p className="mt-6 text-xl font-medium leading-snug text-zinc-700">
-                  {content.company.newsroom}
-                </p>
-              </div>
-              <div className="mt-12 flex justify-end">
-                <span className="text-sm font-medium text-zinc-500 group-hover:text-[var(--color-signal-500)]">
-                  {locale === "fr" ? "Consulter →" : "Explore →"}
-                </span>
-              </div>
-            </a>
-            </Reveal>
-
             {/* INTERNSHIPS CARD */}
                         <Reveal delay={360}>
 <a

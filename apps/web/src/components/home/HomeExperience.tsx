@@ -8,21 +8,29 @@ import { localizedHref } from "@gytev/i18n";
 import { Hero } from "./Hero";
 import { HardQuestions } from "./HardQuestions";
 import { LogoMarquee } from "@/components/shared/LogoMarquee";
-import type { Content, PartnerData } from "@/lib/content";
+import type { Content, PartnerData, CustomerData } from "@/lib/content";
 
 type HomeExperienceProps = {
   dict: Dictionary;
   locale: Locale;
-  customers: Content["customers"];
+  customers: CustomerData[];
   partners: PartnerData[];
 };
 
 function Arrow() { return <span aria-hidden>→</span>; }
 
-export function HomeExperience({ dict, locale, partners }: HomeExperienceProps) {
+export function HomeExperience({ dict, locale, partners, customers }: HomeExperienceProps) {
   const [caseIndex, setCaseIndex] = useState(0);
   const whyItems = dict.home.why.items;
   const [capability, setCapability] = useState(0);
+
+  const caseStudies = customers.map((c) => ({
+    slug: c.slug,
+    company: c.name,
+    badge: c.badge ?? c.sector.toUpperCase(),
+    title: `${c.name} improves operations with Gytev.`,
+    image: c.image ?? "/images/figma/agri.jpg",
+  }));
   const capabilityRef = useRef(0);
   const whyRef = useRef<HTMLDivElement>(null);
   const whyContainerRef = useRef<HTMLDivElement>(null);
@@ -67,7 +75,6 @@ export function HomeExperience({ dict, locale, partners }: HomeExperienceProps) 
     el.addEventListener("wheel", onWheel, { passive: false });
     return () => el.removeEventListener("wheel", onWheel);
   }, [whyItems.length]);
-  const caseStudies = dict.home.cases.items;
   const [tab, setTab] = useState(0);
   const [feature, setFeature] = useState(0);
   const tabRef = useRef(0);
@@ -147,7 +154,7 @@ export function HomeExperience({ dict, locale, partners }: HomeExperienceProps) 
 
       <section className="case-section" aria-label={dict.home.cases.heading} onWheel={(e) => { if (e.deltaY > 30) setCaseIndex((caseIndex + 1) % caseStudies.length); else if (e.deltaY < -30) setCaseIndex((caseIndex - 1 + caseStudies.length) % caseStudies.length); }}>
         <div className="case-grid">
-          <Link key={`${selectedCase.badge}-${caseIndex}`} href={localizedHref(locale, "/customers")} className="case-card">
+          <Link key={`${selectedCase.badge}-${caseIndex}`} href={localizedHref(locale, `/customers/${selectedCase.slug}`)} className="case-card">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={selectedCase.image} alt="" className="case-card__bg" />
             <div className="case-card__overlay">
@@ -164,7 +171,7 @@ export function HomeExperience({ dict, locale, partners }: HomeExperienceProps) 
               </div>
             </div>
           </Link>
-          <Link key={`${nextCase.badge}-${caseIndex + 1}`} href={localizedHref(locale, "/customers")} className="case-card case-card--next">
+          <Link key={`${nextCase.badge}-${caseIndex + 1}`} href={localizedHref(locale, `/customers/${nextCase.slug}`)} className="case-card case-card--next">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={nextCase.image} alt="" className="case-card__bg" />
             <div className="case-card__overlay">

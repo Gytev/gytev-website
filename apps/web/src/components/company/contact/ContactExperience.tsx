@@ -135,7 +135,7 @@ function GhostButton({
   onClick?: () => void;
 }) {
   const cls =
-    "group relative flex items-center justify-center overflow-hidden h-8 py-1 px-3 rounded-md bg-zinc-900/[.06] hover:bg-zinc-900/[.12] text-sm font-medium text-[var(--ink)] transition-colors";
+    "group relative flex items-center justify-center overflow-hidden h-8 py-1 px-3 rounded-md bg-[rgba(255,255,255,0.06)] hover:bg-[rgba(255,255,255,0.12)] text-sm font-medium text-[var(--ink)] transition-colors";
   const inner = (
     <>
       <span className="transition-transform duration-300 will-change-transform group-hover:translate-x-1">
@@ -246,7 +246,7 @@ export function ContactSection({ locale, copy }: { locale: Locale; copy: Copy })
       body: (
         <>
           <p>{copy.cards.vulnerability.text}</p>
-          <p className="text-sm text-zinc-500">{copy.cards.vulnerability.smallPrint}</p>
+          <p className="text-sm text-[#888]">{copy.cards.vulnerability.smallPrint}</p>
         </>
       ),
     },
@@ -297,7 +297,7 @@ export function ContactSection({ locale, copy }: { locale: Locale; copy: Copy })
                       <PixelArrow className="w-full" />
                     </span>
                   </button>
-                  <div className="prose-sm text-zinc-600 [&_a]:text-inherit">{body}</div>
+                  <div className="prose-sm text-[#999] [&_a]:text-inherit">{body}</div>
                   {(id === "privacy" || id === "vulnerability") && (
                     <GhostButton onClick={() => select(id)}>{id === "privacy" ? copy.cards.privacy.cta : copy.cards.vulnerability.cta}</GhostButton>
                   )}
@@ -336,12 +336,12 @@ export function ContactSection({ locale, copy }: { locale: Locale; copy: Copy })
                         checked={updates}
                         onChange={(e) => setUpdates(e.target.checked)}
                       />
-                      <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-sm border border-[var(--line)] bg-[var(--color-surface)] transition-colors peer-checked:border-zinc-900 peer-checked:bg-zinc-900 peer-focus-visible:ring-2 peer-focus-visible:ring-[var(--color-signal-500)]">
+                      <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-sm border border-[var(--line)] bg-[var(--color-surface)] transition-colors peer-checked:border-[var(--color-signal-500)] peer-checked:bg-[var(--color-signal-500)] peer-focus-visible:ring-2 peer-focus-visible:ring-[var(--color-signal-500)]">
                         <svg viewBox="0 0 40 40" fill="none" className={`h-4 w-4 text-white transition-opacity ${updates ? "opacity-100" : "opacity-0"}`} aria-hidden="true">
                           <path d="m10 21 7 7L31 13" stroke="currentColor" strokeWidth="5" strokeLinecap="square" />
                         </svg>
                       </span>
-                      <span className="text-sm leading-6 text-zinc-700">{field.label}</span>
+                      <span className="text-sm leading-6 text-[#bbb]">{field.label}</span>
                     </label>
                   );
                 }
@@ -365,10 +365,10 @@ export function ContactSection({ locale, copy }: { locale: Locale; copy: Copy })
                           required={field.required}
                           value={value}
                           onChange={(e) => set(field.key, e.target.value)}
-                          className="h-32 w-full resize-none rounded-md border border-[var(--line)] bg-[var(--color-surface)] p-4 text-base outline-none transition-colors placeholder:text-zinc-400 focus:border-zinc-500"
+                          className="h-32 w-full resize-none rounded-md border border-[var(--line)] bg-[var(--color-surface)] p-4 text-base text-[var(--ink)] outline-none transition-colors placeholder:text-[#666] focus:border-zinc-500"
                         />
                         <div className="flex w-full justify-end">
-                          <p className="text-sm tabular-nums text-zinc-400">{value.length} / 1000</p>
+                          <p className="text-sm tabular-nums text-[#666]">{value.length} / 1000</p>
                         </div>
                       </>
                     ) : field.kind === "select" ? (
@@ -378,7 +378,7 @@ export function ContactSection({ locale, copy }: { locale: Locale; copy: Copy })
                         required={field.required}
                         value={value}
                         onChange={(e) => set(field.key, e.target.value)}
-                        className="w-full rounded-md border border-[var(--line)] bg-[var(--color-surface)] px-4 py-3 text-base outline-none transition-colors focus:border-zinc-500"
+                        className="w-full rounded-md border border-[var(--line)] bg-[var(--color-surface)] px-4 py-3 text-base text-[var(--ink)] outline-none transition-colors focus:border-zinc-500"
                       >
                         <option value="" disabled>
                           {field.placeholder}
@@ -398,7 +398,7 @@ export function ContactSection({ locale, copy }: { locale: Locale; copy: Copy })
                         required={field.required}
                         value={value}
                         onChange={(e) => set(field.key, e.target.value)}
-                        className="h-13 w-full rounded-md border border-[var(--line)] bg-[var(--color-surface)] px-4 text-base outline-none transition-colors placeholder:text-zinc-400 focus:border-zinc-500"
+                        className="h-13 w-full rounded-md border border-[var(--line)] bg-[var(--color-surface)] px-4 text-base text-[var(--ink)] outline-none transition-colors placeholder:text-[#666] focus:border-zinc-500"
                       />
                     )}
                   </div>
@@ -406,13 +406,13 @@ export function ContactSection({ locale, copy }: { locale: Locale; copy: Copy })
               })}
 
               {active === "team" && (
-                <p className="text-sm leading-6 text-zinc-500">{copy.forms.legal}</p>
+                <p className="text-sm leading-6 text-[#888]">{copy.forms.legal}</p>
               )}
 
               <button
                 type="submit"
                 disabled={sending}
-                className="group relative mt-2 flex w-full items-center justify-center overflow-hidden rounded-md bg-[var(--ink)] px-5 py-3.5 text-base font-medium text-white transition-colors hover:bg-zinc-700 disabled:opacity-60 md:w-fit"
+                className="group relative mt-2 flex w-full items-center justify-center overflow-hidden rounded-md bg-[var(--color-signal-500)] px-5 py-3.5 text-base font-medium text-white transition-colors hover:bg-[var(--color-signal-600)] disabled:opacity-60 md:w-fit"
               >
                 <span className="transition-transform duration-300 will-change-transform group-hover:translate-x-1">
                   {sending ? copy.forms.sending : copy.forms.submit}
@@ -449,7 +449,7 @@ export function ContactHero({ copy }: { locale: Locale; copy: Copy }) {
         </div>
         <div className="flex items-end px-4 pb-6 sm:px-8 md:p-6">
           <Reveal delay={520} className="w-full">
-            <p className="text-lg leading-relaxed text-zinc-600">{copy.heroSub}</p>
+            <p className="text-lg leading-relaxed text-[#999]">{copy.heroSub}</p>
           </Reveal>
         </div>
       </div>

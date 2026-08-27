@@ -75,6 +75,7 @@
       "excerpt": "Why Gytev is not building a search engine, but the layer that connects digital intelligence to reality.",
       "date": "2026-06-01",
       "author": "The Gytev Team",
+      "image": "/images/figma/agri.jpg",
       "tags": [
         "mission"
       ]
@@ -85,6 +86,7 @@
       "excerpt": "A maize field in flowering stage, a week without rain, and one clear recommendation.",
       "date": "2026-07-12",
       "author": "Rio Team",
+      "image": "/images/figma/projecttrack.webp",
       "tags": [
         "product",
         "rio"
@@ -97,14 +99,66 @@
       "name": "Coopérative de l'Alibori",
       "sector": "Agriculture",
       "country": "Benin",
-      "quote": "Rio warned us about water stress three days before the first leaves wilted. We irrigated in time."
+      "badge": "AGRICULTURE",
+      "product": "rio",
+      "quote": "Rio warned us about water stress three days before the first leaves wilted. We irrigated in time.",
+      "quoteAuthor": "Patrice Kossi",
+      "quoteRole": "Director of Operations",
+      "overview": "Coopérative de l'Alibori is a 1,200-member agricultural cooperative in northern Benin, specializing in cotton and maize cultivation across 8,000 hectares. Faced with increasing climate volatility, the cooperative partnered with Gytev to deploy Rio.",
+      "challenge": "Farmers relied on generational knowledge and coarse weather forecasts. Water stress, pest outbreaks, and soil degradation were detected too late, leading to crop losses averaging 22% per season.",
+      "solution": "Gytev deployed Rio across 8,000 hectares using satellite imagery, soil sensors, and weather station data. The AI provides field-level water stress predictions 72 hours in advance, pest risk alerts, and optimized irrigation schedules via SMS.",
+      "results": "Within the first growing season, the cooperative reduced water waste by 34% and increased yield by 18%. Crop losses dropped from 22% to under 8%.",
+      "metrics": [
+        { "label": "Yield increase", "value": "+18%" },
+        { "label": "Water saved", "value": "34%" },
+        { "label": "Crop loss reduction", "value": "22% → 8%" },
+        { "label": "Members served", "value": "1,200" }
+      ],
+      "image": "/images/figma/agri.jpg"
     },
     {
       "slug": "banque-du-sang-benin",
       "name": "National Blood Bank of Benin",
       "sector": "Public health",
       "country": "Benin",
-      "quote": "RedQ gives us real-time visibility on every blood bag in the country. Shortages are predicted, not endured."
+      "badge": "PUBLIC HEALTH",
+      "product": "redq",
+      "quote": "RedQ gives us real-time visibility on every blood bag in the country. Shortages are predicted, not endured.",
+      "quoteAuthor": "Dr. Adjovi Laurent",
+      "quoteRole": "National Director of Blood Transfusion",
+      "overview": "The National Blood Bank of Benin manages blood supply across 42 hospitals and 12 regional transfusion centers. Before RedQ, the system operated on reactive logistics. Gytev's platform transformed this into a predictive, data-driven operation.",
+      "challenge": "Blood product shelf life is limited. The blood bank had no real-time inventory visibility across its distributed network. Shortages of rare blood types were discovered only when patients needed them.",
+      "solution": "Gytev deployed RedQ as a centralized intelligence layer connecting all 42 hospital blood banks. The platform provides real-time inventory dashboards, demand forecasting, expiry alerts, and automated redistribution recommendations.",
+      "results": "Wastage from expired products dropped by 41%. Critical shortages of O-negative blood were reduced by 67%. Average fulfillment time dropped from 36 hours to 8 hours.",
+      "metrics": [
+        { "label": "Waste reduction", "value": "41%" },
+        { "label": "Shortage reduction", "value": "67%" },
+        { "label": "Fulfillment time", "value": "36h → 8h" },
+        { "label": "Hospitals connected", "value": "42" }
+      ],
+      "image": "/images/figma/blood.jpg"
+    },
+    {
+      "slug": "seme-city",
+      "name": "Sèmè City",
+      "sector": "Smart city",
+      "country": "Benin",
+      "badge": "SMART CITY",
+      "product": "quiisa",
+      "quote": "Quiisa keeps our 1,000-hectare development on track — every task, every team, every deadline visible in one place.",
+      "quoteAuthor": "Prof. Valentin Agon",
+      "quoteRole": "Executive Director, Sèmè City",
+      "overview": "Sèmè City is Benin's flagship innovation hub and smart city project, a 1,000-hectare development zone near Cotonou. Gytev's Quiisa platform manages the complex multi-stakeholder construction and operations.",
+      "challenge": "Building a smart city from scratch requires coordinating hundreds of contractors, managing thousands of tasks across a decade-long timeline, and tracking budgets across multiple funding sources.",
+      "solution": "Gytev deployed Quiisa as the central project management platform. The AI prioritizes tasks, predicts delays before they happen, and automatically reassigns resources when dependencies shift.",
+      "results": "Project delivery speed improved by 28%. Budget overruns dropped from 15% to under 3%. The platform manages 2,400+ active tasks across 18 workstreams.",
+      "metrics": [
+        { "label": "Delivery speed", "value": "+28%" },
+        { "label": "Budget overrun", "value": "15% → 3%" },
+        { "label": "Active tasks", "value": "2,400+" },
+        { "label": "Workstreams", "value": "18" }
+      ],
+      "image": "/images/figma/projecttrack.webp"
     }
   ],
   "company": {

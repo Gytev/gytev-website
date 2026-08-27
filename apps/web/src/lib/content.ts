@@ -328,7 +328,7 @@ export async function getBlogPosts(locale: string): Promise<BlogPostCard[]> {
     author: post.author,
     date: post.date,
     tags: (post as { tags?: string[] }).tags ?? [],
-    image: null as string | null,
+    image: (post as { image?: string }).image ?? null,
     featured: false,
   }));
   if (!contentApiUrl) return local;
@@ -349,6 +349,7 @@ export async function getBlogPosts(locale: string): Promise<BlogPostCard[]> {
       published_at: string | null;
     }>;
     if (!Array.isArray(items) || items.length === 0) return local;
+    const imageBySlug = new Map(local.map((p) => [p.slug, p.image]));
     return items
       .map((p) => ({
         slug: p.slug,
@@ -363,10 +364,97 @@ export async function getBlogPosts(locale: string): Promise<BlogPostCard[]> {
             })
           : "",
         tags: p.tags ?? [],
-        image: p.image,
+        image: p.image ?? imageBySlug.get(p.slug) ?? null,
         featured: Boolean(p.featured),
       }))
       .sort((a, b) => b.date.localeCompare(a.date));
+  } catch {
+    return local;
+  }
+}
+
+export type CustomerData = {
+  slug: string;
+  name: string;
+  sector: string;
+  country: string;
+  quote: string;
+  badge?: string | null;
+  image?: string | null;
+  product?: string | null;
+  overview?: string | null;
+  challenge?: string | null;
+  solution?: string | null;
+  results?: string | null;
+  metrics?: Array<{ label: string; value: string }> | null;
+  quoteAuthor?: string | null;
+  quoteRole?: string | null;
+  videoUrl?: string | null;
+};
+
+export async function getCustomers(locale: string): Promise<CustomerData[]> {
+  const local = getLocalContent(locale).customers.map((c) => ({
+    slug: c.slug,
+    name: c.name,
+    sector: c.sector,
+    country: c.country,
+    quote: c.quote,
+    badge: (c as { badge?: string }).badge ?? null,
+    image: (c as { image?: string }).image ?? null,
+    product: (c as { product?: string }).product ?? null,
+    overview: (c as { overview?: string }).overview ?? null,
+    challenge: (c as { challenge?: string }).challenge ?? null,
+    solution: (c as { solution?: string }).solution ?? null,
+    results: (c as { results?: string }).results ?? null,
+    metrics: (c as { metrics?: Array<{ label: string; value: string }> }).metrics ?? null,
+    quoteAuthor: (c as { quoteAuthor?: string }).quoteAuthor ?? null,
+    quoteRole: (c as { quoteRole?: string }).quoteRole ?? null,
+    videoUrl: (c as { videoUrl?: string }).videoUrl ?? null,
+  }));
+  if (!contentApiUrl) return local;
+  try {
+    const response = await fetch(
+      `${contentApiUrl}/customers?locale=${encodeURIComponent(locale)}`,
+      { next: { revalidate: 60 } },
+    );
+    if (!response.ok) return local;
+    const items = (await response.json()) as Array<{
+      slug: string;
+      name: string;
+      sector: string;
+      country: string;
+      quote: string;
+      badge?: string | null;
+      image?: string | null;
+      product?: string | null;
+      overview?: string | null;
+      challenge?: string | null;
+      solution?: string | null;
+      results?: string | null;
+      metrics?: Array<{ label: string; value: string }> | null;
+      quote_author?: string | null;
+      quote_role?: string | null;
+      video_url?: string | null;
+    }>;
+    if (!Array.isArray(items) || items.length === 0) return local;
+    return items.map((c) => ({
+      slug: c.slug,
+      name: c.name,
+      sector: c.sector,
+      country: c.country,
+      quote: c.quote,
+      badge: c.badge ?? null,
+      image: c.image ?? null,
+      product: c.product ?? null,
+      overview: c.overview ?? null,
+      challenge: c.challenge ?? null,
+      solution: c.solution ?? null,
+      results: c.results ?? null,
+      metrics: c.metrics ?? null,
+      quoteAuthor: c.quote_author ?? null,
+      quoteRole: c.quote_role ?? null,
+      videoUrl: c.video_url ?? null,
+    }));
   } catch {
     return local;
   }

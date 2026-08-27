@@ -164,6 +164,16 @@ class CustomerCreate(BaseModel):
     sector: str = Field(min_length=1, max_length=120)
     country: str = Field(min_length=1, max_length=120)
     quote: str
+    badge: str | None = None
+    image: str | None = None
+    overview: str | None = None
+    challenge: str | None = None
+    solution: str | None = None
+    results: str | None = None
+    metrics: list[dict[str, str]] | None = None
+    quote_author: str | None = None
+    quote_role: str | None = None
+    video_url: str | None = None
 
 
 class CustomerUpdate(BaseModel):
@@ -173,6 +183,16 @@ class CustomerUpdate(BaseModel):
     sector: str | None = None
     country: str | None = None
     quote: str | None = None
+    badge: str | None = None
+    image: str | None = None
+    overview: str | None = None
+    challenge: str | None = None
+    solution: str | None = None
+    results: str | None = None
+    metrics: list[dict[str, str]] | None = None
+    quote_author: str | None = None
+    quote_role: str | None = None
+    video_url: str | None = None
 
 
 class CustomerRead(ReadBase):
@@ -182,6 +202,16 @@ class CustomerRead(ReadBase):
     sector: str
     country: str
     quote: str
+    badge: str | None
+    image: str | None
+    overview: str | None
+    challenge: str | None
+    solution: str | None
+    results: str | None
+    metrics: list[dict[str, str]] | None
+    quote_author: str | None
+    quote_role: str | None
+    video_url: str | None
 
 
 class CompanySectionCreate(BaseModel):

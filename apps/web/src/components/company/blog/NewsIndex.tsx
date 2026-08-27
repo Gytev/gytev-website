@@ -1,8 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { Locale } from "@gytev/types";
-import { localizedHref } from "@gytev/i18n";
 import type { BlogPostCard } from "@/lib/content";
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -78,7 +76,6 @@ function PostImage({ post, big }: { post: BlogPostCard; big?: boolean }) {
 }
 
 export function NewsIndex({ posts, locale, labels }: Props) {
-  const hrefFor = (slug: string) => localizedHref(locale as Locale, `/blog/${slug}`);
   const [selected, setSelected] = useState<string[]>([]);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
@@ -134,13 +131,15 @@ export function NewsIndex({ posts, locale, labels }: Props) {
   }
 
   return (
-    <main className="min-h-screen bg-white text-neutral-900">
+    <main className="min-h-screen bg-[#0a0a0b] text-[#f0ede8]">
       {/* Hero band */}
-      <section className="border-b border-neutral-200">
-        <div className="border-x border-neutral-200 px-4 py-14 md:px-10 md:py-20 flex flex-col gap-4 lg:gap-6">
-          <p className="text-xs font-mono uppercase tracking-widest text-neutral-500">
-            {labels.eyebrow}
-          </p>
+      <section className="border-b border-[rgba(255,255,255,0.08)]">
+        <div className="border-x border-[rgba(255,255,255,0.08)] px-4 py-14 md:px-10 md:py-20 flex flex-col gap-4 lg:gap-6">
+          {labels.eyebrow && (
+            <p className="text-xs font-mono uppercase tracking-widest text-neutral-500">
+              {labels.eyebrow}
+            </p>
+          )}
           <h1 className="text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
             {labels.title}
           </h1>
@@ -148,10 +147,10 @@ export function NewsIndex({ posts, locale, labels }: Props) {
       </section>
 
       {/* Filter bar */}
-      <div className="border-b border-neutral-200">
-        <div className="gap-4 flex flex-col lg:flex-row justify-between items-start lg:items-center p-5 md:p-10 border-x border-neutral-200">
+      <div className="border-b border-[rgba(255,255,255,0.08)]">
+        <div className="gap-4 flex flex-col lg:flex-row justify-between items-start lg:items-center p-5 md:p-10 border-x border-[rgba(255,255,255,0.08)]">
           <div className="flex flex-wrap gap-3 items-center">
-            <p className="text-sm text-neutral-500">{labels.filterBy}</p>
+            <p className="text-sm text-[#888]">{labels.filterBy}</p>
             <ul className="flex flex-wrap gap-1.5 items-center">
               {categories.map((cat) => {
                 const active = selected.includes(cat.toLowerCase());
@@ -163,7 +162,7 @@ export function NewsIndex({ posts, locale, labels }: Props) {
                       style={
                         active
                           ? { backgroundColor: color, borderColor: color, color: "#111" }
-                          : { backgroundColor: "#fafafa", borderColor: "#e5e5e5" }
+                          : { backgroundColor: "#141416", borderColor: "rgba(255,255,255,0.08)" }
                       }
                     >
                       <input
@@ -208,28 +207,27 @@ export function NewsIndex({ posts, locale, labels }: Props) {
       {/* Posts grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 -mb-px border-l border-neutral-200">
         {pageItems.length === 0 && (
-          <div className="lg:col-span-3 py-24 text-center text-neutral-500 border-b border-r border-neutral-200">
+          <div className="lg:col-span-3 py-24 text-center text-[#666] border-b border-r border-[rgba(255,255,255,0.08)]">
             {labels.empty}
           </div>
         )}
 
         {featuredInPage && (
-          <article className="p-5 lg:p-10 bg-white border-b lg:border-r border-b-2 border-neutral-200 lg:col-span-2">
-            <a
-              href={hrefFor(featuredInPage.slug)}
-              className="group/news border border-neutral-200 h-full flex flex-col lg:flex-row-reverse bg-white hover:bg-neutral-50 transition-colors"
+          <article className="p-5 lg:p-10 bg-[#141416] border-b lg:border-r border-b-2 border-[rgba(255,255,255,0.08)] lg:col-span-2">
+            <div
+              className="group/news border border-[rgba(255,255,255,0.08)] h-full flex flex-col lg:flex-row-reverse bg-[#141416] hover:bg-[#1a1a1c] transition-colors"
             >
-              <div className="lg:w-1/2 relative shrink-0 overflow-hidden bg-neutral-200">
+              <div className="lg:w-1/2 relative shrink-0 overflow-hidden bg-[#1a1a1c]">
                 <PostImage post={featuredInPage} big />
               </div>
               <div className="w-full flex flex-col h-full lg:w-1/2">
-                <div className="flex flex-col lg:h-full gap-4 p-6 border-t lg:border-t-0 lg:border-r border-neutral-200">
+                <div className="flex flex-col lg:h-full gap-4 p-6 border-t lg:border-t-0 lg:border-r border-[rgba(255,255,255,0.08)]">
                   <div className="flex gap-1">
                     {featuredInPage.tags.slice(0, 1).map((tag) => (
                       <span
                         key={tag}
                         style={{ ["--cat" as string]: categoryColor(tag) }}
-                        className="inline-block uppercase px-2 py-1 rounded bg-neutral-100 group-hover/news:bg-[var(--cat)] transition-colors"
+                        className="inline-block uppercase px-2 py-1 rounded bg-[rgba(255,255,255,0.06)] group-hover/news:bg-[var(--cat)] transition-colors"
                       >
                         <p className="text-[11px] font-mono uppercase">{tag}</p>
                       </span>
@@ -250,30 +248,29 @@ export function NewsIndex({ posts, locale, labels }: Props) {
                   <ArrowSquare />
                 </footer>
               </div>
-            </a>
+            </div>
           </article>
         )}
 
         {rest.map((post) => (
           <article
             key={post.slug}
-            className="p-5 lg:p-10 bg-white border-b lg:border-r border-neutral-200"
+            className="p-5 lg:p-10 bg-[#141416] border-b lg:border-r border-[rgba(255,255,255,0.08)]"
           >
-            <a
-              href={hrefFor(post.slug)}
-              className="group/news border border-neutral-200 h-full flex flex-col bg-white hover:bg-neutral-50 transition-colors"
+            <div
+              className="group/news border border-[rgba(255,255,255,0.08)] h-full flex flex-col bg-[#141416] hover:bg-[#1a1a1c] transition-colors"
             >
-              <div className="relative shrink-0 overflow-hidden bg-neutral-200">
+              <div className="relative shrink-0 overflow-hidden bg-[#1a1a1c]">
                 <PostImage post={post} />
               </div>
               <div className="w-full flex flex-col h-full">
-                <div className="flex flex-col lg:h-full gap-4 p-6 border-t border-neutral-200">
+                <div className="flex flex-col lg:h-full gap-4 p-6 border-t border-[rgba(255,255,255,0.08)]">
                   <div className="flex gap-1">
                     {post.tags.slice(0, 1).map((tag) => (
                       <span
                         key={tag}
                         style={{ ["--cat" as string]: categoryColor(tag) }}
-                        className="inline-block uppercase px-2 py-1 rounded bg-neutral-100 group-hover/news:bg-[var(--cat)] transition-colors"
+                        className="inline-block uppercase px-2 py-1 rounded bg-[rgba(255,255,255,0.06)] group-hover/news:bg-[var(--cat)] transition-colors"
                       >
                         <p className="text-[11px] font-mono uppercase">{tag}</p>
                       </span>
@@ -283,17 +280,17 @@ export function NewsIndex({ posts, locale, labels }: Props) {
                     {post.title}
                   </h2>
                 </div>
-                <footer className="shrink-0 divide-x divide-neutral-200 border-t border-neutral-200 flex mt-auto">
+                <footer className="shrink-0 divide-x divide-[rgba(255,255,255,0.08)] border-t border-[rgba(255,255,255,0.08)] flex mt-auto">
                   <div className="w-full px-3 py-4">
-                    <p className="text-sm text-neutral-400">{post.date}</p>
+                    <p className="text-sm text-[#888]">{post.date}</p>
                   </div>
                   <div className="w-full px-3 py-4">
-                    <p className="text-sm text-neutral-400 truncate">{post.author}</p>
+                    <p className="text-sm text-[#888] truncate">{post.author}</p>
                   </div>
                   <ArrowSquare />
                 </footer>
               </div>
-            </a>
+            </div>
           </article>
         ))}
       </div>

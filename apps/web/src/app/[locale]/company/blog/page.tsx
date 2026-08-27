@@ -25,7 +25,7 @@ export default async function BlogPage({ params }: Props) {
       posts={posts}
       locale={locale}
       labels={{
-        eyebrow: fr ? "Blog" : "Blog",
+        eyebrow: "",
         title: fr ? "Les dernières actualités de Gytev." : "Latest updates from Gytev.",
         filterBy: fr ? "Filtrer par catégorie" : "Filter by category",
         articlesCount: fr ? "articles" : "articles",

@@ -4,11 +4,14 @@ type MarqueePartner = {
 };
 
 export function LogoMarquee({ partners }: { partners: MarqueePartner[] }) {
+  const unique = partners.filter(
+    (p, i, arr) => arr.findIndex((q) => q.name === p.name) === i,
+  );
   return (
     <div className="trusted__track">
       {[0, 1, 2].map((slide) => (
         <div key={slide} className="trusted__slide" aria-hidden={slide > 0}>
-          {partners.map((partner) => (
+          {unique.map((partner) => (
             <div key={`${slide}-${partner.name}`} className="trusted__case">
               {/* eslint-disable-next-line @next/next/no-img-element -- logo marquee, plain img keeps it server-rendered */}
               <img

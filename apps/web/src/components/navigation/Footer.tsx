@@ -13,7 +13,7 @@ export function Footer({ locale, dictionary }: FooterProps) {
   const dict = dictionary as Dictionary;
 
   return (
-    <footer className="bg-[#131313] text-white">
+    <footer className="bg-black text-white">
       <div className="mx-auto mb-16 max-w-[1280px] px-6 pt-12 lg:px-8">
         <div className="flex flex-col gap-6 md:flex-row">
           {dict.footer.groups.map((group, groupIndex) => (
